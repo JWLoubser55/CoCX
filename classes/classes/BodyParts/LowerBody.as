@@ -1061,6 +1061,38 @@ public class LowerBody extends SaveableBodyPart {
 		canKick: true
 	});
 
+	public static const DEMONIC_HOOFS:int = 102;
+	EnumValue.add(Types, DEMONIC_HOOFS, "DEMONIC_HOOFS", {
+		name: "demonic hoofs",
+		feet: "hooves",
+		foot: "hoof",
+		appearanceDescFunc: function(player: *): String {
+			var desc: String = ""
+
+			if (player.isBiped()) {
+				desc += "Your two legs are muscled and jointed oddly, covered in [fur color] fur, and end in bestial hooves.";
+			}
+
+			if (player.isTaur()) {
+				desc += "From the waist down, you have the body of a demonic horse, with four muscled legs which are jointed oddly, covered in [fur color] fur, and end in bestial hooves."
+			}
+
+			return desc;
+		},
+		canTaur: true,
+		canKick: true,
+		fur: true
+	});
+
+	public static const DEMONIC_CLOVEN_HOOFS:int = 103;
+	EnumValue.add(Types, DEMONIC_CLOVEN_HOOFS, "DEMONIC_CLOVEN_HOOFS", {
+		name: "demonic cloven-hoofs",
+		legsPrefixes: ["deer-like", "cloven-hoofed", "", ""],
+		appearanceDesc: "{legCount} digitigrade legs covered with thick [fur color] fur form below your [hips], ending in cloven hooves.",
+		canTaur: true,
+		fur: true
+	});
+
 	override public function set type(value:int):void {
 		super.type = value;
 		// Reset leg count

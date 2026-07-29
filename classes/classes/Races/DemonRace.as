@@ -53,7 +53,7 @@ public class DemonRace extends Race {
 				.eyeType(ANY(Eyes.DEMON, Eyes.DEVIL), +1)
 				.eyeColor(ANY(DemonEyeColors), +1)
 				.armType(Arms.DEMON, +1)
-				.legType(ANY(LowerBody.DEMONIC_HIGH_HEELS, LowerBody.DEMONIC_GRACEFUL_FEET, LowerBody.DEMONIC_CLAWS), +1)
+				.legType(ANY(LowerBody.DEMONIC_HIGH_HEELS, LowerBody.DEMONIC_GRACEFUL_FEET, LowerBody.DEMONIC_CLAWS, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS), +1)
 				.tailType(Tail.DEMONIC, +1)
 				.wingType(Wings.BAT_LIKE_TINY, +2)
 				.wingType(Wings.BAT_LIKE_LARGE, +4)

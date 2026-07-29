@@ -420,6 +420,99 @@ public class LowerBodyTransformations extends MutationsHelper {
 		)
 	}
 
+	public function LowerBodyDemonHoofed(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
+		return new SimpleTransformation("Demonic Hoofed Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if (Metamorph.checkTaurUnlock() && player.lowerBody == LowerBody.DEMONIC_HOOFS) {
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "You stagger as your " + Utils.num2Text(player.legCount) + " [feet] change, curling up into painful angry lumps of flesh. They get tighter and tighter, harder and harder, until at last they solidify into hooves! A coat of beastial fur springs up below your waist, itching as it fills in and completely covers your " + Utils.num2Text(player.legCount) + " [legs].<b> You now have hooves in place of your [feet]!</b>";
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count
+					if (player.lowerBody !== LowerBody.DEMONIC_HOOFS) {
+						desc += "\n\nYou stagger as your pair of [feet] change, curling up into painful angry lumps of flesh. They get tighter and tighter, harder and harder, until at last they solidify into hooves! A coat of beastial fur springs up below your waist, itching as it fills in and completely covers your two [legs].<b> You now have hooves in place of your [feet]!</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.DEMONIC_HOOFS).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.DEMONIC_HOOFS;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.DEMONIC_HOOFS));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.DEMONIC_HOOFS;
+			}
+		)
+	}
+
+	public function LowerBodyDemonClovenHoofed(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
+		return new SimpleTransformation("Demonic Cloven Hoofed Lower Body",
+			// apply effect
+			function (doOutput: Boolean): void {
+				if (!legCount) legCount = player.legCount;
+				var desc: String = "";
+				if(Metamorph.checkTaurUnlock() && player.lowerBody == LowerBody.DEMONIC_CLOVEN_HOOFS ){
+					if (toggleTaur && legCount === 2) legCount = 4;
+					else if (toggleTaur && legCount >= 4) legCount = 2;
+					else if (legCount === 1) legCount = 2;
+				}
+
+				// Case 1: Morph Taur legs without changing leg count
+				if (player.isTaur() && legCount >= 4) {
+					desc += "You feel an odd sensation in your lower region. Your [feet] shift and you hear bones cracking as they reform. Fur grows on your legs and soon you're looking at a <b>new pair of cloven hoofed legs</b>.";
+					legCount = 4;
+				}
+				// Case 2: Bipedal TF
+				else if (legCount === 2) {
+					if (player.lowerBody == LowerBody.NAGA) {
+						desc += "You scream in agony as a horrible pain racks the entire length of your snake-like coils. Unable to take it anymore, you pass out. When you wake up, you’re shocked to find that you no longer have the lower body of a snake. Instead, you only have two legs. They are digitigrade and end in cloven hooves. <b>You now have deer legs!</b>";
+						player.lowerBody = LowerBody.DEMONIC_CLOVEN_HOOFS;
+						transformations.LowerBodyBipedal.applyEffect(false);
+					} else if (player.lowerBody == LowerBody.MELKIE) {
+						desc += "You scream in agony as a horrible pain racks the entire length of your seal-like tail. Unable to take it anymore, you pass out. When you wake up, you’re shocked to find that you no longer have the lower body of a seal. Instead, you only have two legs. They are digitigrade and end in cloven hooves. <b>You now have deer legs!</b>";
+						player.lowerBody = LowerBody.DEMONIC_CLOVEN_HOOFS;
+						transformations.LowerBodyBipedal.applyEffect(false);
+					}
+
+					TransformationUtils.applyTFIfNotPresent(transformations.LowerBodyBipedal, doOutput);
+
+					// Display TF text if the player is obtaining this part instead of only changing leg count and didn't hit any special text
+					if (player.lowerBody !== LowerBody.DEMONIC_CLOVEN_HOOFS) {
+						desc += "\n\nYou scream in agony as the bones in your legs break and rearrange. Once the pain subsides, you inspect your legs, finding that they are digitigrade and ending in cloven hooves. <b>You now have a pair of cloven hoofed legs!</b>";
+					}
+				}
+				// Case 3: Taur TF
+				else if (!player.isTaur() && legCount >= 4) {
+					transformations.LowerBodyTaur(LowerBody.DEMONIC_CLOVEN_HOOFS).applyEffect(doOutput);
+				}
+
+				if (doOutput) outputText(desc);
+				player.lowerBody = LowerBody.DEMONIC_CLOVEN_HOOFS;
+				player.legCount = legCount;
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.DEMONIC_CLOVEN_HOOFS));
+			},
+			// is present
+			function (): Boolean {
+				return !Metamorph.checkTaurUnlock() && player.lowerBody === LowerBody.DEMONIC_CLOVEN_HOOFS;
+			}
+		)
+	}
 
 	public function LowerBodyDraconic(legCount: int = undefined, toggleTaur: Boolean = false): Transformation {
 		return new SimpleTransformation("Draconic Lower Body",

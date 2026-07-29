@@ -649,6 +649,21 @@ package classes.GeneticMemories {
           unlockText: "Now you can metamorph into the Taur variant of any lower body part you unlocked when available!",
           transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyStoneHoofedNoFurToggle(true)}});
 
+      public static const DEMONIC_HOOFS: int = _partid++;
+      EnumValue.add(Memories, DEMONIC_HOOFS, "DEMONIC_HOOFS", {
+          id: "Demon Hoofed Lower Body",name: "Hooves (Legs)",
+          cost: 100,
+          title: "Demonic Hoofed",
+          unlockText: "Now you can metamorph into the Taur variant of any lower body part you unlocked when available!",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonHoofedToggle(true)}});
+
+      public static const DEMONIC_CLOVEN_HOOFS: int = _partid++;
+      EnumValue.add(Memories, DEMONIC_CLOVEN_HOOFS, "DEMONIC_CLOVEN_HOOFS", {
+          id: "Demon Cloven Hoofed Lower Body",name: "Demon Cloven Hooves (Legs)",
+          cost: 100,
+          title: "D. Cl. Hoofed",
+          transformation: function(): Transformation {return CoC.instance.transformations.LowerBodyDemonClovenHoofedToggle(true)}});
+
       public static function getMemory(memoryId: Number): * {
 			return Memories[memoryId] || Memories[0];
 		}

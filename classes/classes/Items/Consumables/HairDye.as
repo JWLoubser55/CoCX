@@ -67,7 +67,7 @@ public class HairDye extends Consumable
 					// Workaround for demonic taur lowerbodies using reptaur (scales) or centaur (fur) lower Body.
 					// Remove me, if we have separate sprites for demon taurs!
 					if (player.legCount == 4 && (type == BodyMaterial.SCALES && player.lowerBody == LowerBody.DEMONIC_CLAWS)
-					                         /*|| (type == BodyMaterial.FUR && InCollection(player.lowerBody, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS)*/)
+					                         || (type == BodyMaterial.FUR && InCollection(player.lowerBody, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS)))
 						present = true;
 					// /Workaround
 					if (present) {

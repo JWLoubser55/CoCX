@@ -4721,7 +4721,7 @@
 					</switch>
 				</if>
 			</case>
-			<case values="LowerBody.HOOFED,LowerBody.PONY,LowerBody.CLOVEN_HOOFED">
+			<case values="LowerBody.HOOFED,LowerBody.PONY,LowerBody.CLOVEN_HOOFED,LowerBody.DEMONIC_HOOFS,LowerBody.DEMONIC_CLOVEN_HOOFS">
 				<hide part="legs/*"/>
 				<switch>
 					<case test="legCount==4">
@@ -4739,8 +4739,11 @@
 							<case test="hasFullCoatOfType(Skin.CHITIN)">
 								<show part="legs/hoof_chitin"/>
 							</case>
-							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES,Skin.DRAGON_SCALES)">
+							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES)">
 								<show part="legs/hoof_scales"/>
+							</case>
+							<case test="hasFullCoatOfType(Skin.DRAGON_SCALES)">
+								<show part="legs/hoof_dscales"/>
 							</case>
 							<default>
 								<show part="legs/hoof_human"/>
@@ -4767,8 +4770,11 @@
 							<case test="hasFullCoatOfType(Skin.CHITIN)">
 								<show part="legs/hoof_chitin"/>
 							</case>
-							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES,Skin.DRAGON_SCALES)">
+							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES)">
 								<show part="legs/hoof_scales"/>
+							</case>
+							<case test="hasFullCoatOfType(Skin.DRAGON_SCALES)">
+								<show part="legs/hoof_dscales"/>
 							</case>
 							<default>
 								<show part="legs/hoof_human"/>
@@ -4795,8 +4801,11 @@
 							<case test="hasFullCoatOfType(Skin.CHITIN)">
 								<show part="legs/hoof_chitin"/>
 							</case>
-							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES,Skin.DRAGON_SCALES)">
+							<case test="hasFullCoatOfType(Skin.SCALES,Skin.AQUA_SCALES)">
 								<show part="legs/hoof_scales"/>
+							</case>
+							<case test="hasFullCoatOfType(Skin.DRAGON_SCALES)">
+								<show part="legs/hoof_dscales"/>
 							</case>
 							<default>
 								<show part="legs/hoof_human"/>

@@ -1883,7 +1883,9 @@ if (whosincharge == 1) {
         addButton(4, "Heels",  function():void {  CoC.instance.transformations.LowerBodyDemonHighHeels.applyEffect(); });
         addButton(5, "G.Feet",  function():void {  CoC.instance.transformations.LowerBodyDemonGracefulFeet.applyEffect(); });
         addButton(6, "ClawFeet",  function():void {  CoC.instance.transformations.LowerBodyDemonClawedBipedal.applyEffect(); });
-        addButton(7, "Ears",  function():void {  CoC.instance.transformations.EarsElfin.applyEffect();});
+		addButton(7, "HoofFeet",  function():void {  CoC.instance.transformations.LowerBodyDemonHoofedBipedal.applyEffect(); });
+		addButton(8, "Cl.HoofFeet",  function():void {  CoC.instance.transformations.LowerBodyDemonClovenHoofedBipedal.applyEffect(); });
+        addButton(9, "Ears",  function():void {  CoC.instance.transformations.EarsElfin.applyEffect();});
     }
 
     private function MeilaTFDisplacerMenu():void {
