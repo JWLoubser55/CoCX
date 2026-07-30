@@ -1228,10 +1228,18 @@ public final class Mutations extends MutationsHelper {
 			transformations.ArmsDemon.applyEffect(false);
 		}
 		if (player.lowerBody != LowerBody.DEMONIC_CLAWS && player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS && player.lowerBody != LowerBody.DEMONIC_GRACEFUL_FEET) {
-			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) transformations.LowerBodyDemonClawed.applyEffect(false);
+			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
+				switch (rand(2)) {
+					case 0: transformations.LowerBodyDemonClawedBipedal.applyEffect(false); break;
+					case 1: transformations.LowerBodyDemonHoofedBipedal.applyEffect(false); break;
+				}
+			}
 			else {
-				if (rand(2) == 0) transformations.LowerBodyDemonHighHeels.applyEffect(false);
-				else transformations.LowerBodyDemonGracefulFeet.applyEffect(false);
+				switch (rand(3)) {
+					case 0: transformations.LowerBodyDemonHighHeels.applyEffect(false); break;
+					case 1: transformations.LowerBodyDemonGracefulFeet.applyEffect(false); break;
+					case 2: transformations.LowerBodyDemonClovenHoofedBipedal.applyEffect(false); break;
+				}
 			}
 		}
 		player.legCount = 2;
@@ -13380,16 +13388,22 @@ public final class Mutations extends MutationsHelper {
         if (player.hasPlainSkinOnly() && changes < changeLimit && rand(2) == 0) {
             //Males/genderless get clawed feet
             if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
-                if (player.lowerBody != LowerBody.DEMONIC_CLAWS) {
-                    outputText("[pg]");
-                    transformations.LowerBodyDemonClawed.applyEffect();
+				if (!InCollection(player.lowerBody, LowerBody.DEMONIC_CLAWS, LowerBody.DEMONIC_HOOFS)) {
+					outputText("[pg]");
+					switch (rand(2)) {
+						case 0: transformations.LowerBodyDemonClawedBipedal.applyEffect(); break;
+						case 1: transformations.LowerBodyDemonHoofedBipedal.applyEffect(); break;
+					}
                 }
             }
             //Females/futa get high heels
-            else if (player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS && player.lowerBody != LowerBody.DEMONIC_GRACEFUL_FEET) {
+            else if (!InCollection(player.lowerBody, LowerBody.DEMONIC_HIGH_HEELS, LowerBody.DEMONIC_GRACEFUL_FEET, LowerBody.DEMONIC_CLOVEN_HOOFS)) {
                 outputText("[pg]");
-                if (rand(2) == 0) transformations.LowerBodyDemonHighHeels.applyEffect();
-				else transformations.LowerBodyDemonGracefulFeet.applyEffect();
+				switch (rand(3)) {
+					case 0: transformations.LowerBodyDemonHighHeels.applyEffect(); break;
+					case 1: transformations.LowerBodyDemonGracefulFeet.applyEffect(); break;
+					case 2: transformations.LowerBodyDemonClovenHoofedBipedal.applyEffect(); break;
+				}
             }
             changes++;
         }
