@@ -2577,6 +2577,16 @@ import flash.utils.getQualifiedClassName;
 				addStatusValue(StatusEffects.SlimeInsert, 1, -1);
 				return false;
 			}
+			if (hasStatusEffect(StatusEffects.StraddleRoundLeft)) {
+				addStatusValue(StatusEffects.StraddleRoundLeft, 1, -1);
+				if (statusEffectv1(StatusEffects.StraddleRoundLeft) <= 0) {
+					removeStatusEffect(StatusEffects.Straddle);
+					removeStatusEffect(StatusEffects.StraddleRoundLeft);
+					if (player.isRace(Races.MUMMY)) EngineCore.outputText("Your victim finally manages to break free from your bandages, shoving you off.");
+					else EngineCore.outputText("Your opponent finally manages to struggle free of your grapple!");
+				}
+				return false;
+			}
 			else if (LowerBody.hasTentacles(player)) {
 				EngineCore.outputText("Your prey pushes at your tentacles, twisting and writhing in an effort to escape from your tentacle's tight bonds.");
 				if (statusEffectv1(StatusEffects.ConstrictedScylla) <= 0) {

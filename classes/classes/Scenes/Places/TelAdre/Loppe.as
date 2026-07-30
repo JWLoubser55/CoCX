@@ -2036,11 +2036,11 @@ private function sharedStatsAndEtcChanges():void {
 	if (loppeTrainingPerksCheckStats()) {
 		if (loppeTrainingPerksCheckRest()) {
 			outputText("\n\nThe long session with Loppe taught you a few new skills in the art of lovemaking. You even learned a new technique. <b>Acquired ");
-			if (player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+			if (player.libStat.train.value >= 20 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
 				player.createPerk(PerkLib.RampagingBunnyStyleTeasingAttack, 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: Teasing Attack");
 			}
-			if (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
+			if (player.libStat.train.value >= 40 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes) && player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) {
 				player.createPerk(PerkLib.RampagingBunnyStyleLewdStrikes, 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: Lewd Strikes");
 			}
@@ -2062,7 +2062,7 @@ private function sharedStatsAndEtcChanges():void {
 	}
 }
 private function loppeTrainingPerksCheckStats():Boolean {
-	return ((player.libStat.train.value >= 25 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) || (player.libStat.train.value >= 50 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) || (player.libStat.train.value >= 60 && !player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)));// || (player.libStat.train.value >= 80 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+	return ((player.libStat.train.value >= 20 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) || (player.libStat.train.value >= 40 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) || (player.libStat.train.value >= 60 && !player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)));// || (player.libStat.train.value >= 80 && !player.hasPerk(PerkLib.)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
 }
 private function loppeTrainingPerksCheckRest():Boolean {
 	return (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);

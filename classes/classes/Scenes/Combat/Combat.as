@@ -17539,13 +17539,13 @@ public function Straddle():void {
         //WRAP IT UPPP
         monster.createStatusEffect(StatusEffects.Straddle, 0, 0, 0, 0);
         if (player.perkv1(IMutationsLib.MightyLegsIM) >= 4 || player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 4) {
-			if (player.perkv1(IMutationsLib.MightyLegsIM) >= 4 && player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 4) player.createStatusEffect(StatusEffects.StraddleRoundLeft, 4 + rand(3), 0, 0, 0);
-			else player.createStatusEffect(StatusEffects.StraddleRoundLeft, 3 + rand(3), 0, 0, 0);
+			if (player.perkv1(IMutationsLib.MightyLegsIM) >= 4 && player.perkv1(IMutationsLib.MightyLowerHalfIM) >= 4) monster.createStatusEffect(StatusEffects.StraddleRoundLeft, 4 + rand(3), 0, 0, 0);
+			else monster.createStatusEffect(StatusEffects.StraddleRoundLeft, 3 + rand(3), 0, 0, 0);
 		}
-		else player.createStatusEffect(StatusEffects.StraddleRoundLeft, 2 + rand(3), 0, 0, 0);
+		else monster.createStatusEffect(StatusEffects.StraddleRoundLeft, 2 + rand(3), 0, 0, 0);
 		if (player.isRace(Races.MUMMY)) {
-			player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, 2);
-			player.addStatusValue(StatusEffects.StraddleRoundLeft, 2, 1);
+			monster.addStatusValue(StatusEffects.StraddleRoundLeft, 1, 2);
+			monster.addStatusValue(StatusEffects.StraddleRoundLeft, 2, 1);
 		}
         if (player.isAlraune()) {
             outputText("You giggle and take hold of your dazed opponent with your vines before gently pulling [monster him] into your nectar bath, straddling him with your pistil as you get into mating position.");
@@ -17554,7 +17554,7 @@ public function Straddle():void {
             if (monster.statusEffectv1(StatusEffects.Pounce) < 3){
                 monster.addStatusValue(StatusEffects.Pounce, 1, 3 - monster.statusEffectv1(StatusEffects.Pounce));
             }
-            player.addStatusValue(StatusEffects.StraddleRoundLeft,1,monster.statusEffectv1(StatusEffects.Pounce)-3);
+            monster.addStatusValue(StatusEffects.StraddleRoundLeft,1,monster.statusEffectv1(StatusEffects.Pounce)-3);
             if (monster.hasStatusEffect(StatusEffects.DisplacerPlug)) monster.removeStatusEffect(StatusEffects.DisplacerPlug);
             monster.removeStatusEffect(StatusEffects.Pounce);
             outputText("You change position and straddle your opponent in order to prepare for mating.");
@@ -17562,12 +17562,12 @@ public function Straddle():void {
             if (monster.statusEffectv1(StatusEffects.MysticWeb) < 3){
                 monster.addStatusValue(StatusEffects.MysticWeb, 1, 3 - monster.statusEffectv1(StatusEffects.MysticWeb));
             }
-            player.addStatusValue(StatusEffects.StraddleRoundLeft,1,monster.statusEffectv1(StatusEffects.MysticWeb)-3);
+            monster.addStatusValue(StatusEffects.StraddleRoundLeft,1,monster.statusEffectv1(StatusEffects.MysticWeb)-3);
             monster.removeStatusEffect(StatusEffects.MysticWeb);
             outputText("You chuckle at your opponent's helplessness. As they struggle, you skitter over, straddling your webbed opponent. They'll be ready for mating soon.");
         }
         else outputText("You take hold of your dazed opponent and gently pull [monster him] to the ground, straddling [monster him] as you get into position.");
-        if (player.hasPerk(PerkLib.StraddleImproved)) player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, +2);
+        if (player.hasPerk(PerkLib.StraddleImproved)) monster.addStatusValue(StatusEffects.StraddleRoundLeft, 1, 2);
 		if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
         enemyAIImpl();
 }
@@ -17609,15 +17609,6 @@ public function StraddleTease():void {
 		}
 		if (boolFistingIs300Bucks()) boolFistingIs301Bucks();
 	}
-    if (player.hasStatusEffect(StatusEffects.StraddleRoundLeft)) {
-        player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, -1);
-        if (player.statusEffectv1(StatusEffects.StraddleRoundLeft) <= 0) {
-            monster.removeStatusEffect(StatusEffects.Straddle);
-            player.removeStatusEffect(StatusEffects.StraddleRoundLeft);
-            if (player.isRace(Races.MUMMY)) outputText("Your victim finally manages to break free from your bandages, shoving you off.\n\n");
-			else outputText("Your opponent finally manages to struggle free of your grapple!\n\n");
-        }
-    }
 	postStrandleExtraActionsCheck();
 }
 private function StraddleTeaseRe():void {
@@ -17777,7 +17768,7 @@ public function randomTeaseLongTongue(straddleDamage:Number, randomcrit:Boolean)
             "on [monster his] forehead. Your opponent is so staggered by your expert tongueing that you easily keep [monster him] pinned. ");
     monster.teased(straddleDamage, false);
     if (randomcrit) outputText(" <b>Critical!</b>");
-    player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, 1);
+    monster.addStatusValue(StatusEffects.StraddleRoundLeft, 1, 1);
 }
 
 public function randomTeaseMindflayerCriticalOverload(straddleDamage:Number, randomcrit:Boolean):void {
@@ -17825,20 +17816,20 @@ public function randomTeaseManticoreTailSpike(straddleDamage:Number, randomcrit:
 
 public function randomTeaseManticoreTailfuckInitiate(straddleDamage:Number, randomcrit:Boolean):void {
     outputText("You lick your lips and hold your victim down as you get into position,  engulfing [themonster] juicy [monster cockshort] with your tail pussy. You’re going to milk that cumpump for what its worth.");
-    var DurationLeft:int = player.statusEffectv1(StatusEffects.StraddleRoundLeft);
+    var DurationLeft:int = monster.statusEffectv1(StatusEffects.StraddleRoundLeft);
     var BasePlugDuration:int = 1;
     if (player.perkv1(IMutationsLib.ManticoreMetabolismIM) >= 3) BasePlugDuration += 3;
     monster.createStatusEffect(StatusEffects.ManticorePlug, BasePlugDuration + rand(3), DurationLeft, 0, 0);
-    player.removeStatusEffect(StatusEffects.StraddleRoundLeft);
+    monster.removeStatusEffect(StatusEffects.StraddleRoundLeft);
     monster.removeStatusEffect(StatusEffects.Straddle);
 }
 
 public function randomTeaseDisplacerMilkingInitiate(straddleDamage:Number, randomcrit:Boolean):void {
     outputText("You lick your lips in anticipation as you hold your victim's arms to the ground and plug your two tentacle suckers to [monster his] breasts. " +
             "[monster he] struggles, flushing red as you flood [monster his] nipples with your lactation inducing venom and begin to force the delicious milk out of [monster his] chest. ");
-    var DurationLeft:int = player.statusEffectv1(StatusEffects.StraddleRoundLeft);
+    var DurationLeft:int = monster.statusEffectv1(StatusEffects.StraddleRoundLeft);
     monster.createStatusEffect(StatusEffects.DisplacerPlug, DurationLeft + rand(3), 0, 0, 0);
-    player.removeStatusEffect(StatusEffects.StraddleRoundLeft);
+    monster.removeStatusEffect(StatusEffects.StraddleRoundLeft);
     monster.removeStatusEffect(StatusEffects.Straddle);
 }
 
@@ -18041,9 +18032,9 @@ public function randomTeaseSlimeInsert(straddleDamage:Number, randomcrit:Boolean
     if (monster.hasVagina()) outputText(" inside [monster his] vagina, flooding your gelatinous body all the way past the cervix, into the womb.");
     outputText("Whatever is left of you you pour straight into your victim's ass, fully flooding [monster his] innards all the way to the stomach, causing your body to bloat your opponents belly. <b>Its snacking time!</b>");
     
-    var DurationLeft:int = player.statusEffectv1(StatusEffects.StraddleRoundLeft);
+    var DurationLeft:int = monster.statusEffectv1(StatusEffects.StraddleRoundLeft);
     monster.createStatusEffect(StatusEffects.SlimeInsert, 2 + rand(3), DurationLeft, 0, 0);
-    player.removeStatusEffect(StatusEffects.StraddleRoundLeft);
+    monster.removeStatusEffect(StatusEffects.StraddleRoundLeft);
     monster.removeStatusEffect(StatusEffects.Straddle);
 }
 
@@ -18051,7 +18042,7 @@ public function straddleLeggoMyEggo():void {
     clearOutput();
     outputText("You let [themonster] go, preferring to continue the fight normally.");
     monster.removeStatusEffect(StatusEffects.Straddle);
-    player.removeStatusEffect(StatusEffects.StraddleRoundLeft);
+    monster.removeStatusEffect(StatusEffects.StraddleRoundLeft);
     outputText("[monster He] catches [monster his] breath before [monster he] stands back up, apparently prepared to fight some more. ");
     outputText("\n\n");
     enemyAIImpl();
@@ -19122,14 +19113,6 @@ public function VampiricBite():void {
 		player.statStore.replaceBuffObject({'str.mult':(0.01 * sdp),'spe.mult':(0.01 * sdp),'tou.mult':(0.01 * sdp),'int.mult':(0.01 * sdp),'wis.mult':(0.01 * sdp),'lib.mult':(0.01 * sdp)}, 'Soul Drinker', { text: 'Soul Drinker' });
 	}
     if (monster.hasStatusEffect(StatusEffects.HypnosisNaga)) monster.removeStatusEffect(StatusEffects.HypnosisNaga);
-    if (player.hasStatusEffect(StatusEffects.StraddleRoundLeft)) {
-        player.addStatusValue(StatusEffects.StraddleRoundLeft, 1, -1);
-        if (player.statusEffectv1(StatusEffects.StraddleRoundLeft) <= 0) {
-            monster.removeStatusEffect(StatusEffects.Straddle);
-            player.removeStatusEffect(StatusEffects.StraddleRoundLeft);
-            outputText("\n\nYour opponent finally manages to struggle free of your grapple!\n\n");
-        }
-    }
 	postStrandleExtraActionsCheck();
 }
 
@@ -21773,4 +21756,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}
