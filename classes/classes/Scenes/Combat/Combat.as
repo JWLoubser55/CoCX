@@ -7607,7 +7607,11 @@ public class Combat extends BaseContent {
 		if (player.weapon.isDuelingType()) critChance2 += 20;
 		if (player.hasPerk(PerkLib.JobDervish) && !player.weapon.isLarge() && !player.weapon.isMassive() && !player.weapon.isStaffType()) critChance2 += 10;
 		if (player.weapon == weapons.MASAMUN || (player.weapon == weapons.WG_GAXE && monster.cor > 33) || (player.weapon == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
-		if (player.weapon == weapons.YAMARG && monster.cor < -33) critChance2 += 20;/*
+		if (player.weapon == weapons.YAMARG && monster.cor < -33) critChance2 += 20;
+		if (checkRampagingBunnyStyleRabbitPunch() && player.isUnarmedCombat()) {
+			if (monster.hasStatusEffect(StatusEffects.Straddle)) critChance2 += 30;
+			else critChance2 += 15;
+		}/*
 		if (player.hasPerk(PerkLib.WeaponMastery) && player.weapon.isSingleLarge() && player.str >= 100) critChance2 += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weapon.isSingleLarge() || player.weapon.isDualLarge()) && player.str >= 140) critChance2 += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isMassive() || player.weapon.isDualMassive())) {
@@ -7635,8 +7639,7 @@ public class Combat extends BaseContent {
 		if (player.weaponOff.isSwordType() || player.weaponOff.isDaggerType()) critChance2 += 10;
 		if (player.weaponOff.isDuelingType()) critChance2 += 20;
 		if (player.hasPerk(PerkLib.JobDervish) && !player.weaponOff.isLarge() && !player.weaponOff.isMassive() && !player.weaponOff.isStaffType()) critChance2 += 10;
-		if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 33) || (player.weaponOff == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;
-		critChance2 *= critChance2a;/*
+		if (player.weaponOff == weapons.MASAMUN || (player.weaponOff == weapons.WG_GAXE && monster.cor > 33) || (player.weaponOff == weapons.DE_GAXE && monster.cor < -33)) critChance2 += 10;/*
 		if (player.hasPerk(PerkLib.WeaponMastery) && player.weaponOff.isSingleLarge() && player.str >= 100) critChance2 += 10;
 		if (player.hasPerk(PerkLib.WeaponGrandMastery) && (player.weaponOff.isSingleLarge() || player.weaponOff.isDualLarge()) && player.str >= 140) critChance2 += 10;
 		if (player.hasPerk(PerkLib.GigantGripEx) && (player.weaponOff.isMassive() || player.weaponOff.isDualMassive())) {
@@ -7649,6 +7652,7 @@ public class Combat extends BaseContent {
 				else critChance2 += 10;
 			}
 		}*/
+		critChance2 *= critChance2a;
 		return critChance2;
 	}
     private function calculateCritDamage():Number{
@@ -17599,7 +17603,7 @@ public function Straddle():void {
 public function StraddleTease():void {
     clearOutput();
     StraddleTeaseRe();
-	if (player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)) {
+	if (combat.teases.checkRampagingBunnyStyleHipDestroyer()) {
 		var damage2:Number = (combat.meleeUnarmedDamageNoLagSingle() * combat.teases.masteryBonusDamageTease());
 		outputText("\nAdding injury to insult, you deliver "+(player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)?"three sudden punches":"a sudden punch")+" to [monster his] face.");
 		doPlayerPhysDamage(damage2);
@@ -21347,6 +21351,10 @@ public function debuffsOrDoTDuration(duration:Number):Number {
         Math.round(duration);
     }
     return duration;
+}
+	
+public function checkRampagingBunnyStyleRabbitPunch():Boolean {
+	return player.hasPerk(PerkLib.RampagingBunnyStyleRabbitPunch) && player.gender > 0 && (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
 }
 
 public function hollowSkillsAndSoulskillsBoost():Number {

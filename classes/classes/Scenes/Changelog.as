@@ -294,11 +294,11 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Rampaging Bunny Style: Hip Destroyer. Gained at the end of Loppe sex scene if Training Libido level of 60+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Lewd Strikes perk. Effects: When straddling or teasing inflict unarmed strike damage multiplied by tease modifier ");
 			outputText("(This may apply multiple times if straddle has iteratives). Add Hip squeeze as a straddle attack.\n");
 			outputText("-Implemented clawed, hoofed and cloven-hoofed demon-taurs. (Stadler)\n");
+			outputText("-New event perk: Rampaging Bunny Style: Rabbit Punch. Gained at the end of Loppe sex scene if Training Libido level of 80+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Hip Destroyer perk. Effects: Unarmed Strikes have a 15% increased base critical chance. This amount is doubled when straddling.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New event perk: Rampaging Bunny Style: Rabbit Punch. Gained at the end of Loppe sex scene if Training Libido level of 80+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Hip Destroyer perk. Effects: 
 			outputText("-\n");//New event perk: Rampaging Bunny Style: Hyperdrive. Gained at the end of Loppe sex scene if Training Libido level of 100+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Rabbit Punch perk. Effects: 
 			outputText("-\n");
 			outputText("-\n");
