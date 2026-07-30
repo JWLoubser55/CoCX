@@ -293,7 +293,7 @@ public class Changelog extends BaseContent
 			outputText("-True Demons been jealous of soul cultivators when compaing their tiny e-hunger bars and decided they must act. So now max demonic energy cap would be added to their max hunger cap.\n");
 			outputText("-New event perk: Rampaging Bunny Style: Hip Destroyer. Gained at the end of Loppe sex scene if Training Libido level of 60+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Lewd Strikes perk. Effects: When straddling or teasing inflict unarmed strike damage multiplied by tease modifier ");
 			outputText("(This may apply multiple times if straddle has iteratives). Add Hip squeeze as a straddle attack.\n");
-			outputText("-\n");
+			outputText("-Implemented clawed, hoofed and cloven-hoofed demon-taurs. (Stadler)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
