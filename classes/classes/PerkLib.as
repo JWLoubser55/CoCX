@@ -5125,7 +5125,7 @@ public class PerkLib
 		public static const RampagingBunnyStyleHipDestroyer:PerkType = mk("Rampaging Bunny Style: Hip Destroyer", "Rampaging Bunny Style: Hip Destroyer",
 				"When straddling or teasing inflict unarmed strike damage multiplied by tease modifier (This may apply multiple times if straddle has iteratives). Add Hip squeeze as a straddle attack.");
 		public static const RampagingBunnyStyleHyperdrive:PerkType = mk("Rampaging Bunny Style: Hyperdrive", "Rampaging Bunny Style: Hyperdrive",
-				".");
+				"When straddling or teasing add two additional unarmed strikes (This may apply multiple times if straddle has iteratives which means that yes straddling bunny can punch you nine times all while wringing you dry).");
 		public static const RampagingBunnyStyleLewdStrikes:PerkType = mk("Rampaging Bunny Style: Lewd Strikes", "Rampaging Bunny Style: Lewd Strikes",
 				"Add Unarmed strike weapon value to tease damage and tease damage is increased by a percentage based on the enemy total lost health. Inversely unarmed and feral combat damage is increased by a percentage based on accumulated lust and gain a bonus on damage based on tease multiplier.");
 		public static const RampagingBunnyStyleRabbitPunch:PerkType = mk("Rampaging Bunny Style: Rabbit Punch", "Rampaging Bunny Style: Rabbit Punch",

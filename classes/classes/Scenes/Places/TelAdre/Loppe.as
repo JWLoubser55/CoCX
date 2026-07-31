@@ -2051,11 +2051,11 @@ private function sharedStatsAndEtcChanges():void {
 			if (player.libStat.train.value >= 80 && !player.hasPerk(PerkLib.RampagingBunnyStyleRabbitPunch) && player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer)) {
 				player.createPerk(PerkLib.RampagingBunnyStyleRabbitPunch, 0, 0, 0, 0);
 				outputText("Rampaging Bunny Style: Rabbit Punch");
-			}/*
-			if (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.) && player.hasPerk(PerkLib.RampagingBunnyStyleRabbitPunch)) {
-				player.createPerk(PerkLib., 0, 0, 0, 0);
-				outputText("Rampaging Bunny Style: ");
-			}*/
+			}
+			if (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive) && player.hasPerk(PerkLib.RampagingBunnyStyleRabbitPunch)) {
+				player.createPerk(PerkLib.RampagingBunnyStyleHyperdrive, 0, 0, 0, 0);
+				outputText("Rampaging Bunny Style: Hyperdrive");
+			}
 			outputText("!</b>");
 		}
 		else outputText("\n\nThe long session with Loppe broadened your horizons about the art of lovemaking. It occurs to you that if you had been a bunny or at least some form of bunny and maybe in heat or rutting like one you might have learned something more out of this session.");
@@ -2063,7 +2063,7 @@ private function sharedStatsAndEtcChanges():void {
 }
 private function loppeTrainingPerksCheckStats():Boolean {
 	return ((player.libStat.train.value >= 20 && !player.hasPerk(PerkLib.RampagingBunnyStyleTeasingAttack)) || (player.libStat.train.value >= 40 && !player.hasPerk(PerkLib.RampagingBunnyStyleLewdStrikes)) || (player.libStat.train.value >= 60 && !player.hasPerk(PerkLib.RampagingBunnyStyleHipDestroyer))
-	|| (player.libStat.train.value >= 80 && !player.hasPerk(PerkLib.RampagingBunnyStyleRabbitPunch)));// || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.))
+	|| (player.libStat.train.value >= 80 && !player.hasPerk(PerkLib.RampagingBunnyStyleRabbitPunch)) || (player.libStat.train.value >= 100 && !player.hasPerk(PerkLib.RampagingBunnyStyleHyperdrive)));
 }
 private function loppeTrainingPerksCheckRest():Boolean {
 	return (player.isAnyRaceCached(Races.BunnylikeRaces) || player.inHeat || player.inRut);
