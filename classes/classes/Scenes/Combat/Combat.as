@@ -21764,4 +21764,4 @@ private function touSpeStrScale(stat:int):Number {
 	}
 }
 
-}
+}

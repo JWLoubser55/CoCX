@@ -1209,7 +1209,7 @@ public class UniqueSexScenes extends BaseContent
 
 		public function trueDemonIncubusFeast():void {
 			clearOutput();
-			outputText("You eye [themonster]'s " + monster.vaginaDescript() + " with a hungry smile, licking your lips.  You can practically feel it around your throbbing demon-dick already...but first, you need to establish your dominion.  Your hand lifts the [creature]'s chin to stare into your eyes, and you feel her shiver in need, in anticipation.\n\n");
+			outputText("You eye [themonster]'s " + monster.vaginaDescript() + " with a hungry smile, licking your lips.  You can practically feel it around your throbbing demon-dick already...but first, you need to establish your dominion.  Your hand lifts the [themonster]'s chin to stare into your eyes, and you feel her shiver in need, in anticipation.\n\n");
 			outputText("\"<i>We're going to have a bit of fun,</i>\" you tell her. \"<i>Your cunt is starved for cum...and I'm starving too~.</i>\"\n\n");
 			outputText("You can already smell how horny you've made your new prey.  You slide one finger into her without warning or resistance, drawing a gasp of shock from her as she reflexively leans into you.  She's sopping wet already - you prod further, deeper, probing for the right reaction.  She lets loose a throaty moan as you find her sweet spot.\n\n");
 			outputText("With a couple more prods around that spot, you've found the whole area - perfect.  You set your finger in the center and let loose a pulse of demonic magic; she squeals in delight and starts trying to hump your hand.  You pull your finger out of her quickly and place it near her nose, wagging it in mock disappointment.\n\n");
@@ -1261,4 +1261,4 @@ public class UniqueSexScenes extends BaseContent
 			!monster.hasPerk(PerkLib.EnemyLargeGroupType) && !monster.hasPerk(PerkLib.EnemyTrueDemon) && !monster.hasPerk(PerkLib.EnemyUndeadType) && !monster.hasPerk(PerkLib.UniqueNPC));
 		}
 }
-}
+}
