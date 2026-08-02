@@ -41,7 +41,7 @@ package classes.Items.Necklaces
 		}
 		
 		override public function unequipText(slot:int):void{
-			outputText("You "+(CoC.instance.player.hasStatusEffect(StatusEffects.MeetXuviel)?"untie master Xuviel’s necklace with nostalgic fondness":"untie the necklace")+". You could keep it on but right now you want to try a different accessory. It comes off easily, and putting it back should be just as simple.");
+			outputText("You "+(CoC.instance.player.hasStatusEffect(StatusEffects.MeetXuviel) && CoC.instance.player.statusEffectv1(StatusEffects.MeetXuviel) > 0?"untie master Xuviel’s necklace with nostalgic fondness":"untie the necklace")+". You could keep it on but right now you want to try a different accessory. It comes off easily, and putting it back should be just as simple.");
 		}
 		
 	}

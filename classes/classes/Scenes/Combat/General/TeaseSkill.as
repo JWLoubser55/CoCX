@@ -261,7 +261,7 @@ public class TeaseSkill extends AbstractGeneral {
 					combat.doPlayerPhysDamage(damage2);
 					combat.doPlayerPhysDamage(damage2);
 				}
-				if (combat.boolFistingIs300Bucks()) combat.boolFistingIs301Bucks();
+				if (combat.boolFistingIs300Bucks()) combat.boolFistingIs301Bucks(damage2, damage2);
 			}
 			// Similar to fetish check, only add XP if the player IS the player...
 			if (!SceneLib.urtaQuest.isUrta()) player.SexXP(1 + combat.teases.bonusExpAfterSuccesfullTease());

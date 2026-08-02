@@ -7845,10 +7845,12 @@ public class Combat extends BaseContent {
     public function boolFistingIs300Bucks():Boolean {
 		return (player.isFistOrFistWeapon() && (player.shield.isNothing || (player.shield == shields.AETHERS && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dagger and Shield" && AetherTwinsFollowers.AetherTwinsShape != "Human-tier Dual Daggers")) || player.isFeralCombat());
 	}
-	public function boolFistingIs301Bucks():void {
+	public function boolFistingIs301Bucks(eHD:Number, eHD2:Number):void {
 		var extraHitChance:Number;
         var extraHitDamage:Number;
         var extraHitDamage2:Number;
+		extraHitDamage += eHD;
+		extraHitDamage2 += eHD2;
 		if (player.hasPerk(PerkLib.JabbingStyle)){
             if (player.hasPerk(PerkLib.JabbingGrandmaster)){
                 extraHitChance = 10;
@@ -7860,7 +7862,7 @@ public class Combat extends BaseContent {
                         }
                     }
                     //var critJab:Boolean = false;
-                    var critJab:Boolean = CritRoll()
+                    var critJab:Boolean = CritRoll();
                     extraHitDamage = CritDamage(extraHitDamage, critJab);
                     //Deal the fellow up blow!
                     outputText("You chain up the jab with a second blow! ");
@@ -8481,18 +8483,11 @@ public class Combat extends BaseContent {
                     if (player.fatigue < 0) player.fatigue = 0;
                 }
                 //Damage Unarmed Strike chaining combos. GRABBING STYLE AND JABBING STYLE
-                var extraHitChance:Number;
-                var extraHitDamage:Number;
-                var extraHitDamage2:Number;
-                if (crit){
-                    extraHitDamage = damage / critDamage;
-                    extraHitDamage2 = damage / critDamage;
-                }
-                else {
-                    extraHitDamage = damage;
-                    extraHitDamage2 = damage;
-                }
-                if (boolFistingIs300Bucks()) boolFistingIs301Bucks();
+                if (boolFistingIs300Bucks()) {
+					var eHD1:Number = damage;
+					if (crit) eHD1 = damage / critDamage;
+					boolFistingIs301Bucks(eHD1, eHD1);
+				}
             }
             else { //MISSED THE TARGET THUS DAMAGE = 0;
                 // Migrate DisplacerBeast custom evade text and default evade text
@@ -8975,18 +8970,6 @@ public class Combat extends BaseContent {
                         CombatAbilities.AcidSpraySwiftcast.perform();
                         if (CombatAbilities.AcidSpraySwiftcast.isUsable && boolFiendishConcentration2a) CombatAbilities.AcidSpraySwiftcast.perform();
                     }
-                }
-                //Damage Unarmed Strike chaining combos. GRABBING STYLE AND JABBING STYLE
-                var extraHitChance:Number;
-                var extraHitDamage:Number;
-                var extraHitDamage2:Number;
-                if (crit){
-                    extraHitDamage = damage / critDamage;
-                    extraHitDamage2 = damage / critDamage;
-                }
-                else {
-                    extraHitDamage = damage;
-                    extraHitDamage2 = damage;
                 }
             }
             else { //MISSED THE TARGET THUS DAMAGE = 0;
@@ -17611,7 +17594,7 @@ public function StraddleTease():void {
 			doPlayerPhysDamage(damage2);
 			doPlayerPhysDamage(damage2);
 		}
-		if (boolFistingIs300Bucks()) boolFistingIs301Bucks();
+		if (boolFistingIs300Bucks()) boolFistingIs301Bucks(damage2, damage2);
 	}
 	postStrandleExtraActionsCheck();
 }

@@ -1396,7 +1396,7 @@ public class CombatTeases extends BaseCombatContent {
 					combat.doPlayerPhysDamage(damage);
 					combat.doPlayerPhysDamage(damage);
 				}
-				if (combat.boolFistingIs300Bucks()) combat.boolFistingIs301Bucks();
+				if (combat.boolFistingIs300Bucks()) combat.boolFistingIs301Bucks(damage, damage);
 				break;
 			default:
 				outputText("You shimmy and shake sensually. (An error occurred.)");

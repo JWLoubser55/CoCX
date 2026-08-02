@@ -929,7 +929,7 @@ public class Camp extends NPCAwareContent{
 			else if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] == 3) outputText("large");
 			else outputText("small");
 			outputText(" ring");
-			if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] == 5) outputText(" with wooden floor");
+			if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] >= 5) outputText(" with "+(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] >= 6?"stone":"wooden")+" floor");
 			outputText(" toward the side of your [camp].");
 			if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] >= 3) outputText(" Given how large the sparring ring is, maybe it's a little excessive for even the largest of people around.");
 			if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] >= 4) outputText(" A small stand rests adjacent, allowing spectators to cheer on any duels taking place.");

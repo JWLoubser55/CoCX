@@ -64,7 +64,7 @@ public class CampUpgrades extends BaseContent {
     3 - ring build (large) - 5x training time for npc's
     4 - ring build (massive) - 4x training time for npc's
     5 - ring build (massive w/ wood floor) - 3x training time for npc's
-    6 - ring build (massive w/ stone floor) - 2x training time for npc's	/NYI
+    6 - ring build (massive w/ stone floor) - 2x training time for npc's
     7 - ring build (collosal w/ stone floor) - 1x training time for npc's	/NYI
 
     flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE]:
@@ -131,7 +131,7 @@ public class CampUpgrades extends BaseContent {
         if (flags[kFLAGS.CAMP_UPGRADES_HOT_SPRINGS] == 2 || flags[kFLAGS.CAMP_UPGRADES_HOT_SPRINGS] == 3) addButton(3, "Hot Spring", hotspring).hint("Build a hot spring at the camp. (Req. "+usedFatigue(100, true)+" fatigue)");
         if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 0) {
             //if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 7) addButton(4, "Sparring Ring", sparringRing).hint("Expand your stone sparring ring to collosal size. (Decrease npc's training time by 1/2 and increase exp from using training dummy by 500% more (1500% of base amount))(Req. "+usedFatigue(12150, true)+" fatigue)");
-            //if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 6) addButton(4, "Sparring Ring", sparringRing).hint("Replace wood with stone. (Decrease npc's training time by 1/3 and increase exp from using training dummy by 300% more (1000% of base amount))(Req. "+usedFatigue(4050, true)+" fatigue)");
+            if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 6 && flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] >= 6) addButton(4, "Sparring Ring", sparringRing).hint("Replace wood with stone. (Decrease npc's training time by 1/3 and increase exp from using training dummy by 300% more (1000% of base amount))(Req. "+usedFatigue(4050, true)+" fatigue)");
             if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 5) addButton(4, "Sparring Ring", sparringRing).hint("Add wood floor to the sparring ring for better training experience. (Decrease npc's training time by 1/4 and increase exp from using training dummy by 250% more (700% of base amount))(Req. "+usedFatigue(1350, true)+" fatigue)");
             if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 4) addButton(4, "Sparring Ring", sparringRing).hint("Expand the sparring ring to massive size. (Decrease npc's training time by 1/5 and increase exp from using training dummy by another 200% (450% of base amount))(Req. "+usedFatigue(450, true)+" fatigue)");
             if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 3) addButton(4, "Sparring Ring", sparringRing).hint("Expand the sparring ring to large size. (Decrease npc's training time by 1/6 and increase exp from using training dummy by 150% (250% of base amount))(Req. "+usedFatigue(150, true)+" fatigue)");
@@ -605,6 +605,7 @@ public class CampUpgrades extends BaseContent {
         else if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] == 2 && player.fatigue <= player.maxOverFatigue() - usedFatigue(150, true)) buildLargeRing();
         else if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] == 3 && player.fatigue <= player.maxOverFatigue() - usedFatigue(450, true)) buildMassiveRing();
         else if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] == 4 && player.fatigue <= player.maxOverFatigue() - usedFatigue(1350, true)) buildRingWoodFloor();
+        else if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] == 5 && player.fatigue <= player.maxOverFatigue() - usedFatigue(4050, true)) buildRingStoneFloor();
         else {
             outputText("You don't have enough energy to work on the sparring ring! You are either too exhausted or lack the stamina required for the task.");
             doNext(playerMenu);
@@ -693,6 +694,27 @@ public class CampUpgrades extends BaseContent {
         outputText("\n\nYou work tirelessly on this project, and by the end, the ring has a floor made of wooden planks. On one side, around the previously lone dummy, stand four more similar-looking dummies.");
         player.addStatusValue(StatusEffects.TrainingNPCsTimersReduction, 1, -1);
         buildWithHelpers(1350, true, 6, 4, 2);
+    }
+
+    public function buildRingStoneFloor():void {
+        outputText("Do you start work on improving your sparring ring with stone? (Cost: 1500 stone.)\n");
+        checkMaterials();
+        if (CampStatsAndResources.StonesResc >= 1500) {
+            doYesNo(doBuildRingStoneFloor, noThanks);
+        } else {
+            errorNotEnough();
+            doNext(playerMenu);
+        }
+    }
+
+    private function doBuildRingStoneFloor():void {
+        CampStatsAndResources.StonesResc -= 1500;
+        clearOutput();
+        outputText("Your massive sparring ring looks great, but you feel it's unable to keep up with the intensity of your sparring of late. The wooden elements have splintered and crack from collateral damage and people being throwing into them. You consider if there's a way to fix or perhaps improve them. Consulting the construction guide betrays how to improve most of it with stone.");
+        flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] += 1;
+        outputText("\n\nYou work tirelessly on the the arena, and by the end, the ring has floor made of stone. Some of the seats around it also have been remade with firm, stable versions that can withstand a higher capacity of spectators. On one side, five dummies have been improved by reinforcing the post with stone.");
+        player.addStatusValue(StatusEffects.TrainingNPCsTimersReduction, 1, -1);
+        buildWithHelpers(4050, true, 8, 6, 4);
     }
 
     //Arcane Circle Upgrade
