@@ -7847,10 +7847,6 @@ public class Combat extends BaseContent {
 	}
 	public function boolFistingIs301Bucks(eHD:Number, eHD2:Number):void {
 		var extraHitChance:Number;
-        var extraHitDamage:Number;
-        var extraHitDamage2:Number;
-		extraHitDamage += eHD;
-		extraHitDamage2 += eHD2;
 		if (player.hasPerk(PerkLib.JabbingStyle)){
             if (player.hasPerk(PerkLib.JabbingGrandmaster)){
                 extraHitChance = 10;
@@ -7858,16 +7854,16 @@ public class Combat extends BaseContent {
                 if (rand(100) < extraHitChance){
                     if (player.hasPerk(PerkLib.SpeedDemon) && !player.weapon.isDualLarge() && !player.weapon.isSingleLarge() && !player.weapon.isDualMassive() && !player.weapon.isSingleMassive() && !player.weapon.isStaffType()) {
                         if(player.hasStatusEffect(StatusEffects.JabbingStyle)){
-                            extraHitDamage += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
+                            eHD += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
                         }
                     }
                     //var critJab:Boolean = false;
                     var critJab:Boolean = CritRoll();
-                    extraHitDamage = CritDamage(extraHitDamage, critJab);
+                    eHD = CritDamage(eHD, critJab);
                     //Deal the fellow up blow!
                     outputText("You chain up the jab with a second blow! ");
-                    extraHitDamage2 = Math.round(extraHitDamage);
-                    doPlayerPhysDamage(extraHitDamage, true ,true);
+                    eHD = Math.round(eHD);
+                    doPlayerPhysDamage(eHD, true ,true);
                     if (critJab) outputText("<b>Critical! </b>");
                     outputText("\n\n");
                     JabbingStyleIncrement();
@@ -7883,17 +7879,17 @@ public class Combat extends BaseContent {
             if (rand(100) < extraHitChance && ennemyMaxSize){
                 if (player.hasPerk(PerkLib.SpeedDemon) && !player.weaponOff.isDualLarge() && !player.weaponOff.isSingleLarge() && !player.weaponOff.isDualMassive() && !player.weaponOff.isSingleMassive() && !player.weaponOff.isStaffType()) {
                     if(player.hasStatusEffect(StatusEffects.JabbingStyle)){
-                        extraHitDamage2 += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
+                        eHD2 += player.spe*player.statusEffectv1(StatusEffects.JabbingStyle);
                     }
                 }
                 //Determine if critical hit!
                 var critGrab:Boolean = CritRoll();
-                extraHitDamage2 = CritDamage(extraHitDamage2, critJab);
+                eHD2 = CritDamage(eHD2, critJab);
                 //Deal the fellow up blow!
                 outputText("You grab your opponent mid swing and supplex it against the ground! ");
-                if (player.hasPerk(PerkLib.MeteorStrike)) extraHitDamage2 *= 2;
-                extraHitDamage2 = Math.round(extraHitDamage2);
-                doPlayerPhysDamage(extraHitDamage2, true ,true);
+                if (player.hasPerk(PerkLib.MeteorStrike)) eHD2 *= 2;
+                eHD2 = Math.round(eHD2);
+                doPlayerPhysDamage(eHD2, true ,true);
                 if (critGrab) outputText("<b>Critical! </b>");
                 if (player.hasPerk(PerkLib.GrabbingGrandmaster)){
                     var extraHitStunChance:Number = 20;
