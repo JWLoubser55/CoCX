@@ -71,7 +71,7 @@ public class Changelog extends BaseContent
 			outputText("-Dungeon enemies have their general levels and stats adjusted/increased. Dungeons adjusted (new lvl range of enemies): River Dungeon (floor 1-4) (only stats adjustments), Desert Cave (14-24), Den of Desire (48-52), Phoenix Tower (80-89), Hidden Cave (only stats adjustments)\n");
 			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it; when going over lvl 200 they would gain champion enemy tag): Isabella (lvl 32-140), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change), Zenji ");
 			outputText("(he missed last time PC could go up to 200+ lvl when he sadly sit at max 185 so... he decided to match pc again on top of making his stats better then before - lvl 25-233), Tyrantia (lvl 58-142), Lily (lvl 34-142), Belisa (lvl 20-140), Luna (9-141), Ceani (84-138), Kiha (39-141), Ember (38-140), Electra (36-138), Etna (36-138), Neisa (3-141), Chi Chi (22-136)\n");
-			outputText("-New upgrade options for camp buildings: next step in materials storage buildings (nails storage - increase nails store cap by 4,000)\n");
+			outputText("-New upgrade options for camp buildings: next step in materials storage buildings (nails storage - increase nails store cap by 4,000), Sparring Ring upgrade - req. Stone Building Guide (Decrease npc's training time by 1/3 and increase exp from using training dummy by 300% more (1000% of base amount))\n");
 			outputText("-Bind Rework (HarpyBind, Goobind, TentacleBind, NagaBind) (NUZ/Shirane)\n");//Rework Bind Related Checks and Function, Lettuce Cleanup and Tentacle Attack Fix
 			outputText("-Wendigo Lose Scene Check Fix. (NUZ/Shirane)\n");
 			outputText("-Moved autosave timing to just before sleep (saving at passes 23:00 ended up saving at a hour after each instance, repeating saving until 30:00 will softlock you from sleeping), revert ||= change in playerevent hourly racial perk check so they all properly trigger at once rather than one by one. (NUZ/Shirane)\n");
@@ -297,7 +297,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Rampaging Bunny Style: Rabbit Punch. Gained at the end of Loppe sex scene if Training Libido level of 80+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Hip Destroyer perk. Effects: Unarmed Strikes have a 15% increased base critical chance. This amount is doubled when straddling.\n");
 			outputText("-New event perk: Rampaging Bunny Style: Hyperdrive. Gained at the end of Loppe sex scene if Training Libido level of 100+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Rabbit Punch perk. Effects: When straddling or teasing add two additional unarmed strikes ");
 			outputText("(This may apply multiple times if straddle has iteratives which means that yes straddling bunny can punch you nine times all while wringing you dry).\n");
-			outputText("-\n");
+			outputText("-New Key Item (by Ormael): Stone Building Guide - req. built stone storage upgrade in camp and can be bought in Tel'Adre carpenter shop - allow to build upgrades in camp that are mostly made of stone or upgrade wood building to stone variants.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

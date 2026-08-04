@@ -3931,10 +3931,10 @@ public class Camp extends NPCAwareContent{
 			.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 3, "You need to improve the sparring ring more first!");
 		addButton(5, "Lvl180", dummyTraining, 3, lustImmune, isGroup)
 			.disableIf(lvl == 3, "Already selected")
-			.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 5, "You need to improve the sparring ring more first!");/*
+			.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 5, "You need to improve the sparring ring more first!");
 		addButton(6, "Lvl240", dummyTraining, 4, lustImmune, isGroup)
 			.disableIf(lvl == 4, "Already selected")
-			.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 6, "You need to improve the sparring ring more first!");*/
+			.disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 6, "You need to improve the sparring ring more first!");
 		//7 - lvl 300 dummy
 		addButton(8, "Solo", dummyTraining, lvl, lustImmune, false)
 			.disableIf(!isGroup, "Already selected");
@@ -5801,7 +5801,7 @@ public function rebirthFromBadEnd():void {
 		if (flags[kFLAGS.CAMP_UPGRADES_WAREHOUSE_GRANARY] > 5) performancePointsPredictionCampStructures += 2;
 		if (flags[kFLAGS.CAMP_UPGRADES_KITSUNE_SHRINE] > 3) performancePointsPredictionCampStructures += 2;
 		if (flags[kFLAGS.CAMP_UPGRADES_HOT_SPRINGS] > 3) performancePointsPredictionCampStructures += 2;
-		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 1) performancePointsPredictionCampStructures += ((flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] - 1) * 2);//obecnie +4*2
+		if (flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] > 1) performancePointsPredictionCampStructures += ((flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] - 1) * 2);//obecnie +5*2
 		if (flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) performancePointsPredictionCampStructures += flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE];//obecnie +10
 		if (flags[kFLAGS.CAMP_UPGRADES_MAGIC_WARD] > 1) performancePointsPredictionCampStructures += 2;
 		if (flags[kFLAGS.CAMP_UPGRADES_DAM] > 0) performancePointsPredictionCampStructures += (flags[kFLAGS.CAMP_UPGRADES_DAM] * 2);//obecnie +3*2
@@ -6000,4 +6000,4 @@ public function rebirthFromBadEnd():void {
 	}
 
 }
-}
+}
