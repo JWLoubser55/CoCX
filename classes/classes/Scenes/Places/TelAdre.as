@@ -1105,7 +1105,7 @@ public function carpentryShopBuySet2No():void {
 //Stone Buildings
 public function carpentryShopBuySet3():void {
 	clearOutput();
-	if (flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] >= 5)
+	if (flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] >= 6)
 	{
 		outputText("<b>You already own this guide!</b>");
 		doNext(carpentryShopInside);

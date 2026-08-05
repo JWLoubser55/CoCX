@@ -8575,7 +8575,7 @@ public final class Mutations extends MutationsHelper {
             outputText("[pg]You feel strange.  Fertile... somehow.  You don't know how else to think of it, but you know your body is just aching to be pregnant and give birth.");
         }
         //-VAGs
-        if (player.hasVagina() && !player.hasPerk(PerkLib.BunnyEggs) && changes < changeLimit && rand(4) == 0 && player.racialScore(Races.BUNNY, false) > 3) {
+        if (type == 0 && player.hasVagina() && !player.hasPerk(PerkLib.BunnyEggs) && changes < changeLimit && rand(4) == 0 && player.racialScore(Races.BUNNY, false) > 3) {
             outputText("[pg]Deep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.[pg]");
             outputText("(<b>Perk Gained: Bunny Eggs</b>)");
             player.createPerk(PerkLib.BunnyEggs, 0, 0, 0, 0);
