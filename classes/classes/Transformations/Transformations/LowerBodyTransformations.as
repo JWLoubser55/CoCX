@@ -411,7 +411,7 @@ public class LowerBodyTransformations extends MutationsHelper {
 				if (doOutput) outputText(desc);
 				player.lowerBody = LowerBody.DEMONIC_CLAWS;
 				player.legCount = legCount;
-				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.DRAGON));
+				Metamorph.unlockMetamorph(LowerBodyMem.getMemory(LowerBodyMem.DEMONIC_CLAWS));
 			},
 			// is present
 			function (): Boolean {
