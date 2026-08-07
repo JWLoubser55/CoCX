@@ -229,12 +229,19 @@ public class DemonLair extends BaseContent
 			outputText("\"<i>So you finally understand, [name], you were never truly free from me, it’s the reverse: you desire my touch and even more than anything, my cum to the point that the necklace is no longer necessary to keep you pliant. Well, allow me to properly reward you for your blind devotion to your beloved master.</i>\"\n\n");
 			outputText("He's right… you definitely desire him, it just took your mind a long time to reach the conclusion your body had already accepted. There is a very thin barrier between love and hate. Normally people take it the other way around, but after a while you end up not only desiring the pleasure he gives you, but also his own! Each trust of his fat, awe inspiring member teaches your flesh just that. Xuviel laughs as his cock unloads a massive amount of corrupted cum right into your pussy, ");
 			outputText("sending you straight to your climax as your blasphemous cunt devours every drop of it, absorbing it into your being. You feel something drip between your legs as your mind goes blank. Something breaks within you as you feel your juice flow from the multiple consecutive orgasm Xuviel’s unholy sperm provides you, your entire body spasming like a sexual organ as corruption soaks your entire being. You don’t know how it happened but when you finally come to your senses you take notice of something on the perfectly polished ground.\n\n");
-			if (player.hasCock()) player.lowerBody = LowerBody.DEMONIC_CLAWS;
-			else {
-				if (rand(2) == 0) player.lowerBody = LowerBody.DEMONIC_CLAWS;
+			if (!InCollection(player.lowerBody, LowerBody.DEMONIC_CLAWS, LowerBody.DEMONIC_HIGH_HEELS, LowerBody.DEMONIC_GRACEFUL_FEET, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS)) {
+				if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
+					switch (rand(2)) {
+						case 0: transformations.LowerBodyDemonClawedBipedal.applyEffect(false); break;
+						case 1: transformations.LowerBodyDemonHoofedBipedal.applyEffect(false); break;
+					}
+				}
 				else {
-					if (rand(2) == 0) player.lowerBody = LowerBody.DEMONIC_HIGH_HEELS;
-					else player.lowerBody = LowerBody.DEMONIC_GRACEFUL_FEET;
+					switch (rand(3)) {
+						case 0: transformations.LowerBodyDemonHighHeels.applyEffect(false); break;
+						case 1: transformations.LowerBodyDemonGracefulFeet.applyEffect(false); break;
+						case 2: transformations.LowerBodyDemonClovenHoofedBipedal.applyEffect(false); break;
+					}
 				}
 			}
 			player.legCount = 2;
@@ -242,15 +249,13 @@ public class DemonLair extends BaseContent
 				var how:Number = 28 - player.biggestTitSize();
 				player.growTits(how, 1, false, 3);
 			}
-			player.skin.setBaseOnly({type:Skin.PLAIN, color1:"blue"});
-			transformations.SkinPatternDemonicPleasureRune.applyEffect(false);
 			if (!InCollection(player.skinColor1, DemonRace.DemonSkinColors) && !InCollection(player.skinColor2, DemonRace.DemonSkin2Colors)) {
 				var choice1:String = randomChoice(DemonRace.DemonSkinColors);
-                var choice2:String = randomChoice(DemonRace.DemonSkin2Colors);
-                player.skinColor1 = choice1;
-                player.skinColor2 = choice2;
+				var choice2:String = randomChoice(DemonRace.DemonSkin2Colors);
+				player.skin.setBaseOnly({type:Skin.PLAIN, color1: choice1, color2: choice2});
 			}
 			if (rand(2) == 0) player.skinColor1 = "pink";
+			transformations.SkinPatternDemonicPleasureRune.applyEffect(false);
 			transformations.TailDemonic.applyEffect(false);
 			transformations.HairHuman.applyEffect(false);
 			transformations.FaceDemon.applyEffect(false);

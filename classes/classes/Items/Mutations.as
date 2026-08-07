@@ -1228,7 +1228,7 @@ public final class Mutations extends MutationsHelper {
 			transformations.ArmsHuman.applyEffect(false);
 			transformations.ArmsDemon.applyEffect(false);
 		}
-		if (player.lowerBody != LowerBody.DEMONIC_CLAWS && player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS && player.lowerBody != LowerBody.DEMONIC_GRACEFUL_FEET) {
+		if (!InCollection(player.lowerBody, LowerBody.DEMONIC_CLAWS, LowerBody.DEMONIC_HIGH_HEELS, LowerBody.DEMONIC_GRACEFUL_FEET, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS)) {
 			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
 				switch (rand(2)) {
 					case 0: transformations.LowerBodyDemonClawedBipedal.applyEffect(false); break;
