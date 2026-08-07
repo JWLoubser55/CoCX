@@ -242,8 +242,8 @@ public class DemonLair extends BaseContent
 				var how:Number = 28 - player.biggestTitSize();
 				player.growTits(how, 1, false, 3);
 			}
-			player.skin.setBaseOnly({type:Skin.PLAIN, color1:"blue", pattern: Skin.PATTERN_DEMONIC_PLEASURE_RUNE});
-			transformations.SkinPatternDemonicPleasureRune.applyEffect(false); // for the genetic memory mainly
+			player.skin.setBaseOnly({type:Skin.PLAIN, color1:"blue"});
+			transformations.SkinPatternDemonicPleasureRune.applyEffect(false);
 			if (!InCollection(player.skinColor1, DemonRace.DemonSkinColors) && !InCollection(player.skinColor2, DemonRace.DemonSkin2Colors)) {
 				var choice1:String = randomChoice(DemonRace.DemonSkinColors);
                 var choice2:String = randomChoice(DemonRace.DemonSkin2Colors);
