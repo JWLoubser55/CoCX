@@ -80,8 +80,9 @@ public class DemonizeMe extends Consumable {
 
 		public function demonizePlayer():void {
 			CoC.instance.mutations.terminalCorruption2(player);
-			player.skin.setBaseOnly({type:Skin.PLAIN, color1:"blue", pattern: Skin.PATTERN_DEMONIC_PLEASURE_RUNE});
-			outputText("\n<b>Gained Perk: Soulless!</b> "+PerkLib.Soulless.desc());
+			player.skin.setBaseOnly({type:Skin.PLAIN, color1:"blue"});
+			CoC.instance.transformations.SkinPatternDemonicPleasureRune.applyEffect(false);
+			outputText("\n\n<b>Gained Perk: Soulless!</b> "+PerkLib.Soulless.desc());
 			player.updateRacialParagon(Races.DEMON);
 			player.npcsThatLeaveSoullessPC();
 		}
