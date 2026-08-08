@@ -263,6 +263,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public var breasts:BreastsTransformations = new BreastsTransformations();
     public function UnlockBreasts(): void {	return breasts.UnlockBreasts(); }
     public const BreastsGrowUpToDD:Transformation 		= breasts.BreastsGrowUpToDD.registerTf(AS_BREASTS, AE_GROW);
+    public const BreastsGrowUp:Transformation 			= breasts.BreastsGrowUp.registerTf(AS_BREASTS, AE_GROW);
     public const BreastsShrinkToNothing:Transformation 	= breasts.BreastsShrinkToNothing.registerTf(AS_BREASTS, AE_SHRINK);
     public const BreastRowsRemoveToOne:Transformation 	= breasts.BreastRowsRemoveToOne.registerTf(AS_BREASTS, AE_REMOVE);
     public const BreastRowsOne:Transformation 			= breasts.BreastRowsOne;

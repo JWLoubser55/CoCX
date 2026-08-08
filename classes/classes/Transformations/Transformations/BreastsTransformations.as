@@ -50,6 +50,23 @@ public class BreastsTransformations extends MutationsHelper {
 			}
 	);
 
+	public const BreastsGrowUp:Transformation = new SimpleTransformation("Grow breasts",
+			// apply effect
+			function (doOutput:Boolean):void {
+				var row:int = player.smallestTitRow();
+				var desc: String = "";
+
+				desc += "Your chest aches and tingles, and your hands reach up to scratch at it unthinkingly. Just as you start to scratch at your " + breastDescript(row) + ", your chest pushes out in slight but sudden growth.";
+
+				if (doOutput) outputText(desc);
+				player.breastRows[row].breastRating++;
+			},
+			// is present
+			function ():Boolean {
+				return player.smallestTitSize() >= 200;
+			}
+	);
+
 	public const BreastsShrinkToNothing:Transformation = new SimpleTransformation("Shrink breasts to nothing",
 			// apply effect
 			function (doOutput:Boolean):void {

@@ -58,7 +58,7 @@ public class AutomataRace extends Race {
 				.armType(Arms.MECHANICAL_DOLL_ARMS, +1)
 				.legType(LowerBody.MECHANICAL_DOLL_LEGS, +1)
 				.tailType(Tail.AUTOMATA_TAIL_CABLE, +1)
-				.wingType(Wings.JET_THRUSTERS, +4)
+				.wingType(ANY(Wings.JET_THRUSTERS, Wings.JET_THRUSTERS2), +4)
 				.rearType(RearBody.SERIAL_CODE, +1)
 				.customRequirement("","glowing nipples or asshole",
 						function (body:BodyData):Boolean {

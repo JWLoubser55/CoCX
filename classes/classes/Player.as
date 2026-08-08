@@ -6235,7 +6235,7 @@ use namespace CoC;
 			previouslyWornClothes.push(armor.shortName);
 		}
 
-		public function shrinkTits(ignore_hyper_happy:Boolean=false, forceRow:int = -1):void
+		public function shrinkTits(ignore_hyper_happy:Boolean=false, display:Boolean=true, forceRow:int = -1):void
 		{
 			if (flags[kFLAGS.HYPER_HAPPY] && !ignore_hyper_happy)
 			{

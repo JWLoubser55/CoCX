@@ -81,12 +81,12 @@ public final class Reducto extends Consumable {
             clearOutput();
             outputText("You smear the foul-smelling paste all over your breasts, covering them entirely as the paste begins to get absorbed into your " + game.player.skinDesc + ".\n");
             while (d-- > 0) {
-                game.player.shrinkTits(true, row1 - 1);
+                game.player.shrinkTits(true, true, row1 - 1);
                 if (Utils.rand(2) == 0) ++randProcs;
             }
             if (randProcs > 0 && game.player.breastRows[row1 - 1].breastRating >= 1) {
                 outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");
-                while (randProcs-- > 0) game.player.shrinkTits(true, row1 - 1);
+                while (randProcs-- > 0) game.player.shrinkTits(true, true, row1 - 1);
             }
             outputText("\nThe last of it wicks away into your skin, completing the changes.");
             sharedEnd(dose);
