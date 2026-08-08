@@ -5866,9 +5866,9 @@
 				</case>
 				
 				<case values="CockTypesEnum.TENTACLE, CockTypesEnum.STAMEN">
-					<set var="tentcocks" value="countCocksOfType(CockTypesEnum.TENTACLE) + countCocksOfType(CockTypesEnum.STAMEN)">
+					<set var="tentcocks" value="countCocksOfType(CockTypesEnum.TENTACLE) + countCocksOfType(CockTypesEnum.STAMEN)"/>
 					<if test="tentcocks gt 3">
-						<set var="tentcocks" value="3">
+						<set var="tentcocks" value="3"/>
 					</if>
 					<show part="penis$taur/tentacle$tentcocks$big$taur"/>
 				</case>

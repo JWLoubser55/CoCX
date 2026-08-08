@@ -299,7 +299,7 @@ public class Changelog extends BaseContent
 			outputText("(This may apply multiple times if straddle has iteratives which means that yes straddling bunny can punch you nine times all while wringing you dry).\n");
 			outputText("-New Key Item (by Ormael): Stone Building Guide - req. built stone storage upgrade in camp and can be bought in Tel'Adre carpenter shop - allow to build upgrades in camp that are mostly made of stone or upgrade wood building to stone variants.\n");
 			outputText("-Automata sprites implementation. (Liadri)\n");
-			outputText("-\n");
+			outputText("-Implemented tentacle cock 1, 2 and 3 sprites. (Liadri)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

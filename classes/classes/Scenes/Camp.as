@@ -3,6 +3,7 @@ import classes.*;
 import classes.BodyParts.Ears;
 import classes.BodyParts.LowerBody;
 import classes.BodyParts.Tail;
+import classes.BodyParts.Wings;
 import classes.GlobalFlags.kACHIEVEMENTS;
 import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
@@ -3623,17 +3624,17 @@ public class Camp extends NPCAwareContent{
 		clearOutput();
 		outputText("You feel like your body could use a few changes if only to keep your data fresh, thus you head down to the factory to alter some of your components.\n\n");
 		menu();
-		addButton(0, "Penis", CampRemodel2, 0).hint("Add a plug to your genitals so that you can properly fuck female organics.").disableIf(player.hasCock(), "You already added it.");
-		addButton(1, "Remove Penis", CampRemodel2, 1).hint("Remove a plug from your genitals.").disableIf(!player.hasCock(), "You already removed it.");
-		addButton(2, "Pussy", CampRemodel2, 2).hint("Add an outlet to your genitals so that you can properly get fucked by male organics.").disableIf(player.hasVagina(), "You already added it.");
-		addButton(3, "Remove Pussy", CampRemodel2, 3).hint("Remove an outlet from your genitals.").disableIf(!player.hasVagina(), "You already removed it.");
-		addButton(4, "Breast", CampRemodel2, 4).hint("Add two lumb of artificial breast on your chassis so that organics can fondle them. This option, while completely useless and existing solely as a cosmetic, was quite appreciated from most male operators, though no operator has been found in years.").disableIf(player.hasBreasts(), "You already added them.");
-		addButton(5, "No Breast", CampRemodel2, 5).hint("Remove the two lump of artificial breast on your chassi.").disableIf(!player.hasBreasts(), "You already removed them.");
-		addButton(6, "Bunny", CampRemodel2, 6).hint("Swap your hair decoration to bunny ear style.").disableIf(player.ears.type == Ears.AUTOMATA_BUNNY, "Your hair decoration is already bunny ear style.");
-		addButton(7, "Cat", CampRemodel2, 7).hint("Swap your hair decoration to cat ear style.").disableIf(player.ears.type == Ears.AUTOMATA_CAT, "Your hair decoration is already cat ear style.");
-		addButton(8, "Fox", CampRemodel2, 8).hint("Swap your hair decoration to fox ear style.").disableIf(player.ears.type == Ears.AUTOMATA_FOX, "Your hair decoration is already fox ear style.");
-		addButton(9, "Long hair", CampRemodel2, 9).hint("Make your synthetic hair longer.");
-		addButton(10, "Short hair", CampRemodel2, 10).hint("Make your synthetic hair shorter.").disableIf(player.hairLength < 6, "Your hair can't be shortened any more.");
+		addButton(2, "Penis", CampRemodel2, 2).hint("Add a plug to your genitals so that you can properly fuck female organics.").disableIf(player.hasCock(), "You already added it.");
+		addButton(3, "Remove Penis", CampRemodel2, 3).hint("Remove a plug from your genitals.").disableIf(!player.hasCock(), "You already removed it.");
+		addButton(4, "Pussy", CampRemodel2, 4).hint("Add an outlet to your genitals so that you can properly get fucked by male organics.").disableIf(player.hasVagina(), "You already added it.");
+		addButton(5, "Remove Pussy", CampRemodel2, 5).hint("Remove an outlet from your genitals.").disableIf(!player.hasVagina(), "You already removed it.");
+		addButton(6, "Breast", CampRemodel2, 6).hint("Add two lumps of artificial breast on your chassis so that organics can fondle them. This option, while completely useless and existing solely as a cosmetic, was quite appreciated by most male operators, though no operator has been found in years.").disableIf(player.hasBreasts(), "You already added them.");
+		addButton(7, "No Breast", CampRemodel2, 7).hint("Remove the two lump of artificial breast on your chassi.").disableIf(!player.hasBreasts(), "You already removed them.");
+		addButton(8, "Bunny", CampRemodel2, 8).hint("Swap your hair decoration to bunny ear style.").disableIf(player.ears.type == Ears.AUTOMATA_BUNNY, "Your hair decoration is already bunny ear style.");
+		addButton(9, "Cat", CampRemodel2, 9).hint("Swap your hair decoration to cat ear style.").disableIf(player.ears.type == Ears.AUTOMATA_CAT, "Your hair decoration is already cat ear style.");
+		addButton(10, "Fox", CampRemodel2, 10).hint("Swap your hair decoration to fox ear style.").disableIf(player.ears.type == Ears.AUTOMATA_FOX, "Your hair decoration is already fox ear style.");
+		addButton(11, "Long hair", CampRemodel2, 11).hint("Make your synthetic hair longer.");
+		addButton(12, "Short hair", CampRemodel2, 12).hint("Make your synthetic hair shorter.").disableIf(player.hairLength < 6, "Your hair can't be shortened any more.");
 		addButton(14, "Back", campMiscActions2);
 	}
 	private function CampRemodel2(type:Number):void {
@@ -3652,36 +3653,42 @@ public class Camp extends NPCAwareContent{
 		outputText("Your connection fades with the lost components as your old parts are moved out of the room to be recycled and a set of brand new parts is pulled in. Within a few seconds, you are fully connected again. Finally you step out of the compartment with brand new parts.\n\n");
 		switch (type) {
 			case 0:
-				transformations.CockAutomata().applyEffect(false);
+				transformations.WingsJetThrusters2.applyEffect(false);
 				break;
 			case 1:
-				transformations.CockNone().applyEffect(false);
+				transformations.WingsJetThrusters.applyEffect(false);
 				break;
 			case 2:
-				transformations.VaginaAutomata().applyEffect(false);
+				transformations.CockAutomata().applyEffect(false);
 				break;
 			case 3:
-				transformations.VaginaNone().applyEffect(false);
+				transformations.CockNone().applyEffect(false);
 				break;
 			case 4:
-				transformations.BreastsGrowUpToDD.applyEffect(false);
+				transformations.VaginaAutomata().applyEffect(false);
 				break;
 			case 5:
-				transformations.BreastsShrinkToNothing.applyEffect(false);
+				transformations.VaginaNone().applyEffect(false);
 				break;
 			case 6:
-				transformations.EarsAutomataBunny.applyEffect(false);
+				transformations.BreastsGrowUpToDD.applyEffect(false);
 				break;
 			case 7:
-				transformations.EarsAutomataCat.applyEffect(false);
+				transformations.BreastsShrinkToNothing.applyEffect(false);
 				break;
 			case 8:
-				transformations.EarsAutomataFennecFox.applyEffect(false);
+				transformations.EarsAutomataBunny.applyEffect(false);
 				break;
 			case 9:
-				player.hairLength += 5;
+				transformations.EarsAutomataCat.applyEffect(false);
 				break;
 			case 10:
+				transformations.EarsAutomataFennecFox.applyEffect(false);
+				break;
+			case 11:
+				player.hairLength += 5;
+				break;
+			case 12:
 				player.hairLength -= 5;
 				break;
 		}
