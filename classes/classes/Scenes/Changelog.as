@@ -298,7 +298,7 @@ public class Changelog extends BaseContent
 			outputText("-New event perk: Rampaging Bunny Style: Hyperdrive. Gained at the end of Loppe sex scene if Training Libido level of 100+, bunny race or the rutting/heat status and have Rampaging Bunny Style: Rabbit Punch perk. Effects: When straddling or teasing add two additional unarmed strikes ");
 			outputText("(This may apply multiple times if straddle has iteratives which means that yes straddling bunny can punch you nine times all while wringing you dry).\n");
 			outputText("-New Key Item (by Ormael): Stone Building Guide - req. built stone storage upgrade in camp and can be bought in Tel'Adre carpenter shop - allow to build upgrades in camp that are mostly made of stone or upgrade wood building to stone variants.\n");
-			outputText("-\n");
+			outputText("-Automata sprites implementation. (Liadri)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

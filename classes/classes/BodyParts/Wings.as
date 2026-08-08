@@ -404,7 +404,7 @@ public class Wings extends SaveableBodyPart {
 	public static const JET_THRUSTERS: int = 47;
 	EnumValue.add(Types, JET_THRUSTERS, "JET_THRUSTERS", {
 		name:"jet thrusters",
-		appearanceDesc: "A pair of jet thrusters extend from your back allowing you to fly with perfect maneuverability to survey your environments.",
+		appearanceDesc: "A pair of jet thrusters extend from your lower back allowing you to fly with perfect maneuverability to survey your environments.",
 		canFly: true,
 		physical: false
 	});
@@ -427,6 +427,14 @@ public class Wings extends SaveableBodyPart {
 		wingSlap: true,
 		canFly: true,
 		physical: true
+	});
+	
+	public static const JET_THRUSTERS2: int = 50;
+	EnumValue.add(Types, JET_THRUSTERS2, "JET_THRUSTERS2", {
+		name:"jet thrusters 2",
+		appearanceDesc: "A pair of jet thrusters extend from your back allowing you to fly with perfect maneuverability to survey your environments.",
+		canFly: true,
+		physical: false
 	});
 	
 	public var desc:String = "non-existent";

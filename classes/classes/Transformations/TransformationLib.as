@@ -1250,6 +1250,7 @@ public const NAME:PossibleEffect = new SimpleEffect("Effect name",
     public const WingsMothSmall: Transformation                 = wings.WingsMothSmall.registerTf(AS_WINGS, AE_MOTH);
     public const WingsMothLarge: Transformation                 = wings.WingsMothLarge.registerTf(AS_WINGS, AE_MOTH);
     public const WingsJetThrusters: Transformation              = wings.WingsJetThrusters.registerTf(AS_WINGS, AE_AUTOMATA);
+    public const WingsJetThrusters2: Transformation             = wings.WingsJetThrusters2.registerTf(AS_WINGS, AE_AUTOMATA);
 
 
 

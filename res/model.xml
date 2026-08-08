@@ -973,6 +973,7 @@
 		<cell rect="233,91,15,9" name="overbreast/phylacteryExposed" dx="96" dy="69"/>
 		<cell rect="296,1550,99,45" name="uniquePlantBath/lilirauneBath" dx="34" dy="88"/>
 		<cell rect="546,1430,50,100" name="torso/liliraune" dx="36" dy="26"/>
+		<cell rect="1688,1272,173,156" name="torso/automata" dx="16" dy="21"/>
 		<cell rect="296,1596,85,20" name="face/lilirauneCorruptedSmile" dx="34" dy="50"/>
 		<cell rect="396,1596,85,20" name="forehead/lilirauneCorruptedShadow" dx="41" dy="39"/>
 		<cell rect="346,1490,49,59" name="arms/liliraune" dx="18" dy="64"/>
@@ -1036,6 +1037,10 @@
 		<cell rect="901,350,89,164" name="hair_bg/rainbow" dx="60" dy="5"/>
 		<cell rect="241,70,59,65" name="hair/undine" dx="75" dy="21"/>
 		<cell rect="811,350,89,164" name="hair_bg/undine" dx="62" dy="22"/>
+		<cell rect="901,136,59,65" name="hair/automataShort" dx="75" dy="21"/>
+		<cell rect="961,136,59,65" name="hair/automataLong" dx="75" dy="21"/>
+		<cell rect="1171,350,89,164" name="hair_bg/automataLong" dx="62" dy="5"/>
+		<cell rect="1021,136,59,65" name="hairFront/automata" dx="75" dy="21"/>
 		<cell rect="301,136,59,65" name="hairTop/sylph" dx="85" dy="1"/>
 		<cell rect="361,136,59,65" name="hairLeft/sylph" dx="54" dy="26"/>
 		<cell rect="421,136,59,65" name="hairRight/sylph" dx="98" dy="26"/>
@@ -1154,7 +1159,12 @@
 		<cell rect="781,190,29,65" name="ears_bg/anubis" dx="90" dy="4"/>
 		<cell rect="691,256,89,65" name="ears_bg/fennec" dx="57" dy="2"/>
 		<cell rect="781,330,59,65" name="ears_bg/bunnyDrop" dx="75" dy="20"/>
-		<cell rect="541,330,87,97" name="ears_truebg/melkie" dx="60" dy="36"/>
+		<cell rect="541,330,87,97" name="ears_truebg/melkie" dx="60" dy="36"/>	
+		<cell rect="931,190,59,65" name="ears_bg/automataBunny" dx="75" dy="4"/>
+		<cell rect="931,190,59,65" name="ears/automataBunny" dx="75" dy="4"/>		
+		<cell rect="931,256,59,30" name="ears_bg/automataFox" dx="75" dy="17"/>
+		<cell rect="931,289,59,30" name="ears_bg/automataCat" dx="75" dy="18"/>
+		<cell rect="931,289,59,30" name="ears/automataCat" dx="75" dy="18"/>
 		<cell rect="1,396,59,65" name="horns/orchid" dx="73" dy="4"/>
 		<cell rect="61,396,59,65" name="horns/devil" dx="76" dy="5"/>
 		<cell rect="121,396,59,65" name="horns/cow" dx="75" dy="4"/>
@@ -1189,6 +1199,7 @@
 		<cell rect="481,330,59,65" name="horns_bg/seaDragon" dx="75" dy="20"/>
 		<cell rect="721,330,59,65" name="horns_bg/jabberwockycrown" dx="75" dy="20"/>
 		<cell rect="241,396,59,65" name="horns_fg/balrog" dx="73" dy="25"/>
+		<cell rect="811,190,29,65" name="horns_fg/automata" dx="101" dy="15"/>
 		<cell rect="481,396,59,65" name="back_bg/cobraHood" dx="77" dy="32"/>
 		<cell rect="1,536,103,45" name="back_bg/myconidCap_bg" dx="57" dy="35"/>		
 		<cell rect="301,396,59,65" name="horns_overclothe/deer" dx="74" dy="-5"/>
@@ -1228,6 +1239,13 @@
 		<cell rect="861,350,49,29" name="fullbodyBalls/sylphhuge" dx="79" dy="105"/>
 		<cell rect="861,380,49,29" name="fullbodyBalls/sylphsillyhuge" dx="79" dy="106"/>
 		<cell rect="fullbodyBalls/sylphsillyhuge" name="fullbodyBalls/sylphgigahuge"/>
+		<cell rect="1461,350,49,50" name="fullbodyPenisFg/automata" dx="67" dy="101"/>
+		<cell rect="1461,350,49,50" name="fullbodyPenisFg/automatabig" dx="67" dy="101"/>
+		<cell rect="1461,500,49,29" name="fullbodyBalls/automata" dx="79" dy="105"/>
+		<cell rect="1461,500,49,29" name="fullbodyBalls/automatasmall" dx="79" dy="105"/>
+		<cell rect="1461,500,49,29" name="fullbodyBalls/automatalarge" dx="79" dy="105"/>
+		<cell rect="1461,500,49,29" name="fullbodyBalls/automatahuge" dx="79" dy="105"/>
+		<cell rect="1461,500,49,29" name="fullbodyBalls/automatasillyhuge" dx="79" dy="105"/>
 		<cell rect="961,200,49,29" name="fullbodyPenisFg/imp" dx="76" dy="86"/>
 		<cell rect="961,230,49,58" name="fullbodyPenisFg/impbig" dx="74" dy="64"/>
 		<cell rect="balls/Bhumansmall" name="fullbodyBalls/impsmall" dx="80" dy="99"/>
@@ -1271,6 +1289,7 @@
 		<cell rect="811,110,49,29" name="fullbodyBreast/Bundine" dx="79" dy="68"/>
 		<cell rect="861,110,49,29" name="fullbodyBreast/Bsylph" dx="79" dy="68"/>
 		<cell rect="breasts/Bhuman" name="fullbodyBreast/Bimp" dx="79" dy="67"/>
+		<cell rect="1461,410,49,29" name="fullbodyBreast/Bautomata" dx="79" dy="67"/>
 		<cell rect="11,140,49,29" name="breasts/Dhuman" dx="79" dy="68"/>
 		<cell rect="61,140,49,29" name="breasts/Dfur" dx="79" dy="68"/>
 		<cell rect="breasts/Dfur" name="breasts/Dpanda" dx="79" dy="68"/>
@@ -1288,6 +1307,7 @@
 		<cell rect="811,140,49,29" name="fullbodyBreast/Dundine" dx="79" dy="68"/>
 		<cell rect="861,140,49,29" name="fullbodyBreast/Dsylph" dx="79" dy="68"/>
 		<cell rect="breasts/Dhuman" name="fullbodyBreast/Dimp" dx="79" dy="67"/>
+		<cell rect="1461,440,49,29" name="fullbodyBreast/Dautomata" dx="79" dy="68"/>
 		<cell rect="11,170,49,29" name="breasts/Fhuman" dx="79" dy="68"/>
 		<cell rect="61,170,49,29" name="breasts/Ffur" dx="79" dy="68"/>
 		<cell rect="breasts/Ffur" name="breasts/Fpanda" dx="79" dy="68"/>
@@ -1305,6 +1325,7 @@
 		<cell rect="811,170,49,29" name="fullbodyBreast/Fundine" dx="79" dy="68"/>
 		<cell rect="861,170,49,29" name="fullbodyBreast/Fsylph" dx="79" dy="68"/>
 		<cell rect="breasts/Fhuman" name="fullbodyBreast/Fimp" dx="79" dy="67"/>
+		<cell rect="1461,470,49,29" name="fullbodyBreast/Fautomata" dx="79" dy="68"/>
 		<cell rect="11,530,49,29" name="breasts/Ghuman" dx="79" dy="69"/>
 		<cell rect="61,530,49,29" name="breasts/Gfur" dx="79" dy="69"/>
 		<cell rect="breasts/Gfur" name="breasts/Gpanda" dx="79" dy="69"/>
@@ -1322,6 +1343,7 @@
 		<cell rect="811,530,49,29" name="fullbodyBreast/Gundine" dx="79" dy="69"/>
 		<cell rect="861,530,49,29" name="fullbodyBreast/Gsylph" dx="79" dy="69"/>
 		<cell rect="breasts/Ghuman" name="fullbodyBreast/Gimp" dx="79" dy="69"/>
+		<cell rect="1461,530,49,29" name="fullbodyBreast/Gautomata" dx="79" dy="68"/>
 		<cell rect="411,110,49,29" name="breasts_pattern/Bpstripe" dx="79" dy="68"/>
 		<cell rect="411,140,49,29" name="breasts_pattern/Bstripe" dx="79" dy="69"/>
 		<cell rect="411,170,49,29" name="breasts_pattern/Blstripe" dx="79" dy="69"/>
@@ -1388,6 +1410,22 @@
 		<cell rect="penis/barometz" name="penis_taur/barometz_taur" dx="117" dy="134"/>
 		<cell rect="411,290,49,59" name="penis/barometzbig" dx="77" dy="103"/>
 		<cell rect="penis/barometzbig" name="penis_taur/barometzbig_taur" dx="117" dy="133"/>
+		
+		<cell rect="11,629,49,58" name="penis/tentacle" dx="54" dy="95"/>
+		<cell rect="11,629,49,58" name="penis_taur/tentacle_taur" dx="116" dy="134"/>
+		<cell rect="11,629,49,58" name="penis/tentaclebig" dx="54" dy="95"/>
+		<cell rect="11,629,49,58" name="penis_taur/tentaclebig_taur" dx="116" dy="134"/>
+		
+		<cell rect="111,629,49,89" name="penis/tentacle2" dx="54" dy="95"/>
+		<cell rect="111,629,49,89" name="penis_taur/tentacle_taur2" dx="98" dy="123"/>
+		<cell rect="111,629,49,89" name="penis/tentacle2big" dx="54" dy="95"/>
+		<cell rect="111,629,49,89" name="penis_taur/tentacle2big_taur" dx="98" dy="123"/>
+		
+		<cell rect="211,629,49,89" name="penis/tentacle3" dx="54" dy="95"/>
+		<cell rect="211,629,49,89" name="penis_taur/tentacle3_taur" dx="98" dy="123"/>
+		<cell rect="211,629,49,89" name="penis/tentacle3big" dx="54" dy="95"/>
+		<cell rect="211,629,49,89" name="penis_taur/tentacle3big_taur" dx="98" dy="123"/>
+		
 		<cell rect="1111,200,49,29" name="penis/myconidWhite" dx="75" dy="104"/>
 		<cell rect="1111,230,49,29" name="penis/myconidRed" dx="75" dy="104"/>
 		<cell rect="1111,260,49,29" name="penis/myconidYellow" dx="75" dy="104"/>
@@ -1791,7 +1829,8 @@
 		<cell rect="593,351,82,69" name="tail/kirin" dx="95" dy="87"/>
 		<cell rect="tail/kirin" name="tail/kirin_taur" dx="140" dy="88"/>
 		<cell rect="845,71,83,139" name="tail/barometz" dx="97" dy="43"/>
-		<cell rect="tail/barometz" name="tail/barometz_taur" dx="150" dy="55"/>
+		<cell rect="845,71,83,139" name="tail/barometz_taur" dx="150" dy="55"/>
+		<cell rect="845,351,82,69" name="tail/automata" dx="82" dy="109"/>
 		<cell rect="255,211,83,139" name="tail_bg/cat" dx="108" dy="40"/>
 		<cell rect="tail_bg/cat" name="tail_bg/cat_taur" dx="158" dy="51"/>
 		<cell rect="339,211,83,139" name="tail_bg/cat2" dx="108" dy="40"/>
@@ -2032,6 +2071,10 @@
 		<cell rect="591,490,83,139" name="wings_front/couatl_large" dx="105" dy="20"/>
 		<cell rect="339,350,168,139" name="wings/wraith" dx="27" dy="39"/>
 		<cell rect="508,350,168,139" name="wings/ghost" dx="21" dy="27"/>
+		<cell rect="1269,210,80,139" name="wings_bg/automataShoulder" dx="110" dy="14"/>
+		<cell rect="1184,210,83,139" name="wings/automataShoulder" dx="21" dy="14"/>
+		<cell rect="1269,210,80,139" name="wings_bg/automataButt" dx="21" dy="46"/>
+		<cell rect="1184,210,83,139" name="wings/automataButt" dx="21" dy="27"/>
 		<cell rect="170,350,168,139" name="rearbody/displacertentacle" dx="24" dy="20"/>
 		<cell rect="1,630,248,139" name="wings_bg/vampire_bg" dx="-3" dy="30"/>
 		<cell rect="254,630,168,139" name="wings_overclothe/vampire" dx="20" dy="28"/>
@@ -5724,7 +5767,6 @@
 			<set var="big" value="(cockSize gt 12) ? 'big' : ''"/>
 			<set var="bigHorse" value="(cockSize gt 25) ? 'big' : ''"/>
 			<switch value="cockType">
-
 				<case values="CockTypesEnum.DOG,CockTypesEnum.WOLF,CockTypesEnum.FOX">
 					<show part="penis$taur/canine$big$taur"/>
 					<if test="showDickDrippies">
@@ -5747,9 +5789,9 @@
 				</case>
 
 				<case values="CockTypesEnum.HORSE">
-					<show part="penis$taur/horse$big$taur"/>
+					<show part="penis$taur/horse$bigHorse$taur"/>
 					<if test="showDickDrippies">
-						<show part="cum$taur/horse$big$taur"/>
+						<show part="cum$taur/horse$bigHorse$taur"/>
 					</if>
 				</case>
 
@@ -5815,11 +5857,20 @@
 						<show part="penis/myconidWhite"/>
 					</if>
 				</case>
+				
 				<case values="CockTypesEnum.BAROMETZ">
-					<show part="penis$taur/barometz$big$taur"/>
+					<show part="penis$taur/barometz$bigHorse$taur"/>
 					<if test="showDickDrippies">
-						<show part="cum$taur/horse$big$taur"/>
+						<show part="cum$taur/horse$bigHorse$taur"/>
 					</if>
+				</case>
+				
+				<case values="CockTypesEnum.TENTACLE, CockTypesEnum.STAMEN">
+					<set var="tentcocks" value="countCocksOfType(CockTypesEnum.TENTACLE) + countCocksOfType(CockTypesEnum.STAMEN)">
+					<if test="tentcocks gt 3">
+						<set var="tentcocks" value="3">
+					</if>
+					<show part="penis$taur/tentacle$tentcocks$big$taur"/>
 				</case>
 
 				<!-- <case values="CockTypesEnum.HUMAN"></case> use default -->
@@ -7654,18 +7705,58 @@
 				<show part="fullbody/femalejiangshi"/>
 			</if>
 		</if>
-
-		<!-- Mummy -->
-		<if test="horns.type == Horns.BANDAGED_HEAD">
+		
+				<!-- Automata -->
+		<if test="horns.type == Horns.HEADSET">
 			<!-- Hide everything else -->
-			<hide part="*"/>
-			<if test="breastTier lte 0"><!--FLAT-->
-				<show part="fullbody/maleMummy"/>
-			<else/>
-				<show part="fullbody/femaleMummy"/>
+			<hide part="*"/>	
+			<show part="horns_fg/automata"/>
+			<show part="torso/automata"/>
+			<show part="tail/automata"/>
+			<if test="ears.type == Ears.AUTOMATA_CAT">
+				<show part="ears/automataCat"/>
+				<show part="ears_bg/automataCat"/>
 			</if>
+			<if test="ears.type == Ears.AUTOMATA_BUNNY">
+				<show part="ears/automataBunny"/>
+				<show part="ears_bg/automataBunny"/>
+			</if>
+			<if test="ears.type == Ears.AUTOMATA_FOX">
+				<show part="ears_bg/automataFox"/>
+			</if>
+			<if test="wings.type == Wings.JET_THRUSTERS">
+				<show part="wings_bg/automataButt"/>
+				<show part="wings/automataButt"/>
+			</if>
+			<if test="wings.type == Wings.JET_THRUSTERS2">
+				<show part="wings_bg/automataShoulder"/>
+				<show part="wings/automataShoulder"/>
+			</if>
+			<!-- Breast check -->
+			<if test="breastTier lte 0"><!--FLAT-->
+			<else/>
+				<show part="fullbodyBreast/${cup}automata"/>
+			</if>
+			<!-- Cock check -->
+			<if test="hasCock()">
+				<show part="fullbodyPenisFg/automata$big"/>
+			</if>
+			<!-- Ball check -->
+			<if test="balls gt 0">
+				<show part="fullbodyBalls/automata$ballsz"/>
+			</if>
+			<show part="hair/automataShort"/>
+			<show part="hair_bg/automataShort"/>
+			<switch>
+				<case test="hairLength lt 16">
+					<hide part="hair/*"/>
+					<hide part="hair_bg/*"/>
+					<show part="hairFront/automata"/>
+					<show part="hair/automataLong"/>
+					<show part="hair_bg/automataLong"/>
+				</case>
+			</switch>
 		</if>
-
 
 	</logic>
 </model>

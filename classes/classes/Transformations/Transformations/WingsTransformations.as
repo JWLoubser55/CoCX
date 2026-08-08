@@ -901,6 +901,22 @@ public class WingsTransformations extends MutationsHelper {
 			}
 	);
 
+	public const WingsJetThrusters2: Transformation = new SimpleTransformation("Jet Thrusters Wings 2",
+			// apply effect
+			function (doOutput: Boolean): void {
+				var desc: String = "";
+
+				desc += "";
+
+				player.wings.type = Wings.JET_THRUSTERS2;
+				if (doOutput) outputText(desc);
+			},
+			// is present
+			function (): Boolean {
+				return player.wings.type === Wings.JET_THRUSTERS2;
+			}
+	);
+
 	/*
   */
 }
