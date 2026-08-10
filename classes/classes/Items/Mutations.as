@@ -1178,9 +1178,7 @@ public final class Mutations extends MutationsHelper {
 	public function terminalCorruption(player:Player):void {
 		var choice1:String = randomChoice(DemonRace.DemonSkinColors);
 		var choice2:String = randomChoice(DemonRace.DemonSkin2Colors);
-		player.skinColor1 = choice1;
-		player.skinColor2 = choice2;
-        terminalCorruption2(player);
+		player.skin.setBaseOnly({type:Skin.PLAIN, color1: choice1, color2: choice2});
 		player.demonicenergy += 50;
 		if (player.hasStatusEffect(StatusEffects.ArigeanInfected)) player.removeStatusEffect(StatusEffects.ArigeanInfected);
 		if (player.hasPerk(PerkLib.WendigoCurse)) player.removePerk(PerkLib.WendigoCurse);
@@ -1202,6 +1200,9 @@ public final class Mutations extends MutationsHelper {
 		outputText("You seem to have struck a bottleneck unable to achieve release as your pleasure keep reaching intolerable heights but finally the dam breaks allowing you to release everything out. When you come down from your orgasm you finally realize what just happened. You didn’t just came you came your soul out now your no defrent from the demons who fucked you into this state. ");
 		outputText("You quickly adapt to the change however and take what's left of your soul from the ground eating it right away. It seems you’ve become a demon, there's no going back to having a soul now but that doesn’t mean your quest has to end there far from it, you’re going to turn this shity land into your playground and get back at it for everything that's been done to you. ");
 		outputText("The champion you is no more but you’ve got plenty of grievances with the place to address still and you will only rest until it's all under your demonic foot.\n\n");
+		transformations.SkinPatternDemonicPleasureRune.applyEffect(false);
+		terminalCorruption2(player);
+		outputText("\n\n<b>Gained Perk: Soulless!</b> "+PerkLib.Soulless.desc());
 	}
 	public function terminalCorruption2(player:Player):void {
 		if (player.hairType != Hair.NORMAL) transformations.HairHuman.applyEffect(false);
@@ -1227,7 +1228,7 @@ public final class Mutations extends MutationsHelper {
 			transformations.ArmsHuman.applyEffect(false);
 			transformations.ArmsDemon.applyEffect(false);
 		}
-		if (player.lowerBody != LowerBody.DEMONIC_CLAWS && player.lowerBody != LowerBody.DEMONIC_HIGH_HEELS && player.lowerBody != LowerBody.DEMONIC_GRACEFUL_FEET) {
+		if (!InCollection(player.lowerBody, LowerBody.DEMONIC_CLAWS, LowerBody.DEMONIC_HIGH_HEELS, LowerBody.DEMONIC_GRACEFUL_FEET, LowerBody.DEMONIC_HOOFS, LowerBody.DEMONIC_CLOVEN_HOOFS)) {
 			if (player.gender <= 1 || (player.gender == 3 && player.mf("m", "f") == "m")) {
 				switch (rand(2)) {
 					case 0: transformations.LowerBodyDemonClawedBipedal.applyEffect(false); break;
