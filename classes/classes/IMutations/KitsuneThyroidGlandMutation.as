@@ -44,8 +44,8 @@ public class KitsuneThyroidGlandMutation extends IMutationPerkType
                     this.requireThyroidGlandMutationSlot()
                     .requireAnyPerk(PerkLib.EnlightenedKitsune, PerkLib.CorruptedKitsune, PerkLib.StarSphereMastery)
                     .requireCustomFunction(function (player:Player):Boolean {
-                        return (player.tailType == Tail.FOX || player.tailType == Tail.KITSHOO) && player.tailCount >= 2;
-                    }, "2+ fox/kitsumori tails");
+                        return player.tailType == Tail.FOX && player.tailCount >= 2;
+                    }, "2+ fox tails");
                 }
                 else{
                     var pLvl:int = pTier * 30;
