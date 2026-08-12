@@ -301,7 +301,7 @@ public class Changelog extends BaseContent
 			outputText("-New Key Item (by Ormael): Stone Building Guide - req. built stone storage upgrade in camp and can be bought in Tel'Adre carpenter shop - allow to build upgrades in camp that are mostly made of stone or upgrade wood building to stone variants.\n");
 			outputText("-Automata sprites implementation. (Liadri)\n");
 			outputText("-Implemented tentacle cock 1, 2 and 3 sprites. (Liadri)\n");
-			outputText("-\n");
+			outputText("-All normal and large sized skeletons mana/soulforce costs to make was adjusted to be more in line for all newbie Haruspex users tinier mana/sf-bars. For not large skeleton types 20% of max mana/sf bar + 200 and if cost is above 2,000 it will be fixed cost of 2,000. For large skeleton types 50% max mana/sf + 500 with fixed cap of 5,000.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

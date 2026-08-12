@@ -985,6 +985,7 @@ import flash.utils.getQualifiedClassName;
 			if (hasPerk(PerkLib.Mage) && inte >= 50) temp += 90;
 			if (hasPerk(PerkLib.Spellpower) && inte >= 50) temp += 45;
 			if (hasPerk(PerkLib.JobSorcerer)) temp += 45;
+			if (hasPerk(PerkLib.JobHaruspex)) temp += 100;
 			if (hasPerk(PerkLib.JobHealer)) temp += 90;
 			if (hasPerk(PerkLib.SpellpowerGrey) && inte >= 50) temp += 75;
 			if (hasPerk(PerkLib.SpellpowerHealing) && wis >= 50) temp += 90;

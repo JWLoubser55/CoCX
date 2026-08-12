@@ -2244,9 +2244,14 @@ public class CampMakeWinions extends BaseContent
 			return bonesUsedToMakeNormalSkely;
 		}
 		private function resourcesUsedToMakeNormalSkeleton():Number {
-			var resourcesUsedToMakeNormalSkely:Number = 5000;
-			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeNormalSkely -= 2500;
-			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeNormalSkely -= 2000;
+			var resourcesUsedToMakeNormalSkely:Number = 200;
+			var resourcesUsedToMakeNormalSkelyMulti:Number = 1;
+			resourcesUsedToMakeNormalSkely += player.maxMana() * 0.2;
+			if (resourcesUsedToMakeNormalSkely > 2000) resourcesUsedToMakeNormalSkely = 2000;
+			//if (resourcesUsedToMakeNormalSkely > 1000 && player.hasPerk(PerkLib.)) resourcesUsedToMakeNormalSkely = 1000;
+			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeNormalSkelyMulti -= 0.5;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeNormalSkelyMulti -= 0.4;
+			resourcesUsedToMakeNormalSkely = Math.round(resourcesUsedToMakeNormalSkely * resourcesUsedToMakeNormalSkelyMulti);
 			return resourcesUsedToMakeNormalSkely;
 		}
 		public function bonesUsedToMakeLargeSkeleton():Number {
@@ -2255,9 +2260,14 @@ public class CampMakeWinions extends BaseContent
 			return bonesUsedToMakeLargeSkely;
 		}
 		private function resourcesUsedToMakeLargeSkeleton():Number {
-			var resourcesUsedToMakeLargeSkely:Number = 12500;
-			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeLargeSkely -= 6250;
-			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeLargeSkely -= 5000;
+			var resourcesUsedToMakeLargeSkely:Number = 500;
+			var resourcesUsedToMakeLargeSkelyMulti:Number = 1;
+			resourcesUsedToMakeLargeSkely += player.maxMana() * 0.5;
+			if (resourcesUsedToMakeLargeSkely > 5000) resourcesUsedToMakeLargeSkely = 5000;
+			//if (resourcesUsedToMakeLargeSkely > 2500 && player.hasPerk(PerkLib.)) resourcesUsedToMakeLargeSkely = 2500;
+			if (player.hasPerk(PerkLib.BoneEfficiency)) resourcesUsedToMakeLargeSkelyMulti -= 0.5;
+			if (player.hasPerk(PerkLib.SkeletonHighLord)) resourcesUsedToMakeLargeSkelyMulti -= 0.4;
+			resourcesUsedToMakeLargeSkely = Math.round(resourcesUsedToMakeLargeSkely * resourcesUsedToMakeLargeSkelyMulti);
 			return resourcesUsedToMakeLargeSkely;
 		}
 		public function maxSkeletonMulti():Number {

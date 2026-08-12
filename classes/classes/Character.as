@@ -958,6 +958,7 @@ import classes.Scenes.NPCs.Forgefather;
 			if (hasPerk(PerkLib.GreyMageApprentice) && inte >= 75) max += 150;
 			if (hasPerk(PerkLib.Mage) && inte >= 50) max += 90;
 			if (hasPerk(PerkLib.JobSorcerer)) max += 45;
+			if (hasPerk(PerkLib.JobHaruspex)) max += 100;
 			if (hasPerk(PerkLib.JobHealer)) max += 90;
 			if (hasPerk(PerkLib.Spellpower) && inte >= 50) max += 45;
 			if (hasPerk(PerkLib.SpellpowerGrey) && inte >= 50) max += 75;
