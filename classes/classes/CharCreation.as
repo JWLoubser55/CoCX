@@ -159,7 +159,7 @@ import classes.Scenes.Combat.CombatAbility;
 			player.wisStat.train.value = 15;
 			player.libStat.train.value = 15;
 			player.sensStat.redefine({base:15});
-			player.cor = 0;
+			player.cor = -100;
 			player.soulforce = 50;
 			player.wrath = 0;
 			player.mana = 100;

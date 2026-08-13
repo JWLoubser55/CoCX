@@ -254,7 +254,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.touStat.train.value = 50;
 			player.strStat.train.value = 10;
 			player.libStat.train.value = 30;
-			player.cor = 30;
+			player.cor = -40;
 			outputText("As a wandering mage you, had found your way into no small amount of trouble in the search for knowledge.  A strange tome here, a ritual there, most people found your pale form unsettling. They would be further troubled if they could see your feet!  Lets not even begin on the blood magic.  Yes, your interest in examining every aspect of magic has run you down a strange path, so when you wandered into Ingnam and began to hear of the exile of the Champion, and the superstitions that surrounded it you were intrigued, as every little rumor and ritual often had a grain of truth.  You snuck into the cave prior to the ritual, where the old man supposedly led every Champion, and there you found a strange portal that emanated a certain degree of spacial transparency -  more than the portal's own.  Within it must have been a whole new world!  Throwing caution to the wind, your curiosities engulfing you, you dove in with nary a thought for the consequences.");
 		}
 
@@ -433,7 +433,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.strStat.train.value = 90;
 			//Fertility: 100
 			player.fertility = 100;
-			player.cor = 25;
+			player.cor = -50;
 			//Inventory: Lactaid, GroPlus, BimboLq
 			player.itemSlots[0].setItemAndQty(consumables.LACTAID,5);
 			player.itemSlots[1].setItemAndQty(consumables.GROPLUS,5);
@@ -573,7 +573,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.speStat.train.value = 18;
 			player.intStat.train.value = 17;
 			player.wisStat.train.value = 17;
-			player.cor = 0;
+			player.cor = -100;
 			player.HP = player.maxHP();
 			player.hairLength=13;
 			player.skin.restore();
@@ -648,7 +648,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.ballSize = 2;
 			player.strStat.train.value = 18;
 			player.touStat.train.value = 17;
-			player.cor = 0;
+			player.cor = -100;
 			player.HP = player.maxHP();
 			player.hairLength = 1;
 			player.skin.setAllProps({base:{color:"light"}});
@@ -1022,7 +1022,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.butt.type = 6;
 			player.speStat.train.value = 18;
 			player.intStat.train.value += 2;
-			player.cor = 0;
+			player.cor = -100;
 			player.HP = player.maxHP();
 			player.skin.restore();
 			player.faceType = Face.HUMAN;
@@ -1082,7 +1082,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.createPerk(PerkLib.Runner, 0, 0, 0, 0);
 			//In the human world, Prismere began as a scout, helping patrol areas with portals to make sure demonspawn and corruption didn't reach the human homeland. She's gotten herself into a few tight spots because of it, but she's hard to keep pinned down. She has a fiance back in her village whom she fully intends to get back to, so her libido isn't especially high.
 			//As of the time the PC takes her on, she has some signs of demonic taint, so Corruption might start at 5 to 10 points."	"Breasts at E, height at 5'0, a curvy build with a more narrow waist and substantial hips and butt. Skin is olive, like a mocha, hair is long and wildly wavy, a deep red, and eyes are a stormy blue. Muscles are barely visible; what muscle she has is the lean build of a runner, not a fighter. Nipples aren't especially long, but more soft.
-			player.cor = 5;
+			player.cor = -90;
 			player.createBreastRow();
 			player.breastRows[0].breastRating = 7;
 			player.tallness = 60;
@@ -1509,7 +1509,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.intStat.train.value = 100;
 			player.wisStat.train.value = 100;
 			player.libStat.train.value = 30;
-			player.cor = 71;
+			player.cor = 42;
 			player.HP = player.maxHP();
 			player.hairLength = 10;
 			player.skin.restore();
@@ -1706,7 +1706,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.butt.type = 6;
 			player.speStat.train.value = 18;
 			player.intStat.train.value = 17;
-			player.cor = 0;
+			player.cor = -100;
 			player.HP = player.maxHP();
 			player.hairLength = 10;
 			player.skin.restore();
@@ -1849,7 +1849,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.touStat.train.value = 25;
 			player.speStat.train.value = 20;
 			player.libStat.train.value = 30;
-			player.cor = 30;
+			player.cor = -40;
 			outputText("You have been fascinated with magic as long as you can remember.  The villagers humored this at first, regaling you with stories about mages of old and providing â€œspellbooksâ€� that were more superstition than fact.  When you learned to cast whitefire without any instruction, the villagers got worried. Your salvation came in the form of a traveling mage, a hero himself in his youth. He provided the apprenticeship you craved and focused your eccentricities into mastering the art of magical healing.  While you had earned yourself a respectable livelihood well before your coming of age, your fascination with the unnatural has always unnerved your friends and neighbors.  One year, an unknown disease passed through the town.  You saw this peculiar sickness as a challenge, and devised a spell to neutralize it.  ");
 			outputText("While you saved several lives, a handful of villagers died before you bested the plague. Rumors spread that you used their deaths to fuel unnatural rituals, bringing all the fear and suspicion focused on you over the years to a crux.  Your trial was swift, but you accepted the outcome without a second thought.  Whatever lay beyond that portal, you knew it would fall to your powers.");
 		}
@@ -1916,7 +1916,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.intStat.train.value = 55; // your mind is your power!
 			player.wisStat.train.value = 55; // your mind is your power!
 			player.libStat.train.value = 85; // yes, you have problems
-			player.cor += 31; // have high initial corruption, but also have religious history to meditate
+			player.cor += 62; // have high initial corruption, but also have religious history to meditate
 			// bow and concealing leather armor with robes, also can handle rapier well, but doesn't have one
 			if (player.armor.isNothing || player.armor == armors.C_CLOTH) player.setArmor(armors.LTHRROB); // you like concealing clothes, your body is your masterpiece, but your extra benefits are more fun when not expected... ok, you are a bit shy of your tentacles
 			if (player.weapon.isNothing) player.setWeapon(weapons.SUCWHIP); // have succubus whip, to get corruption quickly when desired
@@ -2122,7 +2122,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			player.intStat.train.value = 60;
 			//player.sens = 15;
 			//player.lib = 15;
-			player.cor += 2;
+			player.cor += 4;
 
 			var skin:Number = rand(100);
 			if(skin < 50){
@@ -2314,7 +2314,7 @@ import classes.Items.Dynamic.Effects.SimpleRaceEnchantment;
 			//player.wisStat.train.value = 55;
 			player.libStat.train.value = 100;
 			
-			player.cor += 40; // have high initial corruption, but also have religious history to meditate
+			player.cor += 80; // have high initial corruption, but also have religious history to meditate
 			
 			if (player.armor.isNothing || player.armor == armors.C_CLOTH) player.setArmor(armors.TRMOUTF); // you like concealing clothes, your body is your masterpiece, but your extra benefits are more fun when not expected... ok, you are a bit shy of your tentacles
 			//if (player.weapon.isNothing) player.setWeapon(weapons.H_GAUNT); // Start with Hooked Gauntlets
