@@ -5526,7 +5526,7 @@ public final class Mutations extends MutationsHelper {
         }
 
         //Snake tounge
-        if (player.tongue.type != Tongue.SNAKE && rand(3) == 0 && changes < changeLimit) {
+        if (type != 1 && player.tongue.type != Tongue.SNAKE && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.TongueSnake.applyEffect();
             player.addCurse("sen", 5, 1);
@@ -5539,7 +5539,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Face with snake fangs
-        if (player.tongue.type == Tongue.SNAKE && player.faceType != Face.SNAKE_FANGS && rand(3) == 0 && changes < changeLimit) {
+        if ((player.tongue.type == Tongue.SNAKE || (type == 1 && player.tongue.type == Tongue.DRACONIC)) && player.faceType != Face.SNAKE_FANGS && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.FaceSnakeFangs.applyEffect();
             if (player.tailRecharge < 5) player.tailRecharge = 5;
@@ -5561,7 +5561,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Partial scales with color changes to red, green, white, blue, or black.  Rarely: purple or silver.
-        if (!player.hasPartialCoat(Skin.SCALES) && (player.lowerBody == LowerBody.NAGA || player.lowerBody == LowerBody.HYDRA) && changes < changeLimit && rand(3) == 0) {
+        if (!player.hasPartialCoat(Skin.SCALES) && (player.lowerBody == LowerBody.NAGA || player.lowerBody == LowerBody.HYDRA) && type != 1 && changes < changeLimit && rand(3) == 0) {
             if (rand(10) == 0) {
                 colors = ["purple", "silver"];
             } else {
@@ -5572,7 +5572,7 @@ public final class Mutations extends MutationsHelper {
             changes++;
         }
         //Snake eyes
-        if (player.hasPartialCoat(Skin.SCALES) && player.eyes.type != Eyes.SNAKE && player.eyes.type != Eyes.GORGON && rand(3) == 0 && changes < changeLimit) {
+        if ((player.hasPartialCoat(Skin.SCALES) || type == 1) && player.eyes.type != Eyes.SNAKE && player.eyes.type != Eyes.GORGON && rand(3) == 0 && changes < changeLimit) {
             outputText("[pg]");
             transformations.EyesSnake.applyEffect();
             changes++;
@@ -5730,14 +5730,14 @@ public final class Mutations extends MutationsHelper {
             transformations.SkinScales(Skin.COVERAGE_COMPLETE, {colors: colors}).applyEffect();
             changes++;
         }
-        if (type == 1 && player.wings.type == Wings.DRACONIC_LARGE && player.hasPartialCoat(Skin.DRAGON_SCALES) && changes < changeLimit && rand(3) == 0) {
+        if (type == 1 && InCollection(player.wings.type, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE) && player.hasPartialCoat(Skin.DRAGON_SCALES) && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
-            transformations.SkinDragonScales().applyEffect();
+            transformations.SkinDragonScales(Skin.COVERAGE_COMPLETE, {colors: DragonRace.DragonScaleColors}).applyEffect();
             changes++;
         }
-        if (type == 1 && player.wings.type == Wings.DRACONIC_LARGE && !player.isDagonScaleCovered() && changes < changeLimit && rand(3) == 0) {
+        if (type == 1 && InCollection(player.wings.type, Wings.DRACONIC_LARGE, Wings.DRACONIC_HUGE) && !player.isDragonScaleCovered() && changes < changeLimit && rand(3) == 0) {
             outputText("[pg]");
-            transformations.SkinDragonScales(Skin.COVERAGE_LOW).applyEffect();
+            transformations.SkinDragonScales(Skin.COVERAGE_LOW, {colors: DragonRace.DragonScaleColors}).applyEffect();
             changes++;
         }
         if (changes == 0) {
@@ -5754,6 +5754,7 @@ public final class Mutations extends MutationsHelper {
             outputText(" NOT doing anything?");
         }
         player.refillHunger(5);
+		flags[kFLAGS.TIMES_TRANSFORMED] += changes;
     }
 
     public function superHummus(player:Player):void {

@@ -142,7 +142,7 @@ public function dragonTFeffects(drakesHeart:Boolean = false):void {
 		}).applyEffect();
 		changes++;
 	}
-	if (!player.isDagonScaleCovered() && changes < changeLimit && rand(3) == 0) {
+	if (!player.isDragonScaleCovered() && changes < changeLimit && rand(3) == 0) {
 		var color:String;
 		if (rand(10) == 0) {
 			color = randomChoice("purple","silver");

@@ -3787,7 +3787,7 @@ public class Creature extends Utils
 
 		public function isScaleCovered():Boolean { return skin.isScaleCovered(); }
 		public function isReptileScaleCovered():Boolean { return skin.isReptileScaleCovered(); }
-		public function isDagonScaleCovered():Boolean { return skin.isDragonScaleCovered(); }
+		public function isDragonScaleCovered():Boolean { return skin.isDragonScaleCovered(); }
 		public function isLizardScaleCovered():Boolean { return skin.isLizardScaleCovered(); }
 		public function isNonLizardScaleCovered():Boolean { return skin.isNonLizardScaleCovered(); }
 		public function isFurCovered():Boolean { return skin.isFurCovered(); }
