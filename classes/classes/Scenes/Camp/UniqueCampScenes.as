@@ -138,6 +138,7 @@ public function transformationIntoDemiHollow():void {
 	CoC.instance.transformations.LowerBodyHuman.applyEffect(false);
 	CoC.instance.transformations.TailDraconic.applyEffect(false);
 	CoC.instance.transformations.SkinPatternWhiteBlackVeins.applyEffect(false);
+	if (!player.hasStatusEffect(StatusEffects.SoulEaterCounters1)) player.createStatusEffect(StatusEffects.SoulEaterCounters1, 0, 0, 0, 0);
 	player.addStatusValue(StatusEffects.ChainOfFate, 1, 168);
 	player.createPerk(PerkLib.ExanimationI, 0, 0, 0, 0);
 	player.createPerk(PerkLib.EmptyVessel, 0, 0, 0, 0);

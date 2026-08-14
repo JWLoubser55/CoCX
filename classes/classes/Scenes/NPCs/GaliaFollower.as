@@ -96,7 +96,7 @@ import classes.Scenes.NPCs.Galia;
 					if (player.hasStatusEffect(StatusEffects.CampSparingNpcsTimers3)) player.addStatusValue(StatusEffects.CampSparingNpcsTimers3, 2, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2));
 					else player.createStatusEffect(StatusEffects.CampSparingNpcsTimers3, 0, (player.statusEffectv1(StatusEffects.TrainingNPCsTimersReduction) * 2), 0, 0);
 					flags[kFLAGS.GALIA_DEFEATS_COUNTER] = 0;
-					flags[kFLAGS.GALIA_LVL_UP] = 5
+					flags[kFLAGS.GALIA_LVL_UP] = 5;
 				}*/
 			}
 			cleanupAfterCombat();

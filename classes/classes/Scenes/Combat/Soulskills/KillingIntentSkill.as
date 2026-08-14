@@ -39,14 +39,7 @@ public class KillingIntentSkill extends AbstractSoulSkill {
 
 	private function calcDeathMod():Number {
 		var mod:Number = 1;
-		var monstersKilled:int = 	flags[kFLAGS.THIEFS_KILLED] +
-									flags[kFLAGS.GOBLINS_KILLED] + 
-									flags[kFLAGS.HELLHOUNDS_KILLED] +
-									flags[kFLAGS.IMPS_KILLED] +
-									flags[kFLAGS.MINOTAURS_KILLED] +
-									flags[kFLAGS.HOLLOWS_KILLED] +
-									flags[kFLAGS.TRUE_DEMONS_KILLED] +
-									flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER];
+		var monstersKilled:int = player.enemiesKillCount();
 		mod += 0.1 * flags[kFLAGS.SOUL_CULTIVATION] * monstersKilled;
 		return mod;
 	}

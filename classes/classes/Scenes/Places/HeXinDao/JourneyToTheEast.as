@@ -362,7 +362,7 @@ public class JourneyToTheEast extends HeXinDaoAbstractContent implements Saveabl
 			player.gems -= 50;
 			outputText("You ask if she could tend to your injuries, to which she perks up, rubbing her hands together with grinning eyes, \"<i>Of course I can!</i>\"\n\n");
 			outputText("The horse-morph stands up, walking around you as she stops at your back before moving her hands across your [skin], making you gasp as you feel a strong tingling sensation from her fingertips. Sparks of magic dance across your [skin] as her potent magic washes away your pains and injuries.\n\n");
-			outputText("The sparks intensify, becoming almost painful, causing you to grimace, but she quickly hushes you as the sound touch from her on your body soothes the pain. Then, it's all over as Nadia lets go, taking a step back. Your wounds have sealed, and injuries fade as if they never existed.\n\n");
+			outputText("The sparks intensify, becoming almost painful, causing you to grimace, but she quickly hushes you as the sound touch from her on your body soothes the pain. Then, it's all over as healer lets go, taking a step back. Your wounds have sealed, and injuries fade as if they never existed.\n\n");
 			if (player.hasStatusEffect(StatusEffects.CombatWounds)) {
 				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.2) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.2);
 				else player.removeStatusEffect(StatusEffects.CombatWounds);

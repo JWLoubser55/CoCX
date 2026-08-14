@@ -66,7 +66,7 @@ public function dianaTalkYourself():void {
 }
 public function dianaTalkJob():void {
 	clearOutput();
-	outputText("\"<i>What kind of job?</i>\"n\n");
+	outputText("\"<i>What kind of job?</i>\"\n\n");
 	outputText("You intended one that would require leaving the village.\n\n");
 	outputText("\"<i>Leaving He'Xin'Dao?</i>\" She hesitates. \"<i>I do not feel the need to move anywhere. Perhaps to somewhere that is lacking a healer. Maybe...</i>\"\n\n");
 	if (DianaState < 1) DianaState = 1;

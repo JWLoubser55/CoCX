@@ -192,13 +192,13 @@ import classes.internals.*;
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 3) this.createPerk(PerkLib.RefinedBodyI, 0, 0, 0, 0);
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 4) this.createPerk(PerkLib.ImmovableObject, 0, 0, 0, 0);
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 5) this.createPerk(PerkLib.JobSwordsman, 0, 0, 0, 0);
-			if (flags[kFLAGS.GALIA_LVL_UP] >= 6) //this.createPerk(PerkLib., 0, 0, 0, 0);
+			//if (flags[kFLAGS.GALIA_LVL_UP] >= 6) this.createPerk(PerkLib., 0, 0, 0, 0);
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 7) this.createPerk(PerkLib.EpicStrength, 0, 0, 0, 0);
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 8) this.createPerk(PerkLib.JobWarrior, 0, 0, 0, 0);
-			if (flags[kFLAGS.GALIA_LVL_UP] >= 9) //this.createPerk(PerkLib., 0, 0, 0, 0);
+			//if (flags[kFLAGS.GALIA_LVL_UP] >= 9) this.createPerk(PerkLib., 0, 0, 0, 0);
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 10) this.createPerk(PerkLib.EpicSpeed, 0, 0, 0, 0);
 			if (flags[kFLAGS.GALIA_LVL_UP] >= 11) this.createPerk(PerkLib.PrestigeJobBerserker, 0, 0, 0, 0);
-			if (flags[kFLAGS.GALIA_LVL_UP] >= 12) //this.createPerk(PerkLib., 0, 0, 0, 0);
+			//if (flags[kFLAGS.GALIA_LVL_UP] >= 12) this.createPerk(PerkLib., 0, 0, 0, 0);
 			checkMonster();
 		}
 		

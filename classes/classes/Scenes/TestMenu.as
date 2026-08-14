@@ -116,6 +116,7 @@ public class TestMenu extends BaseContent
 		bd.add("Test15", MightyOrNot10, "Testing Bad End after effects.");
 		bd.add("Test16", MightyOrNot12, "Fixing Skeleton Giants counter.");
 		bd.add("Test17", MightyOrNot13, "Testing Banshee TF");
+		bd.add("HCF", MightyOrNot14, "Correcting Hollow PC souleater kill counts.");
 		submenu(bd, playerMenu, 0, false);
 	}
 
@@ -151,6 +152,19 @@ public class TestMenu extends BaseContent
 		bd.add("Neko Items", giveNekoItems, "All new neko items from Nekobake Inn doc");
 		bd.add("DantianPhylactery", dantianPhylacteryTest, "Getting or losing Dantian Phylactery.");
 		submenu(bd, SoulforceCheats, 0, false);
+	}
+	
+	public function MightyOrNot14():void {
+		if (!player.hasStatusEffect(StatusEffects.SoulEaterCounters1)) player.createStatusEffect(StatusEffects.SoulEaterCounters1, 0, 0, 0, 0);
+		if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285] > 0) {
+			player.addStatusValue(StatusEffects.SoulEaterCounters1, 1, flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285]);
+			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285] = 0;
+		}
+		if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02292] > 0) {
+			player.addStatusValue(StatusEffects.SoulEaterCounters1, 2, flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02292]);
+			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02292] = 0;
+		}
+		doNext(SoulforceCheats);
 	}
 	
 	public function MightyOrNot13():void {

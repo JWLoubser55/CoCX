@@ -6200,7 +6200,12 @@ use namespace CoC;
 		
 		public function enemiesKillCount():Number
 		{
-			return (flags[kFLAGS.THIEFS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + flags[kFLAGS.HELLHOUNDS_KILLED] + flags[kFLAGS.IMPS_KILLED] + flags[kFLAGS.MINOTAURS_KILLED] + flags[kFLAGS.HOLLOWS_KILLED] + flags[kFLAGS.TRUE_DEMONS_KILLED] + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]);
+			var eKC:Number = flags[kFLAGS.THIEFS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + flags[kFLAGS.HELLHOUNDS_KILLED] + flags[kFLAGS.IMPS_KILLED] + flags[kFLAGS.MINOTAURS_KILLED] + flags[kFLAGS.TRUE_DEMONS_KILLED];
+			if (hasStatusEffect(StatusEffects.SoulEaterCounters1)) {
+				eKC += statusEffectv1(StatusEffects.SoulEaterCounters1);
+				eKC += statusEffectv2(StatusEffects.SoulEaterCounters1);
+			}
+			return eKC;
 		}
 
 		public function armorDescript(nakedText:String = "gear"):String
@@ -8450,9 +8455,12 @@ use namespace CoC;
 				pc.SoulforceChange(Math.round(maxSoulforce() * 0.3));
 				pc.HPChange(Math.round(maxHP() * 0.3), true, false);
 				amnt += Math.round(maxHunger() * 0.3);
-				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) flags[kFLAGS.GOBLINS_KILLED]++;
-				else if (game.monster is Hollow) flags[kFLAGS.HOLLOWS_KILLED]++;
-				else flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER]++;
+				if (game.monster is Goblin || game.monster is GoblinAssassin || game.monster is GoblinShaman || game.monster is GoblinWarrior) {
+					addStatusValue(StatusEffects.SoulEaterCounters1, 3, 1);
+					flags[kFLAGS.GOBLINS_KILLED]++;
+				}
+				else if (game.monster is Hollow) addStatusValue(StatusEffects.SoulEaterCounters1, 2, 1);
+				else addStatusValue(StatusEffects.SoulEaterCounters1, 1, 1);
 				if (hasPerk(PerkLib.ExanimationII)) {
 					addPerkValue(PerkLib.ExanimationII, 1, 5);
 					if (perkv1(PerkLib.ExanimationII) > hollowFeedSoulPointsCap()) setPerkValue(PerkLib.ExanimationII, 1, hollowFeedSoulPointsCap());

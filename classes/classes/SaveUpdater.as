@@ -2400,7 +2400,7 @@ public class SaveUpdater extends NPCAwareContent {
 				// explore, forestOuter, forestInner, lake, desertOuter - handled by postLoadSaveObject()
 				SceneLib.exploration.counters.desertInner         = flags[kFLAGS.WEREFOX_EXTRAS];
 				SceneLib.exploration.counters.battlefieldBoundary = flags[kFLAGS.GOLEM_ENEMY_TYPE];
-				SceneLib.exploration.counters.battlefieldOuter    = flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER];
+				SceneLib.exploration.counters.battlefieldOuter    = flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285];
 				// mountainsMid - handled by postLoadSaveObject()
 				SceneLib.exploration.counters.hills               = flags[kFLAGS.MECH_AI_ATTACK];
 				SceneLib.exploration.counters.mountainsLow        = flags[kFLAGS.HOLLOW_TYPE];
@@ -2823,7 +2823,6 @@ public class SaveUpdater extends NPCAwareContent {
 			}
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.594) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.594;
-				flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] = 0;
 				flags[kFLAGS.HOLLOW_TYPE] = 0;
 			}
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.595) {

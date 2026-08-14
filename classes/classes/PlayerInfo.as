@@ -702,12 +702,14 @@ public class PlayerInfo extends BaseContent {
 		killCountStats += "<b>Thieves:</b> " + flags[kFLAGS.THIEFS_KILLED] + "\n";
 		killCountStats += "<b>Goblins:</b> " + flags[kFLAGS.GOBLINS_KILLED] + "\n";
 		killCountStats += "<b>Hellhounds:</b> " + flags[kFLAGS.HELLHOUNDS_KILLED] + "\n";
+		if (player.hasStatusEffect(StatusEffects.SoulEaterCounters1)) killCountStats += "<b>Hollows:</b> " + player.statusEffectv2(StatusEffects.SoulEaterCounters1) + "\n";
 		killCountStats += "<b>Imps:</b> " + flags[kFLAGS.IMPS_KILLED] + "\n";
 		killCountStats += "<b>Minotaurs:</b> " + flags[kFLAGS.MINOTAURS_KILLED] + "\n";
-		killCountStats += "<b>Hollows:</b> " + flags[kFLAGS.HOLLOWS_KILLED] + "\n";
 		killCountStats += "<b>True Demons:</b> " + flags[kFLAGS.TRUE_DEMONS_KILLED] + "\n";
-		killCountStats += "<b>Other enemies:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + "\n";
-		killCountStats += "<b>Souleater kill count:</b> " + flags[kFLAGS.ENEMIES_KILLED_BY_SOULEATER] + flags[kFLAGS.HOLLOWS_KILLED] + flags[kFLAGS.GOBLINS_KILLED] + "\n";
+		if (player.hasStatusEffect(StatusEffects.SoulEaterCounters1)) {
+			killCountStats += "<b>Other enemies:</b> " + player.statusEffectv1(StatusEffects.SoulEaterCounters1) + "\n";
+			killCountStats += "<b>Souleater kill count:</b> " + (player.statusEffectv1(StatusEffects.SoulEaterCounters1) + player.statusEffectv2(StatusEffects.SoulEaterCounters1) + player.statusEffectv3(StatusEffects.SoulEaterCounters1)) + "\n";
+		}
 		killCountStats += "<i>Total kill count: " + player.enemiesKillCount() + "</i>\n";
 
 		if (killCountStats != "")
@@ -3075,4 +3077,4 @@ public class PlayerInfo extends BaseContent {
 		doNext(superPerkBuyMenu, 6);
 	}
 }
-}
+}
