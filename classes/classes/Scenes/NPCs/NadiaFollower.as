@@ -642,7 +642,7 @@ public function breakingInYourMare():void {
 		outputText("moaning into your mouth as you slam your cock into her. Eventually you break the kiss, Nadia looking at you like she is about to burst into tears.\n\n");
 		outputText("\"<i>What should I do?</i>\" Nadia cries, tears forming in her eyes, \"<i>I’m so happy, it’s all like a dream and I fear at any moment I’ll wake up and you won’t be here with me.</i>\"\n\n");
 		outputText("You hold onto her tightly, letting her know that you're not going anywhere. Kissing away some of her tears, you affectionately stroke her face as she melts into your embrace.\n\n");
-		outputText("Nadia giggles for a second before moaning again, as her your cock continues to fuck her. You can feel yourself growing closer to an orgasm, and any second now you’ll shoot your seed into her, truly claiming her as your mare.\n\n");
+		outputText("Nadia giggles for a second before moaning again, as your cock continues to fuck her. You can feel yourself growing closer to an orgasm, and any second now you’ll shoot your seed into her, truly claiming her as your mare.\n\n");
 		outputText("Your thrusts grow increasingly eager as pressure builds within your loins, nearing the brink of your orgasm.\n\n");
 		outputText("\"<i>Please... cum in me. I can’t wait for you anymore!</i>\" Nadia begs, still hugging your head.\n\n");
 		outputText("You grunt as you finally cum, ");
@@ -825,7 +825,7 @@ public function uncurseEquippedItem(item:ItemType):void {
 public function nadiaAppearance():void {
 	clearOutput();
 	outputText("Nadia is a 7-foot-tall Alicorn with long white hair. Her body is well-muscled, and covered with soft, white fur. Her green eyes look at you, wisdom in her gaze. She's currently looking at you curiously, one of her large herbology books in her hands.\n\n");
-	outputText("Your eyes dip to her " + Appearance.breastCup(NadiaCupSize) + " cup breasts. You quickly look back up at her eyes, but if she noticed, she doesn't seem to care. Her legs, as with all horse morphs ends in hooves. Bound in iron, like the horseshoes back home, you know that those can be lethal weapons in a pinch. Her snow-white tail sits across her legs right now, strands of white hair covering her most intimate parts. You know Nadia protected her virginity up to becoming an Alicorn, though now since you are her stallion, she is before anything your girlfriend.\n\n");
+	outputText("Your eyes dip to her " + Appearance.breastCup(NadiaCupSize) + " breasts. You quickly look back up at her eyes, but if she noticed, she doesn't seem to care. Her legs, as with all horse morphs ends in hooves. Bound in iron, like the horseshoes back home, you know that those can be lethal weapons in a pinch. Her snow-white tail sits across her legs right now, strands of white hair covering her most intimate parts. You know Nadia protected her virginity up to becoming an Alicorn, though now since you are her stallion, she is before anything your girlfriend.\n\n");
 	menu();
 	addButton(14, "Back", mainCampMenu);
 }
@@ -1096,7 +1096,7 @@ private function BelisaNadiaTalk():void {
 	private function NadiaPregAnnouncement():Boolean {
 		switch (pregnancy.eventTriggered()) {
 			case 1:
-                outputText("\nYour mare is waiting for you back at camp, with a smile on her face, nearly jumping from joy. Her eyes gleam as she sees you, and she nearly skips over, her " + Appearance.breastCup(NadiaCupSize) + "-cup breasts bouncing with each step. She breaks into a run, and you brace yourself as Nadia tackles you, Smothering you in her massive mammaries.\n");
+                outputText("\nYour mare is waiting for you back at camp, with a smile on her face, nearly jumping from joy. Her eyes gleam as she sees you, and she nearly skips over, her " + Appearance.breastCup(NadiaCupSize) + " breasts bouncing with each step. She breaks into a run, and you brace yourself as Nadia tackles you, smothering you in her massive mammaries.\n");
                 outputText("\n\"<i>Oh, my stallion, you wonderful, wonderful lover!</i>\" She gives you a big smack on the lips. You look at her, confused, then the penny drops. You bring a hand to her belly, and she nods, her horn glowing, and her eyes flashing with excitement.\n");
                 outputText("\n\"<i>I’m pregnant</i>\", she says simply, cheeks red, and a huge grin on her face. \"<i>You’re going to be a father, [Name].</i>\" She puts a hand on her stomach.\n");
                 outputText("\nYou congratulate Nadia, knowing that this has been what she wanted for a long time. She cuddles you for a minute or so, before letting you go. You excuse yourself, going about your day…but you can feel Nadia’s eyes on your back as you go about your work around camp.\n");

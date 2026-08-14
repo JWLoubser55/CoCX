@@ -303,9 +303,9 @@ public class Changelog extends BaseContent
 			outputText("-Implemented tentacle cock 1, 2 and 3 sprites. (Liadri)\n");
 			outputText("-All normal and large sized skeletons mana/soulforce costs to make was adjusted to be more in line for all newbie Haruspex users tinier mana/sf-bars. For not large skeleton types 20% of max mana/sf bar + 200 and if cost is above 2,000 it will be fixed cost of 2,000. For large skeleton types 50% max mana/sf + 500 with fixed cap of 5,000.\n");
 			outputText("-Some fixes for vouivre TF. (Stadler)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Small changes to Motivation perk line: 1st perk increase dmg by ~100%; 2nd by ~150% at lvl 9, 24, 54, 78; 3rd increased bonuses from prev 2 perks by 5 times.\n");
+			outputText("-Monsters increase to damage from weapon atk was inverted and starting from 0.05 for first 50 pts and then increase by 0.05 until 400+ atk value where it stay as 0.5 per atk point. Thou shall weaker monsters hit bit weaker but stronger ones getting bit more of punch power :D\n");
+			outputText("-Basic Leadership and Intermediate Leadership have additional effect: +1%/+2% per PC level to increased efficiency of henchmen attacks.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

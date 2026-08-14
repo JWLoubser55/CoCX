@@ -2955,14 +2955,14 @@ public class PerkLib
 				"Some people get all the luck it seems... Shut up and take our money is what all enemies scream at you upon defeat, increasing your gains on victory. (15% more gems from victories)",
 				"You've chosen the 'Money Finder' perk, increasing gem gains from victories by 15%.");
 		public static const Motivation:PerkType = mk("Motivation", "Motivation",
-				"Decreases the idle time of followers to 20% during combat. Increases the damage dealt by followers by ~50%.",
-				"You've chosen the 'Motivation' perk. Decreases the idle time of followers to 20% during combat. Increases the damage dealt by followers by ~50%.");
+				"Decreases the idle time of followers to 20% during combat. Increases the damage dealt by followers by ~100%.",
+				"You've chosen the 'Motivation' perk. Decreases the idle time of followers to 20% during combat. Increases the damage dealt by followers by ~100%.");
 		public static const MotivationEx:PerkType = mk("Motivation (Ex)", "Motivation (Ex)",
-				"Decreases the idle time of followers to 1% during combat. Increases the damage dealt by followers by ~50% at level 6, 27, 54 and 102.",
-				"You've chosen the 'Motivation (Ex)' perk. Increases the damage dealt by followers by ~50% at level 6, 27, 54 and 102.");
+				"Decreases the idle time of followers to 1% during combat. Increases the damage dealt by followers by ~150% at level 9, 24, 54 and 78.",
+				"You've chosen the 'Motivation (Ex)' perk. Increases the damage dealt by followers by ~150% at level 9, 24, 54 and 78.");
 		public static const MotivationSu:PerkType = mk("Motivation (Su)", "Motivation (Su)",
-				"All followers can now do two (or three with Vocal Tactician perk) actions per turn. Increases the damage bonuses of the other Motivcation perks by 1.5.",
-				"You've chosen the 'Motivation (Su)' perk. All followers do two (or three with Vocal Tactician perk) actions per turn, and increases the damage bonuses of other Motivation perks by 1.5.");
+				"All followers can now do two (or three with Vocal Tactician perk) actions per turn. Increases the damage bonuses of the other Motivation perks by 5.",
+				"You've chosen the 'Motivation (Su)' perk. All followers do two (or three with Vocal Tactician perk) actions per turn, and increases the damage bonuses of other Motivation perks by 5.");
 		public static const MusclesOfSteel:PerkType = mk("Muscles of Steel", "Muscles of Steel",
 				"Your body has further adapted to fighting, strengthening your muscles so that they too possess the power of steel to further your melee power. (+10% melee phys dmg)",
 				"You've chosen the 'Muscles of Steel' perk, gaining +10% melee phys dmg.");
@@ -4915,7 +4915,7 @@ public class PerkLib
 
 		// Quest, Event & NPC perks
 		public static const AdvancedLeadership:PerkType = mk("Advanced Leadership", "Advanced Leadership",
-				"Allows to form 4 people party.");
+				"Allows to form 4 people party. (+3% per PC level to increased efficiency of henchmen attacks)");
 		public static const Aelfwine:PerkType = mk("Aelfwine", "Aelfwine",
 				"When drinking alcohol double libido but halve intelligence while drunk.");
 		public static const AffinityGnome:PerkType = mk("Affinity (Gnome)", "Affinity (Gnome)",
@@ -4948,7 +4948,7 @@ public class PerkLib
 		public static const AuraOfPurity:PerkType = mk("Aura of Purity", "Aura of Purity",
 				"Those of impure heart who come close to you are seared by holy fire and blinded by your inner light.");
 		public static const BasicLeadership:PerkType = mk("Basic Leadership", "Basic Leadership",
-				"Allows to form 2 people party.");
+				"Allows to form 2 people party. (+1% per PC level to increased efficiency of henchmen attacks)");
 		public static const BasiliskResistance:PerkType = mk("Basilisk Resistance", "Basilisk Resistance",
 				"Grants immunity to Basilisk's paralyzing gaze. Disables Basilisk Bad End.");
 		public static const BladeDancer:PerkType = mk("Blade Dancer", "Blade Dancer",
@@ -5069,7 +5069,7 @@ public class PerkLib
 		public static const InnerPhylactery:PerkType = mk("InnerPhylactery", "InnerPhylactery",
 				"Your soul has been safely stored into a phylactery allowing you to fully unlock your potential as a demon, since fusing back into your body to sit beside your heart.").withBuffs({'int.mult':0.75});
 		public static const IntermediateLeadership:PerkType = mk("Intermediate Leadership", "Intermediate Leadership",
-				"Allows to form 3 people party.");
+				"Allows to form 3 people party. (+2% per PC level to increased efficiency of henchmen attacks)");
 		public static const LookADistraction:PerkType = mk("Look! A Distraction", "Look! A Distraction",
 				"Allow to use mental special that can stun enemy and give one time bonus of doubling mlee attacks count once per fight.");
 		public static const LuststickAdapted:PerkType = mk("Luststick Adapted", "Luststick Adapted",
@@ -9691,4 +9691,4 @@ public class PerkLib
 	}
 }
 
-}
+}

@@ -20,23 +20,28 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function CombatFollowersActions() {}
 		
 		public function increasedEfficiencyOfAttacks():Number {
-			var IEoA:Number = 0;
+			var IEoA:Number = 1;
 			if (player.hasPerk(PerkLib.Motivation)) {
-				IEoA += 0.5;
+				IEoA += 1;
 			}
 			if (player.hasPerk(PerkLib.MotivationEx)) {
-				if (player.level >= 6) IEoA += 0.5;
-				if (player.level >= 27) IEoA += 0.5;
-				if (player.level >= 54) IEoA += 0.5;
-				if (player.level >= 102) IEoA += 0.5;
+				if (player.level >= 9) IEoA += 1.5;
+				if (player.level >= 24) IEoA += 1.5;
+				if (player.level >= 54) IEoA += 1.5;
+				if (player.level >= 78) IEoA += 1.5;
 			}
-			if (player.hasPerk(PerkLib.MotivationSu)) IEoA *= 1.5;
-			IEoA += 1;
+			if (player.hasPerk(PerkLib.MotivationSu)) IEoA *= 5;
 			if (player.hasPerk(PerkLib.CommandingTone)) IEoA += 0.1;
 			if (player.hasPerk(PerkLib.DiaphragmControl)) IEoA += 0.1;
 			if (player.hasPerk(PerkLib.VocalTactician)) IEoA += 0.15;
-			if (pointsToHouseMareth() >= 3) IEoA *= 1.2;
+			if (pointsToHouseMareth() >= 3) IEoA *= 2;
 			if (player.hasPerk(PerkLib.MeltingPot) && monster.monsterIsAcidBurned()) IEoA *= 1.3;
+			if (player.hasPerk(PerkLib.BasicLeadership)) {
+				var IEoA1:Number = 1;
+				if (player.hasPerk(PerkLib.IntermediateLeadership)) IEoA1 += 2;
+				if (player.hasPerk(PerkLib.AdvancedLeadership)) IEoA1 += 3;
+				IEoA *= (1 + (0.01 * IEoA1 * player.level));
+			}
 			//ITEMS EFFEC TS? MISC ACC / RINGS / NECK / HEAD ACC, WEAPON?
 			return IEoA;
 		}
@@ -66,23 +71,38 @@ import classes.StatusEffects.VampireThirstEffect;
 					else {
 						if (choice1 < 5) neisaCombatActions1();
 						if (choice1 >= 5 && choice1 < 10) neisaCombatActions2();
-						if (choice1 >= 10 && choice1 < 15) neisaCombatActions3();
-						if (choice1 >= 15) neisaCombatActions4();
+						if (choice1 >= 10) {
+							if (monster.monsterIsStunned()) neisaCombatActions1();
+							else {
+								if (choice1 < 15) neisaCombatActions3();
+								else neisaCombatActions4();
+							}
+						}
 					}
 				}
 				else if (downTo20Idle()) {
 					if (choice1 < 4) neisaCombatActions0();
-					if (choice1 >= 4 && choice1 < 11) neisaCombatActions1();
-					if (choice1 >= 11 && choice1 < 16) neisaCombatActions2();
-					if (choice1 >= 16 && choice1 < 19) neisaCombatActions3();
-					if (choice1 == 19) neisaCombatActions4();
+					if (choice1 >= 4 && choice1 < 9) neisaCombatActions1();
+					if (choice1 >= 9 && choice1 < 14) neisaCombatActions2();
+					if (choice1 >= 14) {
+						if (monster.monsterIsStunned()) neisaCombatActions1();
+						else {
+							if (choice1 < 18) neisaCombatActions3();
+							else neisaCombatActions4();
+						}
+					}
 				}
 				else {
 					if (choice1 < 10) neisaCombatActions0();
-					if (choice1 >= 10 && choice1 < 14) neisaCombatActions1();
-					if (choice1 >= 14 && choice1 < 17) neisaCombatActions2();
-					if (choice1 == 17 || choice1 == 18) neisaCombatActions3();
-					if (choice1 == 19) neisaCombatActions4();
+					if (choice1 >= 10 && choice1 < 13) neisaCombatActions1();
+					if (choice1 >= 13 && choice1 < 16) neisaCombatActions2();
+					if (choice1 >= 16) {
+						if (monster.monsterIsStunned()) neisaCombatActions1();
+						else {
+							if (choice1 < 19) neisaCombatActions3();
+							else neisaCombatActions4();
+						}
+					}
 				}
 			}
 			else {
@@ -100,12 +120,16 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function neisaCombatActions1():void {
 			var dmg1:Number = player.statusEffectv1(StatusEffects.CombatFollowerNeisa);
 			var weaponNeisa:Number = player.statusEffectv2(StatusEffects.CombatFollowerNeisa);
-			dmg1 += scalingBonusStrengthCompanion() * 0.5;
-			if (weaponNeisa < 51) dmg1 *= (1 + (weaponNeisa * 0.03));
-			else if (weaponNeisa >= 51 && weaponNeisa < 101) dmg1 *= (2.5 + ((weaponNeisa - 50) * 0.025));
-			else if (weaponNeisa >= 101 && weaponNeisa < 151) dmg1 *= (3.75 + ((weaponNeisa - 100) * 0.02));
-			else if (weaponNeisa >= 151 && weaponNeisa < 201) dmg1 *= (4.75 + ((weaponNeisa - 150) * 0.015));
-			else dmg1 *= (5.5 + ((weaponNeisa - 200) * 0.01));
+			dmg1 += scalingBonusStrengthCompanion() * 2.5;
+			if (weaponNeisa < 51) dmg1 *= (1 + (weaponNeisa * 0.01));
+			else if (weaponNeisa >= 51 && weaponNeisa < 101) dmg1 *= (1.5 + ((weaponNeisa - 50) * 0.015));
+			else if (weaponNeisa >= 101 && weaponNeisa < 151) dmg1 *= (2.25 + ((weaponNeisa - 100) * 0.02));
+			else if (weaponNeisa >= 151 && weaponNeisa < 201) dmg1 *= (3.25 + ((weaponNeisa - 150) * 0.025));
+			else if (weaponNeisa >= 201 && weaponNeisa < 251) dmg1 *= (5.5 + ((weaponNeisa - 200) * 0.03));
+			else if (weaponNeisa >= 251 && weaponNeisa < 301) dmg1 *= (7 + ((weaponNeisa - 250) * 0.035));
+			else if (weaponNeisa >= 301 && weaponNeisa < 351) dmg1 *= (8.75 + ((weaponNeisa - 300) * 0.04));
+			else if (weaponNeisa >= 351 && weaponNeisa < 401) dmg1 *= (10.75 + ((weaponNeisa - 350) * 0.045));
+			else dmg1 *= (13 + ((weaponNeisa - 400) * 0.05));
 			dmg1 = Math.round(dmg1 * increasedEfficiencyOfAttacks());
 			outputText("Neisa slashes at [themonster] with her sword. ");
 			doMinionPhysDamage(dmg1, true, true);
@@ -116,22 +140,12 @@ import classes.StatusEffects.VampireThirstEffect;
 			player.createStatusEffect(StatusEffects.CompBoostingPCArmorValue, 0, 0, 0, 0);
 		}
 		public function neisaCombatActions3():void {
-			outputText("Neisa smashes her shield on [themonster]’s head, ");
-			if (!monster.hasPerk(PerkLib.Resolute)) {
-				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
-				outputText("stunning it.\n\n");
-			} else {
-				outputText("but the enemy endured it.\n\n");
-			}
+			outputText("Neisa smashes her shield on [themonster]’s head, stunning it.\n\n");
+			monster.createStatusEffect(StatusEffects.Stunned, 3, 0, 0, 0);
 		}
 		public function neisaCombatActions4():void {
-			outputText("Neisa viciously rams her shield on [themonster], ");
-			if (!monster.hasPerk(PerkLib.Resolute)) {
-				monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
-				outputText("dazing it.\n\n");
-			} else {
-				outputText("but the enemy endured it.\n\n");
-			}
+			outputText("Neisa viciously rams her shield on [themonster], dazing it.\n\n");
+			monster.createStatusEffect(StatusEffects.Stunned, 6, 0, 0, 0);
 		}
 		
 		public function dianaCombatActions():void {
@@ -227,27 +241,22 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText("Etna flies around, looking for an opportunity to strike.\n\n");
 		}
 		public function etnaCombatActions1():void {
-			var lustDmg:Number = Math.round((player.statusEffectv2(StatusEffects.CombatFollowerEtna) / 6) * increasedEfficiencyOfAttacks());
+			var lustDmg:Number = Math.round(player.statusEffectv2(StatusEffects.CombatFollowerEtna) * increasedEfficiencyOfAttacks());
 			outputText("Etna shoots a spike at [themonster], you can see the telltale sign of arousal in [monster his] movement. ");
 			monster.teased(Math.round(monster.lustVuln * lustDmg));
 			outputText("\n\n");
 		}
 		public function etnaCombatActions2():void {
 			var dmg2:Number = player.statusEffectv1(StatusEffects.CombatFollowerEtna);
-			dmg2 += scalingBonusStrengthCompanion() * 0.5;
+			dmg2 += scalingBonusStrengthCompanion() * 2.5;
 			dmg2 = Math.round(dmg2 * increasedEfficiencyOfAttacks());
 			outputText("Etna dives at [themonster], mauling [monster his] viciously with her claws before taking flight again. ");
 			doMinionPhysDamage(dmg2, true, true);
 			outputText("\n\n");
 		}
 		public function etnaCombatActions3():void {
-			outputText("Etna dives at [themonster] and crashes boob first into [monster his] face, ");
-			if (!monster.hasPerk(PerkLib.Resolute)) {
-				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
-				outputText("staggering it before taking flight again.\n\n");
-			} else {
-				outputText("but the enemy shook off the blow.\n\n");
-			}
+			outputText("Etna dives at [themonster] and crashes boob first into [monster his] face, staggering it before taking flight again.\n\n");
+			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		
 		public function auroraCombatActions():void {
@@ -292,12 +301,16 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function auroraCombatActions1():void {
 			var dmg01:Number = player.statusEffectv1(StatusEffects.CombatFollowerAurora);
 			var weaponAurora1:Number = player.statusEffectv3(StatusEffects.CombatFollowerAurora);
-			dmg01 += scalingBonusStrengthCompanion() * 0.5;
-			if (weaponAurora1 < 51) dmg01 *= (1 + (weaponAurora1 * 0.03));
-			else if (weaponAurora1 >= 51 && weaponAurora1 < 101) dmg01 *= (2.5 + ((weaponAurora1 - 50) * 0.025));
-			else if (weaponAurora1 >= 101 && weaponAurora1 < 151) dmg01 *= (3.75 + ((weaponAurora1 - 100) * 0.02));
-			else if (weaponAurora1 >= 151 && weaponAurora1 < 201) dmg01 *= (4.75 + ((weaponAurora1 - 150) * 0.015));
-			else dmg01 *= (5.5 + ((weaponAurora1 - 200) * 0.01));
+			dmg01 += scalingBonusStrengthCompanion() * 2.5;
+			if (weaponAurora1 < 51) dmg01 *= (1 + (weaponAurora1 * 0.01));
+			else if (weaponAurora1 >= 51 && weaponAurora1 < 101) dmg01 *= (1.5 + ((weaponAurora1 - 50) * 0.015));
+			else if (weaponAurora1 >= 101 && weaponAurora1 < 151) dmg01 *= (2.25 + ((weaponAurora1 - 100) * 0.02));
+			else if (weaponAurora1 >= 151 && weaponAurora1 < 201) dmg01 *= (3.25 + ((weaponAurora1 - 150) * 0.025));
+			else if (weaponAurora1 >= 201 && weaponAurora1 < 251) dmg01 *= (5.5 + ((weaponAurora1 - 200) * 0.03));
+			else if (weaponAurora1 >= 251 && weaponAurora1 < 301) dmg01 *= (7 + ((weaponAurora1 - 250) * 0.035));
+			else if (weaponAurora1 >= 301 && weaponAurora1 < 351) dmg01 *= (8.75 + ((weaponAurora1 - 300) * 0.04));
+			else if (weaponAurora1 >= 351 && weaponAurora1 < 401) dmg01 *= (10.75 + ((weaponAurora1 - 350) * 0.045));
+			else dmg01 *= (13 + ((weaponAurora1 - 400) * 0.05));
 			dmg01 = Math.round(dmg01 * increasedEfficiencyOfAttacks());
 			outputText("Aurora thrust her hand at [themonster]. ");
 			doMinionPhysDamage(dmg01, true, true);
@@ -310,29 +323,32 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function auroraCombatActions3():void {
 			var dmg3:Number = player.statusEffectv1(StatusEffects.CombatFollowerAurora);
 			var weaponAurora:Number = player.statusEffectv3(StatusEffects.CombatFollowerAurora);
-			dmg3 += scalingBonusStrengthCompanion();
-			if (weaponAurora < 51) dmg3 *= (1 + (weaponAurora * 0.03));
-			else if (weaponAurora >= 51 && weaponAurora < 101) dmg3 *= (2.5 + ((weaponAurora - 50) * 0.025));
-			else if (weaponAurora >= 101 && weaponAurora < 151) dmg3 *= (3.75 + ((weaponAurora - 100) * 0.02));
-			else if (weaponAurora >= 151 && weaponAurora < 201) dmg3 *= (4.75 + ((weaponAurora - 150) * 0.015));
-			else dmg3 *= (5.5 + ((weaponAurora - 200) * 0.01));
+			dmg3 += scalingBonusStrengthCompanion() * 5;
+			if (weaponAurora < 51) dmg3 *= (1 + (weaponAurora * 0.01));
+			else if (weaponAurora >= 51 && weaponAurora < 101) dmg3 *= (1.5 + ((weaponAurora - 50) * 0.015));
+			else if (weaponAurora >= 101 && weaponAurora < 151) dmg3 *= (2.25 + ((weaponAurora - 100) * 0.02));
+			else if (weaponAurora >= 151 && weaponAurora < 201) dmg3 *= (3.25 + ((weaponAurora - 150) * 0.025));
+			else if (weaponAurora >= 201 && weaponAurora < 251) dmg3 *= (5.5 + ((weaponAurora - 200) * 0.03));
+			else if (weaponAurora >= 251 && weaponAurora < 301) dmg3 *= (7 + ((weaponAurora - 250) * 0.035));
+			else if (weaponAurora >= 301 && weaponAurora < 351) dmg3 *= (8.75 + ((weaponAurora - 300) * 0.04));
+			else if (weaponAurora >= 351 && weaponAurora < 401) dmg3 *= (10.75 + ((weaponAurora - 350) * 0.045));
+			else dmg3 *= (13 + ((weaponAurora - 400) * 0.05));
 			dmg3 *= 3;
 			dmg3 = Math.round(dmg3 * increasedEfficiencyOfAttacks());
 			outputText("Aurora thrust her hand at [themonster]. Her claws hits thrice against [themonster], dealing ");
 			doMinionPhysDamage(dmg3, true, true);
 			outputText(" damage!\n\n");
+			if (!monster.isImmuneToBleed()) {
+				if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
+				else monster.createStatusEffect(StatusEffects.Hemorrhage2, 3, 0.1, 0, 0);
+			}
 		}
 		public function auroraCombatActions4():void {
-			var dmg3a:Number = (scalingBonusStrengthCompanion() + scalingBonusToughnessCompanion()) / 6;
+			var dmg3a:Number = (scalingBonusStrengthCompanion() + scalingBonusToughnessCompanion());
 			dmg3a = Math.round(dmg3a * increasedEfficiencyOfAttacks());
-			outputText("Aurora flaps her huge bat wings at [themonster] trying to knock it down. ");
+			outputText("Aurora flaps her huge bat wings at [themonster] trying to knock it down.\n\n");
 			doMinionPhysDamage(dmg3a, true, true);
-			if (!monster.hasPerk(PerkLib.Resolute)) {
-				monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
-				outputText("\n\n");
-			} else {
-				outputText("However, [themonster] was able to stand their ground.\n\n");
-			}
+			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		
 		public function ghoulishVampServCombatActions():void {

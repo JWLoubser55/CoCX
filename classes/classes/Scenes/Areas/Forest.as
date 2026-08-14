@@ -401,7 +401,7 @@ use namespace CoC;
 							//Extra chance of Jojo encounter.
 							return (player.hasPerk(PerkLib.PiercedFurrite)
 									&& rand(5) == 0
-									&& (player.cor > 25 || JojoScene.monk > 0)) ? (2.4 * player.npcChanceToEncounter()) : (2 * player.npcChanceToEncounter());
+									&& (player.cor > -50 || JojoScene.monk > 0)) ? (2.4 * player.npcChanceToEncounter()) : (2 * player.npcChanceToEncounter());
 						},
 						call  : jojoEncounter
 					}, {
@@ -1147,7 +1147,7 @@ use namespace CoC;
 			if (SceneLib.alvinaFollower.JojoDevilPurification == 1) {
 				SceneLib.jojoScene.jojoForestPurifyMeFromDevilry();
 			} else if (JojoScene.monk == JojoScene.JOJO_NOT_MET && !player.hasStatusEffect(StatusEffects.PureCampJojo)) {
-				if (player.cor < 25) SceneLib.jojoScene.lowCorruptionJojoEncounter();
+				if (player.cor < -50) SceneLib.jojoScene.lowCorruptionJojoEncounter();
 				else SceneLib.jojoScene.highCorruptionJojoEncounter();
 			} else if (JojoScene.monk == JojoScene.JOJO_MET || JojoScene.monk < 0) { //Negative monk value indicates rape is disabled.
 				SceneLib.jojoScene.repeatJojoEncounter();
