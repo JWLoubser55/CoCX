@@ -212,20 +212,38 @@ import classes.StatusEffects.VampireThirstEffect;
 					else {
 						if (choice3 < 7) etnaCombatActions1();
 						if (choice3 >= 7 && choice3 < 15) etnaCombatActions2();
-						if (choice3 >= 15) etnaCombatActions3();
+						if (choice3 >= 15) {
+							if (monster.monsterIsStunned()) {
+								if (rand(2) == 0) etnaCombatActions1();
+								else etnaCombatActions2();
+							}
+							else etnaCombatActions3();
+						}
 					}
 				}
 				else if (downTo20Idle()) {
 					if (choice3 < 4) etnaCombatActions0();
 					if (choice3 >= 4 && choice3 < 10) etnaCombatActions1();
 					if (choice3 >= 10 && choice3 < 16) etnaCombatActions2();
-					if (choice3 >= 16) etnaCombatActions3();
+					if (choice3 >= 16) {
+						if (monster.monsterIsStunned()) {
+							if (rand(2) == 0) etnaCombatActions1();
+							else etnaCombatActions2();
+						}
+						else etnaCombatActions3();
+					}
 				}
 				else {
 					if (choice3 < 10) etnaCombatActions0();
 					if (choice3 >= 10 && choice3 < 14) etnaCombatActions1();
 					if (choice3 >= 14 && choice3 < 18) etnaCombatActions2();
-					if (choice3 >= 18) etnaCombatActions3();
+					if (choice3 >= 18) {
+						if (monster.monsterIsStunned()) {
+							if (rand(2) == 0) etnaCombatActions1();
+							else etnaCombatActions2();
+						}
+						else etnaCombatActions3();
+					}
 				}
 			}
 			else {
@@ -345,10 +363,11 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function auroraCombatActions4():void {
 			var dmg3a:Number = (scalingBonusStrengthCompanion() + scalingBonusToughnessCompanion());
+			if (monster.monsterIsStunned()) dmg3a *= 5;
 			dmg3a = Math.round(dmg3a * increasedEfficiencyOfAttacks());
 			outputText("Aurora flaps her huge bat wings at [themonster] trying to knock it down.\n\n");
 			doMinionPhysDamage(dmg3a, true, true);
-			monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
+			if (!monster.monsterIsStunned()) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 		}
 		
 		public function ghoulishVampServCombatActions():void {
@@ -370,8 +389,8 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function ghoulishVampServCombatActions1():void {
 			var dmg02:Number = player.statusEffectv1(StatusEffects.CombatFollowerGVampServ);
 			var weaponGhoul1:Number = player.statusEffectv2(StatusEffects.CombatFollowerGVampServ);
-			dmg02 += scalingBonusStrengthCompanion() * 0.5;
-			dmg02 *= (1 + (weaponGhoul1 * 0.03));
+			dmg02 += scalingBonusStrengthCompanion() * 2.5;
+			dmg02 *= (1 + (weaponGhoul1 * 0.15));
 			dmg02 = Math.round(dmg02 * increasedEfficiencyOfAttacks());
 			outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" leaps into the fray, delivering a deadly slash with "+(SceneLib.ghoulishVampireServant.ghoulGender()?"her":"his")+" clawed hand. [Themonster] begins to bleed ");
 			doMinionPhysDamage(dmg02, true, true);
@@ -397,23 +416,20 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function ghoulishVampServCombatActions2():void {
 			outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" leaps onto your opponent, attempting to hold it in place as "+flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" tries to get in a vicious bite! ");
 			if (rand(3) > 0) {
-				var dmg03:Number = scalingBonusStrengthCompanion() * 0.4;
+				var dmg03:Number = scalingBonusStrengthCompanion() * 2;
+				if (monster.monsterIsStunned()) dmg03 *= 2;
 				dmg03 = Math.round(dmg03 * increasedEfficiencyOfAttacks());
 				outputText("[Themonster] is pinned under your ghoulish partner's body!");
 				doMinionPhysDamage(dmg03, true, true);
-				if (!monster.hasPerk(PerkLib.Resolute)) {
-					monster.createStatusEffect(StatusEffects.Stunned, 1, 0, 0, 0);
-				} else {
-					outputText("\nHowever, [Themonster] was able to get free!");
-				}
+				if (!monster.monsterIsStunned()) monster.createStatusEffect(StatusEffects.Stunned, 2, 0, 0, 0);
 			}
 			else outputText("[Themonster] manages to shove your servant back!");
 			outputText("\n\n");
 		}
 		public function ghoulishVampServCombatActions3():void {
-			var dmg04:Number = scalingBonusStrengthCompanion() * 0.4;
+			var dmg04:Number = scalingBonusStrengthCompanion() * 2;
 			var weaponGhoul2:Number = player.statusEffectv2(StatusEffects.CombatFollowerGVampServ);
-			dmg04 *= (1 + (weaponGhoul2 * 0.02));
+			dmg04 *= (1 + (weaponGhoul2 * 0.1));
 			dmg04 = Math.round(dmg04 * increasedEfficiencyOfAttacks());
 			outputText(flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+" charges from a wide angle, surprising your opponent and biting straight into "+(monster.hasCock()?"his":"her")+" flesh to extract some of its soul force. The ghoul is pushed back, but still manages to steal a bite and some soul force from "+(SceneLib.ghoulishVampireServant.ghoulGender()?"her":"his")+" victim! ");
 			doMinionPhysDamage(dmg04, true, true);
@@ -507,6 +523,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			var heal1:Number = player.statusEffectv1(StatusEffects.CombatFollowerAyane);
 			heal1 += scalingBonusIntelligenceCompanion();
 			heal1 *= player.statusEffectv3(StatusEffects.CombatFollowerAyane);
+			heal1 *= 5;
 			//Determine if critical heal!
 			var crit:Boolean = false;
 			var critHeal:int = 25;
@@ -540,7 +557,7 @@ import classes.StatusEffects.VampireThirstEffect;
 				crit = true;
 				damageFF *= 1.75;
 			}
-			damageFF *= 0.5;
+			damageFF *= 2.5;
 			damageFF *= (1 + ((player.statusEffectv3(StatusEffects.CombatFollowerAyane) * 2) - 2));
 			//High damage to goes.
 			if(monster.short == "goo-girl") damageFF = Math.round(damageFF * 1.5);
@@ -755,7 +772,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function mitziCombatActions1():void {
 			var dmg4:Number = player.statusEffectv1(StatusEffects.CombatFollowerMitzi);
-			dmg4 += scalingBonusStrengthCompanion() * 0.5;
+			dmg4 += scalingBonusStrengthCompanion() * 2.5;
 			dmg4 = Math.round(dmg4 * increasedEfficiencyOfAttacks());
 			outputText("Mitzi takes a couple needles from her belt then hurls them at [themonster]. ");
 			doMinionPhysDamage(dmg4, true, true);
@@ -763,22 +780,20 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function mitziCombatActions2():void {
 			outputText("Lildea pulls out a bubbling vial of a green liquid then tosses at [themonster]. The vial shatters on contact, causing the contents to spill onto [monster him]. ");
-			if (!monster.hasPerk(PerkLib.EnemyConstructType) || !monster.hasPerk(PerkLib.EnemyGhostType)) {
-				doMinionPoisonDamage((((player.statusEffectv2(StatusEffects.CombatFollowerMitzi)/4)+20)*increasedEfficiencyOfAttacks()), true, true);
-				outputText("\n\n");
-				if (monster.hasStatusEffect(StatusEffects.PoisonDoTH)) monster.addStatusValue(StatusEffects.PoisonDoTH, 1, 1);
-				else monster.createStatusEffect(StatusEffects.PoisonDoTH, 4, 0.02, 0, 0);
-			}
+			doMinionPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerMitzi)+100)*increasedEfficiencyOfAttacks()), true, true);
+			outputText("\n\n");
+			if (monster.hasStatusEffect(StatusEffects.PoisonDoTH)) monster.addStatusValue(StatusEffects.PoisonDoTH, 1, 1);
+			else monster.createStatusEffect(StatusEffects.PoisonDoTH, 4, 0.02, 0, 0);
 		}
 		public function mitziCombatActions3():void {
-			var lustDmg:Number = Math.round((player.statusEffectv3(StatusEffects.CombatFollowerMitzi) / 6) * increasedEfficiencyOfAttacks());
+			var lustDmg:Number = Math.round(player.statusEffectv3(StatusEffects.CombatFollowerMitzi) * increasedEfficiencyOfAttacks());
 			outputText("Furxia throws out a barrage of aphrodisia laced needles at [themonster]. ");
 			monster.teased(Math.round(monster.lustVuln * lustDmg));
 			outputText("\n\n");
 		}
 		public function mitziCombatActions4():void {
 			outputText("Roxy whips out two circular glass bottles filled with a pink liquid. She tosses them at [themonster] releasing a cloud of pink fog around [monster him]. ");
-			monster.teased(Math.round(monster.lustVuln * (rand(player.statusEffectv3(StatusEffects.CombatFollowerMitzi)/4)+20) * increasedEfficiencyOfAttacks()));
+			monster.teased(Math.round(monster.lustVuln * (rand(player.statusEffectv3(StatusEffects.CombatFollowerMitzi))+100) * increasedEfficiencyOfAttacks()));
 			outputText("\n\n");
 			if (monster.hasStatusEffect(StatusEffects.LustDoTH)) monster.addStatusValue(StatusEffects.LustDoTH,1,1);
 			else monster.createStatusEffect(StatusEffects.LustDoTH,4,0.02,0,0);
@@ -937,16 +952,14 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText("Amily rushes out with her dagger. Blitzing through, she slices through them with a flurry of swift cuts before leaping off of them, away from view. ");
 			doMinionPhysDamage(dmg6, true, true);
 			outputText(" ");
-			if (!monster.hasPerk(PerkLib.EnemyConstructType) || !monster.hasPerk(PerkLib.EnemyGhostType)) {
-				doMinionPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerAmily)/4)+20), true, true);
-				outputText("\n\n");
-				if (!monster.isImmuneToBleed()) {
-				  if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
-				  else monster.createStatusEffect(StatusEffects.Hemorrhage2, 3, 0.1, 0, 0);
-				}
-				if (monster.hasStatusEffect(StatusEffects.PoisonDoTH)) monster.addStatusValue(StatusEffects.PoisonDoTH,1,1);
-				else monster.createStatusEffect(StatusEffects.PoisonDoTH,4,0.02,0,0);
+			doMinionPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerAmily)/4)+20), true, true);
+			outputText("\n\n");
+			if (!monster.isImmuneToBleed()) {
+				if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
+				else monster.createStatusEffect(StatusEffects.Hemorrhage2, 3, 0.1, 0, 0);
 			}
+			if (monster.hasStatusEffect(StatusEffects.PoisonDoTH)) monster.addStatusValue(StatusEffects.PoisonDoTH,1,1);
+			else monster.createStatusEffect(StatusEffects.PoisonDoTH,4,0.02,0,0);
 		}
 		
 		public function siegweirdCombatActions():void {
