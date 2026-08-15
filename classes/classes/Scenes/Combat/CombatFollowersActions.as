@@ -566,7 +566,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (monster.lustVuln == 0) {
 				outputText("  It has no effect!  Ayane foe clearly does not experience lust in the same way as her.");
 			}
-			var lustDmg:Number = monster.lustVuln * ((player.statusEffectv1(StatusEffects.CombatFollowerAyane) / 12 + player.statusEffectv2(StatusEffects.CombatFollowerAyane) / 8) * (((player.statusEffectv3(StatusEffects.CombatFollowerAyane) * 2) / 2) + rand(monster.lib + monster.cor) / 5));
+			var lustDmg:Number = monster.lustVuln * ((player.statusEffectv1(StatusEffects.CombatFollowerAyane) / 3 + player.statusEffectv2(StatusEffects.CombatFollowerAyane) / 2) * ((player.statusEffectv3(StatusEffects.CombatFollowerAyane) * 5) + rand(monster.lib + monster.cor + 100)));
 			if (monster.lust < (monster.maxLust() * 0.3)) outputText("[Themonster] squirms as the magic affects [monster him].  ");
 			if (monster.lust >= (monster.maxLust() * 0.3) && monster.lust < (monster.maxLust() * 0.6)) {
 				if(monster.plural) outputText("[Themonster] stagger, suddenly weak and having trouble focusing on staying upright.  ");
@@ -682,7 +682,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function alvinaCombatActions2():void {
 			var lustDmg:Number = Math.round(player.statusEffectv2(StatusEffects.CombatFollowerAlvina) / 3);
-			lustDmg + (rand(player.statusEffectv3(StatusEffects.CombatFollowerAlvina) - player.statusEffectv2(StatusEffects.CombatFollowerAlvina) * 2 + monster.cor) / 3);
+			lustDmg + (rand(player.statusEffectv3(StatusEffects.CombatFollowerAlvina) - player.statusEffectv2(StatusEffects.CombatFollowerAlvina) * 2 + monster.cor + 100) / 3);
 			lustDmg = Math.round(lustDmg * increasedEfficiencyOfAttacks());
 			outputText("Alvina incants a spell and a powerful wave of lust hits [themonster], leaving it more than aroused! ");
 			monster.teased(Math.round(monster.lustVuln * lustDmg));
@@ -843,7 +843,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function excelliaCombatActions1():void {
 			var dmg7:Number = player.statusEffectv1(StatusEffects.CombatFollowerExcellia);
-			dmg7 += scalingBonusStrengthCompanion() * 0.5;
+			dmg7 += scalingBonusStrengthCompanion() * 2.5;
 			dmg7 = Math.round(dmg7 * increasedEfficiencyOfAttacks());
 			outputText("Excellia moos out as she charges at [themonster] at full force, delivering a devastating blow. ");
 			doMinionPhysDamage(dmg7, true, true);
@@ -851,17 +851,18 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function excelliaCombatActions2():void {
 			var dmg8:Number = player.statusEffectv1(StatusEffects.CombatFollowerExcellia);
-			dmg8 += scalingBonusStrengthCompanion() * 0.7;
+			dmg8 += scalingBonusStrengthCompanion() * 3.5;
 			dmg8 = Math.round(dmg8 * increasedEfficiencyOfAttacks());
 			outputText("Excellia lunges at [themonster], throwing her full weight at [monster him] for ");
 			doMinionPhysDamage(dmg8, true, true);
 			outputText(" damage.\n\n");
 		}
 		public function excelliaCombatActions3():void {
-			var dmg9:Number = Math.round(player.statusEffectv2(StatusEffects.CombatFollowerExcellia) * increasedEfficiencyOfAttacks());
+			var dmg9:Number = Math.round(player.statusEffectv2(StatusEffects.CombatFollowerExcellia) * 5 * increasedEfficiencyOfAttacks());
 			outputText("Excellia smirks as she stares down [themonster]. She lunges at [monster him] with a hip check, effectively knocking back and dazing [monster him]. ");
 			doMinionPhysDamage(dmg9, true, true);
 			outputText("\n\n");
+			monster.createStatusEffect(StatusEffects.Stunned, 0, 0, 0, 0);
 			if (!monster.hasStatusEffect(StatusEffects.LoweredAccuracy)) monster.createStatusEffect(StatusEffects.LoweredAccuracy, 40, 0, 0, 0);
 		}
 		public function excelliaCombatActions4():void {
@@ -870,7 +871,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			unarmedExcellia *= (1.6 + 0.15 * rand(7));
 			dmg10 += scalingBonusStrengthCompanion();
 			dmg10 += unarmedExcellia * 2;
-			dmg10 = Math.round(dmg10 * increasedEfficiencyOfAttacks());
+			dmg10 = Math.round(dmg10 * 5 * increasedEfficiencyOfAttacks());
 			outputText("Excellia lets out a battle cry as she charges at [themonster]. She thrashes, headbutts, and kicks [monster him] with one powerful blow after another. ");
 			doMinionPhysDamage(dmg10, true, true);
 			outputText("\n\n");
@@ -925,7 +926,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function amilyCombatActions1():void {
 			var dmg5:Number = player.statusEffectv1(StatusEffects.CombatFollowerAmily);
-			dmg5 += scalingBonusStrengthCompanion() * 0.5;
+			dmg5 += scalingBonusStrengthCompanion() * 2.5;
 			dmg5 = Math.round(dmg5 * increasedEfficiencyOfAttacks());
 			outputText("Amily peeks out from her cover before shooting a blowdart at [themonster]. ");
 			doMinionPhysDamage(dmg5, true, true);
@@ -943,16 +944,16 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function amilyCombatActions3():void {
 			outputText("Amily peeks out from her cover, shooting a poisoned dart, debilitating the enemy.\n\n");
 			if (monster.hasStatusEffect(StatusEffects.EnemyLoweredDamageH)) monster.addStatusValue(StatusEffects.EnemyLoweredDamageH,1,1);
-			else monster.createStatusEffect(StatusEffects.EnemyLoweredDamageH,3,40,0,0);
+			else monster.createStatusEffect(StatusEffects.EnemyLoweredDamageH,3,50,0,0);
 		}
 		public function amilyCombatActions4():void {
 			var dmg6:Number = player.statusEffectv1(StatusEffects.CombatFollowerAmily);
-			dmg6 += scalingBonusStrengthCompanion() * 2;
+			dmg6 += scalingBonusStrengthCompanion() * 10;
 			dmg6 = Math.round(dmg6 * increasedEfficiencyOfAttacks());
 			outputText("Amily rushes out with her dagger. Blitzing through, she slices through them with a flurry of swift cuts before leaping off of them, away from view. ");
 			doMinionPhysDamage(dmg6, true, true);
 			outputText(" ");
-			doMinionPoisonDamage(((player.statusEffectv2(StatusEffects.CombatFollowerAmily)/4)+20), true, true);
+			doMinionPoisonDamage((player.statusEffectv2(StatusEffects.CombatFollowerAmily)+100), true, true);
 			outputText("\n\n");
 			if (!monster.isImmuneToBleed()) {
 				if (monster.hasStatusEffect(StatusEffects.Hemorrhage2)) monster.addStatusValue(StatusEffects.Hemorrhage2, 1, 1);
@@ -1051,12 +1052,16 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function zenjiCombatActions1():void {
 			var dmg11:Number = player.statusEffectv1(StatusEffects.CombatFollowerZenji);
 			var weaponZenji:Number = player.statusEffectv2(StatusEffects.CombatFollowerZenji);
-			dmg11 += scalingBonusStrengthCompanion();
-			if (weaponZenji < 51) dmg11 *= (1 + (weaponZenji * 0.03));
-			else if (weaponZenji >= 51 && weaponZenji < 101) dmg11 *= (2.5 + ((weaponZenji - 50) * 0.025));
-			else if (weaponZenji >= 101 && weaponZenji < 151) dmg11 *= (3.75 + ((weaponZenji - 100) * 0.02));
-			else if (weaponZenji >= 151 && weaponZenji < 201) dmg11 *= (4.75 + ((weaponZenji - 150) * 0.015));
-			else dmg11 *= (5.5 + ((weaponZenji - 200) * 0.01));
+			dmg11 += scalingBonusStrengthCompanion() * 5;
+			if (weaponZenji < 51) dmg11 *= (1 + (weaponZenji * 0.01));
+			else if (weaponZenji >= 51 && weaponZenji < 101) dmg11 *= (1.5 + ((weaponZenji - 50) * 0.015));
+			else if (weaponZenji >= 101 && weaponZenji < 151) dmg11 *= (2.25 + ((weaponZenji - 100) * 0.02));
+			else if (weaponZenji >= 151 && weaponZenji < 201) dmg11 *= (3.25 + ((weaponZenji - 150) * 0.025));
+			else if (weaponZenji >= 201 && weaponZenji < 251) dmg11 *= (5.5 + ((weaponZenji - 200) * 0.03));
+			else if (weaponZenji >= 251 && weaponZenji < 301) dmg11 *= (7 + ((weaponZenji - 250) * 0.035));
+			else if (weaponZenji >= 301 && weaponZenji < 351) dmg11 *= (8.75 + ((weaponZenji - 300) * 0.04));
+			else if (weaponZenji >= 351 && weaponZenji < 401) dmg11 *= (10.75 + ((weaponZenji - 350) * 0.045));
+			else dmg11 *= (13 + ((weaponZenji - 400) * 0.05));
 			dmg11 = Math.round(dmg11 * increasedEfficiencyOfAttacks());
 			outputText("Seeing an opening, Zenji thrusts his spear at [themonster]. ");
 			doMinionPhysDamage(dmg11, true, true);
@@ -1064,13 +1069,17 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function zenjiCombatActions2():void {
 			var dmg12:Number = player.statusEffectv1(StatusEffects.CombatFollowerZenji);
-			var weaponZenji:Number = player.statusEffectv2(StatusEffects.CombatFollowerZenji);
-			dmg12 += scalingBonusStrengthCompanion() * 0.7;
-			if (weaponZenji < 51) dmg12 *= (1 + (weaponZenji * 0.03));
-			else if (weaponZenji >= 51 && weaponZenji < 101) dmg12 *= (2.5 + ((weaponZenji - 50) * 0.025));
-			else if (weaponZenji >= 101 && weaponZenji < 151) dmg12 *= (3.75 + ((weaponZenji - 100) * 0.02));
-			else if (weaponZenji >= 151 && weaponZenji < 201) dmg12 *= (4.75 + ((weaponZenji - 150) * 0.015));
-			else dmg12 *= (5.5 + ((weaponZenji - 200) * 0.01));
+			var weaponZenji1:Number = player.statusEffectv2(StatusEffects.CombatFollowerZenji);
+			dmg12 += scalingBonusStrengthCompanion() * 3.5;
+			if (weaponZenji1 < 51) dmg12 *= (1 + (weaponZenji1 * 0.01));
+			else if (weaponZenji1 >= 51 && weaponZenji1 < 101) dmg12 *= (1.5 + ((weaponZenji1 - 50) * 0.015));
+			else if (weaponZenji1 >= 101 && weaponZenji1 < 151) dmg12 *= (2.25 + ((weaponZenji1 - 100) * 0.02));
+			else if (weaponZenji1 >= 151 && weaponZenji1 < 201) dmg12 *= (3.25 + ((weaponZenji1 - 150) * 0.025));
+			else if (weaponZenji1 >= 201 && weaponZenji1 < 251) dmg12 *= (5.5 + ((weaponZenji1 - 200) * 0.03));
+			else if (weaponZenji1 >= 251 && weaponZenji1 < 301) dmg12 *= (7 + ((weaponZenji1 - 250) * 0.035));
+			else if (weaponZenji1 >= 301 && weaponZenji1 < 351) dmg12 *= (8.75 + ((weaponZenji1 - 300) * 0.04));
+			else if (weaponZenji1 >= 351 && weaponZenji1 < 401) dmg12 *= (10.75 + ((weaponZenji1 - 350) * 0.045));
+			else dmg12 *= (13 + ((weaponZenji1 - 400) * 0.05));
 			dmg12 = Math.round(dmg12 * increasedEfficiencyOfAttacks());
 			outputText("Zenji charges at [themonster] with his spear in a feint before bashing them with his tusks. ");
 			doMinionPhysDamage(dmg12, true, true);
@@ -1087,17 +1096,21 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (silly()) outputText("If you keep dis up, no more sex after dis fight! I mean it dis time");
 			else outputText("Remained focused, don’t give in");
 			outputText("!</i>\"\n\n");
-			dynStats("lust", -(player.maxLust() * 0.2));
+			dynStats("lust", -(player.maxLust() * 0.25));
 		}
 		public function zenjiCombatActions4():void {
 			var dmg13:Number = player.statusEffectv1(StatusEffects.CombatFollowerZenji);
-			var weaponZenji:Number = player.statusEffectv2(StatusEffects.CombatFollowerZenji);
-			dmg13 += scalingBonusStrengthCompanion() * 0.4;
-			if (weaponZenji < 51) dmg13 *= (1 + (weaponZenji * 0.03));
-			else if (weaponZenji >= 51 && weaponZenji < 101) dmg13 *= (2.5 + ((weaponZenji - 50) * 0.025));
-			else if (weaponZenji >= 101 && weaponZenji < 151) dmg13 *= (3.75 + ((weaponZenji - 100) * 0.02));
-			else if (weaponZenji >= 151 && weaponZenji < 201) dmg13 *= (4.75 + ((weaponZenji - 150) * 0.015));
-			else dmg13 *= (5.5 + ((weaponZenji - 200) * 0.01));
+			var weaponZenji2:Number = player.statusEffectv2(StatusEffects.CombatFollowerZenji);
+			dmg13 += scalingBonusStrengthCompanion() * 2;
+			if (weaponZenji2 < 51) dmg13 *= (1 + (weaponZenji2 * 0.01));
+			else if (weaponZenji2 >= 51 && weaponZenji2 < 101) dmg13 *= (1.5 + ((weaponZenji2 - 50) * 0.015));
+			else if (weaponZenji2 >= 101 && weaponZenji2 < 151) dmg13 *= (2.25 + ((weaponZenji2 - 100) * 0.02));
+			else if (weaponZenji2 >= 151 && weaponZenji2 < 201) dmg13 *= (3.25 + ((weaponZenji2 - 150) * 0.025));
+			else if (weaponZenji2 >= 201 && weaponZenji2 < 251) dmg13 *= (5.5 + ((weaponZenji2 - 200) * 0.03));
+			else if (weaponZenji2 >= 251 && weaponZenji2 < 301) dmg13 *= (7 + ((weaponZenji2 - 250) * 0.035));
+			else if (weaponZenji2 >= 301 && weaponZenji2 < 351) dmg13 *= (8.75 + ((weaponZenji2 - 300) * 0.04));
+			else if (weaponZenji2 >= 351 && weaponZenji2 < 401) dmg13 *= (10.75 + ((weaponZenji2 - 350) * 0.045));
+			else dmg13 *= (13 + ((weaponZenji2 - 400) * 0.05));
 			dmg13 = Math.round(dmg13 * increasedEfficiencyOfAttacks());
 			outputText("Zenji charges at [themonster], knocking them down and pinning them beneath him with his spear. ");
 			doMinionPhysDamage(dmg13, true, true);
@@ -1111,7 +1124,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function zenjiCombatActions5():void {
 			outputText("Seeing your injuries, Zenji quickly rushes to your side, \"<i>It’s okay [name]... I’m here for you…</i>\" he says, wrapping you within his arms, completely shielding you from your enemies. ");
 			outputText("\"<i>It’s… okay… I won’t let them hurt you… I will endure it all for you so you don’t have to. I’d do anything for you.</i>\" He gently rubs a hand over your wounds, helping you recover slightly.\n\n");
-			pc.HPChange(Math.round(player.maxHP() * .1), true, false);
+			pc.HPChange(Math.round(player.maxHP() * .15), true, false);
 			player.addStatusValue(StatusEffects.CombatFollowerZenji, 3, 1);
 			if (player.statusEffectv3(StatusEffects.CombatFollowerZenji) == 1) outputText(" Zenji remains weary, but he stands as if he were completely unaffected by the physical trauma he just endured.");
 			else outputText("Zenji seems much worse for wear after protecting you, \"<i>I’m fine.</i>\" he mumbles, but it’s apparent that he’s sustained heavy damage.");
@@ -1166,14 +1179,18 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText("Tyrantia’s Dick is thrust into the [themonster]. ");
 			var dmg14:Number = player.statusEffectv1(StatusEffects.CombatFollowerTyrantia);
 			var weaponTyrantia:Number = player.statusEffectv2(StatusEffects.CombatFollowerTyrantia);
-			var lustDmg:Number = Math.round(25 + monster.lib / 5 + monster.sens / 5 + monster.cor / 5);
-			dmg14 += scalingBonusStrengthCompanion() * 1.5;
+			var lustDmg:Number = Math.round(225 + monster.lib + monster.sens + monster.cor);
+			dmg14 += scalingBonusStrengthCompanion() * 7.5;
 			weaponTyrantia *= 3;
-			if (weaponTyrantia < 51) dmg14 *= (1 + (weaponTyrantia * 0.03));
-			else if (weaponTyrantia >= 51 && weaponTyrantia < 101) dmg14 *= (2.5 + ((weaponTyrantia - 50) * 0.025));
-			else if (weaponTyrantia >= 101 && weaponTyrantia < 151) dmg14 *= (3.75 + ((weaponTyrantia - 100) * 0.02));
-			else if (weaponTyrantia >= 151 && weaponTyrantia < 201) dmg14 *= (4.75 + ((weaponTyrantia - 150) * 0.015));
-			else dmg14 *= (5.5 + ((weaponTyrantia - 200) * 0.01));
+			if (weaponTyrantia < 51) dmg14 *= (1 + (weaponTyrantia * 0.01));
+			else if (weaponTyrantia >= 51 && weaponTyrantia < 101) dmg14 *= (1.5 + ((weaponTyrantia - 50) * 0.015));
+			else if (weaponTyrantia >= 101 && weaponTyrantia < 151) dmg14 *= (2.25 + ((weaponTyrantia - 100) * 0.02));
+			else if (weaponTyrantia >= 151 && weaponTyrantia < 201) dmg14 *= (3.25 + ((weaponTyrantia - 150) * 0.025));
+			else if (weaponTyrantia >= 201 && weaponTyrantia < 251) dmg14 *= (5.5 + ((weaponTyrantia - 200) * 0.03));
+			else if (weaponTyrantia >= 251 && weaponTyrantia < 301) dmg14 *= (7 + ((weaponTyrantia - 250) * 0.035));
+			else if (weaponTyrantia >= 301 && weaponTyrantia < 351) dmg14 *= (8.75 + ((weaponTyrantia - 300) * 0.04));
+			else if (weaponTyrantia >= 351 && weaponTyrantia < 401) dmg14 *= (10.75 + ((weaponTyrantia - 350) * 0.045));
+			else dmg14 *= (13 + ((weaponTyrantia - 400) * 0.05));
 			dmg14 = Math.round(dmg14 * increasedEfficiencyOfAttacks());
 			doMinionPhysDamage(dmg14, true, true);
 			doMinionPhysDamage(dmg14, true, true);
@@ -1183,7 +1200,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function tyrantiaCombatActions2():void {
 			var dmg15:Number = player.statusEffectv1(StatusEffects.CombatFollowerTyrantia);
-			dmg15 += scalingBonusStrengthCompanion() * 2;
+			dmg15 += scalingBonusStrengthCompanion() * 10;
 			outputText("Tyrantia bowls over [themonster] with a mighty roar, then slams her steel-coated front legs down into the [themonster]’s luckless frame, pinning them in place as they bleed profusely. ");
 			if (rand(2) == 0) {
 				outputText("Tyrantia’s front limbs are brought up and back down, getting a cry of pain from [themonster]. She lets loose a cheerful war cry, stabbing down again. [Themonster] is pinned for now.");
@@ -1199,7 +1216,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function tyrantiaCombatActions3():void {
 			var dmg16:Number = player.statusEffectv3(StatusEffects.CombatFollowerTyrantia);
-			dmg16 += scalingBonusIntelligenceCompanion() * 1.5;
+			dmg16 += scalingBonusIntelligenceCompanion() * 7.5;
 			dmg16 = Math.round(dmg16 * increasedEfficiencyOfAttacks());
 			if (monster.hasStatusEffect(StatusEffects.AcidDoT)) {
 				monster.addStatusValue(StatusEffects.AcidDoT,1,1);
@@ -1211,8 +1228,8 @@ import classes.StatusEffects.VampireThirstEffect;
 			outputText("\n\n");
 		}
 		public function tyrantiaCombatActions4():void {
-			var lustDmg:Number = Math.round((25 + monster.lib / 5 + monster.sens / 5 + monster.cor / 5) * 4);
-			monster.statStore.addBuffObject({spe:-20}, "Web",{text:"Web"});
+			var lustDmg:Number = Math.round((225 + monster.lib + monster.sens + monster.cor) * 4);
+			monster.statStore.addBuffObject({spe:-30}, "Web",{text:"Web"});
 			outputText("Tyrantia rushes forward, biting [themonster] and sinking her fangs into it. [Themonster] manages to get loose, but not before their blood coats her fangs. [Themonster] looks woozy, and slightly horny. ");
 			monster.teased(Math.round(monster.lustVuln * lustDmg));
 			outputText("\n\n");
@@ -1264,12 +1281,16 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function kihaCombatActions1():void {
 			var dmg17:Number = player.statusEffectv1(StatusEffects.CombatFollowerKiha);
 			var weaponKiha:Number = player.statusEffectv2(StatusEffects.CombatFollowerKiha);
-			dmg17 += scalingBonusStrengthCompanion();
-			if (weaponKiha < 51) dmg17 *= (1 + (weaponKiha * 0.03));
-			else if (weaponKiha >= 51 && weaponKiha < 101) dmg17 *= (2.5 + ((weaponKiha - 50) * 0.025));
-			else if (weaponKiha >= 101 && weaponKiha < 151) dmg17 *= (3.75 + ((weaponKiha - 100) * 0.02));
-			else if (weaponKiha >= 151 && weaponKiha < 201) dmg17 *= (4.75 + ((weaponKiha - 150) * 0.015));
-			else dmg17 *= (5.5 + ((weaponKiha - 200) * 0.01));
+			dmg17 += scalingBonusStrengthCompanion() * 5;
+			if (weaponKiha < 51) dmg17 *= (1 + (weaponKiha * 0.01));
+			else if (weaponKiha >= 51 && weaponKiha < 101) dmg17 *= (1.5 + ((weaponKiha - 50) * 0.015));
+			else if (weaponKiha >= 101 && weaponKiha < 151) dmg17 *= (2.25 + ((weaponKiha - 100) * 0.02));
+			else if (weaponKiha >= 151 && weaponKiha < 201) dmg17 *= (3.25 + ((weaponKiha - 150) * 0.025));
+			else if (weaponKiha >= 201 && weaponKiha < 251) dmg17 *= (5.5 + ((weaponKiha - 200) * 0.03));
+			else if (weaponKiha >= 251 && weaponKiha < 301) dmg17 *= (7 + ((weaponKiha - 250) * 0.035));
+			else if (weaponKiha >= 301 && weaponKiha < 351) dmg17 *= (8.75 + ((weaponKiha - 300) * 0.04));
+			else if (weaponKiha >= 351 && weaponKiha < 401) dmg17 *= (10.75 + ((weaponKiha - 350) * 0.045));
+			else dmg17 *= (13 + ((weaponKiha - 400) * 0.05));
 			dmg17 = Math.round(dmg17 * increasedEfficiencyOfAttacks());
 			if (player.hasStatusEffect(StatusEffects.FrenziedKiha))
 				dmg17 *= 1+ player.statusEffectv1(StatusEffects.FrenziedKiha)*0.2;
@@ -1279,10 +1300,9 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function kihaCombatActions2():void {
 			var dmg18:Number = player.statusEffectv1(StatusEffects.CombatFollowerKiha);
-			dmg18 += scalingBonusStrengthCompanion() * 0.5;
+			dmg18 += scalingBonusStrengthCompanion() * 2.5;
 			dmg18 = Math.round(dmg18 * increasedEfficiencyOfAttacks());
-			if (player.hasStatusEffect(StatusEffects.FrenziedKiha))
-				dmg18 *= 1+ player.statusEffectv1(StatusEffects.FrenziedKiha)*0.2;
+			if (player.hasStatusEffect(StatusEffects.FrenziedKiha)) dmg18 *= (1 + player.statusEffectv1(StatusEffects.FrenziedKiha) * 0.2) * 5;
 			outputText("Kiha throws her trusty weapon into the sodden ground, building up balls of flame around her fists.  She runs towards [themonster], launching herself into action with a flurry of punches. ");
 			doMinionFireDamage(dmg18, true, true);
 			outputText("\n\n");
@@ -1290,17 +1310,15 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function kihaCombatActions3():void {
 			outputText("Kiha throws her arms back and roars, exhaling a swirling tornado of fire directly at [themonster]!\n");
 			var dmg19:Number = player.statusEffectv1(StatusEffects.CombatFollowerKiha);
-			dmg19 += scalingBonusStrengthCompanion();
+			dmg19 += scalingBonusStrengthCompanion() * 5;
 			dmg19 = Math.round(dmg19 * increasedEfficiencyOfAttacks());
-			if (player.hasStatusEffect(StatusEffects.FrenziedKiha))
-				dmg19 *= 1+ player.statusEffectv1(StatusEffects.FrenziedKiha)*0.2;
+			if (player.hasStatusEffect(StatusEffects.FrenziedKiha)) dmg19 *= ((1+ player.statusEffectv1(StatusEffects.FrenziedKiha) * 0.2) * 5);
 			doMinionFireDamage(dmg19, true, true);
 			outputText("\n\n");
 		}
 		public function kihaCombatActions4():void {
 			outputText("She supports the axe on a shoulder, cracking her neck and arching her back to stretch herself, giving [themonster] an unintended show.  ");
-			if (monster.lustVuln > 0)
-				monster.teased(monster.lib/20, true);
+			if (monster.lustVuln > 0) monster.teased(monster.lib/4, true);
 			outputText("\n\n");
 		}
 
@@ -1347,12 +1365,16 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function midokaCombatActions1():void {
 			var dmg17:Number = player.statusEffectv1(StatusEffects.CombatFollowerMidoka);
 			var weaponMidoka:Number = player.statusEffectv2(StatusEffects.CombatFollowerMidoka);
-			dmg17 += scalingBonusStrengthCompanion();
-			if (weaponMidoka < 51) dmg17 *= (1 + (weaponMidoka * 0.03));
-			else if (weaponMidoka >= 51 && weaponMidoka < 101) dmg17 *= (2.5 + ((weaponMidoka - 50) * 0.025));
-			else if (weaponMidoka >= 101 && weaponMidoka < 151) dmg17 *= (3.75 + ((weaponMidoka - 100) * 0.02));
-			else if (weaponMidoka >= 151 && weaponMidoka < 201) dmg17 *= (4.75 + ((weaponMidoka - 150) * 0.015));
-			else dmg17 *= (5.5 + ((weaponMidoka - 200) * 0.01));
+			dmg17 += scalingBonusStrengthCompanion() * 5;
+			if (weaponMidoka < 51) dmg17 *= (1 + (weaponMidoka * 0.01));
+			else if (weaponMidoka >= 51 && weaponMidoka < 101) dmg17 *= (1.5 + ((weaponMidoka - 50) * 0.015));
+			else if (weaponMidoka >= 101 && weaponMidoka < 151) dmg17 *= (2.25 + ((weaponMidoka - 100) * 0.02));
+			else if (weaponMidoka >= 151 && weaponMidoka < 201) dmg17 *= (3.25 + ((weaponMidoka - 150) * 0.025));
+			else if (weaponMidoka >= 201 && weaponMidoka < 251) dmg17 *= (5.5 + ((weaponMidoka - 200) * 0.03));
+			else if (weaponMidoka >= 251 && weaponMidoka < 301) dmg17 *= (7 + ((weaponMidoka - 250) * 0.035));
+			else if (weaponMidoka >= 301 && weaponMidoka < 351) dmg17 *= (8.75 + ((weaponMidoka - 300) * 0.04));
+			else if (weaponMidoka >= 351 && weaponMidoka < 401) dmg17 *= (10.75 + ((weaponMidoka - 350) * 0.045));
+			else dmg17 *= (13 + ((weaponMidoka - 400) * 0.05));
 			dmg17 = Math.round(dmg17 * increasedEfficiencyOfAttacks());
 			outputText("[midokaname] attack 1 ");
 			doMinionPhysDamage(dmg17, true, true);
@@ -1360,7 +1382,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		public function midokaCombatActions2():void {
 			var dmg18:Number = player.statusEffectv1(StatusEffects.CombatFollowerMidoka);
-			dmg18 += scalingBonusStrengthCompanion() * 0.5;
+			dmg18 += scalingBonusStrengthCompanion() * 2.5;
 			dmg18 = Math.round(dmg18 * increasedEfficiencyOfAttacks());
 			outputText("[midokaname] attack 2 ");
 			doMinionPhysDamage(dmg18, true, true);
@@ -1369,15 +1391,14 @@ import classes.StatusEffects.VampireThirstEffect;
 		public function midokaCombatActions3():void {
 			outputText("[midokaname] attack 3\n");
 			var dmg19:Number = player.statusEffectv1(StatusEffects.CombatFollowerMidoka);
-			dmg19 += scalingBonusStrengthCompanion();
+			dmg19 += scalingBonusStrengthCompanion() * 5;
 			dmg19 = Math.round(dmg19 * increasedEfficiencyOfAttacks());
 			doMinionPhysDamage(dmg19, true, true);
 			outputText("\n\n");
 		}
 		public function midokaCombatActions4():void {
 			outputText("[midokaname] tease ");
-			if (monster.lustVuln > 0)
-				monster.teased(monster.lib/20, true);
+			if (monster.lustVuln > 0) monster.teased(monster.lib/5, true);
 			outputText("\n\n");
 		}/*
 		

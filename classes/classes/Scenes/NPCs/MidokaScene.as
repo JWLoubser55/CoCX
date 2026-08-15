@@ -165,13 +165,13 @@ public class MidokaScene extends NPCAwareContent implements TimeAwareInterface, 
 				.disableIf(MidokaAge < 4, "She is too young to hold a conversation yet");
 		addButton(1, "Guard Camp", toggleMidokaGuardingCamp)
 				.disableIf(MidokaGuardingCamp > 0, "She cannot guard your camp yet, maybe talk to her first.")
-				.disableIf(MidokaAge < 5, "She is too young and inexperienced to guard your camp yet");
+				.disableIf(MidokaAge < 5, "She is too young and inexperienced to guard your camp yet");/*
 		if (player.hasPerk(PerkLib.BasicLeadership)) {
 			if (flags[kFLAGS.PLAYER_COMPANION_1] == "") addButton(12, "Team", midokaHenchmanOption).hint("Ask Midoka to join you in adventures outside camp.")
 					.disableIf(MidokaAge < 5, "She is too young and inexperienced to fight as your companion yet");
 			else if (flags[kFLAGS.PLAYER_COMPANION_1] == "Midoka") addButton(12, "Team", midokaHenchmanOption).hint("Ask Midoka to stay in camp.");
 			else addButtonDisabled(12, "Team", "You already have other henchman accompany you. Ask him/her to stay at camp before you talk with Etna about accompaning you.");
-		}
+		}*/
 		addButton(14,"Back",camp.campFollowers);
 	}
 

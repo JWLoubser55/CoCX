@@ -306,7 +306,8 @@ public class Changelog extends BaseContent
 			outputText("-Small changes to Motivation perk line: 1st perk increase dmg by ~100%; 2nd by ~150% at lvl 9, 24, 54, 78; 3rd increased bonuses from prev 2 perks by 5 times.\n");
 			outputText("-Monsters increase to damage from weapon atk was inverted and starting from 0.05 for first 50 pts and then increase by 0.05 until 400+ atk value where it stay as 0.5 per atk point. Thou shall weaker monsters hit bit weaker but stronger ones getting bit more of punch power :D\n");
 			outputText("-Basic Leadership and Intermediate Leadership have additional effect: +1%/+2% per PC level to increased efficiency of henchmen attacks.\n");
-			outputText("-\n");
+			outputText("-Because of over 10 possible henchmen options was still only ~~Luna~~ Amily all of them (even her) got better dmg scaling and some of their moves now would have power stuns instead of normal ones and in few cases even added some new cc effect or bleed. So even reformed cow heal bot with swing of her hips can stun enemy for a short moment now ;) ");
+			outputText("Also we found out Midoka (wait who? (Chi Chi daughter)) sneaked into henchman roster despite been not yet ready. So been marethical correct beings we benched her unti her mother teach her proper moves instead letting to copy some (semi)naked quasi dragoness.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

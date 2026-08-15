@@ -2217,9 +2217,7 @@ public class KitsuneScene extends BaseContent
 			if (player.hasItem(useables.GLDSTAT) || flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(2, "Statue", stealAStatue);
 			if (player.hasPerk(PerkLib.StarSphereMastery) && player.perkv1(PerkLib.StarSphereMastery) < SphereMastery && player.gems >= 1000) addButton(3, "Offering", offeringToTaoth);
             if (flags[kFLAGS.KITSUNE_SHRINE_UNLOCKED] > 0 && flags[kFLAGS.AYANE_FOLLOWER] < 2) addButton(5, "Ayane", SceneLib.ayaneFollower.ayaneShop);
-            if (flags[kFLAGS.AYANE_FOLLOWER] == 1) {
-				addButton(6, "Servant", AyaneServant);
-			}
+            if (flags[kFLAGS.AYANE_FOLLOWER] == 1) addButton(6, "Servant", AyaneServant);
 			if (player.hasPerk(PerkLib.CorruptedNinetails) && player.inte >= 100 && player.wis >= 100 && player.cor >= 50 && flags[kFLAGS.KITSUNE_SHRINE_UNLOCKED] > 0 && flags[kFLAGS.AYANE_FOLLOWER] < 2) addButton(7, "Slave", AyaneSlave);
 			addButton(14, "Leave", explorer.done);
 		}
