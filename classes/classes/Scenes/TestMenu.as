@@ -57,7 +57,8 @@ public class TestMenu extends BaseContent
 		outputText("Collection of different cheats that can be used by the players.");
 		outputText("\n\nAscension points: " + player.ascensionPerkPoints + "");
 		outputText("\n\nCorruption: " + player.cor + "");
-		outputText("\n\nSoul drain perk v1: "+player.perkv1(PerkLib.SoulDrain)+"");
+		outputText("\n\nSoul drain perk v1: " + player.perkv1(PerkLib.SoulDrain) + "");
+		outputText("\n\nAnthill Expansion: " + flags[kFLAGS.ANTHILL_EXPANSION] + "");
 		var bd:ButtonDataList = new ButtonDataList();
 		bd.add("StatsAdj/Ascen", StatsAscensionMenu, "For more precisely adjusting each of the 8 main stats and Ascension related stuff.");
 		bd.add("P/G/XP", PerksGemsEXP, "Adding/Removing perk points and adding gems/exp.");
@@ -156,9 +157,9 @@ public class TestMenu extends BaseContent
 	
 	public function MightyOrNot14():void {
 		if (!player.hasStatusEffect(StatusEffects.SoulEaterCounters1)) player.createStatusEffect(StatusEffects.SoulEaterCounters1, 0, 0, 0, 0);
-		if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285] > 0) {
-			player.addStatusValue(StatusEffects.SoulEaterCounters1, 1, flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285]);
-			flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02285] = 0;
+		if (flags[kFLAGS.ANTHILL_EXPANSION] > 0) {
+			player.addStatusValue(StatusEffects.SoulEaterCounters1, 1, flags[kFLAGS.ANTHILL_EXPANSION]);
+			flags[kFLAGS.ANTHILL_EXPANSION] = 0;
 		}
 		if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02292] > 0) {
 			player.addStatusValue(StatusEffects.SoulEaterCounters1, 2, flags[kFLAGS.UNKNOWN_FLAG_NUMBER_02292]);

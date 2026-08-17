@@ -22,17 +22,18 @@ public class HumanSmartsMutation extends IMutationPerkType
             pTier = (pTier == -1)? currentTier(this, player): pTier;
 			if (pTier >= 1) descS += "Increases maximum base/core Int/Wis by ";
             if (pTier == 1){
-                descS += "5.";
+                descS += "5";
             }
             if (pTier == 2){
-                descS += "10. Allow the use of options requiring you to have technical knowledge.";
+                descS += "10. Allow the use of options requiring you to have technical knowledge";
             }
             if (pTier == 3){
-                descS += "10, maximum trainable Int/Wis by 20%. Gain soulforce recovery equal to 1% of your total soulforce and mana recovery increased by 0,5% of max mana. Allow to use options requiring to have technical knowledge.";
+                descS += "10, maximum trainable Int/Wis by 20%. Gain soulforce recovery equal to 1% of your total soulforce and mana recovery increased by 0,5% of max mana. Allow to use options requiring to have technical knowledge";
             }
             if (pTier == 4){
-                descS += "20, maximum trainable Int/Wis by 30%. Gain soulforce recovery equal to 2% of your total soulforce and mana recovery increased by 1% of max mana, +5% to max overmana/oversoulforce. Increase m.soulskill power by 100%. Allow to use options requiring to have technical knowledge.";
+                descS += "20, maximum trainable Int/Wis by 30%. Gain soulforce recovery equal to 2% of your total soulforce and mana recovery increased by 1% of max mana, +5% to max overmana/oversoulforce. Increase m.soulskill power by 100%. Allow to use options requiring to have technical knowledge";
             }
+			if (descS != "")descS += ".";
             if (pTier >= 1) descS += " (req. 18+ human score to have all effects active)";
             return descS;
         }

@@ -1068,7 +1068,7 @@ public class PlayerInfo extends BaseContent {
 
 		// Begin Galia Stats
 		var galiaStats:String = "";
-		if (flags[kFLAGS.GALIA_AFFECTION] >= 2) {
+		if (flags[kFLAGS.GALIA_LVL_UP] >= 1) {
 			/*if (flags[kFLAGS.GALIA_LVL_UP] == 11) galiaStats += "<b>Galia lvl:</b> 61\n";
 			if (flags[kFLAGS.GALIA_LVL_UP] == 10) galiaStats += "<b>Galia lvl:</b> 55\n";
 			if (flags[kFLAGS.GALIA_LVL_UP] == 9) galiaStats += "<b>Galia lvl:</b> 49\n";
@@ -1079,6 +1079,7 @@ public class PlayerInfo extends BaseContent {
 			if (flags[kFLAGS.GALIA_LVL_UP] == 4) galiaStats += "<b>Galia lvl:</b> 19 (current max lvl)\n";
 			else if (flags[kFLAGS.GALIA_LVL_UP] < 2) galiaStats += "<b>Galia lvl:</b> 1\n";
 			else galiaStats += getNPCLevel("Galia", 7, 2, 4, 6, flags[kFLAGS.GALIA_LVL_UP]);
+			galiaStats += "<b>Galia Affection:</b> " + flags[kFLAGS.GALIA_AFFECTION] + "%\n";
 		}
 		if (galiaStats != "")
 			outputText("\n<b><u>Galia Stats</u></b>\n" + galiaStats);

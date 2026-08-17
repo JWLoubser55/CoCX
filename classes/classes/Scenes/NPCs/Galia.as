@@ -112,7 +112,20 @@ import classes.internals.*;
 				this.gems = rand(5) + 5;
 				this.createPerk(PerkLib.OverMaxHP, (1+(4*add)), 0, 0, 0);
 			}
-			if (flags[kFLAGS.GALIA_LVL_UP] >= 5 && flags[kFLAGS.GALIA_LVL_UP] < 8) {
+			if (flags[kFLAGS.GALIA_LVL_UP] == 5) {//pierwsza specialna ewolucja/mutacja
+				initStrTouSpeInte(135, 25, 65, 45);
+				initWisLibSensCor(45, 13, 89, 100);
+				this.weaponAttack = 22;
+				this.armorDef = 9;
+				this.armorMDef = 4;
+				this.bonusHP = 250;
+				this.bonusWrath = 450;
+				this.bonusLust = 127;
+				this.level = 25;
+				this.gems = rand(6) + 15;
+				this.createPerk(PerkLib.OverMaxHP, 25, 0, 0, 0);
+			}
+			if (flags[kFLAGS.GALIA_LVL_UP] >= 6 && flags[kFLAGS.GALIA_LVL_UP] < 8) {
 				add += flags[kFLAGS.GALIA_LVL_UP] - 5;
 				initStrTouSpeInte(140+(30*add), 30+(10*add), 70+(20*add), 50+(15*add));
 				initWisLibSensCor(50+(15*add), 30+(10*add), 90+(25*add), 100);
@@ -140,7 +153,7 @@ import classes.internals.*;
 				this.gems = rand(5) + 5;
 				this.createPerk(PerkLib.OverMaxHP, (18+(4*add)), 0, 0, 0);
 			}
-			if (flags[kFLAGS.GALIA_LVL_UP] == 11) {//pierwsza specialna ewolucja/mutacja
+			if (flags[kFLAGS.GALIA_LVL_UP] == 11) {//druga specialna ewolucja/mutacja
 				add += flags[kFLAGS.GALIA_LVL_UP] - 11;
 				initStrTouSpeInte(135, 25, 65, 45);
 				initWisLibSensCor(45, 13, 89, 100);
@@ -154,18 +167,29 @@ import classes.internals.*;
 				this.gems = rand(6) + 15;
 				this.createPerk(PerkLib.OverMaxHP, 25, 0, 0, 0);
 			}
-			if (flags[kFLAGS.GALIA_LVL_UP] < 5) {
+			if (flags[kFLAGS.GALIA_AFFECTION] == 2) {
 				this.long = "Galia is short, only 2 feet 3 inches tall. An unkempt mane of shaggy platinum blond hair hangs from her head, parted by two short curved horns. Her eyes are solid black, save for tiny red irises. Her skin is bright red, unencumbered by clothing or armor, save for a small loincloth at her belt and wraps fighting to keep her massive breasts, which are large for her height. Her extremely well-muscled body is nowhere to be seen, replaced by a much softer one. Her feet are covered by tiny wooden sandals, and her hands are tipped with sharp claws. A pair of tiny but functional wings occasionally flap from her back.";
 				createBreastRow(Appearance.breastCupInverse("DD"));
 				this.hairLength = 36;
 				this.tallness = 26;
-				
 			}
-			if (flags[kFLAGS.GALIA_LVL_UP] >= 5 && flags[kFLAGS.GALIA_LVL_UP] < 8) {
-				this.long = "Galia is now taller reaching 4 feet 4 inches. An unkempt mane of shaggy platinum blond hair hangs from her head, parted by two short curved horns. Her eyes are solid black, save for tiny red irises. Her skin is bright red unencumbered by clothing or armor, save for bandage-like loincloths wrapped around her forearms, forelegs, and hips. The one wrapped around her more than ample chest seems to be from some elastic metallic material that barely does its job. Her extremely well-muscled body is nowhere to be seen, replaced by a much softer one. Her feet are covered by wooden sandals, and her hands tipped with sharp claws. A pair of small but functional wings occasionally flap from her back.";
-				createBreastRow(Appearance.breastCupInverse("DD"));
-				this.hairLength = 62;
-				this.tallness = 52;//for later desc - two middle length curved horns
+			if (flags[kFLAGS.GALIA_AFFECTION] == 3) {
+				this.long = "Galia is now taller reaching 3 feet 6 inches. An unkempt mane of shaggy platinum blond hair hangs from her head, parted by two short curved horns. Her eyes are solid black, save for tiny red irises. Her skin is bright red unencumbered by clothing or armor, save for bandage-like loincloths wrapped around her forearms, forelegs, and hips. The one wrapped around her more than ample chest seems to be from some elastic metallic material that barely does its job. Her extremely well-muscled body is nowhere to be seen, replaced by a much softer one. Her feet are covered by wooden sandals, and her hands tipped with sharp claws. A pair of small but functional wings occasionally flap from her back.";
+				createBreastRow(Appearance.breastCupInverse("FF"));
+				this.hairLength = 54;
+				this.tallness = 39;
+			}
+			if (flags[kFLAGS.GALIA_AFFECTION] == 4) {
+				this.long = "Galia is now taller reaching 4 feet 9 inches. An unkempt mane of shaggy platinum blond hair hangs from her head, parted by two short curved horns. Her eyes are solid black, save for tiny red irises. Her skin is bright red unencumbered by clothing or armor, save for bandage-like loincloths wrapped around her forearms, forelegs, and hips. The one wrapped around her more than ample chest seems to be from some elastic metallic material that barely does its job. Her extremely well-muscled body is nowhere to be seen, replaced by a much softer one. Her feet are covered by wooden sandals, and her hands tipped with sharp claws. A pair of small but functional wings occasionally flap from her back.";
+				createBreastRow(Appearance.breastCupInverse("H"));
+				this.hairLength = 72;
+				this.tallness = 52;
+			}
+			if (flags[kFLAGS.GALIA_AFFECTION] == 5) {
+				this.long = "Galia is now taller reaching 6 feet. An unkempt mane of shaggy platinum blond hair hangs from her head, parted by two short curved horns. Her eyes are solid black, save for tiny red irises. Her skin is bright red unencumbered by clothing or armor, save for bandage-like loincloths wrapped around her forearms, forelegs, and hips. The one wrapped around her more than ample chest seems to be from some elastic metallic material that barely does its job. Her extremely well-muscled body is nowhere to be seen, replaced by a much softer one. Her feet are covered by wooden sandals, and her hands tipped with sharp claws. A pair of small but functional wings occasionally flap from her back.";
+				createBreastRow(Appearance.breastCupInverse("JJ"));
+				this.hairLength = 90;
+				this.tallness = 65;//for later desc - two middle length curved horns
 			}
 			if (flags[kFLAGS.GALIA_LVL_UP] < 11) {
 				this.createVagina(true, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_TIGHT);

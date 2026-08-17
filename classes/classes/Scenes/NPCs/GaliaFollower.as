@@ -52,8 +52,20 @@ import classes.Scenes.NPCs.Galia;
 		
 		public function GaliaCampMainMenuSlaveAppearance():void {
 			clearOutput();
-			outputText("Galia is a short, two-foot, three-inch tall feral imp. Her shaggy, unkempt mane still harbors some elegance to it, with the platinum blonde locks parted by the dual set of curved horns. To prevent her hair from dragging across the ground, she has braided it into twin tails for her stature to be taller than the length of her hair. Her eyes are a solid black, save for tiny red irises that peer toward you judgmentally, still in resentment from the transformation.\n\n");
-			outputText("Her breasts are about DD cups, which, given her diminutive figure, makes them seem almost too large for her shape. Her once athletic, toned body has long been replaced by soft, pliable flesh, much to her chagrin. Her wide, womanly hips almost force a sluggish, swaying gait as she moves around, coupled with the difficulty of all the mass in her ass that jiggles slightly with each step.\n\n");
+			outputText("Galia is a short, ");
+			if (flags[kFLAGS.GALIA_AFFECTION] == 2) outputText("two-foot, three-inch");
+			if (flags[kFLAGS.GALIA_AFFECTION] == 3) outputText("three-foot, six-inch");
+			if (flags[kFLAGS.GALIA_AFFECTION] == 4) outputText("four-foot, nine-inch");
+			if (flags[kFLAGS.GALIA_AFFECTION] == 5) outputText("six-foot");
+			outputText(" tall feral imp. Her shaggy, unkempt mane still harbors some elegance to it, with the platinum blonde locks parted by the dual set of curved horns. To prevent her hair from dragging across the ground, she has braided it into twin tails for her stature to be taller than the length of her hair. Her eyes are a solid black, save for tiny red irises that peer toward you judgmentally, still in resentment from the transformation.\n\n");
+			outputText("Her breasts are about ");
+			if (flags[kFLAGS.GALIA_AFFECTION] == 2) outputText("DD");//5
+			if (flags[kFLAGS.GALIA_AFFECTION] == 3) outputText("FF");//7-8
+			if (flags[kFLAGS.GALIA_AFFECTION] == 4) outputText("H");//11
+			if (flags[kFLAGS.GALIA_AFFECTION] == 5) outputText("JJ");//14
+			outputText(" cups, which, given her ");
+			if (flags[kFLAGS.GALIA_AFFECTION] == 2) outputText("diminutive ");if (flags[kFLAGS.GALIA_AFFECTION] == 2) outputText("small/short? ");
+			outputText("figure, makes them seem almost too large for her shape. Her once athletic, toned body has long been replaced by soft, pliable flesh, much to her chagrin. Her wide, womanly hips almost force a sluggish, swaying gait as she moves around, coupled with the difficulty of all the mass in her ass that jiggles slightly with each step.\n\n");
 			outputText("A pair of tiny, yet functional wings flap occasionally from her back. Her skin is a bright red hue, unobstructed by clothing or armor, save for a small loincloth tied at her waist that wraps up to her chest. Her feet are protected by tiny wooden sandals, and her hands are tipped with a set of dangerous claws, even post-transformation.\n\n");
 			menu();
 			addButton(14, "Back", GaliaCampMainMenuSlave);

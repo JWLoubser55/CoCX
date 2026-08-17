@@ -27,7 +27,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && rand(5) == 0 && flags[kFLAGS.ANT_KIDS] < 5000) flags[kFLAGS.ANT_KIDS]++;
+			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && rand(5) == 0 && flags[kFLAGS.ANT_KIDS] < (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))) flags[kFLAGS.ANT_KIDS]++;//5000
 			if (model.time.hours > 23) {
 				//The pregnancyStore doesn't handle Phylla's ant eggs because they are continuous. The regular egg production is all handled here.
 				if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0) flags[kFLAGS.DAYS_PHYLLA_HAS_SPENT_BIRTHING]++;
@@ -119,8 +119,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			//[Talk] [Sex] [Lay Eggs / Don't Lay Eggs] [Children] [Appearance] [Gems] [Stones]
 			menu();
 			addButton(0, "Talk", phyllaTalkChoices);
-			addButton(1, "Sex", phyllaSexMenu)
-				.disableIf(player.lust < 33, "Not aroused enough!");
+			addButton(1, "Sex", phyllaSexMenu).disableIf(player.lust < 33, "Not aroused enough!");
 			if (flags[kFLAGS.PHYLLA_EGG_LAYING] == 0) addButton(2, "Lay Eggs", phyllaLaysEggsToggle);
 			else addButton(2, "No Eggs", phyllaLaysEggsToggle);
 			if (flags[kFLAGS.ANT_KIDS] > 0) addButton(3, "Children", phyllasKidsChildren);
