@@ -2535,7 +2535,7 @@ public class Combat extends BaseContent {
             crit = true;
 			var buffMultiplier:Number = 0;
 			buffMultiplier += bonusCriticalDamageFromMissingHP();
-			if (player.weapon == weapons.MACSPEA) buffMultiplier += 0.25;
+			if (player.weapon == weapons.MACSPEA || player.weapon == weapons.TMACSPEA) buffMultiplier += 0.25;
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * impaleMultiplier());
 			else damage *= (1.75 + buffMultiplier);
         }
@@ -7659,7 +7659,7 @@ public class Combat extends BaseContent {
         var critDamage:Number = 2;
         critDamage += bonusCriticalDamageFromMissingHP();
         if ((player.weapon == weapons.WG_GAXE && monster.cor > 66) || (player.weapon == weapons.DE_GAXE && monster.cor < 33)) critDamage += 0.1;
-        if (player.weapon == weapons.MACSPEA) critDamage += 0.25;
+        if (player.weapon == weapons.MACSPEA || player.weapon == weapons.TMACSPEA) critDamage += 0.25;
         if (player.hasPerk(PerkLib.OrthodoxDuelist) && player.weapon.isDuelingType() && player.isNotHavingShieldCuzPerksNotWorkingOtherwise()) critDamage += 0.2;
 		if (player.hasPerk(PerkLib.WolfTooth) && monster.monsterIsBleeding() && player.weapon.isAxeType()) critDamage += 0.15;
 		if (player.hasStatusEffect(StatusEffects.AlterBindScroll4)) critDamage += 1;
@@ -7675,7 +7675,7 @@ public class Combat extends BaseContent {
         var critDamage:Number = 2;
         critDamage += bonusCriticalDamageFromMissingHP();
         if ((player.weaponOff == weapons.WG_GAXE && monster.cor > 66) || (player.weaponOff == weapons.DE_GAXE && monster.cor < 33)) critDamage += 0.1;
-        if (player.weaponOff == weapons.MACSPEA) critDamage += 0.25;
+        if (player.weaponOff == weapons.MACSPEA || player.weaponOff == weapons.TMACSPEA) critDamage += 0.25;
 		if (player.hasPerk(PerkLib.WolfTooth) && monster.monsterIsBleeding() && player.weaponOff.isAxeType()) critDamage += 0.15;
 		if (player.hasStatusEffect(StatusEffects.AlterBindScroll4)) critDamage += 1;
 		if (player.perkv1(IMutationsLib.CaveWyrmAcidIM) >= 4 && player.nitrobladeActiveOff()) critDamage += 1;

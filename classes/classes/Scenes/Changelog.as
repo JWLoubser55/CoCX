@@ -309,10 +309,10 @@ public class Changelog extends BaseContent
 			outputText("-Because of over 10 possible henchmen options was still only ~~Luna~~ Amily all of them (even her) got better dmg scaling and some of their moves now would have power stuns instead of normal ones and in few cases even added some new cc effect or bleed. So even reformed cow heal bot with swing of her hips can stun enemy for a short moment now ;) ");
 			outputText("Also we found out Midoka (wait who? (Chi Chi daughter)) sneaked into henchman roster despite been not yet ready. So been marethical correct beings we benched her unti her mother teach her proper moves instead letting to copy some (semi)naked quasi dragoness.\n");
 			outputText("-Ant colony max children count is now limited to 250 multiplied by anthill expansion stage. Find Gems or Taking Stones will take shorter now (60 min > 10 min) and instead of returning to main camp menu return player to Phylla main menu.\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-New melee weapon (by Ormael): Dual Oni Tetsubo - can be gained by combining 2x Oni Tetsubo weapon. Cost 7,200 gems. Base atk is 45, dual large weapon belonging to mace/hammer type. It's can stun like Huge Warhammer and it's Low-grade Wrath Weapon.\n");
+			outputText("-New melee weapon (by Ormael): Twin Machine Spears - can be gained by combining 2x Machine Spear weapon. Cost 5,440 gems, have 19 atk, have 100% armor penetration and increases critical damage by +25%\n");
+			outputText("-New melee weapon (by Ormael): Twin Energy Spears - can be gained by combining 2x Energy Spear weapon. Cost 7,200 gems, have 45 atk and it dealing plasma damage. High tech weapon and Dual Massive Exotic type weapon.\n");
+			outputText("-New melee weapon (by Ormael): Twin Energy Swords - can be gained by combining 2x Energy Sword weapon. Cost 5,600 gems, have 35 atk and it dealing plasma damage. High tech weapon and Dual Large Exotic type weapon.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -339,6 +339,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -427,14 +436,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -462,9 +465,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -1038,7 +1038,7 @@ public class Changelog extends BaseContent
 			outputText("-New option in Phylactery Enchantment: Vessel rune Imbuement -> When training soulforce may increase demonic energy capacity by up to 2230%.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Glacial Graveaxe - pulled from unnamed grave at tundra. Base atk is 160. It's massive axe type low grade wrath weapon. Normally it deal 80% of physical dmg and 20% ice dmg. When using charge weapon it will deal 100% ice damage and have 10% to apply Frostburn DoT after critical hit.\n");
 			outputText("-New melee weapon (by Lord Shadeogorath): Volcanic Gravehammer - pulled from unnamed grave at ashlands. Base atk is 160. It's massive mace/hammer type low grade wrath weapon. Normally it deal 80% of physical dmg and 20% fire dmg. When using charge weapon it will deal 100% fire damage and have 10% to apply Burn DoT after critical hit.\n");
-			outputText("-New melee weapon (by Liadri): Machine Spear - craftable at goblin workshop (3 metal pieces, 200 nails, 1 energy core, 2 mechanisms and BP). Cost 2720 gems, have 19 atk, have 100% armor penetration and increases critical damage by +25%\n");
+			outputText("-New melee weapon (by Liadri): Machine Spear - craftable at goblin workshop (3 metal pieces, 200 nails, 1 energy core, 2 mechanisms and BP). Cost 2720 gems, have 19 atk, have 100% armor penetration and increases critical damage by +25%.\n");
 			outputText("-New melee weapon (by Liadri): Half of Alvina Twin Scythe - obtained from seperating Alvina's Twin Scythes. Large, fire scythe type weapon with bleed, partstaff, whirlwing properties. Increasing spellpower by 90%, have base 20 atk (scalling based on coruption), costing 6,000 gems.\n");
 			outputText("-New melee weapon (by Ormael): Pile Bunker - buyable at Minx shop. Cost 1,480 spirit stones. Base atk is 74. It's massive exotic type weapon. It have 100% armor pierce effect.\n");
 			outputText("-New pure legendary melee weapon (by Morgan): Paracelsus - obtainable by putting Beautiful Staff on restored Marae Altar and then taking it back. Effect or lowering tier 1 spells cooldowns by 1 turn change into lowering tier 2 by 2 turns or tier 3 by 3 turns.\n");

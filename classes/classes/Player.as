@@ -1404,7 +1404,7 @@ use namespace CoC;
 		}
 		public function isUsingMechMeleeWeapons():Boolean
 		{
-			return weapon == game.weapons.RIPPER1 ||  weapon == game.weapons.TRIPPER1 || weapon == game.weapons.RIPPER2 || weapon == game.weapons.TRIPPER2 || weapon == game.weapons.MACGRSW || weapon == game.weapons.TMACGRSW || weapon == game.weapons.MACSPEA;
+			return weapon == game.weapons.RIPPER1 ||  weapon == game.weapons.TRIPPER1 || weapon == game.weapons.RIPPER2 || weapon == game.weapons.TRIPPER2 || weapon == game.weapons.MACGRSW || weapon == game.weapons.TMACGRSW || weapon == game.weapons.MACSPEA || weapon == game.weapons.TMACSPEA;
 		}
 		//Is in medium-sized mech (med sized races mech)(have upgrade option to allow smaller than medium races pilot it)
 		public function isInNonGoblinMech():Boolean
@@ -1957,7 +1957,7 @@ use namespace CoC;
 		//Energy Melee Weapons
 		public function isEnergyMeleeWeapon():Boolean
 		{
-			return weapon == game.weapons.TIDAR || weapon == game.weapons.ENESWOR || weapon == game.weapons.ENESPEA;
+			return weapon == game.weapons.TIDAR || weapon == game.weapons.ENESWOR || weapon == game.weapons.TENESWOR || weapon == game.weapons.ENESPEA || weapon == game.weapons.TENESPEA;
 		}
 		//Energy Range Weapons
 		public function isEnergyRangeWeapon():Boolean

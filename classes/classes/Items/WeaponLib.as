@@ -507,6 +507,10 @@ public final class WeaponLib extends ItemConstants
 				.withEffect(IELib.Stun, 15)
 				.withEffect(IELib.ScaleAttack_Str, 270)
 				.withEffect(IELib.AttackBonus_Cor, 1/2) as Weapon;
+		public const DOTETSU:Weapon = new Weapon("DOTetsu", "DOniTetsubo", "Dual Oni Tetsubo", "a Dual Oni Tetsubo", "smash", 45, 7200, "This two unrealistically large two handed maces were clearly made for Oni warriors to wield. You likely will need some ridiculous strength just to lift them.", WT_MACE_HAMMER, WSZ_LARGE, true)
+				.withTags(W_TETSUBO, W_WHIRLWIND, W_LGWRATH)
+				.withEffect(IELib.Stun, 10)
+				.withEffect(IELib.ScaleAttack_Str, 180) as Weapon;
 		public const DSWORD_:Weapon = new Weapon(
 				"DSwords", "DualSwords", "dual swords", "a pair of swords", "slashes", 10, 800,
 				"A pair of swords made of the finest steel,usefulfor fight groups of enemies.",
@@ -1016,6 +1020,18 @@ public final class WeaponLib extends ItemConstants
 				"A small blade that could be thrown. Preferred weapon for the rogues.",
 				WT_DAGGER, WSZ_SMALL)
 				.withTags(W_THROWN) as Weapon;
+		public const TENESPEA:Weapon = new Weapon(
+				"TEneSpea","TwinEnergySpears","Twin Energy Spears","a Twin Energy Spears","piercing stab",45,7200,
+				"A twin spears created using ancient lost technology to be wielded by automatons. Blades are made of raw energy and the burning wounds it leaves are about as deadly as that of any metal weapon.",
+				WT_EXOTIC, WSZ_MASSIVE, true)
+				.withTags(W_HTECHWEAPON, W_PLASMA_TYPE)
+				.withEffect(IELib.ArmorPenetration, 100)
+				.withEffect(IELib.ScaleAttack_Spe, 75)  as Weapon;
+		public const TENESWOR:Weapon = new Weapon(
+				"TEneSwor","TwinEnergySwords","Twin Energy Swords","a Twin Energy Swords","slash",35,5600,
+				"A twin swords created using ancient lost technology to be wielded by automatons. Blades are made of raw energy and the burning wounds it leaves are about as deadly as that of any metal weapon. It seems the ancient were quite fond of an old trend in the past as the word WEEB is written on the handle of those energy blades of wich the shape resembles a katana.",
+				WT_EXOTIC, WSZ_LARGE, true)
+				.withTags(W_HTECHWEAPON, W_PLASMA_TYPE)  as Weapon;
 		public const TIDAR:Weapon = new Tidarion();
 		public const TKNIVES:Weapon = new TaintlessKnives();
 		public const TMACGRSW:Weapon = new Weapon(
@@ -1023,6 +1039,12 @@ public final class WeaponLib extends ItemConstants
 				"This twin greatswords are half invention and half weapon. Instead of a sharp straight blade, the weapon’s sides are a set of metal teeth that constantly move in order to properly saw through flesh and more solid matter, creating grievous wounds. Very good for cutting down trees too.",
 				WT_EXOTIC, WSZ_LARGE, true)
 				.withEffect(IELib.Bleed, 100)
+				.withTags(W_HTECHWEAPON)  as Weapon;
+		public const TMACSPEA:Weapon = new Weapon(
+				"TMacspea","T.Mach.spear","Twin Machine Spears","a Twin Machine Spears","piercing stab",19,5440,
+				"This twin spears are half invention and half weapon. Instead of a standard run of the mill spearhead, the weapon’s tip is a massive screw that spins on itself continually to burrow into the opponent’s flesh. Any decisive hit you will land with this thing will possibly be fatal.",
+				WT_EXOTIC, WSZ_LARGE, true)
+				.withEffect(IELib.ArmorPenetration, 100)
 				.withTags(W_HTECHWEAPON)  as Weapon;
 		public const TNRSABER:Weapon = new Weapon(
 				"TNRSaber","TwinNineRingedSabers","Twin Nine-ringed Sabers","a twin nine-ringed sabers","slash",14,2240,
@@ -1262,7 +1284,11 @@ public final class WeaponLib extends ItemConstants
 			[TRSABER, TTRSABER],
 			[PIPE, P_PIPE],
 			[TRIDAG, DTRIDAG],
-			[PASHA__, D_PASHA]
+			[PASHA__, D_PASHA],
+			[OTETSU, DOTETSU],
+			[MACSPEA, TMACSPEA],
+			[ENESPEA, TENESPEA],
+			[ENESWOR, TENESWOR]
 		]
 	}
 }
