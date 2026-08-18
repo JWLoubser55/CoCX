@@ -43,10 +43,16 @@ import classes.Scenes.NPCs.Galia;
 			outputText("She sighs before speaking curtly to you, \"<i>What?</i>\"");
 			menu();
 			addButton(0, "Appearance", GaliaCampMainMenuSlaveAppearance);
-			//1 - talk
+			if (flags[kFLAGS.GALIA_AFFECTION] > 2) addButtonDisabled(1, "Talk", "???");
+			else addButtonDisabled(1, "???", "If there was way to make Galia less hate you [name]... It would make life easier... or at least make her more TALKative, right?");//1 - talk
 			addButton(2, "Spar", GaliaSparring).hint("Get into a quick battle with Galia!").disableIf(flags[kFLAGS.CAMP_UPGRADES_SPARING_RING] < 2, "You need a good sparring ring for that.");
 			//3 - sex
-			//4 v 9 - give items
+			addButtonDisabled(4, "???", "Can't tell you yet but i advise to look for that one cat merchant to be ready when this option opens ;)");//4 - give items
+			if (flags[kFLAGS.GALIA_LVL_UP] >= 5) {
+				if (player.hasPerk(PerkLib.BasicLeadership)) addButton(5, "Team", galiaHenchmanOption);
+				else addButtonDisabled(5, "Team", "You need to have at least Basic Leadership to form a team.");
+			}
+			else addButtonDisabled(5, "???", "You need to let Evangeline perform 2nd experiment on Galia.");
 			addButton(14, "Back", camp.campSlavesMenu);
 		}
 		
@@ -113,5 +119,79 @@ import classes.Scenes.NPCs.Galia;
 			}
 			cleanupAfterCombat();
 		}
+		
+		public function galiaHenchmanOption():void {
+			menu();/*
+			if (flags[kFLAGS.PLAYER_COMPANION_1] == "") {
+				if (flags[kFLAGS.PLAYER_COMPANION_2] == "Nadia" || flags[kFLAGS.PLAYER_COMPANION_3] == "Nadia") addButtonDisabled(0, "Team (1)", "You already have Nadia accompany you.");
+				else addButton(0, "Team (1)", galiaHenchmanOption2, 1).hint("Ask Nadia to join you in adventures outside camp.");
+			}
+			else {
+				if (flags[kFLAGS.PLAYER_COMPANION_1] == "Nadia") addButton(5, "Team (1)", galiaHenchmanOption2, 21).hint("Ask Nadia to stay in camp.");
+				else addButtonDisabled(5, "Team (1)", "You already have other henchman accompany you as first party member. Ask him/her to stay at camp before you talk with Nadia about accompaning you as first party member.");
+			}
+			if (player.hasPerk(PerkLib.IntermediateLeadership)) {
+				if (flags[kFLAGS.PLAYER_COMPANION_2] == "") {
+					if (flags[kFLAGS.PLAYER_COMPANION_1] == "Nadia" || flags[kFLAGS.PLAYER_COMPANION_3] == "Nadia") addButtonDisabled(1, "Team (2)", "You already have Nadia accompany you.");
+					else addButton(1, "Team (2)", galiaHenchmanOption2, 2).hint("Ask Nadia to join you in adventures outside camp.");
+				}
+				else {
+					if (flags[kFLAGS.PLAYER_COMPANION_2] == "Nadia") addButton(6, "Team (2)", galiaHenchmanOption2, 22).hint("Ask Nadia to stay in camp.");
+					else addButtonDisabled(6, "Team (2)", "You already have other henchman accompany you as second party member. Ask him/her to stay at camp before you talk with Nadia about accompaning you as second party member.");
+				}
+			}
+			else {
+				addButtonDisabled(1, "Team (2)", "Req. Intermediate Leadership.");
+				addButtonDisabled(6, "Team (2)", "Req. Intermediate Leadership.");
+			}*/
+			addButton(14, "Back", GaliaCampMainMenuSlave);
+		}/*
+		public function galiaHenchmanOption2(slot:Number = 1):void
+		{
+			clearOutput();
+			if (slot < 21) {
+				outputText("\"<i>Of course I'll help you out, [name]! With me around you, no harm will come to you!</i>\"\n\n");
+				outputText("Nadia is now following you around.\n\n");
+				var intNadia:Number = 100;
+				var wisNadia:Number = 100;
+				var healpowerNadia:Number = 2.5;
+				var soulskillpowerNadia:Number = 7.25;/\*
+				if (flags[kFLAGS.AURORA_LVL] >= 1) {
+					if (flags[kFLAGS.AURORA_LVL] == 2) {
+						intAyane += 22;
+						wisAyane += 11;
+						spellsoulskillpowerAyane += 0.1;
+					}
+					if (flags[kFLAGS.AURORA_LVL] == 3) {
+						intAyane += 22;
+						wisAyane += 11;
+						spellsoulskillpowerAyane += 0.1;
+					}
+					if (flags[kFLAGS.AURORA_LVL] >= 4) {
+						intAyane += 66 + (22 * (5 - flags[kFLAGS.AURORA_LVL]));
+						wisAyane += 33 + (11 * (5 - flags[kFLAGS.AURORA_LVL]));
+						spellsoulskillpowerAyane += 0.3 + (0.1 * (5 - flags[kFLAGS.AURORA_LVL]));
+					}
+				}*\/
+				intNadia *= (1 + (0.2 * player.newGamePlusMod()));
+				intNadia = Math.round(intNadia);
+				wisNadia *= (1 + (0.2 * player.newGamePlusMod()));
+				wisNadia = Math.round(wisNadia);
+				healpowerNadia += (0.5 * player.newGamePlusMod());
+				soulskillpowerNadia += (0.5 * player.newGamePlusMod());
+				player.createStatusEffect(StatusEffects.CombatFollowerNadia, wisNadia, wisNadia, healpowerNadia, soulskillpowerNadia);
+				if (slot == 2) flags[kFLAGS.PLAYER_COMPANION_2] = "Nadia";
+				if (slot == 1) flags[kFLAGS.PLAYER_COMPANION_1] = "Nadia";
+			}
+			else {
+				outputText("Nadia nods her head, \"<i>I’ll be here if you need need my assistance.</i>\"\n\n");
+				outputText("Nadia is no longer following you around.\n\n");
+				player.removeStatusEffect(StatusEffects.CombatFollowerNadia);
+				if (slot == 22) flags[kFLAGS.PLAYER_COMPANION_2] = "";
+				if (slot == 21) flags[kFLAGS.PLAYER_COMPANION_1] = "";
+			}
+			doNext(GaliaCampMainMenuSlave);
+			cheatTime(1/12);
+		}*/
 	}
 }

@@ -2599,15 +2599,15 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 				addButton(14, "Leave", camp.campSlavesMenu);
 				if (!pregnancy.isPregnant && flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 0 && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1)
 				{
-					addButton(5, "Farm Work", sendCorruptCuntToFarm).hint("Send Amily to the farm for work.");
-					if (player.hasPerk(PerkLib.BasicLeadership)) addButton(10, "Team", amilyHenchmanOption);
+					if (player.hasPerk(PerkLib.BasicLeadership)) addButton(5, "Team", amilyHenchmanOption);
+					addButton(10, "Farm Work", sendCorruptCuntToFarm).hint("Send Amily to the farm for work.");
 				}
 
 				if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1)
 				{
-					addButton(5, "Go Camp", backToCamp).hint("Send Amily back to your camp.");
-					if (flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] == 0) addButton(6, "Harvest Milk", harvestMilk);
-					else addButton(6, "Stop Harvest", stopHarvestingMilk);
+					addButton(10, "Go Camp", backToCamp).hint("Send Amily back to your camp.");
+					if (flags[kFLAGS.FOLLOWER_PRODUCTION_AMILY] == 0) addButton(11, "Harvest Milk", harvestMilk);
+					else addButton(11, "Stop Harvest", stopHarvestingMilk);
 					addButton(14, "Back", SceneLib.farm.farmCorruption.rootScene);
 				}
 			}

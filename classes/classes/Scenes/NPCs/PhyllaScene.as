@@ -1782,7 +1782,8 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				outputText("\n\n\"<i>Is there anything else you wanted to do while you're down here?</i>\"  She inquires excitedly.");
 			}
 			flags[kFLAGS.PHYLLA_GEMS_HUNTED_TODAY] = 1;
-			doNext(camp.returnToCampUseOneHour);
+			doNext(introductionToPhyllaFollower);
+			cheatTime(1/6);
 		}
 
 //[Stones]
@@ -1832,7 +1833,8 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				CampStatsAndResources.StonesResc = SceneLib.campUpgrades.checkMaterialsCapStones();
 				outputText(" <b>Your stone capacity is full.</b>");
 			}
-			doNext(camp.returnToCampUseOneHour);
+			doNext(introductionToPhyllaFollower);
+			cheatTime(1/6);
 		}
 
 //Drider/Bee impregnation scene for Phylla (universal unless otherwise specified, which will include varied intros and stuff.

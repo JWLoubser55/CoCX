@@ -4357,7 +4357,8 @@ public class Camp extends NPCAwareContent{
 		useHealAtCamp1();
 	}
 	private function useCureAtCamp():void {
-		clearOutput();outputText("You channel white magic to rid yourself of all negative effects affecting you.");
+		clearOutput();
+		outputText("You channel white magic to rid yourself of all negative effects affecting you.");
 		pc.ManaChange(-500);
 		CombatAbilities.Cure.doEffect();
 		advanceMinutes(15);

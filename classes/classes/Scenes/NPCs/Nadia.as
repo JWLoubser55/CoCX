@@ -108,7 +108,7 @@ package classes.Scenes.NPCs
 		}
 		
 		public function usingHailOfBlades1Soulskill():void {
-			outputText("placing her palms together, Nadia's aura flares. soulforce leaks out around her, and she brings her palms out to her sides. Eyes focused on you, Nadia forms six ethereal swords nearly six feet long, splaying out behind her like a fan of blades. She thrusts her hand outwards and in the blink of an eye, the etherial blades shoot towards you. ");
+			outputText("Placing her palms together, Nadia's aura flares. Soulforce leaks out around her, and she brings her palms out to her sides. Eyes focused on you, Nadia forms six ethereal swords nearly six feet long, splaying out behind her like a fan of blades. She thrusts her hand outwards and in the blink of an eye, the etherial blades shoot towards you. ");
 			soulforce -= 50;
 			outputText("The blades cut deep, inflicting ");
 			var hob1:Number = 6;

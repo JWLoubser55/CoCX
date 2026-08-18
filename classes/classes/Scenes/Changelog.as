@@ -308,7 +308,7 @@ public class Changelog extends BaseContent
 			outputText("-Basic Leadership and Intermediate Leadership have additional effect: +1%/+2% per PC level to increased efficiency of henchmen attacks.\n");
 			outputText("-Because of over 10 possible henchmen options was still only ~~Luna~~ Amily all of them (even her) got better dmg scaling and some of their moves now would have power stuns instead of normal ones and in few cases even added some new cc effect or bleed. So even reformed cow heal bot with swing of her hips can stun enemy for a short moment now ;) ");
 			outputText("Also we found out Midoka (wait who? (Chi Chi daughter)) sneaked into henchman roster despite been not yet ready. So been marethical correct beings we benched her unti her mother teach her proper moves instead letting to copy some (semi)naked quasi dragoness.\n");
-			outputText("-\n");
+			outputText("-Ant colony max children count is now limited to 250 multiplied by anthill expansion stage. Find Gems or Taking Stones will take shorter now (60 min > 10 min) and instead of returning to main camp menu return player to Phylla main menu.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
