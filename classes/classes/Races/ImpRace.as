@@ -13,12 +13,12 @@ import classes.internals.Utils;
  * Tier 1: imp
  */
 public class ImpRace extends Race {
-	public static const ImpSkinColors:/*String*/Array = ["red", "orange","pale purple", "royal purple", "light purple"];
+	public static const ImpSkinColors:/*String*/Array = ["red", "orange","pale purple", "royal purple", "light purple", "greyish black"];
 	public static const ImpSkinColorsMale:/*String*/Array = ["red","orange"];
 	public static const ImpSkinColorsFemale:/*String*/Array = ["pale purple", "royal purple", "light purple"];
 	public static const ImpRareSkinColors:/*String*/Array = ["pale yellow", "grayish-blue", "green", "dark green", "emerald"];
 	public static const ImpEyeColors:/*String*/Array = ["red", "green", "purple", "yellow"];
-	public static const ImpHairColors:/*String*/Array = ["red", "purple", "dark purple"];
+	public static const ImpHairColors:/*String*/Array = ["red", "purple", "dark purple", "orange"];
     public static const RaceBody:/*String*/Array = [
         /*Antenna*/		"Human",
         /*Arms*/		"Human",

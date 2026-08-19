@@ -3,6 +3,7 @@ package classes.Scenes.NPCs
 import classes.*;
 import classes.BodyParts.Butt;
 import classes.BodyParts.Hips;
+import classes.GlobalFlags.kFLAGS;
 import classes.Scenes.SceneLib;
 
 /**
@@ -105,12 +106,18 @@ import classes.Scenes.SceneLib;
 			this.imageName = "izma";
 			this.long = "Izma the tigershark stands a bit over 6' tall, with orange skin bearing horizontal stripes covering most of her body.  Her silver-white hair cascades past her shoulders, draping over an impressive pair of DD-cup breasts barely restrained by a skimpy black bikini top.  Under the knee-length grass skirt below them rustles her beastly fifteen-inch penis and four-balled sack; you catch occasional glimpses of them as she moves.  She's tucked her usual reading glasses into her locker at the moment.";
 			// this.plural = false;
-			this.createCock(15,2.2);
-			this.balls = 4;
-			this.ballSize = 3;
 			this.createVagina(false, VaginaClass.WETNESS_SLICK, VaginaClass.LOOSENESS_LOOSE);
-			this.createStatusEffect(StatusEffects.BonusVCapacity, 45, 0, 0, 0);
-			createBreastRow(Appearance.breastCupInverse("DD"));
+			if (flags[kFLAGS.IZMA_NO_COCK] == 1) {
+				createBreastRow(Appearance.breastCupInverse("F"));
+				this.createStatusEffect(StatusEffects.BonusVCapacity, 60, 0, 0, 0);
+			}
+			else {
+				this.createCock(15,2.2);
+				this.balls = 4;
+				this.ballSize = 3;
+				createBreastRow(Appearance.breastCupInverse("DD"));
+				this.createStatusEffect(StatusEffects.BonusVCapacity, 45, 0, 0, 0);
+			}
 			this.ass.analLooseness = AssClass.LOOSENESS_NORMAL;
 			this.ass.analWetness = AssClass.WETNESS_DRY;
 			this.createStatusEffect(StatusEffects.BonusACapacity,30,0,0,0);

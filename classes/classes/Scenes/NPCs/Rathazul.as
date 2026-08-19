@@ -423,45 +423,6 @@ private function TyrantiaEggQuestRathazul():void {
 	doNext(playerMenu);
 }
 
-private function purifySomething():void {
-	spriteSelect(SpriteDb.s_rathazul);
-	clearOutput();
-	outputText("Rathazul asks, \"<i>What would you like me to purify?</i>\"");
-	menu();
-	//Item purification offer
-	if (player.hasItem(consumables.INCUBID)) {
-		addButton(0, "Incubi Draft", rathazulPurifyIncubiDraft);
-	}
-	if (player.hasItem(consumables.SUCMILK)) {
-		addButton(1, "SuccubiMilk", rathazulPurifySuccubiMilk);
-	}
-	if (player.hasItem(consumables.SDELITE)) {
-		addButton(2, "S. Delight", rathazulPurifySuccubiDelight);
-	}
-	if (player.hasItem(consumables.LABOVA_)) {
-		addButton(3, "LaBova", rathazulPurifyLaBova);
-	}
-	if(player.hasItem(consumables.MINOCUM)) {
-		addButton(4,"MinoCum",purifyMinoCum);
-	}
-	addButton(14,"Back",rathazulWorkOffer);
-}
-
-
-private function rathazulPurifyIncubiDraft():void {
-	clearOutput();
-	if (player.gems < 20) {
-		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
-		doNext(returnToRathazulMenu);
-		return;
-	}
-	if (!debug) player.destroyItems(consumables.INCUBID, 1);
-	inventory.takeItem(consumables.P_DRAFT, returnToRathazulMenu);
-	player.gems -= 20;
-	statScreenRefresh();
-	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
-}
-
 //For Belisa's Tooth Quest
 public function BelisaRalthazulTalk():void {
 	outputText("Hoping your trusty alchemist friend can make Belisa's smile whole again, You ask Ralthazul about curing a cursed injury. \"<i>Oh? Cursed injury, you say?</i>\" He ponders for a second. \"<i>What sort of injury, and what kind of curse?</i>\"\n\n");
@@ -508,16 +469,45 @@ private function rathazulMakesPurifyPotion():void {
 	addButton(0, "Next", campRathazul);
 }
 
+//PURIFICATION
+private function purifySomething():void {
+	spriteSelect(SpriteDb.s_rathazul);
+	clearOutput();
+	outputText("Rathazul asks, \"<i>What would you like me to purify?</i>\"");
+	menu();
+	//Item purification offer
+	if (player.hasItem(consumables.INCUBID)) addButton(0, "Incubi Draft", rathazulPurifyIncubiDraft);
+	if (player.hasItem(consumables.SUCMILK)) addButton(1, "SuccubiMilk", rathazulPurifySuccubiMilk);
+	if (player.hasItem(consumables.SDELITE)) addButton(2, "S. Delight", rathazulPurifySuccubiDelight);
+	if (player.hasItem(consumables.LABOVA_)) addButton(3, "LaBova", rathazulPurifyLaBova);
+	if(player.hasItem(consumables.MINOCUM)) addButton(4,"MinoCum", purifyMinoCum);
+	addButton(14,"Back",rathazulWorkOffer);
+}
+
+private function rathazulPurifyIncubiDraft():void {
+	clearOutput();
+	if (player.gems < 20) {
+		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
+		doNext(purifySomething);
+		return;
+	}
+	if (!debug) player.destroyItems(consumables.INCUBID, 1);
+	inventory.takeItem(consumables.P_DRAFT, purifySomething);
+	player.gems -= 20;
+	statScreenRefresh();
+	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
+}
+
 private function rathazulPurifySuccubiMilk():void {
 	clearOutput();
 	if (player.gems < 20) {
 		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
-		doNext(returnToRathazulMenu);
+		doNext(purifySomething);
 		return;
 	}
 	if (!debug)
 		player.destroyItems(consumables.SUCMILK, 1);
-	inventory.takeItem(consumables.P_S_MLK, returnToRathazulMenu);
+	inventory.takeItem(consumables.P_S_MLK, purifySomething);
 	player.gems -= 20;
 	statScreenRefresh();
 	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
@@ -528,12 +518,12 @@ private function rathazulPurifySuccubiDelight():void {
 	clearOutput();
 	if (player.gems < 20) {
 		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
-		doNext(returnToRathazulMenu);
+		doNext(purifySomething);
 		return;
 	}
 	if (!debug)
 		player.destroyItems(consumables.SDELITE, 1);
-	inventory.takeItem(consumables.PSDELIT, returnToRathazulMenu);
+	inventory.takeItem(consumables.PSDELIT, purifySomething);
 	player.gems -= 20;
 	statScreenRefresh();
 	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
@@ -544,12 +534,28 @@ private function rathazulPurifyLaBova():void {
 	clearOutput();
 	if (player.gems < 20) {
 		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
-		doNext(returnToRathazulMenu);
+		doNext(purifySomething);
 		return;
 	}
 	if (!debug)
 		player.destroyItems(consumables.LABOVA_, 1);
-	inventory.takeItem(consumables.P_LBOVA, returnToRathazulMenu);
+	inventory.takeItem(consumables.P_LBOVA, purifySomething);
+	player.gems -= 20;
+	statScreenRefresh();
+	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
+}
+
+private function purifyMinoCum():void{
+	if (player.gems < 20)
+	{
+		clearOutput();
+		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
+		doNext(purifySomething);
+		return;
+	}
+	clearOutput();
+	if (!debug) player.destroyItems(consumables.MINOCUM, 1);
+	inventory.takeItem(consumables.P_M_CUM, purifySomething);
 	player.gems -= 20;
 	statScreenRefresh();
 	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
@@ -723,23 +729,6 @@ private function makeAMindUpDraft():void {
 	statScreenRefresh();
 	player.addStatusValue(StatusEffects.MetRathazul,2,1);
 	inventory.takeItem(consumables.MIND_UP, returnToRathazulMenu);
-}
-
-//PURIFICATION
-private function purifyMinoCum():void{
-	if (player.gems < 20)
-	{
-		clearOutput();
-		outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
-		doNext(returnToRathazulMenu);
-		return;
-	}
-	clearOutput();
-	if (!debug) player.destroyItems(consumables.MINOCUM, 1);
-	inventory.takeItem(consumables.P_M_CUM, returnToRathazulMenu);
-	player.gems -= 20;
-	statScreenRefresh();
-	player.addStatusValue(StatusEffects.MetRathazul, 2, 1);
 }
 
 //------------

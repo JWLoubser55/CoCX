@@ -1225,7 +1225,7 @@ private function submitToLakeIzma():void {
 
 		outputText("Finally, Izma stops, panting hard for breath; as her cock softens and pulls free from your stretched anus, a steady trickle of hot cum pours out in its wake.  As she recovers, so do you, rolling over so that you can see her, your midriff swollen into a small but undeniable gut from all the cum she has poured into it.  She looks at you, undeniably pleased by what she sees.\n\n");
 
-		if (voluntary) outputText("Leaning down, she gives you a small peck on the lips, then flops down beside you.  She reaches over and pulls you over, letting you rest your head against her pillow-like DD-cup breasts. When you are recovered, she helps you up.  \"<i>You're too good to your inferior, [name]... but that's what I love about you so much.</i>\"  She smirks, giving you a decidedly unchaste kiss and a smack on the ass before you dress yourself and head back to camp.\n\n");
+		if (voluntary) outputText("Leaning down, she gives you a small peck on the lips, then flops down beside you.  She reaches over and pulls you over, letting you rest your head against her pillow-like "+(flags[kFLAGS.IZMA_NO_COCK] == 1?"F":"DD")+"-cup breasts. When you are recovered, she helps you up.  \"<i>You're too good to your inferior, [name]... but that's what I love about you so much.</i>\"  She smirks, giving you a decidedly unchaste kiss and a smack on the ass before you dress yourself and head back to camp.\n\n");
 		else {
 			outputText("\"<i>That's how shark people have sex,</i>\" she tells you.  \"<i>Of course, it's different if you're the one who won... but you'll need to come back again and beat me if you want to see what that's like.</i>\"  She gathers her clothing and drops the tooth into your lap, then leans down and gives you a small peck on the lips before diving back into the water, most likely to clean herself off.\n\n");
 
@@ -1276,7 +1276,7 @@ private function submitToLakeIzma():void {
 		outputText("Finally, Izma stops, panting hard for breath; as her cock softens and pulls free from your stretched anus, a steady trickle of hot cum pours out in its wake.  As she recovers, so do you, rolling over so that you can see her, your midriff swollen into a small but undeniable gut from all the cum she has poured into it.  She looks at you, undeniably pleased by what she sees.\n\n");
 		player.sexReward("cum","Vaginal");
 		if (voluntary) {
-			outputText("Leaning down, she gives you a small peck on the lips, then flops down beside you.  She reaches over and pulls you over, letting you rest your head against her pillow-like DD-cup breasts. When you are recovered, she helps you up.  \"<i>You're too good to your inferior, [name]... but that's what I love about you so much.</i>\"  She smirks, giving you a decidedly unchaste kiss and a smack on the ass before opening her locker.\n\n");
+			outputText("Leaning down, she gives you a small peck on the lips, then flops down beside you.  She reaches over and pulls you over, letting you rest your head against her pillow-like "+(flags[kFLAGS.IZMA_NO_COCK] == 1?"F":"DD")+"-cup breasts. When you are recovered, she helps you up.  \"<i>You're too good to your inferior, [name]... but that's what I love about you so much.</i>\"  She smirks, giving you a decidedly unchaste kiss and a smack on the ass before opening her locker.\n\n");
 			//180 for "not visible", I assume. -SH
 			if (!player.isPregnant() || player.hasNonVisiblePregnancy()) outputText("Hauling out a plant, she gingerly removes a leaf and offers it to you.  \"<i>Could you take this please?  It's an anti-pregnancy herb.  I'd be happy to have babies with you someday... but I want to earn your acknowledgment as a mate first.</i>\"  Smiling a bit at how old-fashioned she seems, you take the leaf out of her hands and eat it.");
 		} else {
@@ -1402,7 +1402,8 @@ public function izmaFollowerMenu():void {
 		.disableIf(player.lust < 33, "You are not horny enough to consider that.");
 	addButton(6, "Lake", izmaLakeTurnedDownCampSex, true)
 		.hint("Go to the lake together to fuck the old-fashioned way!")
-		.disableIf(player.lust < 33, "You are not horny enough to consider that.");
+		.disableIf(player.lust < 33, "You are not horny enough to consider that.")
+		.disableIf(flags[kFLAGS.IZMA_NO_COCK] == 1, "She no longer herm to allow access to those scenes.");
 	if (flags[kFLAGS.IZMA_BROFIED] != -1 || sceneHunter.other) {
 		if (flags[kFLAGS.IZMA_NO_COCK] == 0) addButton(7, "Remove Dick", removeIzmasPenis)
 			.hint("Get Izma to remove her dick for you. Why would you do that? You monster.");
@@ -1507,7 +1508,7 @@ private function izmaPearance():void {
 
 	outputText("  She has an angular face whose features are slightly reminiscient of a shark.  Her mouth contains a second row of retractable knife-like teeth in front of the normal blunt ones.  Her face is feminine despite its angularity.  She has long silver - white hair that grows past her shoulders. Her hips are girly without being too wide and her butt is firm.  She has a long shark - tail that grows down to her ankles, marked with the same tiger stripes as the rest of her body.  She has two normal human legs ending in normal human feet.\n\n");
 
-	outputText("She has a pair of DD-cup breasts, with a single 0.5 inch nipple on each breast.\n\n");
+	outputText("She has a pair of "+(flags[kFLAGS.IZMA_NO_COCK] == 1?"F-cup breasts, with a single":"DD-cup breasts, with a single 0.5")+" inch nipple on each breast.\n\n");
 
 	if(flags[kFLAGS.IZMA_NO_COCK] == 0) {
 		outputText("Just above her pussy, Izma has a traitorously long humanoid cock that sticks out of her skirt more often than not.  It's around 15 inches long and 1.5 inches thick.  It has a dark red color like the rest of Izma's skin, though it is devoid of tiger-stripes. A quad of baseball-sized testes swings heavily beneath her cock.\n\n");
@@ -2153,7 +2154,7 @@ private function chooseToFlirtWithIzma():void {
 	clearOutput();
 	outputText("You smile at Izma and tell her you appreciate the offer and that you think she'll be beautiful whether she becomes a mommy or a daddy.  In fact, the mental image of her heavily pregnant, ");
 	if (flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("her huge cock barely able to poke past her baby-filled belly, ");
-	outputText("her DD-cups full of milk, watching as she waddles around the camp, is a very attractive one.  She smirks at you .  \"<i> You're such a perv.</i>\"");
+	outputText("her "+(flags[kFLAGS.IZMA_NO_COCK] == 1?"F":"DD")+"-cups full of milk, watching as she waddles around the camp, is a very attractive one.  She smirks at you .  \"<i> You're such a perv.</i>\"");
 
 	if(flags[kFLAGS.IZMA_NO_COCK] == 0) outputText("  But she glances between her legs and sees her massive cock poking out of her skirt.");
 	else outputText("  But she glances down to behold her rock-hard nipples jutting out.");
