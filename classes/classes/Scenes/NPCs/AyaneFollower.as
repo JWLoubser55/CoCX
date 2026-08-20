@@ -446,8 +446,8 @@ public function ayaneHenchmanOption2(slot:Number = 1):void
 	if (slot < 21) {
 		outputText("\"<i>On your call divine one.</i>\"\n\n");
 		outputText("Ayane is now following you around.\n\n");
-		var intAyane:Number = 220;
-		var wisAyane:Number = 110;
+		var intAyane:Number = 320;
+		var wisAyane:Number = 210;
 		var spellsoulskillpowerAyane:Number = 1.5;/*
 		if (flags[kFLAGS.AURORA_LVL] >= 1) {
 			if (flags[kFLAGS.AURORA_LVL] == 2) {

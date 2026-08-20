@@ -11,6 +11,7 @@ import classes.IMutations.IMutationsLib;
 import classes.Scenes.SceneLib;
 import classes.Scenes.NPCs.TyrantiaFollower;
 import classes.PerkLib;
+import classes.Scenes.Combat.CombatAbilities;
 import classes.StatusEffects;
 import classes.StatusEffects.VampireThirstEffect;
 
@@ -180,28 +181,106 @@ import classes.StatusEffects.VampireThirstEffect;
 			clearOutput();
 			if (player.statusEffectv4(StatusEffects.CombatFollowerNadia) > 0) {
 				var choice2:Number = rand(20);
-				if (choice2 < 10) outputText("\n\n");
-				if (choice2 >= 10 && choice2 < 14) outputText("\n\n");
-				if (choice2 >= 14 && choice2 < 17) outputText("\n\n");
-				if (choice2 == 17 || choice2 == 18) outputText("\n\n");
-				if (choice2 == 19) outputText("\n\n");
+				if (downTo01Idle()) {
+					if (rand(100) == 0) neisaCombatActions0();
+					else {
+						if (!player.hasStatusEffect(StatusEffects.TearsOfDenial)) nadiaCombatActions3();
+						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(2) == 0) nadiaCombatActions2();
+						else if (player.HP < player.maxOverHP()) nadiaCombatActions1();
+						else nadiaCombatActions4();
+					}
+				}
+				else if (downTo20Idle()) {
+					if (choice2 < 4) nadiaCombatActions0();
+					else {
+						if (!player.hasStatusEffect(StatusEffects.TearsOfDenial)) nadiaCombatActions3();
+						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(2) == 0) nadiaCombatActions2();
+						else if (player.HP < player.maxOverHP()) nadiaCombatActions1();
+						else nadiaCombatActions4();
+					}
+				}
+				else {
+					if (choice2 < 10) nadiaCombatActions0();
+					else {
+						if (!player.hasStatusEffect(StatusEffects.TearsOfDenial)) nadiaCombatActions3();
+						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(2) == 0) nadiaCombatActions2();
+						else if (player.HP < player.maxOverHP()) nadiaCombatActions1();
+						else nadiaCombatActions4();
+					}
+				}
 			}
 			else {
-				outputText("\n\n");
+				outputText("Nadia takes her staff out, ready to assist you.\n\n");
 				player.addStatusValue(StatusEffects.CombatFollowerNadia, 4, 1);
 			}
+			if (flags[kFLAGS.PLAYER_COMPANION_1] == "Nadia" && flags[kFLAGS.IN_COMBAT_PLAYER_COMPANION_1_ACTION] != 1) flags[kFLAGS.IN_COMBAT_PLAYER_COMPANION_1_ACTION] = 1;
+			if (flags[kFLAGS.PLAYER_COMPANION_2] == "Nadia" && flags[kFLAGS.IN_COMBAT_PLAYER_COMPANION_2_ACTION] != 1) flags[kFLAGS.IN_COMBAT_PLAYER_COMPANION_2_ACTION] = 1;
+			if (flags[kFLAGS.PLAYER_COMPANION_3] == "Nadia" && flags[kFLAGS.IN_COMBAT_PLAYER_COMPANION_3_ACTION] != 1) flags[kFLAGS.IN_COMBAT_PLAYER_COMPANION_3_ACTION] = 1;
 		}
 		public function nadiaCombatActions0():void {
-
+			outputText("Nadia looks for an opening in the battle.\n\n");
 		}
 		public function nadiaCombatActions1():void {
-
+			outputText("Nadia incants a spell as a green pulse emanates from her staff. The glow rapidly whirls around you until dissipating into you, closing injuries almost instantly.");
+			var heal0:Number = player.statusEffectv1(StatusEffects.CombatFollowerNadia);
+			heal0 += player.statusEffectv2(StatusEffects.CombatFollowerNadia);
+			heal0 += scalingBonusIntelligenceCompanion();
+			heal0 += scalingBonusWisdomCompanion();
+			heal0 *= player.statusEffectv3(StatusEffects.CombatFollowerNadia);
+			heal0 *= 7;
+			//Determine if critical heal!
+			var crit:Boolean = false;
+			var critHeal:int = 25;
+			if (rand(100) < critHeal) {
+				crit = true;
+				heal0 *= 1.75;
+			}
+			heal0 = Math.round(heal0);
+			if (player.hasStatusEffect(StatusEffects.CombatWounds)) {
+				if (player.statusEffectv1(StatusEffects.CombatWounds) > 0.04) player.addStatusValue(StatusEffects.CombatWounds, 1, -0.04);
+				else player.removeStatusEffect(StatusEffects.CombatWounds);
+			}
+			outputText("<b>([font-heal]+" + heal0 + "[/font])</b>.");
+			if (crit) outputText(" <b>*Critical Heal!*</b>");
+			pc.HPChange(heal0, false, false);
+			outputText("\n\n");
+			
 		}
 		public function nadiaCombatActions2():void {
-
+			outputText("Nadia channels white magic to purge all negative effects upon you. You can see the essence escape you in a puff of glittery smoke.\n\n");
+			CombatAbilities.Cure.doEffect(false);
 		}
 		public function nadiaCombatActions3():void {
-
+			outputText("Nadia calls on the power of mercy in order to deny defeat. A small aura of magic shields your heart as spell takes effect, ready to safeguard your victory.\n\n");
+			player.createStatusEffect(StatusEffects.TearsOfDenial, 1, 0, 0, 0);
+		}
+		public function nadiaCombatActions4():void {
+			outputText("Placing her palms together, Nadia's aura flares. Soulforce leaks out around her as she brings her palms out to her sides. Eyes focused on you, Nadia forms six ethereal swords, each nearly six feet long, splaying out behind her like a fan of blades. ");
+			outputText("She thrusts her hand outwards and the ethereal blades shoot towards opponent" + (monster.plural?"s":"") + " faster than your eyes can follow them. ");
+			var hob01:Number = 6;
+			while (hob01-->0) BladesD1();
+			outputText("damage!\n\n");
+		}
+		private function BladesD1():void {
+			var damage:Number = player.statusEffectv2(StatusEffects.CombatFollowerNadia) * 0.5;
+			damage += scalingBonusWisdomCompanion() * 0.5;
+			if (damage < 10) damage = 10;
+			damage *= player.statusEffectv4(StatusEffects.CombatFollowerNadia);
+			var crit:Boolean = false;
+			var critChance:int = 5;
+			if (player.statusEffectv2(StatusEffects.CombatFollowerNadia) <= 200) critChance += player.statusEffectv2(StatusEffects.CombatFollowerNadia) / 10;
+			if (player.statusEffectv2(StatusEffects.CombatFollowerNadia) > 200) critChance += 20;
+			if (rand(100) < critChance) {
+				crit = true;
+				damage *= 1.75;
+			}
+			var bd2:Number = 0.9;
+			bd2 += (rand(21) * 0.01);
+			damage *= bd2;
+			damage = Math.round(damage);
+			doMinionMagDamage(damage, true);
+			if (crit == true) outputText(" <b>*Critical Hit!*</b>");
+			outputText(" ");
 		}
 		
 		public function etnaCombatActions():void {

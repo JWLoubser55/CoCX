@@ -1654,8 +1654,8 @@ public class Combat extends BaseContent {
     }
     public function Cure():void {
         clearOutput();
-		for each (var buff:String in CurableBuffs) player.buff(buff).remove();
-		for each (var type:StatusEffectType in CurableEffects) player.removeStatusEffect(type);
+		for each (var buff:String in CombatAbilities.Cure.CurableBuffs) player.buff(buff).remove();
+		for each (var type:StatusEffectType in CombatAbilities.Cure.CurableEffects) player.removeStatusEffect(type);
 		if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained")) {
 			for each (var stat:String in ["str","spe","tou","int","wis","lib","sens"]) {
 				if (player.hasPerk(PerkLib.TrueCure)) {
@@ -1682,43 +1682,6 @@ public class Combat extends BaseContent {
 		}
         outputText("You drink up the cure, feeling relieved as your status ailments are cleansed.");
     }
-	private const CurableBuffs:/*String*/Array = [
-		"LightningArrowStr",
-		"LightningArrowSpe",
-		"FireArrow",
-		"IceArrow",
-		"Illusion",
-		"Fear",
-		"CombatDebuffStr",
-		"CombatDebuffSpe",
-		"BasiliskGaze",
-		"LightningArrow",
-		"AkbalDebuff",
-		"FrostGiantDebuff",
-		"GnollSpearThrowerDebuff",
-		"YoungFrostGiantDebuff",
-		"PoisonedArrow",
-		"MalikoreVenom",
-		"ManticoreVenom",
-		"Nightmare",
-		"Entwine",
-		"Poison"
-	];
-	private const CurableEffects:/*StatusEffectType*/Array = [
-		StatusEffects.BurnDoT,
-		StatusEffects.AcidSlap,
-		StatusEffects.DriderKiss,
-		StatusEffects.AikoLightningArrow,
-		StatusEffects.NagaVenom,
-		StatusEffects.MedusaVenom,
-		StatusEffects.DriderIncubusVenom,
-		StatusEffects.Poison,
-		StatusEffects.AcidDoT,
-		StatusEffects.FrostburnDoT,
-		StatusEffects.FrozenLung,
-		StatusEffects.ElectrocutionDoT,
-		StatusEffects.NecrosisDoT,
-	];
     public function Ginseng():void {
         clearOutput();
         var power:Number = (calcHerbalismPower()*0.05)+10; //needs to be calculated in game
@@ -21572,6 +21535,9 @@ private function ghostRealIntelligenceCompanion():Number {
     if (flags[kFLAGS.PLAYER_COMPANION_1] == "Ayane") ghostRealInteCompanion += player.statusEffectv1(StatusEffects.CombatFollowerAyane);
     if (flags[kFLAGS.PLAYER_COMPANION_2] == "Ayane") ghostRealInteCompanion += player.statusEffectv1(StatusEffects.CombatFollowerAyane);
     if (flags[kFLAGS.PLAYER_COMPANION_3] == "Ayane") ghostRealInteCompanion += player.statusEffectv1(StatusEffects.CombatFollowerAyane);
+    if (flags[kFLAGS.PLAYER_COMPANION_1] == "Nadia") ghostRealInteCompanion += player.statusEffectv1(StatusEffects.CombatFollowerNadia);
+    if (flags[kFLAGS.PLAYER_COMPANION_2] == "Nadia") ghostRealInteCompanion += player.statusEffectv1(StatusEffects.CombatFollowerNadia);
+    if (flags[kFLAGS.PLAYER_COMPANION_3] == "Nadia") ghostRealInteCompanion += player.statusEffectv1(StatusEffects.CombatFollowerNadia);
     if (flags[kFLAGS.PLAYER_COMPANION_0] == "Tyrantia") ghostRealInteCompanion += player.statusEffectv3(StatusEffects.CombatFollowerTyrantia);
     if (flags[kFLAGS.PLAYER_COMPANION_1] == "Tyrantia") ghostRealInteCompanion += player.statusEffectv3(StatusEffects.CombatFollowerTyrantia);
     if (flags[kFLAGS.PLAYER_COMPANION_2] == "Tyrantia") ghostRealInteCompanion += player.statusEffectv3(StatusEffects.CombatFollowerTyrantia);
@@ -21598,6 +21564,9 @@ private function ghostRealWisdomCompanion():Number {
     if (flags[kFLAGS.PLAYER_COMPANION_1] == "Ayane") ghostRealWisCompanion += player.statusEffectv2(StatusEffects.CombatFollowerAyane);
     if (flags[kFLAGS.PLAYER_COMPANION_2] == "Ayane") ghostRealWisCompanion += player.statusEffectv2(StatusEffects.CombatFollowerAyane);
     if (flags[kFLAGS.PLAYER_COMPANION_3] == "Ayane") ghostRealWisCompanion += player.statusEffectv2(StatusEffects.CombatFollowerAyane);
+    if (flags[kFLAGS.PLAYER_COMPANION_1] == "Nadia") ghostRealWisCompanion += player.statusEffectv2(StatusEffects.CombatFollowerNadia);
+    if (flags[kFLAGS.PLAYER_COMPANION_2] == "Nadia") ghostRealWisCompanion += player.statusEffectv2(StatusEffects.CombatFollowerNadia);
+    if (flags[kFLAGS.PLAYER_COMPANION_3] == "Nadia") ghostRealWisCompanion += player.statusEffectv2(StatusEffects.CombatFollowerNadia);
     return ghostRealWisCompanion;
 }
 

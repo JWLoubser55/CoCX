@@ -733,9 +733,8 @@ public function mainCampMenu():void {
 	//3 - ??
 	if (player.lust > 33) addButton(4, "Sex", mainSexMenu);
 	else addButtonDisabled(4, "Sex", "Req. 33+ lust");
-	//if (player.hasPerk(PerkLib.BasicLeadership)) addButton(5, "Team", nadiaHenchmanOption);
-	//else addButtonDisabled(5, "Team", "You need to have at least Basic Leadership to form a team.");
-	addButtonDisabled(5, "???", "Soon(tm)");
+	if (player.hasPerk(PerkLib.BasicLeadership)) addButton(5, "Team", nadiaHenchmanOption);
+	else addButtonDisabled(5, "Team", "You need to have at least Basic Leadership to form a team.");
 	addButton(8, "Uncurse", uncurseItemsMenu).disableIf(player.equippedKnownCursedItems().length == 0 && player.carriedKnownCursedItems().length == 0, "You don't have any cursed items");
 	if (player.carryUniqueCursedItems()) addButton(9, "U.Uncurse", uncurseItemsMenu2);
 	if (player.HP < player.maxOverHP()) addButton(10, "Healing", HealingScene);
@@ -787,8 +786,7 @@ public function nadiaHenchmanOption():void {
 	}
 	addButton(14, "Back", mainCampMenu);
 }
-public function nadiaHenchmanOption2(slot:Number = 1):void
-{
+public function nadiaHenchmanOption2(slot:Number = 1):void {
 	clearOutput();
 	if (slot < 21) {
 		outputText("\"<i>Of course I'll help you out, [name]! With me around you, no harm will come to you!</i>\"\n\n");
@@ -796,19 +794,24 @@ public function nadiaHenchmanOption2(slot:Number = 1):void
 		var intNadia:Number = 100;
 		var wisNadia:Number = 100;
 		var healpowerNadia:Number = 2.5;
-		var soulskillpowerNadia:Number = 7.25;/*
-		if (flags[kFLAGS.AURORA_LVL] >= 1) {
-			if (flags[kFLAGS.AURORA_LVL] == 2) {
-				intAyane += 22;
-				wisAyane += 11;
-				spellsoulskillpowerAyane += 0.1;
+		var soulskillpowerNadia:Number = 7.25;
+		if (flags[kFLAGS.NADIA_LVL_UP] >= 9) {
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 9) {
+				intNadia += (10 * (flags[kFLAGS.NADIA_LVL_UP] - 8));
+				wisNadia += (10 * (flags[kFLAGS.NADIA_LVL_UP] - 8));
 			}
-			if (flags[kFLAGS.AURORA_LVL] >= 4) {
-				intAyane += 66 + (22 * (5 - flags[kFLAGS.AURORA_LVL]));
-				wisAyane += 33 + (11 * (5 - flags[kFLAGS.AURORA_LVL]));
-				spellsoulskillpowerAyane += 0.3 + (0.1 * (5 - flags[kFLAGS.AURORA_LVL]));
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 9) soulskillpowerNadia += 2.5;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 10) {
+				healpowerNadia += 0.6;
+				soulskillpowerNadia += 2.5;
 			}
-		}*/
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 12) soulskillpowerNadia += 3.75;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 13) soulskillpowerNadia += 3.75;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 14) soulskillpowerNadia += 3.75;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 16) soulskillpowerNadia += 5;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 17) soulskillpowerNadia += 5;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 18) soulskillpowerNadia += 5;
+		}
 		intNadia *= (1 + (0.2 * player.newGamePlusMod()));
 		intNadia = Math.round(intNadia);
 		wisNadia *= (1 + (0.2 * player.newGamePlusMod()));
@@ -1194,19 +1197,20 @@ private function BelisaNadiaTalk():void {
 		outputText("You half-drag, half-carry Nadia over to her bedroll, and as she groans, you grab a towel, gently spreading your unicorn lover’s legs. Nadia covers herself with her tail, but you gently take it, pushing it out of your way.\n\n");
 		outputText("\"<i>S-sorry…Force of habit.</i>\" Nadia grunts. You shake your head slightly, telling her not to worry. Just focus on the birth. She whinneys as a contraction hits, and you position yourself between Nadia’s legs, ready to receive your newborn foal.\n\n");
 		outputText("It takes about a half hour before you can see a head, crowning. Nadia gasps in pain as the horn passes through, and you take her hand, telling her to breathe. Slowly, Nadia pushes, and you take the newborn Unicorn into your arms.\n\n");
-		switch (rand(3)) {
+		switch (rand(5)) {
 			case 0:
+			case 1:
 				outputText("It's a boy, and as he looks into your eyes, he stares, horn glowing ever so slightly. He coughs, taking in his first breath, and you sigh happily, swaddling your boy.\n\n");
 				NadiaTotalKidsNum += 1;
 				NadiaSonsNum += 1;
 				break;
-			case 1:
-				// 25% chance
+			case 2:
+			case 3:
 				outputText("It's a little girl. She opens her eyes, then quickly closes them again, burbling. She inhales deeply, then begins to cry loudly. You rock her, wrapping her up, and she turns her head, trying to put something between her eyes and the light.\n\n");
 				NadiaTotalKidsNum += 1;
 				NadiaDaughtersNum += 1;
 				break;
-			case 2:
+			case 4:
 				outputText("You notice that your newborn Unicorn is a hermaphrodite, with both male and female genitals. You swaddle them in cloth, and they look around curiously, their eyes wandering. You hold their head, and they look at you curiously, before breaking out into an innocent smile.\n\n");
 				NadiaHermKidsNum +=1;
 				NadiaTotalKidsNum += 1;

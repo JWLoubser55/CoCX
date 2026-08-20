@@ -314,9 +314,9 @@ public class Changelog extends BaseContent
 			outputText("-New melee weapon (by Ormael): Twin Energy Spears - can be gained by combining 2x Energy Spear weapon. Cost 7,200 gems, have 45 atk and it dealing plasma damage. High tech weapon and Dual Massive Exotic type weapon.\n");
 			outputText("-New melee weapon (by Ormael): Twin Energy Swords - can be gained by combining 2x Energy Sword weapon. Cost 5,600 gems, have 35 atk and it dealing plasma damage. High tech weapon and Dual Large Exotic type weapon.\n");
 			outputText("-Izma after de-dicking (yes that still qualify to call PC monster for doing this to her) would have it reflected in appearance screen and combat desc/inspect.\n");
-			outputText("-Rathazul doing purificationw as keep kicking player to main menu. Now it would only return to his purification menu so it's possible to faster purification of larger amount of items with elss clicks needed.\n");
+			outputText("-Rathazul doing purification was keep kicking player to main menu. Now it would only return to his purification menu so it's possible to faster purification of larger amount of items with less clicks needed.\n");
 			outputText("-Added 'greyish black' color to imps skin colors options and 'orange' color to imps hair colors.\n");
-			outputText("-\n");
+			outputText("-Nadia when recruited to camp now could be combat henchman with healer options like: healing, curing, one time hp defeat prevention and simple soulskill for attack.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -436,8 +436,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -465,6 +471,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
