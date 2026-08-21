@@ -18,6 +18,7 @@ import classes.Scenes.NPCs.Forgefather;
 import classes.Scenes.NPCs.IsabellaScene;
 import classes.Scenes.NPCs.LilyFollower;
 import classes.Scenes.NPCs.LunaFollower;
+import classes.Scenes.NPCs.NadiaFollower;
 import classes.Scenes.NPCs.TyrantiaFollower;
 import classes.Scenes.NPCs.ZenjiScenes;
 import classes.Scenes.Places.HeXinDao.JourneyToTheEast;
@@ -1388,6 +1389,18 @@ public class PlayerInfo extends BaseContent {
 		if (DriderTown.LilyKidsPC > 0)
 			childStats += "<b>Drider Children With Lily:</b> " + DriderTown.LilyKidsPC + "\n";
 
+		if (LunaFollower.LunaSonsNum > 0)
+			childStats += "<b>Children With Luna (Males):</b> " + LunaFollower.LunaSonsNum + "\n";
+
+		if (LunaFollower.LunaDaughtersNum > 0)
+			childStats += "<b>Children With Luna (Females):</b> " + LunaFollower.LunaDaughtersNum + "\n";
+
+		if (LunaFollower.LunaHermKidsNum > 0)
+			childStats += "<b>Children With Luna (Herms):</b> " + LunaFollower.LunaHermKidsNum + "\n";
+
+		if (LunaFollower.LunaTotalKidsNum > 0)
+			childStats += "<b>Total Children With Luna:</b> " + LunaFollower.LunaTotalKidsNum + "\n";
+
 		if (SceneLib.mountain.salon.lynnetteApproval() != 0)
             childStats += "<b>Lynnette Children:</b> " + flags[kFLAGS.LYNNETTE_BABY_COUNT] + "\n";
 
@@ -1399,6 +1412,18 @@ public class PlayerInfo extends BaseContent {
 
 		if (flags[kFLAGS.MITZI_DAUGHTERS] > 0)
 			childStats += "<b>Mitzi Children:</b> " + flags[kFLAGS.MITZI_DAUGHTERS] + "\n";
+
+		if (NadiaFollower.NadiaSonsNum > 0)
+			childStats += "<b>Children With Nadia (Males):</b> " + NadiaFollower.NadiaSonsNum + "\n";
+
+		if (NadiaFollower.NadiaDaughtersNum > 0)
+			childStats += "<b>Children With Nadia (Females):</b> " + NadiaFollower.NadiaDaughtersNum + "\n";
+
+		if (NadiaFollower.NadiaHermKidsNum > 0)
+			childStats += "<b>Children With Nadia (Herms):</b> " + NadiaFollower.NadiaHermKidsNum + "\n";
+
+		if (NadiaFollower.NadiaTotalKidsNum > 0)
+			childStats += "<b>Total Children With Nadia:</b> " + NadiaFollower.NadiaTotalKidsNum + "\n";
 
 		if (flags[kFLAGS.ANT_KIDS] > 0)
 			childStats += "<b>Ant Children With Phylla:</b> " + flags[kFLAGS.ANT_KIDS] + "\n";

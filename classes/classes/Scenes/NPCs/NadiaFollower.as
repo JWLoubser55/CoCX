@@ -1009,6 +1009,7 @@ public function SexMenuBreeding():void {
 	clearOutput();
 	outputText("When it will be ready.\n\n");
 	outputText("\"<i>Please hurry, I can’t wait!</i>\" Nadia begs you, still hugging your head.\n\n");
+	NadiaPregChance();
 	player.sexReward("vaginalFluids","Dick");
 	endEncounter();
 }

@@ -1538,11 +1538,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		outputText("\n\n");
 		var PAC:Number = 0;
-		if (player.hasPerk(PerkLib.PowerAttackSu)) PAC += Math.round(player.wrath * 0.5);
-		else {
-			if (player.wrath > player.maxWrath()) PAC += player.maxWrath();
-			else PAC += player.wrath;
-		}
+		var Percent1:Number = 1;
+		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent1 -= 0.5;
+		if (player.wrath > Math.round(player.maxWrath() * Percent1)) PAC += Math.round(player.maxWrath() * Percent1);
+		else PAC += player.wrath;
 		pc.WrathChange(-PAC);
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
@@ -1625,11 +1624,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 		}
 		var PSC:Number = 0;
-		if (player.hasPerk(PerkLib.PowerAttackSu)) PSC += Math.round(player.wrath * 0.5);
-		else {
-			if (player.wrath > player.maxWrath()) PSC += player.maxWrath();
-			else PSC += player.wrath;
-		}
+		var Percent2:Number = 1;
+		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent2 -= 0.5;
+		if (player.wrath > Math.round(player.maxWrath() * Percent2)) PSC += Math.round(player.maxWrath() * Percent2);
+		else PSC += player.wrath;
 		pc.WrathChange(-PSC);
 		combat.heroBaneProc(damage);
 		flags[kFLAGS.ARROWS_SHOT]++;
@@ -5292,11 +5290,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			outputText("\n\n");
 			var PAC:Number = 0;
-			if (player.hasPerk(PerkLib.PowerAttackSu)) PAC += Math.round(player.wrath * 0.5);
-			else {
-				if (player.wrath > player.maxWrath()) PAC += player.maxWrath();
-				else PAC += player.wrath;
-			}
+			var Percent3:Number = 1;
+			if (player.hasPerk(PerkLib.PowerAttackSu)) Percent3 -= 0.5;
+			if (player.wrath > Math.round(player.maxWrath() * Percent3)) PAC += Math.round(player.maxWrath() * Percent3);
+			else PAC += player.wrath;
 			if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 3) {
 				if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 4) PAC = Math.round(PAC * 0.5);
 				else PAC = Math.round(PAC * 0.75);

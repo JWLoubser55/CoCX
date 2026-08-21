@@ -317,7 +317,7 @@ public class Changelog extends BaseContent
 			outputText("-Rathazul doing purification was keep kicking player to main menu. Now it would only return to his purification menu so it's possible to faster purification of larger amount of items with less clicks needed.\n");
 			outputText("-Added 'greyish black' color to imps skin colors options and 'orange' color to imps hair colors.\n");
 			outputText("-Nadia when recruited to camp now could be combat henchman with healer options like: healing, curing, one time hp defeat prevention and simple soulskill for attack.\n");
-			outputText("-\n");
+			outputText("-Power Attack (Su) perk effect of using 50% of current wrath was changed to 50% of max wrath.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
