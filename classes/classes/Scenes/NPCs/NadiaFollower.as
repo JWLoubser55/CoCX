@@ -797,8 +797,8 @@ public function nadiaHenchmanOption2(slot:Number = 1):void {
 		var soulskillpowerNadia:Number = 7.25;
 		if (flags[kFLAGS.NADIA_LVL_UP] >= 9) {
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 9) {
-				intNadia += (10 * (flags[kFLAGS.NADIA_LVL_UP] - 8));
-				wisNadia += (10 * (flags[kFLAGS.NADIA_LVL_UP] - 8));
+				intNadia += (50 * (flags[kFLAGS.NADIA_LVL_UP] - 8));
+				wisNadia += (50 * (flags[kFLAGS.NADIA_LVL_UP] - 8));
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 9) soulskillpowerNadia += 2.5;
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 10) {
@@ -809,8 +809,8 @@ public function nadiaHenchmanOption2(slot:Number = 1):void {
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 13) soulskillpowerNadia += 3.75;
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 14) soulskillpowerNadia += 3.75;
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 16) soulskillpowerNadia += 5;
-			if (flags[kFLAGS.NADIA_LVL_UP] >= 17) soulskillpowerNadia += 5;
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 18) soulskillpowerNadia += 5;
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 20) soulskillpowerNadia += 5;
 		}
 		intNadia *= (1 + (0.2 * player.newGamePlusMod()));
 		intNadia = Math.round(intNadia);

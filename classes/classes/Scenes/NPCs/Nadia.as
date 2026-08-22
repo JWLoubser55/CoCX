@@ -142,11 +142,15 @@ package classes.Scenes.NPCs
 			mana -= 100;
 			var damage:Number = inteligencescalingbonus() * SpellMod() * 1.2;
 			if (damage < 10) damage = 10;
-			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.04));
-			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (3 + ((weaponAttack - 50) * 0.035));
-			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (4.75 + ((weaponAttack - 100) * 0.03));
-			else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (6.25 + ((weaponAttack - 150) * 0.025));
-			else damage *= (7.5 + ((weaponAttack - 200) * 0.02));
+			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.01));
+			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (1.5 + ((weaponAttack - 50) * 0.015));
+			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (2.25 + ((weaponAttack - 100) * 0.02));
+			else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (3.25 + ((weaponAttack - 150) * 0.025));
+			else if (weaponAttack >= 201 && weaponAttack < 251) damage *= (5.5 + ((weaponAttack - 200) * 0.03));
+			else if (weaponAttack >= 251 && weaponAttack < 301) damage *= (7 + ((weaponAttack - 250) * 0.035));
+			else if (weaponAttack >= 301 && weaponAttack < 351) damage *= (8.75 + ((weaponAttack - 300) * 0.04));
+			else if (weaponAttack >= 351 && weaponAttack < 401) damage *= (10.75 + ((weaponAttack - 350) * 0.045));
+			else damage *= (13 + ((weaponAttack - 400) * 0.05));
 			player.takeMagicDamage(damage, true);
 			player.takeMagicDamage(damage, true);
 			player.takeMagicDamage(damage, true);
@@ -159,11 +163,15 @@ package classes.Scenes.NPCs
 			mana -= 20;
 			var damage:Number = inteligencescalingbonus() * SpellMod() * 1.2;
 			if (damage < 10) damage = 10;
-			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.04));
-			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (3 + ((weaponAttack - 50) * 0.035));
-			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (4.75 + ((weaponAttack - 100) * 0.03));
-			else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (6.25 + ((weaponAttack - 150) * 0.025));
-			else damage *= (7.5 + ((weaponAttack - 200) * 0.02));
+			if (weaponAttack < 51) damage *= (1 + (weaponAttack * 0.01));
+			else if (weaponAttack >= 51 && weaponAttack < 101) damage *= (1.5 + ((weaponAttack - 50) * 0.015));
+			else if (weaponAttack >= 101 && weaponAttack < 151) damage *= (2.25 + ((weaponAttack - 100) * 0.02));
+			else if (weaponAttack >= 151 && weaponAttack < 201) damage *= (3.25 + ((weaponAttack - 150) * 0.025));
+			else if (weaponAttack >= 201 && weaponAttack < 251) damage *= (5.5 + ((weaponAttack - 200) * 0.03));
+			else if (weaponAttack >= 251 && weaponAttack < 301) damage *= (7 + ((weaponAttack - 250) * 0.035));
+			else if (weaponAttack >= 301 && weaponAttack < 351) damage *= (8.75 + ((weaponAttack - 300) * 0.04));
+			else if (weaponAttack >= 351 && weaponAttack < 401) damage *= (10.75 + ((weaponAttack - 350) * 0.045));
+			else damage *= (13 + ((weaponAttack - 400) * 0.05));
 			player.takeMagicDamage(damage, true);
 		}
 		
@@ -391,8 +399,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 450;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 9) {
-				initStrTouSpeInte(42, 110, 80, 110);
-				initWisLibSensCor(110, 110, 85, -90);
+				initStrTouSpeInte(42, 110, 80, 150);
+				initWisLibSensCor(150, 110, 85, -90);
 				this.weaponAttack = 10;
 				this.armorDef = 13;
 				this.armorMDef = 52;
@@ -402,8 +410,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 480;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 10) {
-				initStrTouSpeInte(44, 120, 90, 120);
-				initWisLibSensCor(120, 120, 95, -90);
+				initStrTouSpeInte(44, 120, 90, 200);
+				initWisLibSensCor(200, 120, 95, -90);
 				this.weaponAttack = 11;
 				this.armorDef = 14;
 				this.armorMDef = 56;
@@ -413,8 +421,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 510;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 11) {
-				initStrTouSpeInte(46, 130, 100, 130);
-				initWisLibSensCor(130, 130, 105, -90);
+				initStrTouSpeInte(46, 130, 100, 250);
+				initWisLibSensCor(250, 130, 105, -90);
 				this.weaponAttack = 12;
 				this.armorDef = 15;
 				this.armorMDef = 60;
@@ -424,8 +432,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 540;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 12) {
-				initStrTouSpeInte(48, 140, 110, 140);
-				initWisLibSensCor(140, 140, 115, -90);
+				initStrTouSpeInte(48, 140, 110, 300);
+				initWisLibSensCor(300, 140, 115, -90);
 				this.weaponAttack = 13;
 				this.armorDef = 16;
 				this.armorMDef = 64;
@@ -435,8 +443,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 570;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 13) {
-				initStrTouSpeInte(50, 150, 120, 150);
-				initWisLibSensCor(150, 150, 125, -90);
+				initStrTouSpeInte(50, 150, 120, 350);
+				initWisLibSensCor(350, 150, 125, -90);
 				this.weaponAttack = 14;
 				this.armorDef = 17;
 				this.armorMDef = 68;
@@ -446,8 +454,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 600;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 14) {
-				initStrTouSpeInte(52, 160, 130, 160);
-				initWisLibSensCor(160, 160, 135, -90);
+				initStrTouSpeInte(52, 160, 130, 400);
+				initWisLibSensCor(400, 160, 135, -90);
 				this.weaponAttack = 15;
 				this.armorDef = 18;
 				this.armorMDef = 72;
@@ -457,8 +465,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 630;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 15) {
-				initStrTouSpeInte(54, 170, 140, 170);
-				initWisLibSensCor(170, 170, 145, -90);
+				initStrTouSpeInte(54, 170, 140, 450);
+				initWisLibSensCor(450, 170, 145, -90);
 				this.weaponAttack = 16;
 				this.armorDef = 19;
 				this.armorMDef = 76;
@@ -468,8 +476,8 @@ package classes.Scenes.NPCs
 				this.bonusMana = 660;
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] == 16) {
-				initStrTouSpeInte(56, 180, 150, 180);
-				initWisLibSensCor(180, 180, 155, -90);
+				initStrTouSpeInte(56, 180, 150, 500);
+				initWisLibSensCor(500, 180, 155, -90);
 				this.weaponAttack = 17;
 				this.armorDef = 20;
 				this.armorMDef = 80;
@@ -680,17 +688,27 @@ package classes.Scenes.NPCs
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 16) {
 				this.createPerk(PerkLib.SoulTyrant, 0, 0, 0, 0);
-				this.createPerk(PerkLib.HalfStepToSuperiorSpirituality, 0, 0, 0, 0);
 				this.createPerk(PerkLib.LegendaryIntelligence, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 17) {
-				this.createPerk(PerkLib.FFclassHeavenTribulationSurvivor, 0, 0, 0, 0);
-				this.createPerk(PerkLib.SoulKing, 0, 0, 0, 0);
+				this.createPerk(PerkLib.HalfStepToSuperiorSpirituality, 0, 0, 0, 0);
 				this.createPerk(PerkLib.LegendaryWisdom, 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NADIA_LVL_UP] >= 18) {
+				this.createPerk(PerkLib.FFclassHeavenTribulationSurvivor, 0, 0, 0, 0);
+				this.createPerk(PerkLib.SoulKing, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 19) {
+				//this.createPerk(PerkLib., 0, 0, 0, 0);
+				//this.createPerk(PerkLib., 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 20) {
 				this.createPerk(PerkLib.SoulEmperor, 0, 0, 0, 0);
 				this.createPerk(PerkLib.SuperiorSpirituality, 0, 0, 0, 0);
+			}
+			if (flags[kFLAGS.NADIA_LVL_UP] >= 21) {
+				//this.createPerk(PerkLib., 0, 0, 0, 0);
+				//this.createPerk(PerkLib., 0, 0, 0, 0);
 			}
 			if (flags[kFLAGS.NADIA_FOLLOWER] == 3) this.createPerk(PerkLib.EnemyBossType, 0, 0, 0, 0);
 			checkMonster();

@@ -1473,8 +1473,12 @@ public class Combat extends BaseContent {
 						if (flags[kFLAGS.TEMPORAL_GOLEMS_BAG] >= 5) addButton(2, "Send T.Gol/5", combat.pspecials.sendTemporalGolem5)
 							.hint("Send five golems from your bag to attack the enemy. <b>After attacking, the golems will fall apart"+(player.hasPerk(PerkLib.MasterGolemMaker)?"":" and their cores can shatter, leaving them unable to be reused in future")+"!</b>");
 					}
-					if (player.hasPerk(PerkLib.TemporalGolemsRestructurationEx)) addButton(4, "KamikazeProtocol", combat.pspecials.sendTemporalGolemKamikazeProtocol)
+					if (player.hasPerk(PerkLib.TemporalGolemsRestructurationEx)) addButton(3, "KamikazeProtocol", combat.pspecials.sendTemporalGolemKamikazeProtocol)
 						.hint("Send all temporal golems from your bag to attack the enemy. <b>After attacking, the golems will fall apart!</b>");
+					if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
+						if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0 || player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0 || player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) addButton(0, "Send S-T.Gol/1", combat.pspecials.sendTemporalGolem1, false);
+						if (monster.plural && player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0 && player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0 && player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) addButton(1, "Send S-T.Gol/3", combat.pspecials.sendTemporalGolem3, false);
+					}
 				}
 			}
 			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) {

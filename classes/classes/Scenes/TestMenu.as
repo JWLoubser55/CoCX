@@ -889,6 +889,7 @@ public class TestMenu extends BaseContent
 		if (!player.hasPerk(PerkLib.PrestigeJobArchpriest)) player.createPerk(PerkLib.PrestigeJobArchpriest, 0, 0, 0, 0);
 		if (!player.hasPerk(PerkLib.PrestigeJobBard)) player.createPerk(PerkLib.PrestigeJobBard, 0, 0, 0, 0);
 		if (!player.hasPerk(PerkLib.PrestigeJobBerserker)) player.createPerk(PerkLib.PrestigeJobBerserker, 0, 0, 0, 0);
+		if (!player.hasPerk(PerkLib.PrestigeJobDreadnought)) player.createPerk(PerkLib.PrestigeJobDreadnought, 0, 0, 0, 0);
 		if (!player.hasPerk(PerkLib.PrestigeJobDruid)) player.createPerk(PerkLib.PrestigeJobDruid, 0, 0, 0, 0);
 		if (!player.hasPerk(PerkLib.PrestigeJobNecromancer)) player.createPerk(PerkLib.PrestigeJobNecromancer, 0, 0, 0, 0);
 		if (!player.hasPerk(PerkLib.PrestigeJobSentinel)) player.createPerk(PerkLib.PrestigeJobSentinel, 0, 0, 0, 0);

@@ -318,8 +318,9 @@ public class Changelog extends BaseContent
 			outputText("-Added 'greyish black' color to imps skin colors options and 'orange' color to imps hair colors.\n");
 			outputText("-Nadia when recruited to camp now could be combat henchman with healer options like: healing, curing, one time hp defeat prevention and simple soulskill for attack.\n");
 			outputText("-Power Attack (Su) perk effect of using 50% of current wrath was changed to 50% of max wrath.\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-Golemancers may been bit strugling in their early phase with only weak and not withstanding strain of just attacking once temporal golems so... they now golemancers can convert up to 3 temporal golems into semi-temporal golems that have 24 hours until they fall apart on their own. ");
+			outputText("Each of Golemancer perks from Beginer to Expert would add additional 24 hours (not affecting already converted golems at the time of getitng next golemancer perk). Timer till each of those golems fall apart is showed on golems managmnet page in camp actions.\n");
+			outputText("-New tier 9 strength lvl-up perk: Prestige Job: Dreadnought. Req. Job: Warrior and Warlord perks, 150+ str/spe. Effect: +60% str multi and +60% spe multi (scalable with NG tiers), power attack now strikes twice.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

@@ -5337,6 +5337,9 @@ public class PerkLib
 		public static const PrestigeJobBindmaster:PerkType = mk("Prestige Job: Bindmaster", "Job ( Prestige ): Bindmaster",
 				"You've trained in prestige art of perfect mastery over all forms of binding.",
 				"You have chosen the 'Job ( Prestige ): Bindmaster' perk, training yourself to become a(n) Bindmaster.").withBuffs({'tou.mult':0.30,'lib.mult':0.90});
+		public static const PrestigeJobDreadnought:PerkType = mk("Prestige Job: Dreadnought", "Job ( Prestige ): Dreadnought",
+				"You've trained in prestige art of obliterates his foes through overwhelming violence.",
+				"You have chosen the 'Job ( Prestige ): Dreadnought' perk, training yourself to become a Dreadnought.").withBuffs({'str.mult':0.60,'spe.mult':0.60});
 		public static const PrestigeJobDruid:PerkType = mk("Prestige Job: Druid", "Job ( Prestige ): Druid",
 				"You've trained in prestige art of fusing with elementals. (allows you to fuse with one of four basic epic elementals)",
 				"You have chosen the 'Job ( Prestige ): Druid' perk, training yourself to become a(n) Druid.").withBuffs({'tou.mult':0.50,'wis.mult':0.70});
@@ -5636,6 +5639,7 @@ public class PerkLib
 			PrestigeJobBard,
 			PrestigeJobBerserker,
 			PrestigeJobBindmaster,
+			PrestigeJobDreadnought,
 			PrestigeJobDruid,
 			PrestigeJobNecromancer,
 			/* PrestigeJobSeer, - not implemented */
@@ -6105,6 +6109,11 @@ public class PerkLib
                     .requirePerks(JobSwordsman, JobBeastWarrior)
                     .requireAnyPerk(Berzerker, Lustzerker)
                     .requireStr(200)
+                    .requireLevel(54);
+            PrestigeJobDreadnought.requirePrestigeJobSlot()
+                    .requirePerks(JobSwordsman, JobWarlord)
+                    .requireStr(150)
+                    .requireSpe(150)
                     .requireLevel(54);
             PrestigeJobStalker.requirePrestigeJobSlot()
                     .requirePerk(JobWarrior)

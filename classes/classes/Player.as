@@ -5647,6 +5647,8 @@ use namespace CoC;
 				prestigeJobs1++;
 			if (hasPerk(PerkLib.PrestigeJobBindmaster))
 				prestigeJobs1++;
+			if (hasPerk(PerkLib.PrestigeJobDreadnought))
+				prestigeJobs1++;
 			if (hasPerk(PerkLib.PrestigeJobDruid))
 				prestigeJobs1++;
 			if (hasPerk(PerkLib.PrestigeJobNecromancer))

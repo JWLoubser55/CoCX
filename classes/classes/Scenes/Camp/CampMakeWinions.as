@@ -603,27 +603,28 @@ public class CampMakeWinions extends BaseContent
 				outputText("<b>Metal Pieces:</b> " + CampStatsAndResources.MetalPieces + "\n");
 				outputText("<b>Mechanisms:</b> " + CampStatsAndResources.MechanismResc + "\n");
 			}
-			if (player.hasPerk(PerkLib.JobGolemancer)) outputText("\n<b>Temporal Golems Bag:</b> " + flags[kFLAGS.TEMPORAL_GOLEMS_BAG] + " / " + maxTemporalGolemsBagSize() + " golems\n");
-			if (player.hasPerk(PerkLib.MasterGolemMaker)) outputText("<b>Stone Golems Bag:</b> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + " / " + maxPermanentStoneGolemsBagSize() + " golems\n");
+			if (player.hasPerk(PerkLib.JobGolemancer)) outputText("\n<b>Temporal Golems Bag:</b> " + flags[kFLAGS.TEMPORAL_GOLEMS_BAG] + " / " + maxTemporalGolemsBagSize() + " golems");
+			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
+				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 1:</i> " + player.statusEffectv1(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 2:</i> " + player.statusEffectv2(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 3:</i> " + player.statusEffectv3(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+			}
+			if (player.hasPerk(PerkLib.MasterGolemMaker)) outputText("\n<b>Stone Golems Bag:</b> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + " / " + maxPermanentStoneGolemsBagSize() + " golems\n");
 			if (player.hasPerk(PerkLib.EpicGolemMaker)) outputText("<b>Improved Stone Golems Bag:</b> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + " / " + maxPermanentImprovedStoneGolemsBagSize() + " golems\n");
 			if (player.hasPerk(PerkLib.AdvancedGolemancyTheory)) outputText("<b>Steel Golems Bag:</b> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + " / " + maxPermanentSteelGolemsBagSize() + " golems\n");
 			if (player.hasPerk(PerkLib.LegendaryGolemMaker)) outputText("<b>Improved Steel Golems Bag:</b> " + flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] + " / " + maxPermanentImprovedSteelGolemsBagSize() + " golems\n");
 			var eleShardCost:String = "";
 			if (player.hasStatusEffect(StatusEffects.GolemUpgrades1) && player.statusEffectv3(StatusEffects.GolemUpgrades1) > 0) eleShardCost = "1 Elemental Shard, ";
 			menu();
-			if (player.hasPerk(PerkLib.JobGolemancer)) addButton(0, "T.S.Golem", makeTemporalStoneGolem).hint("Make the most simple golem out of a pile of stones.  <b>It will crumble after one attack!</b>\n\nCost: 1 Golem Core, " + temporalGolemMakingCost() + " Mana");
-			if (player.hasPerk(PerkLib.MasterGolemMaker)) addButton(1, "P.S.Golem", makePermanentStoneGolem).hint("Make a stone golem.\n\nCost: 1 Golem Core, 10 Stones, " + eleShardCost + permanentStoneGolemMakingCost() + " Mana");
-			else addButtonDisabled(1, "P.S.Golem", "Req. Master Golem Maker perk.");
-			if (player.hasPerk(PerkLib.AdvancedGolemancyTheory)) addButton(2, "M.Golem", makePermanentSteelGolem).hint("Make a steel golem.\n\nCost: 1 Golem Core, 2 Energy Cores, 10 Metal Plates, 4 Mechanisms, " + eleShardCost + permanentSteelGolemMakingCost() + " Mana");
-			else addButtonDisabled(2, "M.Golem", "Req. Advanced Golemancy Theory perk.");
-			if (player.hasPerk(PerkLib.TemporalGolemsRestructuration)) addButton(5, "T.S.Golem(5x)", makeTemporalStoneGolems).hint("Make five of the most simple golems.  <b>They will crumble after one attack!</b>\n\nCost: 5 Golem Core, " + temporalGolemMakingCost() * 5 + " Mana");
-			else addButtonDisabled(5, "T.S.Golem(5x)", "Req. Temporal Golems Restructuration perk.");
-			if (player.hasPerk(PerkLib.EpicGolemMaker)) addButton(6, "I.P.S.Golem", makePermanentImprovedStoneGolem).hint("Make an improved stone golem.\n\nCost: 3 Golem Cores, 1 Energy Core, 50 Stones, " + eleShardCost + permanentImprovedStoneGolemMakingCost() + " Mana");
-			else addButtonDisabled(6, "I.P.S.Golem", "Req. Epic Golem Maker perk.");
-			if (player.hasPerk(PerkLib.LegendaryGolemMaker)) addButton(7, "I.M.Golem", makePermanentImprovedSteelGolem).hint("Make an improved steel golem.\n\nCost: 3 Golem Cores, 6 Energy Cores, 50 Metal Plates, 12 Mechanisms, " + eleShardCost + permanentImprovedSteelGolemMakingCost() + " Mana");
-			else addButtonDisabled(7, "I.M.Golem", "Req. Legendary Golem Maker perk.");
-			if (player.hasPerk(PerkLib.TemporalGolemsRestructurationEx)) addButton(10, "T.S.Golem(20x)", makeTemporalStoneGolemsMore).hint("Make twenty of the most simple golems.  <b>They will crumble after one attack!</b>\n\nCost: 20 Golem Core, " + temporalGolemMakingCost() * 20 + " Mana");
-			else addButtonDisabled(10, "T.S.Golem(20x)", "Req. Temporal Golems Restructuration (Ex) perk.");
+			if (player.hasPerk(PerkLib.MasterGolemMaker)) addButton(0, "P.S.Golem", makePermanentStoneGolem).hint("Make a stone golem.\n\nCost: 1 Golem Core, 10 Stones, " + eleShardCost + permanentStoneGolemMakingCost() + " Mana");
+			else addButtonDisabled(0, "P.S.Golem", "Req. Master Golem Maker perk.");
+			if (player.hasPerk(PerkLib.AdvancedGolemancyTheory)) addButton(1, "M.Golem", makePermanentSteelGolem).hint("Make a steel golem.\n\nCost: 1 Golem Core, 2 Energy Cores, 10 Metal Plates, 4 Mechanisms, " + eleShardCost + permanentSteelGolemMakingCost() + " Mana");
+			else addButtonDisabled(1, "M.Golem", "Req. Advanced Golemancy Theory perk.");
+			if (player.hasPerk(PerkLib.EpicGolemMaker)) addButton(5, "I.P.S.Golem", makePermanentImprovedStoneGolem).hint("Make an improved stone golem.\n\nCost: 3 Golem Cores, 1 Energy Core, 50 Stones, " + eleShardCost + permanentImprovedStoneGolemMakingCost() + " Mana");
+			else addButtonDisabled(5, "I.P.S.Golem", "Req. Epic Golem Maker perk.");
+			if (player.hasPerk(PerkLib.LegendaryGolemMaker)) addButton(6, "I.M.Golem", makePermanentImprovedSteelGolem).hint("Make an improved steel golem.\n\nCost: 3 Golem Cores, 6 Energy Cores, 50 Metal Plates, 12 Mechanisms, " + eleShardCost + permanentImprovedSteelGolemMakingCost() + " Mana");
+			else addButtonDisabled(6, "I.M.Golem", "Req. Legendary Golem Maker perk.");
+			if (player.hasPerk(PerkLib.JobGolemancer)) addButton(10, "TempGolems", makeTemporalGolemsMenu);
 			if (player.hasItem(useables.GOLCORE, 1) && (flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] < maxReusableGolemCoresBagSize())) addButton(11, "PutInCore", putInGolemCoreIntoGolemBag).hint("Put one golem core into 'golem bag'.")
 			else addButtonDisabled(11, "PutInCore", "You don't have any golem cores in your inventory to put in the 'golem bag'.");
 			if (flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] > 0) addButton(12, "TakeOutCore", takeOutGolemCoreFromGolemBag).hint("Take out one golem core from the 'golem bag'.");
@@ -636,6 +637,28 @@ public class CampMakeWinions extends BaseContent
 			addButton(14, "Back", camp.campWinionsArmySim);
 		}
 
+		//temporal golems
+		public function makeTemporalGolemsMenu():void {
+			clearOutput();
+			outputText("What helper would you like to make?\n\n");
+			outputText("<b>Stored golem cores for future reuse when making new golems:</b> " + flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] + " / " + maxReusableGolemCoresBagSize() + "\n");
+			if (player.hasPerk(PerkLib.JobGolemancer)) outputText("\n<b>Temporal Golems Bag:</b> " + flags[kFLAGS.TEMPORAL_GOLEMS_BAG] + " / " + maxTemporalGolemsBagSize() + " golems");
+			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
+				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 1:</i> " + player.statusEffectv1(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 2:</i> " + player.statusEffectv2(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 3:</i> " + player.statusEffectv3(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+			}
+			menu();
+			addButton(0, "T.S.Golem", makeTemporalStoneGolem).hint("Make the most simple golem out of a pile of stones.  <b>It will crumble after one attack!</b>\n\nCost: 1 Golem Core, " + temporalGolemMakingCost() + " Mana");
+			if (player.hasPerk(PerkLib.TemporalGolemsRestructuration)) addButton(1, "T.S.Golem(5x)", makeTemporalStoneGolems).hint("Make five of the most simple golems.  <b>They will crumble after one attack!</b>\n\nCost: 5 Golem Core, " + temporalGolemMakingCost() * 5 + " Mana");
+			else addButtonDisabled(1, "T.S.Golem(5x)", "Req. Temporal Golems Restructuration perk.");
+			if (player.hasPerk(PerkLib.TemporalGolemsRestructurationEx)) addButton(2, "T.S.Golem(20x)", makeTemporalStoneGolemsMore).hint("Make twenty of the most simple golems.  <b>They will crumble after one attack!</b>\n\nCost: 20 Golem Core, " + temporalGolemMakingCost() * 20 + " Mana");
+			else addButtonDisabled(2, "T.S.Golem(20x)", "Req. Temporal Golems Restructuration (Ex) perk.");
+			if (player.mana < temporalGolemMakingCost()) addButtonDisabled(13, "Semi Temporal", "Require " + temporalGolemMakingCost() + " Mana.");
+			else if (flags[kFLAGS.TEMPORAL_GOLEMS_BAG] == 0) addButtonDisabled(13, "Semi Temporal", "Require to have at least 1 temporal golem.");
+			else addButton(13, "Semi Temporal", makeSemiTemporalStoneGolem).hint("Turn one of temporal golems into semi-temproal version that would crumble after set of time then after 1 attack.\n\nCost: 1 Golem Core, " + temporalGolemMakingCost() + " Mana");
+			addButton(14, "Back", accessMakeWinionsMainMenu);
+		}
 		public function makeTemporalStoneGolem():void {
 			clearOutput();
 			if (player.mana < temporalGolemMakingCost()) {
@@ -660,7 +683,7 @@ public class CampMakeWinions extends BaseContent
 			outputText("You draw a seal in the ground, placing a ring of stones along the inside edge. Next, you put the golem core in the middle of the seal, surrounded by a smaller circle of stones. With the groundwork done, you step back and begin to chant, mana flowing from your hands into the seal. The stones glow, the smaller ring coating the core as it rises from the ground. One by one, the stones from the outer ring leap up, attaching to the core and forming a rough humanoid shape, just over six feet tall. The golem stands, and the seal vanishes from the earth. You command the newly created golem to come to you and store it in your golem bag.");
 			if (flags[kFLAGS.TEMPORAL_GOLEMS_BAG] < 1) flags[kFLAGS.TEMPORAL_GOLEMS_BAG] = 1;
 			else flags[kFLAGS.TEMPORAL_GOLEMS_BAG]++;
-			doNext(accessMakeWinionsMainMenu);
+			doNext(makeTemporalGolemsMenu);
 			if (player.hasPerk(PerkLib.TemporalGolemsRestructuration)) advanceMinutes(5);
 			else advanceMinutes(10);
 		}
@@ -687,7 +710,7 @@ public class CampMakeWinions extends BaseContent
 			statScreenRefresh();
 			outputText("You draw five seals in the ground, each with a ring of stones, golem core in the middle and another line of smaller stones. With the groundwork done, you stand back and begin to chant, mana flowing from your hands into the seals. The stones glow, the smaller rings coating the five cores as they rise from the ground. One by one, the stones cover the cores, forming five rough humanoid shapes. The golems stand, the seals vanishing from the earth. You order the newly created golems to come to you, storing them in your golem bag.");
 			flags[kFLAGS.TEMPORAL_GOLEMS_BAG] += 5;
-			doNext(accessMakeWinionsMainMenu);
+			doNext(makeTemporalGolemsMenu);
 			if (player.hasPerk(PerkLib.TemporalGolemsRestructurationEx)) advanceMinutes(15);
 			else advanceMinutes(20);
 		}
@@ -714,9 +737,35 @@ public class CampMakeWinions extends BaseContent
 			statScreenRefresh();
 			outputText("You draw a complex seal on the ground with 20 node points, complete with golem core and a pile of stones. Once done, you stand back and begin to seep your mana into the seal. Each pile becomes a 6 feet tall golem. Finishing the work on your creations, you store them in your 'golem bag'.");
 			flags[kFLAGS.TEMPORAL_GOLEMS_BAG] += 20;
-			doNext(accessMakeWinionsMainMenu);
+			doNext(makeTemporalGolemsMenu);
 			advanceMinutes(40);
 		}
+		public function makeSemiTemporalStoneGolem():void {
+			clearOutput();
+			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems) && player.statusEffectv4(StatusEffects.SemiTemporalGolems) == 3) {
+				outputText("You can't keep more then three semi-temporal golems.");
+				doNext(accessMakeWinionsMainMenu);
+				return;
+			}
+			useMana(temporalGolemMakingCost());
+			statScreenRefresh();
+			outputText("You draw a seal in the ground, placing a ring of stones along the inside edge. Next, you command one of your temporal golems to stand in the middle of the seal, surrounded by a smaller circle of stones. With the groundwork done, you step back and begin to chant, mana flowing from your hands into the seal. One by one, the stones from the outer ring leap up, attaching to the golem. You command the newly created semi-temopral golem to come to you and store it in your golem bag.");
+			var lifespan:Number = 24;
+			if (player.hasPerk(PerkLib.BeginnerGolemMaker)) lifespan + 24;
+			if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) lifespan + 24;
+			if (player.hasPerk(PerkLib.ExpertGolemMaker)) lifespan + 24;
+			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
+				player.addStatusValue(StatusEffects.SemiTemporalGolems, 4, 1);
+				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) == 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 1, lifespan);
+				else if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) == 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 2, lifespan);
+				else if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) == 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 3, lifespan);
+			}
+			else player.createStatusEffect(StatusEffects.SemiTemporalGolems, lifespan, 0, 0, 1);
+			doNext(makeTemporalGolemsMenu);
+			if (player.hasPerk(PerkLib.TemporalGolemsRestructuration)) advanceMinutes(5);
+			else advanceMinutes(10);
+		}
+		//pernament golems
 		public function makePermanentStoneGolem():void {
 			clearOutput();
 			if (player.mana < permanentStoneGolemMakingCost()) {
@@ -1105,6 +1154,13 @@ public class CampMakeWinions extends BaseContent
 
 		}*/
 
+		public function postFightGolemOptions0():void {
+			clearOutput();
+			outputText("What are you gonna do now?\n\n");
+			menu();
+			addButton(10, "Scavenge", golemScavenge1);
+			addButton(14, "Leave", cleanupAfterCombat);
+		}
 		public function postFightGolemOptions1():void {
 			clearOutput();
 			outputText("What are you gonna do now?\n\n");

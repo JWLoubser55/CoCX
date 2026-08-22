@@ -1816,6 +1816,11 @@ public class PlayerEvents extends BaseContent implements TimeAwareInterface {
 					needNext = true;
 				}
 			}
+			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
+				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 1, -1);
+				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 2, -1);
+				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 3, -1);
+			}
 			if (CoC.instance.model.time.hours == 6) {
 				//Getting chrismas tree
 				if (flags[kFLAGS.CHRISTMAS_TREE_LEVEL] == 2) {

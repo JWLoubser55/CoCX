@@ -1453,6 +1453,7 @@ public class PerkMenu extends BaseContent {
 			["Bkr", PerkLib.PrestigeJobBerserker],
 			["Bnd", PerkLib.PrestigeJobBindmaster],
 			["Drd", PerkLib.PrestigeJobDruid],
+			["Dre", PerkLib.PrestigeJobDreadnought],
 			["Nec", PerkLib.PrestigeJobNecromancer],
 			["Stl", PerkLib.PrestigeJobSentinel],
 			["SAM", PerkLib.PrestigeJobSoulArtMaster],

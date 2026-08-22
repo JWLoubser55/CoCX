@@ -922,7 +922,8 @@ public class PlayerInfo extends BaseContent {
 			if (flags[kFLAGS.NADIA_LVL_UP] == 16) interpersonStats += "<b>Nadia lvl:</b> 75\n";
 			if (flags[kFLAGS.NADIA_LVL_UP] == 15) interpersonStats += "<b>Nadia lvl:</b> 69 (current max lvl)\n";
 			else if (flags[kFLAGS.NADIA_LVL_UP] < 1) interpersonStats += "<b>Nadia lvl:</b> 3\n";
-			else interpersonStats += getNPCLevel("Nadia", 3, 0, 15, 3, flags[kFLAGS.NADIA_LVL_UP]);
+			else if (flags[kFLAGS.NADIA_LVL_UP] < 9) interpersonStats += getNPCLevel("Nadia", 3, 0, 8, 3, flags[kFLAGS.NADIA_LVL_UP]);
+			else interpersonStats += getNPCLevel("Nadia", 33, 9, 15, 6, flags[kFLAGS.NADIA_LVL_UP]);
 		}
 
 		if (flags[kFLAGS.NEISA_FOLLOWER] >= 7)  {

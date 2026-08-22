@@ -676,6 +676,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const SaiyanNumber9b:StatusEffectType          		= mk("Saiyan Number 9b");
 		public static const SaiyanNumber9c:StatusEffectType          		= mk("Saiyan Number 9c");
 		public static const SaiyanNumber9d:StatusEffectType          		= mk("Saiyan Number 9d");
+		public static const SemiTemporalGolems:StatusEffectType       		= mk("Semi-Temporal Golems");
 		public static const SharkGirl:StatusEffectType                      = mk("Shark-Girl");
 		public static const ShieldingSpell:StatusEffectType                 = mk("Shielding Spell");
 		public static const ShiraOfTheEastFoodBuff1:StatusEffectType        = mk("Shira of the east food buff part 1");

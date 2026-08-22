@@ -1526,7 +1526,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 1.75 + buffMultiplier;
 		}
 		combat.checkForElementalEnchantmentAndDoDamageMain(damage);
-		if (player.hasPerk(PerkLib.TwinThunder) && player.weapon.isDualWielded()) combat.checkForElementalEnchantmentAndDoDamageOff(damage);
+		if (player.hasPerk(PerkLib.PrestigeJobDreadnought)) combat.checkForElementalEnchantmentAndDoDamageMain(damage);
+		if (player.hasPerk(PerkLib.TwinThunder) && player.weapon.isDualWielded()) {
+			combat.checkForElementalEnchantmentAndDoDamageOff(damage);
+			if (player.hasPerk(PerkLib.PrestigeJobDreadnought)) combat.checkForElementalEnchantmentAndDoDamageOff(damage);
+		}
 		outputText(" damage. ");
 		if (crit) {
 			outputText("<b>Critical! </b>");
@@ -3376,9 +3380,9 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.hasPerk(PerkLib.HistoryTactician) || player.hasPerk(PerkLib.PastLifeTactician)) dmgAMP += (1 - combat.historyTacticianBonus());
 		return dmgAMP;
 	}
-	public function sendTemporalGolem1():void {
+	public function sendTemporalGolem1(notasemitemporalgolem:Boolean = true):void {
 		clearOutput();
-		flags[kFLAGS.TEMPORAL_GOLEMS_BAG]--;
+		if (notasemitemporalgolem) flags[kFLAGS.TEMPORAL_GOLEMS_BAG]--;
 		//Determine if golem core is shattered or not picked due too overloaded bag for them!
 		var damage:Number = 0;
 		var dmgamp:Number = 1;
@@ -3416,14 +3420,16 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = Math.round(damage);
 		outputText("Your stone golem slam into [themonster]. ");
 		doMinionPhysDamage(damage, true, true);
-		if (shatter) outputText(" <b>*Golem Core shattered!*</b>");
-		if (overloadedGolemCoresBag) outputText(" <b>*Golem Core wasn't picked due to lack of space to store them!*</b>");
+		if (notasemitemporalgolem) {
+			if (shatter) outputText(" <b>*Golem Core shattered!*</b>");
+			if (overloadedGolemCoresBag) outputText(" <b>*Golem Core wasn't picked due to lack of space to store them!*</b>");
+		}
 		outputText("\n\n");
 		enemyAI();
 	}
-	public function sendTemporalGolem3():void {
+	public function sendTemporalGolem3(notasemitemporalgolem:Boolean = true):void {
 		clearOutput();
-		flags[kFLAGS.TEMPORAL_GOLEMS_BAG] -= 3;
+		if (notasemitemporalgolem) flags[kFLAGS.TEMPORAL_GOLEMS_BAG] -= 3;
 		//Determine if golem core is shattered or not picked due too overloaded bag for them!
 		var damage:Number = 0;
 		var dmgamp:Number = 1;
@@ -3469,9 +3475,11 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = Math.round(damage);
 		outputText("Your stone golems slams into [themonster]. ");
 		doMinionPhysDamage(damage, true, true);
-		if (shatter) outputText(" <b>*Golem Cores shattered!*</b>");
-		if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
-		if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
+		if (notasemitemporalgolem) {
+			if (shatter) outputText(" <b>*Golem Cores shattered!*</b>");
+			if (overloadedGolemCoresBag) outputText(" <b>*None of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
+			if (partialyoverloadedGolemCoresBag) outputText(" <b>*Some of used Golem Cores wasn't picked due to lack of space to store them!*</b>");
+		}
 		outputText("\n\n");
 		enemyAI();
 	}
