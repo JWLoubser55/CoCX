@@ -22,6 +22,7 @@ import classes.StatusEffects;
 			if (player.armor == armors.ARCHNECC) dmgamp += 0.25;
 			if (player.upperGarment == undergarments.ARCHNECB) dmgamp += 0.2;
 			if (player.lowerGarment == undergarments.ARCHNECP) dmgamp += 0.2;
+			if (player.hasPerk(PerkLib.NoLimits)) dmgamp += 0.25;
 			if (player.hasPerk(PerkLib.CommandingTone)) dmgamp += 0.1;
 			if (player.hasPerk(PerkLib.DiaphragmControl)) dmgamp += 0.1;
 			if (player.hasPerk(PerkLib.VocalTactician)) dmgamp += 0.15;

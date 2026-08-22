@@ -61,6 +61,8 @@ public class CampMakeWinions extends BaseContent
 		}
 		private function currentGroupCap():Number {
 			var cGC:Number = 2;
+			if (player.hasPerk(PerkLib.ApesTogetherStrongEx)) cGC += 1;
+			if (player.hasPerk(PerkLib.ApesTogetherStrongSu)) cGC += 1;
 			if (player.hasPerk(PerkLib.ApesTogetherStronger)) cGC += 1;
 			if (player.hasPerk(PerkLib.ApesTogetherStrongest)) cGC += 1;
 			return cGC;
@@ -91,13 +93,30 @@ public class CampMakeWinions extends BaseContent
 		public function monsterBaseStatsMultiplier(group:Number = 0):Number {
 			var mBSM:Number = 1;
 			if (player.hasPerk(PerkLib.StrongerTamedMosters)) mBSM += 1;
+			if (player.hasPerk(PerkLib.StrongerTamedMostersEx)) mBSM += (0.1 * player.level);
 			var mGBSM:Number = 1.5;
 			if (player.hasPerk(PerkLib.ApesTogetherStronger)) mBSM += 0.5;
 			if (player.hasPerk(PerkLib.ApesTogetherStrongest)) mBSM += 0.5;
+			if (player.hasPerk(PerkLib.ApesTogetherStrongSu)) mBSM += 1.5;
 			if (group == 1 && player.statusEffectv4(StatusEffects.TamedMonster01) > 0) mBSM *= mGBSM;
 			if (group == 2 && player.statusEffectv4(StatusEffects.TamedMonster02) > 0) mBSM *= mGBSM;
 			if (group == 3 && player.statusEffectv4(StatusEffects.TamedMonster03) > 0) mBSM *= mGBSM;
 			if (group == 4 && player.statusEffectv4(StatusEffects.TamedMonster04) > 0) mBSM *= mGBSM;
+			if (player.hasPerk(PerkLib.NoLimits)) {
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) mBSM *= 2;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) mBSM *= 3;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) mBSM *= 6;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) mBSM *= 16;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) mBSM *= 61;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 6) mBSM *= 61;
+				if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 7) mBSM *= 61;
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 1) mBSM *= 5;
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 2) mBSM *= 10;
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 3) mBSM *= 25;
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 4) mBSM *= 100;
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] == 5) mBSM *= 500;
+				if (flags[kFLAGS.SECONDARY_STATS_SCALING] >= 6) mBSM *= 3000;
+			}
 			return mBSM;
 		}
 		public function accessTamedWinionsMainMenu():void {
@@ -306,12 +325,11 @@ public class CampMakeWinions extends BaseContent
 		}
 		public function groupUpTamedMonsters():void {
 			clearOutput();
-			var maxGroups:Number = 2;
 			outputText("Which one tamed monsters you decide to group up?\n\n");
-			outputText("<b>Only first "+maxGroups+" tamed monster slots can be used to form groups.</b>");
 			menu();
 			addButtonIfTrue(0, "-1-", curry(groupUpTamedMonsters2, 1), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster01) && (player.statusEffectv4(StatusEffects.TamedMonster01) < (currentGroupCap() - 1)), "Add monster to No.1 tamed group.");
-			addButtonIfTrue(1, "-2-", curry(groupUpTamedMonsters2, 2), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster02) && (player.statusEffectv4(StatusEffects.TamedMonster02) < (currentGroupCap() - 1)), "Add monster to No.2 tamed group.");
+			if (player.hasPerk(PerkLib.ApesTogetherStrongEx)) addButtonIfTrue(1, "-2-", curry(groupUpTamedMonsters2, 2), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster02) && (player.statusEffectv4(StatusEffects.TamedMonster02) < (currentGroupCap() - 1)), "Add monster to No.2 tamed group.");
+			else addButtonDisabled(1, "-2-", "Req. perk Apes Together Strong (Ex).");
 			if (player.hasPerk(PerkLib.ApesTogetherStronger)) addButtonIfTrue(2, "-3-", curry(groupUpTamedMonsters2, 3), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster03) && (player.statusEffectv4(StatusEffects.TamedMonster03) < (currentGroupCap() - 1)), "Add monster to No.3 tamed group.");
 			else addButtonDisabled(2, "-3-", "Req. perk Apes Together Stronger.");
 			if (player.hasPerk(PerkLib.ApesTogetherStrongest)) addButtonIfTrue(3, "-4-", curry(groupUpTamedMonsters2, 4), "You can't add more monsters to this group or you not have any tamed monster in this slot.", player.hasStatusEffect(StatusEffects.TamedMonster04) && (player.statusEffectv4(StatusEffects.TamedMonster04) < (currentGroupCap() - 1)), "Add monster to No.4 tamed group.");
@@ -1154,13 +1172,6 @@ public class CampMakeWinions extends BaseContent
 
 		}*/
 
-		public function postFightGolemOptions0():void {
-			clearOutput();
-			outputText("What are you gonna do now?\n\n");
-			menu();
-			addButton(10, "Scavenge", golemScavenge1);
-			addButton(14, "Leave", cleanupAfterCombat);
-		}
 		public function postFightGolemOptions1():void {
 			clearOutput();
 			outputText("What are you gonna do now?\n\n");

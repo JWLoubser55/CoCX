@@ -3251,12 +3251,12 @@ use namespace CoC;
 			if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1) damageMultiplier *= 0.1;
 			//Difficulty modifier flags.
 			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 1) damageMultiplier *= 2;
-			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) damageMultiplier *= 3;
-			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) damageMultiplier *= 6;
-			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) damageMultiplier *= 16;
-			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) damageMultiplier *= 61;
-			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 6) damageMultiplier *= 61;
-			else if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 7) damageMultiplier *= 61;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 2) damageMultiplier *= 3;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 3) damageMultiplier *= 6;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 4) damageMultiplier *= 16;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 5) damageMultiplier *= 61;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] == 6) damageMultiplier *= 61;
+			if (flags[kFLAGS.PRIMARY_DIFFICULTY] >= 7) damageMultiplier *= 61;
 			return damage * damageMultiplier;
 		}
 		public function takeDamage(damage:Number, damagetype:Number = 0, display:Boolean = false, hit:Number = 1, soulskilluse:Boolean = false):Number{

@@ -319,8 +319,13 @@ public class Changelog extends BaseContent
 			outputText("-Nadia when recruited to camp now could be combat henchman with healer options like: healing, curing, one time hp defeat prevention and simple soulskill for attack.\n");
 			outputText("-Power Attack (Su) perk effect of using 50% of current wrath was changed to 50% of max wrath.\n");
 			outputText("-Golemancers may been bit strugling in their early phase with only weak and not withstanding strain of just attacking once temporal golems so... they now golemancers can convert up to 3 temporal golems into semi-temporal golems that have 24 hours until they fall apart on their own. ");
-			outputText("Each of Golemancer perks from Beginer to Expert would add additional 24 hours (not affecting already converted golems at the time of getitng next golemancer perk). Timer till each of those golems fall apart is showed on golems managmnet page in camp actions.\n");
+			outputText("Each of Golemancer perks from Beginer to Expert would add additional 24 hours (not affecting already converted golems at the time of getitng next golemancer perk). Timer till each of those golems fall apart is showed on golems managment page in camp actions.\n");
 			outputText("-New tier 9 strength lvl-up perk: Prestige Job: Dreadnought. Req. Job: Warrior and Warlord perks, 150+ str/spe. Effect: +60% str multi and +60% spe multi (scalable with NG tiers), power attack now strikes twice.\n");
+			outputText("-Apes Together Strong, Apes Together Stronger and Stronger Tamed Mosters was moved to lower tiers (5 > 1, 7 > 5, 3 > 1) with matching change of req. stats. Additionaly Apes Strong Together allowing only forming 1 group of monsters.\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Apes Together Strong (Ex). Req. Apes Together Strong perk and 105+ wisdom. Effect: Your group of tamed monsters can have one extra monster of the same type and you can control one additional group.\n");
+			outputText("-New tier 7 wisdom lvl-up perk: Apes Together Strong (Su). Req. Apes Together Stronger and 205+ wisdom. Effect: Your group of tamed monsters can have two extra monsters of the same type and together they would be 150% stronger.\n");
+			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters (Ex). Req. Stronger Tamed Mosters perk and 105+ wisdom. Effect: Using your link with tamed monster you empower them. The stronger you became the bigger increase to tamed monster stats. (increase by 10% base tamed monster stats per player level)\n");
+			outputText("-New tier 0 wisdom lvl-up perk: No Limits. Req. Job: Tamer perk, lvl 3+ and 40+ wisdom. Effect: Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -336,12 +341,7 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks later on for max 6 tammed monsters in group and 325% and max 6 groups
+			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
 			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
 			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
@@ -358,6 +358,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
@@ -437,14 +446,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -472,9 +475,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

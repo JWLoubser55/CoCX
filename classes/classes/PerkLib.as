@@ -869,8 +869,8 @@ public class PerkLib
 				"You played your cards right, tames now come in 7.",
 				"You've chosen the 'Lucky Number Tamer' perk. You played your cards right, tames now come in 7.");
 		public static const ApesTogetherStrong:PerkType = mk("Apes Together Strong", "Apes Together Strong",
-				"You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.",
-				"You've chosen the 'Apes Together Strong' perk. You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 2 groups of tamed monsters.");
+				"You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 1 group of tamed monsters.",
+				"You've chosen the 'Apes Together Strong' perk. You could now group tamed monsters in groups of two of the same type. Together they would be 150% stronger and you can only control max 1 group of tamed monsters.");
 		public static const SpiritualAlignment:PerkType = mk("Spiritual Alignment", "Spiritual Alignment",
 				"The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)",
 				"You've chosen the 'Spiritual Alignment' perk. The universe opens to you and you are able to synergize your spiritual understanding with your psychic powers. (Adds current Wisdom score to Sensitivity)");
@@ -1057,6 +1057,18 @@ public class PerkLib
 		public static const Chivalry:PerkType = mk("Chivalry", "Chivalry",
 				"Regular swords (sword-type weapons) base attack is increased by 10.",
 				"You've chosen the 'Chivalry' perk. Regular swords (sword-type weapons) base attack is increased by 10.");
+		public static const ApesTogetherStrongEx:PerkType = mk("Apes Together Strong (Ex)", "Apes Together Strong (Ex)",
+				"Your group of tamed monsters can have one extra monster of the same type and you can control one additional group.",
+				"You've chosen the 'Apes Together Strong (Ex)' perk. Your group of tamed monsters can have one extra monster of the same type and you can control one additional group.");
+		public static const ApesTogetherStrongSu:PerkType = mk("Apes Together Strong (Su)", "Apes Together Strong (Su)",
+				"Your group of tamed monsters can have two extra monsters of the same type and together they would be 150% stronger.",
+				"You've chosen the 'Apes Together Strong (Su)' perk. Your group of tamed monsters can have two extra monsters of the same type and together they would be 150% stronger.");
+		public static const StrongerTamedMostersEx:PerkType = mk("Stronger Tamed Mosters (Ex)", "Stronger Tamed Monsters (Ex)",
+				"Using your link with tamed monster you empower them. The stronger you became the bigger increase to tamed monster stats. (increase by 10% base tamed monster stats per player level)",
+				"You've chosen the 'Stronger Tamed Monsters (Ex)' perk. Using your link with tamed monster you empower them. The stronger you became the bigger increase to tamed monster stats. (increase by 10% base tamed monster stats per player level)");
+		public static const NoLimits:PerkType = mk("No Limits", "No Limits",
+				"Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)",
+				"You've chosen the 'No Limits' perk. Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1074,9 +1086,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -7434,6 +7443,9 @@ public class PerkLib
                     .requireWis(25);
             TheHopelessHandler.requirePerk(JobTamer)
                     .requireWis(25);
+            NoLimits.requireLevel(3)
+					.requirePerk(HighStakesTamer)
+                    .requireWis(40);
             JobElementalConjurer.requireAdvancedJobSlot()
 					.requirePerk(JobLeader)
                     .requireWis(10);
@@ -7456,11 +7468,15 @@ public class PerkLib
             Beast02.requireLevel(6)
                     .requirePerk(JobTamer)
                     .requireWis(50);
+            ApesTogetherStrong.requireLevel(6)
+                    .requirePerk(Beast02)
+                    .requireWis(55);
             WorkingTogether.requireLevel(6)
                     .requirePerk(Beast02)
                     .requireWis(55);
-		//	.requirePerk(HighStakesTamer)
-        //            .requireWis(55);
+            StrongerTamedMosters.requireLevel(6)
+                    .requirePerk(HighStakesTamer)
+                    .requireWis(55);
 			InsightfulResourcesI.requireLevel(6)
                     .requireWis(50)
                     .requirePerk(JobSoulCultivator);
@@ -7581,8 +7597,11 @@ public class PerkLib
             BeastKnowledge.requireLevel(18)
                     .requirePerk(FourthTamerOfTheApocalypse)
                     .requireWis(105);
-            StrongerTamedMosters.requireLevel(18)
-                    .requirePerk(FourthTamerOfTheApocalypse)
+            ApesTogetherStrongEx.requireLevel(18)
+                    .requirePerk(ApesTogetherStrong)
+                    .requireWis(105);
+            StrongerTamedMostersEx.requireLevel(18)
+                    .requirePerk(StrongerTamedMosters)
                     .requireWis(105);
 			ElementalConjurerKnowledge.requireWis(100)
                     .requireLevel(18)
@@ -7685,8 +7704,8 @@ public class PerkLib
             SicEmSix.requireLevel(30)
                     .requirePerk(FifthTamed)
                     .requireWis(150);
-            ApesTogetherStrong.requireLevel(30)
-                    .requirePerk(SicEmSix)
+            ApesTogetherStronger.requireLevel(30)
+                    .requirePerk(ApesTogetherStrongEx)
                     .requireWis(155);
             UnlockSpirit2ndStage.requirePerk(UnlockSpirit)
                     .requireWis(125)
@@ -7755,8 +7774,8 @@ public class PerkLib
             KaijuNo8.requireLevel(42)
                     .requirePerk(LuckyNumberTamer)
                     .requireWis(200);
-            ApesTogetherStronger.requireLevel(42)
-                    .requirePerk(ApesTogetherStrong)
+            ApesTogetherStrongSu.requireLevel(42)
+                    .requirePerk(ApesTogetherStronger)
                     .requireWis(205);
 			ElementalConjurerKnowledgeSu.requirePerk(ElementalConjurerKnowledgeEx)
 					.requireWis(200)
@@ -7802,7 +7821,7 @@ public class PerkLib
                         return player.hasPerk(PerkLib.ElementalContractRank10) || (player.hasPerk(PerkLib.DaoOfTheElements) && player.perkv1(PerkLib.DaoOfTheElements) >= 3);
                     }, "Having Elemental Contract Rank 10 or Dao of the Elements (layer 3 or higher) perks");
             ApesTogetherStrongest.requireLevel(54)
-                    .requirePerk(ApesTogetherStronger)
+                    .requirePerk(ApesTogetherStrongSu)
                     .requireWis(255);
             //Tier 10 Wisdom perks
             PerfectStrike.requireLevel(60)
