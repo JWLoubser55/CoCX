@@ -19575,21 +19575,21 @@ public function useCocytokinesis():void {
 	sharedKinesisEnding(damage, crit);
 }
 public function sharedKinesisMidpart(crit:Boolean):Number {
-	var damage:Number = scalingBonusSensitivity() * 3;
+	var damage:Number = scalingBonusSensitivity() * 10;
 	if (player.hasPerk(PerkLib.ImprovedKineses)) {
-		damage += scalingBonusIntelligence() * 0.2;
-		damage += scalingBonusWisdom() * 0.2;
+		damage += scalingBonusIntelligence() * 0.6;
+		damage += scalingBonusWisdom() * 0.6;
 	}
 	if (player.hasPerk(PerkLib.AdvancedKineses)) {
-		damage += player.inte * 0.5;
-		damage += scalingBonusIntelligence() * 0.3;
-		damage += player.wis * 0.5;
-		damage += scalingBonusWisdom() * 0.3;
-		damage += player.sens * 1.5;
-		damage += scalingBonusSensitivity() * 7;
+		damage += player.inte * 1.5;
+		damage += scalingBonusIntelligence() * 0.9;
+		damage += player.wis * 1.5;
+		damage += scalingBonusWisdom() * 0.9;
+		damage += player.sens * 5;
+		damage += scalingBonusSensitivity() * 20;
 	}
 	if (player.hasPerk(PerkLib.Telekinesis)) {
-		damage += player.inte * 0.5;
+		damage += player.inte * 1.5;
 		damage += scalingBonusIntelligence() * 0.2;
 	}
 	if (player.hasPerk(PerkLib.MindFungus)) {
