@@ -150,7 +150,6 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		
 		public function dianaCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.CombatFollowerDiana) > 0) {
 				var choice2:Number = rand(20);
 				if (choice2 < 10) outputText("\n\n");
@@ -178,14 +177,13 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		
 		public function nadiaCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.CombatFollowerNadia) > 0) {
 				var choice2:Number = rand(20);
 				if (downTo01Idle()) {
 					if (rand(100) == 0) neisaCombatActions0();
 					else {
 						if (!player.hasStatusEffect(StatusEffects.TearsOfDenial)) nadiaCombatActions3();
-						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(2) == 0) nadiaCombatActions2();
+						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(5) == 0) nadiaCombatActions2();
 						else if (player.HP < player.maxOverHP()) nadiaCombatActions1();
 						else nadiaCombatActions4();
 					}
@@ -194,7 +192,7 @@ import classes.StatusEffects.VampireThirstEffect;
 					if (choice2 < 4) nadiaCombatActions0();
 					else {
 						if (!player.hasStatusEffect(StatusEffects.TearsOfDenial)) nadiaCombatActions3();
-						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(2) == 0) nadiaCombatActions2();
+						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(5) == 0) nadiaCombatActions2();
 						else if (player.HP < player.maxOverHP()) nadiaCombatActions1();
 						else nadiaCombatActions4();
 					}
@@ -203,7 +201,7 @@ import classes.StatusEffects.VampireThirstEffect;
 					if (choice2 < 10) nadiaCombatActions0();
 					else {
 						if (!player.hasStatusEffect(StatusEffects.TearsOfDenial)) nadiaCombatActions3();
-						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(2) == 0) nadiaCombatActions2();
+						else if (player.statStore.hasBuff("Weakened") || player.statStore.hasBuff("Drained") || rand(5) == 0) nadiaCombatActions2();
 						else if (player.HP < player.maxOverHP()) nadiaCombatActions1();
 						else nadiaCombatActions4();
 					}
@@ -278,7 +276,7 @@ import classes.StatusEffects.VampireThirstEffect;
 			bd2 += (rand(21) * 0.01);
 			damage *= bd2;
 			damage = Math.round(damage);
-			doMinionMagDamage(damage, true);
+			doMinionMagDamage(damage, true, true);
 			if (crit == true) outputText(" <b>*Critical Hit!*</b>");
 			outputText(" ");
 		}
@@ -525,7 +523,6 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		
 		public function ayaneCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.CombatFollowerAyane) > 0) {
 				var choice5:Number = rand(20);
 				if (downTo01Idle()) {
@@ -666,7 +663,6 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 
 		public function divaCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.CombatFollowerDiva) > 0) {
 				var choice6:Number = rand(20);
 				if (choice6 < 10) outputText("\n\n");
@@ -685,7 +681,6 @@ import classes.StatusEffects.VampireThirstEffect;
 		}/*
 		
 		public function divaCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.) > 0) {
 				var choice7:Number = rand(20);
 				if (choice7 < 10) outputText("\n\n");
@@ -1043,7 +1038,6 @@ import classes.StatusEffects.VampireThirstEffect;
 		}
 		
 		public function siegweirdCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.CombatFollowerSiegweird) > 0) {
 				var choice12:Number = rand(20);
 				if (choice12 < 10) outputText("\n\n");
@@ -1056,6 +1050,9 @@ import classes.StatusEffects.VampireThirstEffect;
 				outputText("\n\n");
 				player.addStatusValue(StatusEffects.CombatFollowerSiegweird, 4, 1);
 			}
+		}
+		public function siegweirdCombatActions0():void {
+
 		}
 		
 		public function zenjiCombatActions():void {
@@ -1400,6 +1397,102 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (monster.lustVuln > 0) monster.teased(monster.lib/4, true);
 			outputText("\n\n");
 		}
+		
+		public function galiaCombatActions():void {
+			if (player.statusEffectv4(StatusEffects.CombatFollowerGalia) > 0) {
+				var choice7:Number = rand(20);
+				if (choice7 < 10) outputText("\n\n");
+				if (choice7 >= 10 && choice7 < 14) outputText("\n\n");
+				if (choice7 >= 14 && choice7 < 17) outputText("\n\n");
+				if (choice7 == 17 || choice7 == 18) outputText("\n\n");
+				if (choice7 == 19) outputText("\n\n");
+			}
+			else {
+				outputText("\n\n");
+				player.addStatusValue(StatusEffects.CombatFollowerGalia, 4, 1);
+			}
+		}
+		public function galiaCombatActions0():void {
+
+		}
+		public function galiaCombatActions1():void {
+
+		}
+		public function galiaCombatActions2():void {
+
+		}
+		
+		public function stellaCombatActions():void {
+			if (player.statusEffectv4(StatusEffects.CombatFollowerStella) > 0) {
+				var choice7:Number = rand(20);
+				if (choice7 < 10) outputText("\n\n");
+				if (choice7 >= 10 && choice7 < 14) outputText("\n\n");
+				if (choice7 >= 14 && choice7 < 17) outputText("\n\n");
+				if (choice7 == 17 || choice7 == 18) outputText("\n\n");
+				if (choice7 == 19) outputText("\n\n");
+			}
+			else {
+				outputText("\n\n");
+				player.addStatusValue(StatusEffects.CombatFollowerStella, 4, 1);
+			}
+		}
+		public function stellaCombatActions0():void {
+
+		}
+		public function stellaCombatActions1():void {
+
+		}
+		public function stellaCombatActions2():void {
+
+		}
+		
+		public function sythrilCombatActions():void {
+			if (player.statusEffectv4(StatusEffects.CombatFollowerSythril) > 0) {
+				var choice7:Number = rand(20);
+				if (choice7 < 10) outputText("\n\n");
+				if (choice7 >= 10 && choice7 < 14) outputText("\n\n");
+				if (choice7 >= 14 && choice7 < 17) outputText("\n\n");
+				if (choice7 == 17 || choice7 == 18) outputText("\n\n");
+				if (choice7 == 19) outputText("\n\n");
+			}
+			else {
+				outputText("\n\n");
+				player.addStatusValue(StatusEffects.CombatFollowerSythril, 4, 1);
+			}
+		}
+		public function sythrilCombatActions0():void {
+
+		}
+		public function sythrilCombatActions1():void {
+
+		}
+		public function sythrilCombatActions2():void {
+
+		}
+		
+		public function ecihtelCombatActions():void {
+			if (player.statusEffectv4(StatusEffects.CombatFollowerEcihtel) > 0) {
+				var choice7:Number = rand(20);
+				if (choice7 < 10) outputText("\n\n");
+				if (choice7 >= 10 && choice7 < 14) outputText("\n\n");
+				if (choice7 >= 14 && choice7 < 17) outputText("\n\n");
+				if (choice7 == 17 || choice7 == 18) outputText("\n\n");
+				if (choice7 == 19) outputText("\n\n");
+			}
+			else {
+				outputText("\n\n");
+				player.addStatusValue(StatusEffects.CombatFollowerEcihtel, 4, 1);
+			}
+		}
+		public function ecihtelCombatActions0():void {
+
+		}
+		public function ecihtelCombatActions1():void {
+
+		}
+		public function ecihtelCombatActions2():void {
+
+		}
 
 		public function midokaCombatActions():void {
 			if (player.statusEffectv4(StatusEffects.CombatFollowerMidoka) > 0) {
@@ -1480,28 +1573,8 @@ import classes.StatusEffects.VampireThirstEffect;
 			if (monster.lustVuln > 0) monster.teased(monster.lib/5, true);
 			outputText("\n\n");
 		}/*
-		
-		public function divaCombatActions():void {
-			clearOutput();
-			if (player.statusEffectv4(StatusEffects.) > 0) {
-				var choice7:Number = rand(20);
-				if (choice7 < 10) outputText("\n\n");
-				if (choice7 >= 10 && choice7 < 14) outputText("\n\n");
-				if (choice7 >= 14 && choice7 < 17) outputText("\n\n");
-				if (choice7 == 17 || choice7 == 18) outputText("\n\n");
-				if (choice7 == 19) outputText("\n\n");
-			}
-			else {
-				outputText("\n\n");
-				player.addStatusValue(StatusEffects., 4, 1);
-			}
-		}
-		public function ayaneCombatActions0():void {
-
-		}/*
 
 		public function divaCombatActions():void {
-			clearOutput();
 			if (player.statusEffectv4(StatusEffects.) > 0) {
 				var choice7:Number = rand(20);
 				if (choice7 < 10) outputText("\n\n");

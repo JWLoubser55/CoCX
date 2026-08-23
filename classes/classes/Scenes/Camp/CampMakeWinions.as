@@ -623,9 +623,9 @@ public class CampMakeWinions extends BaseContent
 			}
 			if (player.hasPerk(PerkLib.JobGolemancer)) outputText("\n<b>Temporal Golems Bag:</b> " + flags[kFLAGS.TEMPORAL_GOLEMS_BAG] + " / " + maxTemporalGolemsBagSize() + " golems");
 			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
-				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 1:</i> " + player.statusEffectv1(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
-				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 2:</i> " + player.statusEffectv2(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
-				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 3:</i> " + player.statusEffectv3(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) outputText("\n<i>Semi-Temporal Golem No 1:</i> " + player.statusEffectv1(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) outputText("\n<i>Semi-Temporal Golem No 2:</i> " + player.statusEffectv2(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) outputText("\n<i>Semi-Temporal Golem No 3:</i> " + player.statusEffectv3(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
 			}
 			if (player.hasPerk(PerkLib.MasterGolemMaker)) outputText("\n<b>Stone Golems Bag:</b> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + " / " + maxPermanentStoneGolemsBagSize() + " golems\n");
 			if (player.hasPerk(PerkLib.EpicGolemMaker)) outputText("<b>Improved Stone Golems Bag:</b> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + " / " + maxPermanentImprovedStoneGolemsBagSize() + " golems\n");
@@ -642,7 +642,7 @@ public class CampMakeWinions extends BaseContent
 			else addButtonDisabled(5, "I.P.S.Golem", "Req. Epic Golem Maker perk.");
 			if (player.hasPerk(PerkLib.LegendaryGolemMaker)) addButton(6, "I.M.Golem", makePermanentImprovedSteelGolem).hint("Make an improved steel golem.\n\nCost: 3 Golem Cores, 6 Energy Cores, 50 Metal Plates, 12 Mechanisms, " + eleShardCost + permanentImprovedSteelGolemMakingCost() + " Mana");
 			else addButtonDisabled(6, "I.M.Golem", "Req. Legendary Golem Maker perk.");
-			if (player.hasPerk(PerkLib.JobGolemancer)) addButton(10, "TempGolems", makeTemporalGolemsMenu);
+			addButton(10, "TempGolems", makeTemporalGolemsMenu);
 			if (player.hasItem(useables.GOLCORE, 1) && (flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] < maxReusableGolemCoresBagSize())) addButton(11, "PutInCore", putInGolemCoreIntoGolemBag).hint("Put one golem core into 'golem bag'.")
 			else addButtonDisabled(11, "PutInCore", "You don't have any golem cores in your inventory to put in the 'golem bag'.");
 			if (flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] > 0) addButton(12, "TakeOutCore", takeOutGolemCoreFromGolemBag).hint("Take out one golem core from the 'golem bag'.");
@@ -662,9 +662,9 @@ public class CampMakeWinions extends BaseContent
 			outputText("<b>Stored golem cores for future reuse when making new golems:</b> " + flags[kFLAGS.REUSABLE_GOLEM_CORES_BAG] + " / " + maxReusableGolemCoresBagSize() + "\n");
 			if (player.hasPerk(PerkLib.JobGolemancer)) outputText("\n<b>Temporal Golems Bag:</b> " + flags[kFLAGS.TEMPORAL_GOLEMS_BAG] + " / " + maxTemporalGolemsBagSize() + " golems");
 			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
-				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 1:</i> " + player.statusEffectv1(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
-				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 2:</i> " + player.statusEffectv2(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
-				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) outputText("<i>Semi-Temporal Golem No 3:</i> " + player.statusEffectv3(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0) outputText("\n<i>Semi-Temporal Golem No 1:</i> " + player.statusEffectv1(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0) outputText("\n<i>Semi-Temporal Golem No 2:</i> " + player.statusEffectv2(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
+				if (player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) outputText("\n<i>Semi-Temporal Golem No 3:</i> " + player.statusEffectv3(StatusEffects.SemiTemporalGolems) + " hours left until it fall apart");
 			}
 			menu();
 			addButton(0, "T.S.Golem", makeTemporalStoneGolem).hint("Make the most simple golem out of a pile of stones.  <b>It will crumble after one attack!</b>\n\nCost: 1 Golem Core, " + temporalGolemMakingCost() + " Mana");
@@ -769,9 +769,9 @@ public class CampMakeWinions extends BaseContent
 			statScreenRefresh();
 			outputText("You draw a seal in the ground, placing a ring of stones along the inside edge. Next, you command one of your temporal golems to stand in the middle of the seal, surrounded by a smaller circle of stones. With the groundwork done, you step back and begin to chant, mana flowing from your hands into the seal. One by one, the stones from the outer ring leap up, attaching to the golem. You command the newly created semi-temopral golem to come to you and store it in your golem bag.");
 			var lifespan:Number = 24;
-			if (player.hasPerk(PerkLib.BeginnerGolemMaker)) lifespan + 24;
-			if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) lifespan + 24;
-			if (player.hasPerk(PerkLib.ExpertGolemMaker)) lifespan + 24;
+			if (player.hasPerk(PerkLib.BeginnerGolemMaker)) lifespan += 24;
+			if (player.hasPerk(PerkLib.ApprenticeGolemMaker)) lifespan += 24;
+			if (player.hasPerk(PerkLib.ExpertGolemMaker)) lifespan += 24;
 			if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
 				player.addStatusValue(StatusEffects.SemiTemporalGolems, 4, 1);
 				if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) == 0) player.addStatusValue(StatusEffects.SemiTemporalGolems, 1, lifespan);

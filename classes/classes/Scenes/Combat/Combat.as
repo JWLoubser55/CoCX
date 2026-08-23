@@ -1476,8 +1476,8 @@ public class Combat extends BaseContent {
 					if (player.hasPerk(PerkLib.TemporalGolemsRestructurationEx)) addButton(3, "KamikazeProtocol", combat.pspecials.sendTemporalGolemKamikazeProtocol)
 						.hint("Send all temporal golems from your bag to attack the enemy. <b>After attacking, the golems will fall apart!</b>");
 					if (player.hasStatusEffect(StatusEffects.SemiTemporalGolems)) {
-						if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0 || player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0 || player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) addButton(0, "Send S-T.Gol/1", combat.pspecials.sendTemporalGolem1, false);
-						if (monster.plural && player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0 && player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0 && player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) addButton(1, "Send S-T.Gol/3", combat.pspecials.sendTemporalGolem3, false);
+						if (player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0 || player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0 || player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) addButton(8, "Send S-T.Gol/1", combat.pspecials.sendTemporalGolem1, false);
+						if (monster.plural && player.statusEffectv1(StatusEffects.SemiTemporalGolems) > 0 && player.statusEffectv2(StatusEffects.SemiTemporalGolems) > 0 && player.statusEffectv3(StatusEffects.SemiTemporalGolems) > 0) addButton(9, "Send S-T.Gol/3", combat.pspecials.sendTemporalGolem3, false);
 					}
 				}
 			}

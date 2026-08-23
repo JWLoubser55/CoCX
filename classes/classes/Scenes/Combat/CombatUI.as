@@ -1278,13 +1278,21 @@ public class CombatUI extends BaseCombatContent implements SaveableState {
 								: companionName == "Amily" ? combat.comfoll.amilyCombatActions
 								: companionName == "Aurora" ? combat.comfoll.auroraCombatActions
 								: companionName == "Ayane" ? combat.comfoll.ayaneCombatActions
+								: companionName == "Diana" ? combat.comfoll.dianaCombatActions
+								: companionName == "Diva" ? combat.comfoll.divaCombatActions
+								: companionName == "Ecihtel" ? combat.comfoll.ecihtelCombatActions
 								: companionName == "Etna" ? combat.comfoll.etnaCombatActions
 								: companionName == "Excellia" ? combat.comfoll.excelliaCombatActions
+								: companionName == "Galia" ? combat.comfoll.galiaCombatActions
 								: companionName == ""+flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+"" ? combat.comfoll.ghoulishVampServCombatActions
 								: companionName == "Kiha" ? combat.comfoll.kihaCombatActions
 								: companionName == "Midoka" ? combat.comfoll.midokaCombatActions
 								: companionName == "Mitzi" ? combat.comfoll.mitziCombatActions
+								: companionName == "Nadia" ? combat.comfoll.nadiaCombatActions
 								: companionName == "Neisa" ? combat.comfoll.neisaCombatActions
+								: companionName == "Siegweird" ? combat.comfoll.siegweirdCombatActions
+								: companionName == "Stella" ? combat.comfoll.stellaCombatActions
+								: companionName == "Sythril" ? combat.comfoll.sythrilCombatActions
 								: companionName == "Tyrantia" ? combat.comfoll.tyrantiaCombatActions
 								: companionName == "Zenji" ? combat.comfoll.zenjiCombatActions : null;
 		//do action

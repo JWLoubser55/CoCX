@@ -3206,7 +3206,7 @@ public class Camp extends NPCAwareContent{
 		outputText("On which group of minions you want to check on?");
 		menu();
 		if (player.hasPerk(PerkLib.JobGolemancer)) addButton(0, "Make", SceneLib.campMakeWinions.accessMakeWinionsMainMenu).hint("Check your options for making some golems.");
-		else addButtonDisabled(0, "Make", "You need to learn the Golemancer job to use this option.");player.hasPerk(PerkLib.JobElementalConjurer)
+		else addButtonDisabled(0, "Make", "You need to learn the Golemancer job to use this option.");
 		if (player.hasPerk(PerkLib.JobElementalConjurer) && flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] > 0) addButton(1, "Summon", SceneLib.campMakeWinions.accessSummonElementalsMainMenu).hint("Check your options for managing your elemental summons.");
 		else addButtonDisabled(1, "Summon", "You should build an Arcane Circle and learn Elemental Conjurer job to use this option. Without some tools from the carpenter's toolbox, it would be near impossible to make Arcane Circle.");
 		if (player.hasPerk(PerkLib.JobHaruspex)) addButton(2, "Skeletons", SceneLib.campMakeWinions.accessMakeSkeletonWinionsMainMenu).hint("Check your options for making some skeletons.");
