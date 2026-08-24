@@ -1069,6 +1069,9 @@ public class PerkLib
 		public static const NoLimits:PerkType = mk("No Limits", "No Limits",
 				"Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)",
 				"You've chosen the 'No Limits' perk. Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)");
+		public static const FocusingGrip:PerkType = mk("Focusing Grip", "Focusing Grip",
+				"When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.",
+				"You've chosen the 'Focusing Grip' perk. When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1086,9 +1089,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6139,6 +6139,8 @@ public class PerkLib
 					.requireCustomFunction(function (player:Player):Boolean {
                         return player.getHighestMastery() >= 30;//masteryDaggerLevel >= 30 || player.masterySwordLevel >= 30 || player.masteryAxeLevel >= 30 || player.masteryMaceHammerLevel >= 30 || player.masteryDuelingSwordLevel >= 30 || player.masteryPolearmLevel >= 30 || player.masterySpearLevel >= 30 || player.masteryWhipLevel >= 30 || player.masteryExoticLevel >= 30;
                     }, "One melee weapon mastery (excluding gauntlets) reaching level 30.");
+            FocusingGrip.requireLevel(54)
+                    .requirePerks(PrestigeJobDreadnought, HoldWithBothHands);
             HalfStepToInhumanTranquilness.requireStr(300)
                     .requireTou(100)
                     .requireSpe(100)

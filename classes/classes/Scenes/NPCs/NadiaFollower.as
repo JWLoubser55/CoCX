@@ -1028,14 +1028,39 @@ public function SexMenuVaginal():void {
 		outputText("You stay still for a while, giving Nadia a moment to reflect on her mistakes, before slamming your cock into her as hard as you can. " + (player.cocks[x].cockLength >= 20 ? "Nadia doesn’t even have time to scream as your huge cock spreads her tight pussy as it spears both her pussy and womb, bulging out her belly in your shape, causing her to let out surprised gasp as her body shudders from the sudden orgasm you gave her" : "Nadia doesn’t even have time to scream as your cock spears into her pussy and slams against her womb") + ". ");
 		outputText("You hit her with such force that her elbows buckle, pitching her forward. her face is now in the dirt, where you plan to keep it, as you start pounding her pussy with your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock], making her moan loudly into the ground as you force orgasm after orgasm on her.\n\n");
 		outputText("You ask her what she thinks of your cock pounding her pussy, but all she can do is moan, a sluttish look on her face, with her eyes rolled up and her tongue hanging out of her mouth as your rub her face against the dirt with your powerful thrusts. You can feel her cunt tighten around your " + (player.cocks[x].cockLength >= 25 ? "monsterous" : "average") + " [cock] with every thrust, " + (player.cocks[x].cockLength >= 25 ? "your [cockhead] slamming against her breasts through her belly, making her moan like a whore every time" : "your [cockhead] slamming against her womb") + ".\n\n");
-		outputText("Although soon you feel your orgasm rising, a powerful building feeling in your cock" + (player.cocks.length == 1 ? "" : "s") + ". As you feel yourself about to cum, you pull out of her, placing your cock between her cheeks before blasting your " + (player.cumQ() >= 2000 ? "massive load all over Nadia’s rear, back and head, staining it all white" : "load over Nadia’s rear, staining it white") + ".\n\n");
+		outputText("Although soon you feel your orgasm rising, a powerful building feeling in your cock" + (player.cocks.length == 1 ? "" : "s") + ". As you feel yourself about to cum, Nadia moans. She’s trying to wrap her legs around you, but in her current state, she can only moan with each thrust. You know she wants you to cum inside…But it’s your choice.\n\n");
+		menu();
+		addButton(1, "Outside", SexMenuVaginal1);
+		addButton(3, "Inside", SexMenuVaginal1, false);
+	//}
+}
+public function SexMenuVaginal1(outside:Boolean = true):void {
+	if (outside) {
+		outputText("You pull out of her, placing your cock between her cheeks before blasting your " + (player.cumQ() >= 2000 ? "massive load all over Nadia’s rear, back and head, staining it all white" : "load over Nadia’s rear, staining it white") + ".\n\n");
 		outputText("\"<i>Did you enjoy my pussy?</i>\" Nadia asks, giving you a tired and well fucked look, her body still with her arse in the air and her face in the ground.\n\n");
 		outputText("\"<i>Wonderful as always,</i>\" you say, readjusting her clothes.\n\n");
 		outputText("\"<i>Although the cum is wasted on my back, maybe next time put it all in the proper place?</i>\" Nadia says, gathering up some cum with one of her fingers and sucking it off.\n\n");
 		outputText("\"<i>Only if you're a good mare next time,</i>\" you say with a smirk on your face.\n\n");
 		outputText("Nadia pouts a bit before you both say your goodbyes, and then you head off.\n\n");
-	//}
-	NadiaPregChance();
+	}
+	else {
+		outputText("As the first rope of your cum starts to shoot out, you grab Nadia’s shoulders, pushing yourself as far in as you can go.\n\n");
+		outputText("\"<i>Ngh!</i>\" You close your eyes, [cock] shaking as you shoot your load. Nadia squeals in delight as your sperm shoots down into her depths, her arms giving out and dumping her onto the ground, sizable breasts first.\n\n");
+		if (player.cumQ() >= 2000) {
+			outputText("Your load keeps coming, and you feel an increase in pressure on your [cock]. As the pressure builds, you grunt, grabbing one of Nadia’s legs and flipping her onto her back.\n\n");
+			outputText("Nadia looks up at you, eyes barely focusing, mouth wide open, and you jerk yourself off. Your first cumshot hits her eye, forcing her to close it, and she moans your baby batter trickling from her pussy as you cover her mouth, tits and belly in ropy strands of cum.\n\n");
+			outputText("As your orgasm finally ends, your [cock] finally softening, you look down at your handiwork. Nadia’s flat on her back, her belly slightly swollen. Cum leaks from her pussy, and as she tries to close her legs, she causes more to spill out. One of her eyes is closed over a rope of your cum, and her prodigious chest heaves, dripping even more of your spunk onto the ground. ");
+			outputText("She finally musters enough strength to roll onto her side, and she closes her shaking legs. Nadia barely seems to notice you as you walk over, sitting beside her, her leaking quim still opening and closing. Her one open eye focuses on you, and she murmurs something, too quietly for you to hear.\n\n");
+			outputText("You ask her to repeat that, and she looks at your feet, her breathing finally slowing.\n\n");
+			outputText("\"<i>I said…That’s my fucking Stallion.</i>\" She looks up at you, a mixture of awe and adoration in her eyes. \"<i>...Can you carry me to my tent? Please?</i>\" You nod, and despite your tiredness, you pick Nadia up in a princess carry, taking her back to her tent. You gently lay her down on her bedroll, and then you notice…she’s been dripping your cum the entire way back…and when she sees you notice, she just gives you a smile, her tail swishing. You roll your eyes, and leave your silly alicorn lover.\n\n");
+		}
+		else {
+			outputText("Your cum floods in, and Nadia lets out a gleeful whinny, locking her legs behind you. Her cunt writhes, and you barely keep your feet as Nadia’s hips buck, your mare trying to milk every last drop.\n\n");
+			outputText("\"<i>Yeaha…ha…haa…</i>\" Nadia turns her head to face you, her legs falling limp. As you let her fall to the ground, she closes her legs quickly, putting her hand to her well-fucked cunt as if to lock in your seed. You sit down next to her, and without hesitation, Nadia grabs you with her free hand, pulling you into a warm (if a bit sticky) embrace.\n\n");
+			outputText("\"<i>My Stallion.</i>\" She murmurs, nuzzling you. \"<i>Hold me?</i>\" You nod, and for a time, you simply relax, content in Nadia’s warm embrace. After a while, however, Nadia starts to snore. You carry her back to her tent, tucking her into her bedroll before going on your way.\n\n");
+		}
+		NadiaPregChance();
+	}
 	player.sexReward("vaginalFluids","Dick");
 	endEncounter();
 }
@@ -1198,20 +1223,24 @@ private function BelisaNadiaTalk():void {
 		outputText("You half-drag, half-carry Nadia over to her bedroll, and as she groans, you grab a towel, gently spreading your unicorn lover’s legs. Nadia covers herself with her tail, but you gently take it, pushing it out of your way.\n\n");
 		outputText("\"<i>S-sorry…Force of habit.</i>\" Nadia grunts. You shake your head slightly, telling her not to worry. Just focus on the birth. She whinneys as a contraction hits, and you position yourself between Nadia’s legs, ready to receive your newborn foal.\n\n");
 		outputText("It takes about a half hour before you can see a head, crowning. Nadia gasps in pain as the horn passes through, and you take her hand, telling her to breathe. Slowly, Nadia pushes, and you take the newborn Unicorn into your arms.\n\n");
-		switch (rand(5)) {
+		switch (rand(9)) {
 			case 0:
 			case 1:
+			case 2:
+			case 3:
 				outputText("It's a boy, and as he looks into your eyes, he stares, horn glowing ever so slightly. He coughs, taking in his first breath, and you sigh happily, swaddling your boy.\n\n");
 				NadiaTotalKidsNum += 1;
 				NadiaSonsNum += 1;
 				break;
-			case 2:
-			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
 				outputText("It's a little girl. She opens her eyes, then quickly closes them again, burbling. She inhales deeply, then begins to cry loudly. You rock her, wrapping her up, and she turns her head, trying to put something between her eyes and the light.\n\n");
 				NadiaTotalKidsNum += 1;
 				NadiaDaughtersNum += 1;
 				break;
-			case 4:
+			case 8:
 				outputText("You notice that your newborn Unicorn is a hermaphrodite, with both male and female genitals. You swaddle them in cloth, and they look around curiously, their eyes wandering. You hold their head, and they look at you curiously, before breaking out into an innocent smile.\n\n");
 				NadiaHermKidsNum +=1;
 				NadiaTotalKidsNum += 1;

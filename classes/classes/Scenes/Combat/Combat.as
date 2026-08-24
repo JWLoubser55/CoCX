@@ -19590,7 +19590,7 @@ public function sharedKinesisMidpart(crit:Boolean):Number {
 	}
 	if (player.hasPerk(PerkLib.Telekinesis)) {
 		damage += player.inte * 1.5;
-		damage += scalingBonusIntelligence() * 0.2;
+		damage += scalingBonusIntelligence() * 0.6;
 	}
 	if (player.hasPerk(PerkLib.MindFungus)) {
 		damage += player.inte * 0.5;

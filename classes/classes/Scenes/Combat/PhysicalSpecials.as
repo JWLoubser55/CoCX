@@ -1516,6 +1516,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else critChance += 10;
 			}
 		}
+		if (player.gaindHoldWithAllHandBonus()) critChance += 10;
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;

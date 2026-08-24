@@ -130,6 +130,7 @@ public class PlayerController extends BaseContent {
 		var before:Number = player.wrath;
 		if (changeNum == 0) return 0;
 		if (changeNum > 0) {
+			if (player.gaindHoldWithAllHandBonus()) changeNum *= 2;
 			if (player.wrath + int(changeNum) > player.maxOverWrath()) player.wrath = player.maxOverWrath();
 			else player.wrath += changeNum;
 		} else {

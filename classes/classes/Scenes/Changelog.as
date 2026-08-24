@@ -320,25 +320,25 @@ public class Changelog extends BaseContent
 			outputText("-Power Attack (Su) perk effect of using 50% of current wrath was changed to 50% of max wrath.\n");
 			outputText("-Golemancers may been bit strugling in their early phase with only weak and not withstanding strain of just attacking once temporal golems so... they now golemancers can convert up to 3 temporal golems into semi-temporal golems that have 24 hours until they fall apart on their own. ");
 			outputText("Each of Golemancer perks from Beginer to Expert would add additional 24 hours (not affecting already converted golems at the time of getitng next golemancer perk). Timer till each of those golems fall apart is showed on golems managment page in camp actions.\n");
-			outputText("-New tier 9 strength lvl-up perk: Prestige Job: Dreadnought. Req. Job: Warrior and Warlord perks, 150+ str/spe. Effect: +60% str multi and +60% spe multi (scalable with NG tiers), power attack now strikes twice.\n");
+			outputText("-New tier 9 strength lvl-up perk: Prestige Job: Dreadnought. Req. Job: Warrior and Warlord perks, 150+ str/spe. Effect: You've trained in prestige art of obliterates his foes through overwhelming violence. +60% str multi and +60% spe multi (scalable with NG tiers), power attack now strikes twice.\n");
 			outputText("-Apes Together Strong, Apes Together Stronger and Stronger Tamed Mosters was moved to lower tiers (5 > 1, 7 > 5, 3 > 1) with matching change of req. stats. Additionaly Apes Strong Together allowing only forming 1 group of monsters.\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Apes Together Strong (Ex). Req. Apes Together Strong perk and 105+ wisdom. Effect: Your group of tamed monsters can have one extra monster of the same type and you can control one additional group.\n");
 			outputText("-New tier 7 wisdom lvl-up perk: Apes Together Strong (Su). Req. Apes Together Stronger and 205+ wisdom. Effect: Your group of tamed monsters can have two extra monsters of the same type and together they would be 150% stronger.\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters (Ex). Req. Stronger Tamed Mosters perk and 105+ wisdom. Effect: Using your link with tamed monster you empower them. The stronger you became the bigger increase to tamed monster stats. (increase by 10% base tamed monster stats per player level)\n");
 			outputText("-New tier 0 wisdom lvl-up perk: No Limits. Req. Job: Tamer perk, lvl 3+ and 40+ wisdom. Effect: Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)\n");
+			outputText("-New tier 9 strength lvl-up perk: Focusing Grip. Req. Prestige Job: Dreadnought and Hold With Both Hands perks. Effect: When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.\n");
+			outputText("-One of Nadia sex scenes in camp have now branching endings so no more cases of Holy Mary/Mare/Nadia ^^\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier 10 strength lvl-up perk: Yatagan Slash. Req. Prestige Job: Dreadnought perk. Effect: From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.
+			outputText("-\n");//New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.
+			outputText("-\n");//New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.
+			outputText("-\n");//New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.
+			outputText("-\n");//New tier 14 strength lvl-up perk: Tempest Trance. Req. Yatagan Vortex perk. Effect: Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
@@ -3294,7 +3294,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 6 intelligence lvl-up perk: Selfbuffs Proficiency (Ex). Req. Selfbuffs Proficiency & Long(er) Lasting Buffs I perks, 170+ int. Effect: Increase max selfbuff max cap by 70%(100%). Enable recasting all active buffs when they're about to expire.\n");
 			outputText("-New tier 7 intelligence lvl-up perk: Super Convergence. Req. Convergence perk, 225+ int. Effect: Grey magic area of effect spells strike one more time (three times) against single targets. Against groups would deal 50-250% more dmg depending on size (250% for small groups, 100% for large groups).\n");
 			outputText("-New tier 8 intelligence lvl-up perk: Selfbuffs Proficiency (Su). Req. Selfbuffs Proficiency (Ex) & (Ever)Lasting Buffs perks, 220+ int. Effect: Increase max selfbuff max cap five times at the cost of using twice more mana to cast.\n");
-			outputText("-New tier 9 strength lvl-up perk: Prestige Job: Stalker. Req. Job: Warrior and Hunter perks, 150+ str/spe. Effect: +80% str multi and +40% spe multi (scalable with NG tiers), +20% damage and critical damage with thrown range weapons.\n");
+			outputText("-New tier 9 strength lvl-up perk: Prestige Job: Stalker. Req. Job: Warrior and Hunter perks, 150+ str/spe. Effect: You've trained in prestige art of combining master survivalist and expert huntsman. +80% str multi and +40% spe multi (scalable with NG tiers), +20% damage and critical damage with thrown range weapons.\n");
 			outputText("-New tier 10 intelligence lvl-up perk: Grand Grey Archmage (2nd Circle). Req. Grand Grey Archmage perk and 275+ int. Effect: Increases grey spell strength by 50%, mana pool by 900, lust bar by 320, regain it 150% faster. Grey spells costs lowered by 20%.\n");
 			outputText("-New tier 10 strength lvl-up perk: Toxine master. Req. Prestige Job: Stalker & Envenomed bolt perks. Effect: Envenomed bolt venom effect now is two times as strong on each projectile and gains an extra dot as 5 toughness damage per round. If PC doesn't have a poison pc can use the sky poison pearl to produce a deadly toxin that adds the base 5 toughness damage to weapon attacks.\n");
 			outputText("-New tier 11 strength lvl-up perk: King of the jungle. Req. Toxine master & Medicine perks. Effect: One with the natural world, you gained almost complete immunity (their duration shortened to 1 round) to status effects like frozen solid, poison, burn and bleeding! Furthermore all the damage caused with the damaging condition above is increased by 20%.\n");

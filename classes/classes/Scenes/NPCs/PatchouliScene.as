@@ -171,7 +171,7 @@ public class PatchouliScene extends NPCAwareContent {
 			outputText("\"<i>Some poor girl in that village must be pregnant by now, you should be ashamed, you know?</i>\"\n\n");
 			outputText("This little asshole has pranked you long enough. You knock him unconscious and bring him back to camp, making sure to tie him to a nearby tree");
 			if (camp.getCampPopulation() >= 2)
-				outputText("and leave one of your friends to watch over him at all time");
+				outputText(" and leave one of your friends to watch over him at all time");
 			outputText(".\n\n");
 			if (!recalling) {
 				player.sexReward("Default", "Dick", true, false);

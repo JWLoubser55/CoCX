@@ -1455,6 +1455,10 @@ use namespace CoC;
 		{
 			return hasPerk(PerkLib.HoldWithBothHands) && !isFistOrFistWeapon() && isNotHavingShieldCuzPerksNotWorkingOtherwise() && (((weapon.isSingleLarge() || weaponOff.isSingleLarge()) && !hasPerk(PerkLib.GigantGrip)) || ((weapon.isSingleMassive() || weaponOff.isSingleMassive()) && (!hasPerk(PerkLib.TitanGrip) || (hasFourArms() && !hasPerk(PerkLib.GigantGripSu)))));
 		}
+		public function gaindHoldWithAllHandBonus():Boolean
+		{
+			return hasPerk(PerkLib.FocusingGrip) && !isFistOrFistWeapon() && isNotHavingShieldCuzPerksNotWorkingOtherwise() && (((weapon.isSingleLarge() || weapon.isSingleMassive()) && weaponOff.isNothing) || ((weaponOff.isSingleLarge() || weaponOff.isSingleMassive()) && weapon.isNothing));
+		}
 		//Natural Jouster perks req check
 		public function isMeetingNaturalJousterReq():Boolean
 		{
