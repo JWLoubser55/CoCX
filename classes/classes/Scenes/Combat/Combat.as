@@ -20746,6 +20746,32 @@ public function skeletonSmash():void {
     else enemyAIImpl();
 }
 
+public function activatePsionicCuring():void {
+	clearOutput();
+	fatigue(Math.round(player.maxFatigue() * 0.6), USEFATG_MAGIC_NOBM);
+	var heal:Number = 0;
+	heal += player.maxHP() * 0.3;
+	/*if (player.armorName == "skimpy nurse's outfit") heal *= 1.4;
+	if (player.weaponName == "unicorn staff") heal *= 2;
+	if (player.hasPerk(PerkLib.CloseToDeath) && player.HP < (player.maxHP() * 0.25)) {
+		if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) heal *= 4;
+		else heal *= 2;
+	}
+	//Determine if critical heal!
+	var crit:Boolean = false;
+	var critHeal:int = 5;
+	critHeal *= combatMagicalCritical();
+	if (rand(100) < critHeal) {
+		crit = true;
+		heal *= 2.5;
+	}Gathering all you wrath you unleash howl while your wounds healing a bit.
+	heal = Math.round(heal);*/
+	outputText("You concentrate on the memory of your body, rewiring reality toward the state of being you had a few minutes ago. Your injuries begin to unwounds as reality rewind upon itself your body recovering toward its prime. ");
+	pc.HPChange(heal,true,false);
+	//if (crit) outputText(" <b>*Critical Heal!*</b>");
+	enemyAIImpl();
+}
+
 public function noLimiterState():void {
     clearOutput();
 		outputText("No Limiter on!\n\n");

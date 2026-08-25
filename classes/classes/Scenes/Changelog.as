@@ -326,20 +326,38 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 wisdom lvl-up perk: Apes Together Strong (Su). Req. Apes Together Stronger and 205+ wisdom. Effect: Your group of tamed monsters can have two extra monsters of the same type and together they would be 150% stronger.\n");
 			outputText("-New tier 3 wisdom lvl-up perk: Stronger Tamed Mosters (Ex). Req. Stronger Tamed Mosters perk and 105+ wisdom. Effect: Using your link with tamed monster you empower them. The stronger you became the bigger increase to tamed monster stats. (increase by 10% base tamed monster stats per player level)\n");
 			outputText("-New tier 0 wisdom lvl-up perk: No Limits. Req. Job: Tamer perk, lvl 3+ and 40+ wisdom. Effect: Tamed monsters stats are stronger almost as their untamed counterparts. (Apply modifiers for monster from primary and secondary difficulty settings / +50% to tamed monster damage)\n");
+			outputText("-One of Nadia sex scenes in camp have now branching endings so no more cases of Holy Mary/Mare/Nadia ^^ (scene alteration writtien by Spooder Lord)\n");
 			outputText("-New tier 9 strength lvl-up perk: Focusing Grip. Req. Prestige Job: Dreadnought and Hold With Both Hands perks. Effect: When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.\n");
-			outputText("-One of Nadia sex scenes in camp have now branching endings so no more cases of Holy Mary/Mare/Nadia ^^\n");
+			outputText("-New tier 1 sensitivity lvl-up perk: Psionic Curing. Req. Job: Esper perk and 40+ sensitivity. Effect: You can use your mental power to cure your body. (60% fatigue > 30% hp)\n");
+			outputText("-New tier 10 strength lvl-up perk: Yatagan Slash. Req. Prestige Job: Dreadnought perk. Effect: From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.\n");
+			outputText("-Sixth Sense perk req. sens was increased from 25+ to 40+.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 10 strength lvl-up perk: Yatagan Slash. Req. Prestige Job: Dreadnought perk. Effect: From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.
 			outputText("-\n");//New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.
 			outputText("-\n");//New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.
+			outputText("-\n");
 			outputText("-\n");//New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.
+			outputText("-\n");
 			outputText("-\n");//New tier 14 strength lvl-up perk: Tempest Trance. Req. Yatagan Vortex perk. Effect: Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
+			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
+			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
@@ -350,24 +368,6 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
-			outputText("-\n");
-			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
-			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
-			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
-			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -446,8 +446,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -475,6 +487,12 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -1539,7 +1557,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 corruption lvl-up perk: Improved Arousing Aura. Req. Arousing Aura perk and 35+ corruption. Effect: Double the effect from arousing aura.\n");
 			outputText("-New tier 2 wisdom lvl-up perk: (Advanced) Job: Artificier. Req. Job: Tinker perk, free advanced job slot and 75+ wisdom. Effect: Increase damage of consumable items / technologic weapons by 15%.\n");
 			outputText("-New tier 2 wisdom lvl-up perk: Three times a tame. Req. Beast 02 perk and 75+ wisdom. Effect: Now you can control 3 monsters at the same time.\n");
-			outputText("-New tier 2 sensitivity lvl-up perk: Psychic Barrier. Req. Sixth Sense perk and 50+ sensitivity. Effect: You learn to create an invisible barrier, using your psychokinesis that boost phys/magic resistance by 10% and giving very minor (1%) boost to toughness.\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Psychic Barrier. Req. Psionic Curing perk and 50+ sensitivity. Effect: You learn to create an invisible barrier, using your psychokinesis that boost phys/magic resistance by 10% and giving very minor (1%) boost to toughness.\n");
 			outputText("-New tier 2 strength lvl-up perk: Challenging shout (Su). Req. Challenging shout (Ex) perk and 75+ str. Effect: Warrior Shout special can be used any turn but amount of gained wrath would depend how long it was used last time in combat. (4% per turn up to 40% after 10 turns)\n");
 			outputText("-New tier 2 wisdom lvl-up perk: They Fight, They Protect. Req. Three times a tame perk and 80+ wisdom. Effect: You could now command tamed monster with full health to protect you from next enemy attack. After protecting they recover 5% HP per turn or 10% HP per hour.\n");
 			outputText("-New tier 2 misc lvl-up perk: Polarize. Req. Greased lightning perk, 45+ wisdom and 45+ intelligence. Effect: Lightning attacks magnetize your foes making physical attacks dealt by metallic objects such as ammunition or a conventional blade deal 50% increased damage for two rounds.\n");

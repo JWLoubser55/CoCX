@@ -5075,7 +5075,7 @@ public class Camp extends NPCAwareContent{
 		}
 		if (RuinedTownRebuilt.RebuildState ==3) {
 			bd.add("Mouse Town", SceneLib.ruinedTown.enterVillage)
-					.hint("Visit the town your mousey children built")
+					.hint("Visit the town your mousey children built.")
 					.disableIf(!flags[kFLAGS.AMILY_VILLAGE_ACCESSIBLE], "Search the lake.", null, "???");
 		}
 		bd.add("Farm", SceneLib.farm.farmExploreEncounter)

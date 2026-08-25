@@ -1072,6 +1072,24 @@ public class PerkLib
 		public static const FocusingGrip:PerkType = mk("Focusing Grip", "Focusing Grip",
 				"When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.",
 				"You've chosen the 'Focusing Grip' perk. When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.");
+		public static const YataganSlash:PerkType = mk("Yatagan Slash", "Yatagan Slash",
+				"From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.",
+				"You've chosen the 'Yatagan Slash' perk. From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.");
+		public static const BehemothBlade:PerkType = mk("Behemoth blade", "Behemoth blade",
+				".",
+				"You've chosen the 'Behemoth blade' perk. .");
+		public static const VitalStrike:PerkType = mk("Vital Strike", "Vital Strike",
+				".",
+				"You've chosen the 'Vital Strike' perk. .");
+		public static const YataganVortex:PerkType = mk("Yatagan Vortex", "Yatagan Vortex",
+				".",
+				"You've chosen the 'Yatagan Vortex' perk. .");
+		public static const TempestTrance:PerkType = mk("Tempest Trance", "Tempest Trance",
+				".",
+				"You've chosen the 'Tempest Trance' perk. .");
+		public static const PsionicCuring:PerkType = mk("Psionic Curing", "Psionic Curing",
+				"You can use your mental power to cure your body. (60% fatigue > 30% hp)",
+				"You've chosen the 'Psionic Curing' perk. You can use your mental power to cure your body. (60% fatigue > 30% hp)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1089,18 +1107,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6152,6 +6158,8 @@ public class PerkLib
             //Tier 10 Strength Perks
             FuelForTheFire.requirePerk(PrestigeJobBerserker)
                     .requireLevel(60);
+            YataganSlash.requirePerk(PrestigeJobDreadnought)
+                    .requireLevel(60);
             ToxineMaster.requirePerks(PrestigeJobStalker, EnvenomedBolt)
                     .requireLevel(60);
             SwiftCasting.requireLevel(60)
@@ -8194,7 +8202,10 @@ public class PerkLib
 			//.requireMinSens(25);
             JobEsper.requireSen(10);
             //Tier 1 Sensitivity Perks
-            SixthSense.requireSen(25)
+            PsionicCuring.requireSen(25)
+                    .requirePerk(JobEsper)
+                    .requireLevel(6);
+            SixthSense.requireSen(40)
                     .requirePerk(JobEsper)
                     .requireLevel(6);
             EyesOfTheHunterAdept.requireSen(50)
@@ -8202,7 +8213,7 @@ public class PerkLib
                     .requireLevel(6);
             //Tier 2 Sensitivity Perks
             PsychicBarrier.requireSen(50)
-                    .requirePerk(SixthSense)
+                    .requirePerk(PsionicCuring)
                     .requireLevel(12);
             EyesOfTheHunterExpert.requireSen(75)
                     .requirePerk(EyesOfTheHunterAdept)

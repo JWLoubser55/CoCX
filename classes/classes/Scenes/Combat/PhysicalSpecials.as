@@ -46,10 +46,18 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (!player.isInGoblinMech() && !player.isInNonGoblinMech()) {
 			if ((player.isFlying() == monster.isFlying()) || (player.hasPerk(PerkLib.Icerunner) && monster.isFlying())) {
 				if (player.hasPerk(PerkLib.PowerAttack)) {
-					bd = buttons.add("PowerAttack", powerAttack).hint("Do a single way more powerful wrath-enhanced melee strike.");
-					if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
-					else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
-					favbd(bd, "Power Attack");
+					if (player.hasPerk(PerkLib.YataganSlash) && player.gaindHoldWithAllHandBonus()) {
+						bd = buttons.add("YataganSlash", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
+						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+						favbd(bd, "Yatagan Slash");
+					}
+					else {
+						bd = buttons.add("PowerAttack", powerAttack).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
+						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+						favbd(bd, "Power Attack");
+					}
 				}
 				if (player.statStore.hasBuff("AsuraForm")) {
 					bd = buttons.add("Asura's Howl", combat.asurasHowl).hint("Unleash a howl before giving enemy good punching. \n\nWrath Cost: 50");
@@ -1089,9 +1097,16 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 			if (player.hasPerk(PerkLib.AerialCombat)) {
 				if (player.hasPerk(PerkLib.PowerAttack)) {
-					bd = buttons.add("PowerAttack", powerAttack).hint("Do a single way more powerful wrath-enhanced melee strike.");
-					if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
-					else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					if (player.hasPerk(PerkLib.YataganSlash) && player.gaindHoldWithAllHandBonus()) {
+						bd = buttons.add("YataganSlash", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
+						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					}
+					else {
+						bd = buttons.add("PowerAttack", powerAttack).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
+						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
+					}
 				}
 				if (player.statStore.hasBuff("AsuraForm")) {
 					bd = buttons.add("Asura's Howl", combat.asurasHowl).hint("Unleash a howl before giving enemy good punching. \n\nWrath Cost: 50");
@@ -1464,7 +1479,7 @@ public class PhysicalSpecials extends BaseCombatContent {
         return mod;
     }
 
-	public function powerAttack():void {
+	public function powerAttack(yataganSlash:Boolean = false):void {
 		clearOutput();
 		if (player.canFly()) outputText("You fly by your opponent, striking with your [weapon], utilizing  your full strength in tandem with your flight momentum. ");
 		else if (player.isTaur()) {
@@ -1498,6 +1513,19 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= 2;
 		}
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
+		if (yataganSlash && monster.plural) {
+			if (player.hasPerk(PerkLib.Whirlwind)) damage *= 1.2;
+			if (player.hasPerk(PerkLib.PowerSweep) && player.isWeaponForWhirlwind()) damage *= 1.25;
+			if (player.hasPerk(PerkLib.GiantsReach) && (player.weapon.isLarge() || (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) || (player.hasPerk(PerkLib.GigantGripSu) && player.weapon.isSingleMassive() && player.weaponOff.isSingleMassive()))) damage *= 1.25;
+			//add bonus for using aoe special
+			var bonusmultiplier:Number = 5;
+			if (player.hasPerk(PerkLib.Whirlwind)) bonusmultiplier += 1;
+			if (player.hasPerk(PerkLib.JobWarlord)) bonusmultiplier += 1;
+			if (player.hasPerk(PerkLib.Tornado)) bonusmultiplier += 1;
+			if (player.hasPerk(PerkLib.CycloneStage4)) bonusmultiplier += 0.5;
+			if (player.hasPerk(PerkLib.CycloneStage5)) bonusmultiplier += 1.5;
+			damage *= bonusmultiplier;
+		}
 		damage = combat.gallopDamageBoost(damage);
 		damage = combat.physicalAbilityDamageAmplification(damage);
 		damage *= PAMulti;
@@ -1517,6 +1545,15 @@ public class PhysicalSpecials extends BaseCombatContent {
 			}
 		}
 		if (player.gaindHoldWithAllHandBonus()) critChance += 10;
+		if (yataganSlash && monster.plural) {
+			if (player.weapon.isSwordType() || player.weaponOff.isSwordType()) critChance += 10;
+			if (player.weapon.isDuelingType() || player.weaponOff.isDuelingType()) critChance += 20;
+			if (player.hasPerk(PerkLib.CycloneStage1)) critChance += 10;
+			if (player.hasPerk(PerkLib.CycloneStage2)) critChance += 15;
+			if (player.hasPerk(PerkLib.CycloneStage3)) critChance += 20;
+			if (player.hasPerk(PerkLib.CycloneStage4)) critChance += 20;
+			if (player.hasPerk(PerkLib.CycloneStage5)) critChance += 25;
+		}
 		if (monster.isImmuneToCrits() && !player.hasPerk(PerkLib.EnableCriticals)) critChance = 0;
 		if (rand(100) < critChance) {
 			crit = true;

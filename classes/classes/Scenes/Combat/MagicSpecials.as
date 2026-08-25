@@ -192,6 +192,11 @@ public class MagicSpecials extends BaseCombatContent {
 			}
 		}
 		//Esper cool beans (start)
+		if (player.hasPerk(PerkLib.PsionicCuring)) {
+			bd = buttons.add("Psionic Curing", combat.activatePsionicCuring, "Use Vitakinesis to heal your wounds.\n");
+			bd.requireFatigue(Math.round(player.maxFatigue() * 0.6));
+			favbd(bd, "Psionic Curing");
+		}
 		if (player.hasPerk(PerkLib.PsychicBarrier)) {
 			if (player.statStore.hasBuff("PsychoBarrier")) {
 				bd = buttons.add("Psycho-Barrier/Off", combat.deactivatePsychoBarrier).hint("Disperse Psycho-Barrier.");
