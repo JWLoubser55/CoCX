@@ -52,6 +52,7 @@ public class AbstractSpecial extends CombatAbility {
 
         if (finalWrathCost > 0) {
             player.wrath -= finalWrathCost;
+			if (player.checkVitalStrike()) pc.HPChange(finalWrathCost * 4, false, false);
         }
 
 		if (player.perkv1(IMutationsLib.EctoplasmicEssenceIM) >= 4) player.HP -= finalSFCost;

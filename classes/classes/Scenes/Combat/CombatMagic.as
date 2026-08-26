@@ -1112,7 +1112,10 @@ public class CombatMagic extends BaseCombatContent {
 	}
 	public function spellMagicBolt2(elemental:Boolean = false, edgy:Boolean = false):void {
 		useMana(elemental ? 60 : 30, Combat.USEMANA_MAGIC);
-		if (edgy) player.wrath -= 100;
+		if (edgy) {
+			player.wrath -= 100;
+			if (player.checkVitalStrike()) pc.HPChange(400, false, false);
+		}
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 		clearOutput();
 		combat.darkRitualCheckDamage();

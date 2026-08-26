@@ -41,6 +41,7 @@ public class MagicSpecials extends BaseCombatContent {
 			else {
 				player.wrath -= 50;
 				berzerkDuration += 10;
+				if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 			}
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) berzerkDuration += 1;
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) berzerkDuration += 4;
@@ -62,6 +63,7 @@ public class MagicSpecials extends BaseCombatContent {
 			else {
 				player.wrath -= 50;
 				lustzerkDuration += 10;
+				if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 			}
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 2) lustzerkDuration += 1;
 			if (player.perkv1(IMutationsLib.SalamanderAdrenalGlandsIM) >= 3) lustzerkDuration += 4;
@@ -96,6 +98,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.wrath >= 50 && flags[kFLAGS.WARRIORS_RAGE_COMBAT_MODE] == 1 && !player.statStore.hasBuff("WarriorsRage")) {
 			player.wrath -= 50;
+			if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 			outputText("<b>Warrior's rage was used successfully.</b>\n\n");
 			warriorsrage007();
 		}
@@ -193,9 +196,11 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		//Esper cool beans (start)
 		if (player.hasPerk(PerkLib.PsionicCuring)) {
-			bd = buttons.add("Psionic Curing", curry(combat.activatePsionicCuring, 6, 0.5), "Use Psionic Curing to heal your wounds.\n");//Vitakinesis
-			bd.requireFatigue(Math.round(player.maxFatigue() * 0.6));
-			favbd(bd, "Psionic Curing");
+			if (player.hasPerk(PerkLib.PsionicMending)) bd = buttons.add("Vitakinesis", combat.activateVitakinesis, "Use Vitakinesis to heal your wounds.\n");
+			else {
+				bd = buttons.add("Psionic Curing", curry(combat.activatePsionicCuring, 6, 0.5), "Use Psionic Curing to heal your wounds.\n");
+				bd.requireFatigue(Math.round(player.maxFatigue() * 0.6));
+			}
 		}
 		if (player.hasPerk(PerkLib.PsychicBarrier)) {
 			if (player.statStore.hasBuff("PsychoBarrier")) {
@@ -3754,7 +3759,8 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("You roar and unleash your savage fury, forgetting about defense from magical attacks in order to destroy your foe!\n\n");
 		}
 		else outputText("You roar and unleash your savage fury, forgetting about defense from any physical or magical attacks in order to destroy your foe!\n\n");
-		player.createStatusEffect(StatusEffects.Berzerking,berzerkDuration,0,0,0);
+		player.createStatusEffect(StatusEffects.Berzerking, berzerkDuration, 0, 0, 0);
+		if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 		enemyAI();
 	}
 	public function berzerkG1and2():void {
@@ -3774,7 +3780,8 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText(" +1 large/massive weapon atk. - "+berzerkerandlustzerkerHPdrain()*100+"% max over HP.");
 		player.HP -= Math.round(player.maxOverHP() * berzerkerandlustzerkerHPdrain());
 		if (!player.hasPerk(PerkLib.EndlessRage)) player.createStatusEffect(StatusEffects.Berzerking,(berzerkDuration-2),0,0,0);
-		player.createStatusEffect(StatusEffects.Berzerking,berzerkDuration,1,0,0);
+		player.createStatusEffect(StatusEffects.Berzerking, berzerkDuration, 1, 0, 0);
+		if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 		enemyAI();
 	}
 	public function berzerkG2():void {
@@ -3847,7 +3854,8 @@ public class MagicSpecials extends BaseCombatContent {
 			outputText("You roar and unleash your lustful fury, forgetting about defense from magical attacks in order to destroy your foe!\n\n");
 		}
 		else outputText("You roar and unleash your lustful fury, forgetting about defense from any sexual attacks or magical attacks in order to destroy your foe!\n\n");
-		player.createStatusEffect(StatusEffects.Lustzerking,lustzerkDuration,0,0,0);
+		player.createStatusEffect(StatusEffects.Lustzerking, lustzerkDuration, 0, 0, 0);
+		if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 		enemyAI();
 	}
 	public function lustzerkG1and2():void {
@@ -3867,7 +3875,8 @@ public class MagicSpecials extends BaseCombatContent {
 		outputText(" +1 large/massive weapon atk. - "+berzerkerandlustzerkerHPdrain()*100+"% max over HP.");
 		player.HP -= Math.round(player.maxOverHP() * berzerkerandlustzerkerHPdrain());
 		if (!player.hasPerk(PerkLib.EndlessRage)) player.createStatusEffect(StatusEffects.Lustzerking,(lustzerkDuration-2),0,0,0);
-		player.createStatusEffect(StatusEffects.Lustzerking,lustzerkDuration,1,0,0);
+		player.createStatusEffect(StatusEffects.Lustzerking, lustzerkDuration, 1, 0, 0);
+		if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 		enemyAI();
 	}
 	public function lustzerkG2():void {
@@ -4020,6 +4029,7 @@ public class MagicSpecials extends BaseCombatContent {
 	public function warriorsrage():void {
 		clearOutput();
 		player.wrath -= 50;
+		if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 		outputText("You roar and unleash your warrior's rage in order to destroy your foe!\n\n");
 		warriorsrage007();
 		statScreenRefresh();
@@ -4101,6 +4111,7 @@ public class MagicSpecials extends BaseCombatContent {
 	public function assumeCrinosShape():void {
 		clearOutput();
 		player.wrath -= crinosshapeCost();
+		if (player.checkVitalStrike()) pc.HPChange(crinosshapeCost() * 4, false, false);
 		outputText("You roar and unleash your inner beast assuming Crinos Shape in order to destroy your foe!\n\n");
 		assumeCrinosShape007();
 		statScreenRefresh();

@@ -8462,7 +8462,10 @@ public class Combat extends BaseContent {
             }
 			if (i > 1 && flags[kFLAGS.MULTIATTACK_STYLE_MAIN] > 0) {
 				if (player.weapon.isLarge() || player.weapon.isMassive()) {
-					if (player.wrath - 5 >= 0) player.wrath -= 5;
+					if (player.wrath - 5 >= 0) {
+						player.wrath -= 5;
+						if (player.checkVitalStrike()) pc.HPChange(20, false, false);
+					}
 					else i = flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_MAIN_HAND] + 1;
 				}
 				else {
@@ -8945,7 +8948,10 @@ public class Combat extends BaseContent {
             }
 			if (i > 1 && flags[kFLAGS.MULTIATTACK_STYLE_OFF] > 0) {
 				if (player.weapon.isLarge() || player.weapon.isMassive()) {
-					if (player.wrath - 5 >= 0) player.wrath -= 5;
+					if (player.wrath - 5 >= 0) {
+						player.wrath -= 5;
+						if (player.checkVitalStrike()) pc.HPChange(20, false, false);
+					}
 					else i = flags[kFLAGS.MULTIPLE_ATTACKS_STYLE_OFF_HAND] + 1;
 				}
 				else {
@@ -9098,6 +9104,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp2);
 				if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
+				if (player.checkVitalStrike()) pc.HPChange(basecost3 * 4, false, false);
 				outputText("\n\n");
 			}
 		}
@@ -9118,6 +9125,7 @@ public class Combat extends BaseContent {
 				if (player.perkv1(IMutationsLib.SlimeFluidIM) >= 4 && player.HP < player.maxHP()) monster.teased(combat.teases.teaseBaseLustDamage() * monster.lustVuln);
 				if (player.hasPerk(PerkLib.TouchOfTheDamned)) touchOfTheDamnedAtMonster(temp3);
 				if (player.hasPerk(PerkLib.ToxicMucus)) effectToxicMucus();
+				if (player.checkVitalStrike()) pc.HPChange(basecost3 * 4, false, false);
 				outputText("\n\n");
 			}
 		}
@@ -10566,7 +10574,10 @@ public class Combat extends BaseContent {
             }
         }
         if (player.isLowGradeWrathWeapon()) {
-            if (player.wrath >= 5) player.wrath -= 5;
+            if (player.wrath >= 5) {
+				player.wrath -= 5;
+				if (player.checkVitalStrike()) pc.HPChange(20, false, false);
+			}
             else {
                 player.takePhysDamage(50);
                 if (Math.round(player.HP) <= Math.round(player.minHP())) {
@@ -10576,7 +10587,10 @@ public class Combat extends BaseContent {
             }
         }
         if (player.isDualLowGradeWrathWeapon()) {
-            if (player.wrath >= 10) player.wrath -= 10;
+            if (player.wrath >= 10) {
+				player.wrath -= 10;
+				if (player.checkVitalStrike()) pc.HPChange(40, false, false);
+			}
             else {
                 player.takePhysDamage(100);
                 if (Math.round(player.HP) <= Math.round(player.minHP())) {
@@ -10585,7 +10599,10 @@ public class Combat extends BaseContent {
             }
         }
         if (player.isMidGradeWrathWeapon()) {
-            if (player.wrath >= 20) player.wrath -= 20;
+            if (player.wrath >= 20) {
+				player.wrath -= 20;
+				if (player.checkVitalStrike()) pc.HPChange(80, false, false);
+			}
             else {
                 player.takePhysDamage(200);
                 if (Math.round(player.HP) <= Math.round(player.minHP())) {
@@ -10594,7 +10611,10 @@ public class Combat extends BaseContent {
             }
         }
         if (player.isDualMidGradeWrathWeapon()) {
-            if (player.wrath >= 40) player.wrath -= 40;
+            if (player.wrath >= 40) {
+				player.wrath -= 40;
+				if (player.checkVitalStrike()) pc.HPChange(160, false, false);
+			}
             else {
                 player.takePhysDamage(400);
                 if (Math.round(player.HP) <= Math.round(player.minHP())) {
@@ -12367,8 +12387,14 @@ public class Combat extends BaseContent {
         monster.doAI();
         if (player.statStore.hasBuff("ScarletSpiritCharge")) pc.HPChange(-Math.round(player.maxHP()*0.05), false, false);
         if (player.statStore.hasBuff("TranceTransformation")) player.soulforce -= 50;
-        if (player.statStore.hasBuff("CrinosShape")) player.wrath -= mspecials.crinosshapeCost();
-        if (player.statStore.hasBuff("AsuraForm")) player.wrath -= asuraformCost();
+        if (player.statStore.hasBuff("CrinosShape")) {
+			player.wrath -= mspecials.crinosshapeCost();
+			if (player.checkVitalStrike()) pc.HPChange(mspecials.crinosshapeCost() * 4, false, false);
+		}
+        if (player.statStore.hasBuff("AsuraForm")) {
+			player.wrath -= asuraformCost();
+			if (player.checkVitalStrike()) pc.HPChange(asuraformCost() * 4, false, false);
+		}
 		if (player.statStore.hasBuff("FoxflamePelt")) {
 			var someN:Number = 50;
 			if (player.tailCount >= 9) someN *= 0.5;
@@ -13895,14 +13921,20 @@ public class Combat extends BaseContent {
             } else {
 				if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv3(StatusEffects.Berzerking) == 0) {
 					if (player.hasStatusEffect(StatusEffects.TooAngryTooDie)) {
-						if (player.wrath >= Math.round(player.maxWrath() * (0.1*(1+player.statusEffectv2(StatusEffects.Berzerking))))) player.wrath -= Math.round(player.maxWrath() * (0.1*(1+player.statusEffectv2(StatusEffects.Berzerking))));
+						if (player.wrath >= Math.round(player.maxWrath() * (0.1 * (1 + player.statusEffectv2(StatusEffects.Berzerking))))) {
+							player.wrath -= Math.round(player.maxWrath() * (0.1 * (1 + player.statusEffectv2(StatusEffects.Berzerking))));
+							if (player.checkVitalStrike()) pc.HPChange(Math.round(player.maxWrath() * (0.4 * (1 + player.statusEffectv2(StatusEffects.Berzerking)))), false, false);
+						}
 						else {
 							player.removeStatusEffect(StatusEffects.TooAngryTooDie);
 							player.removeStatusEffect(StatusEffects.Berzerking);
 							outputText("<b>Berserker effect wore off!</b>\n\n");
 						}
 					} else {
-						if (player.wrath >= (5*(1+player.statusEffectv2(StatusEffects.Berzerking)))) player.wrath -= (5*(1+player.statusEffectv2(StatusEffects.Berzerking)));
+						if (player.wrath >= (5 * (1 + player.statusEffectv2(StatusEffects.Berzerking)))) {
+							player.wrath -= (5 * (1 + player.statusEffectv2(StatusEffects.Berzerking)));
+							if (player.checkVitalStrike()) pc.HPChange(20 * (1 + player.statusEffectv2(StatusEffects.Berzerking)), false, false);
+						}
 						else {
 							player.removeStatusEffect(StatusEffects.Berzerking);
 							outputText("<b>Berserker effect wore off!</b>\n\n");
@@ -13919,14 +13951,20 @@ public class Combat extends BaseContent {
             } else {
 				if (player.hasPerk(PerkLib.EndlessRage) && player.statusEffectv3(StatusEffects.Lustzerking) == 0) {
 					if (player.hasStatusEffect(StatusEffects.TooAngryTooDie)) {
-						if (player.wrath >= Math.round(player.maxWrath() * (0.1*(1+player.statusEffectv2(StatusEffects.Lustzerking))))) player.wrath -= Math.round(player.maxWrath() * (0.1*(1+player.statusEffectv2(StatusEffects.Lustzerking))));
+						if (player.wrath >= Math.round(player.maxWrath() * (0.1 * (1 + player.statusEffectv2(StatusEffects.Lustzerking))))) {
+							player.wrath -= Math.round(player.maxWrath() * (0.1 * (1 + player.statusEffectv2(StatusEffects.Lustzerking))));
+							if (player.checkVitalStrike()) pc.HPChange(Math.round(player.maxWrath() * (0.4 * (1 + player.statusEffectv2(StatusEffects.Lustzerking)))), false, false);
+						}
 						else {
 							player.removeStatusEffect(StatusEffects.TooAngryTooDie);
 							player.removeStatusEffect(StatusEffects.Lustzerking);
 							outputText("<b>Lustzerker effect wore off!</b>\n\n");
 						}
 					} else {
-						if (player.wrath >= (5*(1+player.statusEffectv2(StatusEffects.Lustzerking)))) player.wrath -= (5*(1+player.statusEffectv2(StatusEffects.Lustzerking)));
+						if (player.wrath >= (5 * (1 + player.statusEffectv2(StatusEffects.Lustzerking)))) {
+							player.wrath -= (5 * (1 + player.statusEffectv2(StatusEffects.Lustzerking)));
+							if (player.checkVitalStrike()) pc.HPChange(20 * (1 + player.statusEffectv2(StatusEffects.Lustzerking)), false, false);
+						}
 						else {
 							player.removeStatusEffect(StatusEffects.Lustzerking);
 							outputText("<b>Lustzerker effect wore off!</b>\n\n");
@@ -16812,6 +16850,7 @@ public function combatRoundOver():void {
     if (player.statStore.recentlyRemovedTags["WarriorsRage"]){
 		if (player.hasPerk(PerkLib.EnchancedWarriorsRage) && player.wrath >= 50) {
 			player.wrath -= 50;
+			if (player.checkVitalStrike()) pc.HPChange(200, false, false);
 			mspecials.warriorsrage007();
 		}
         else EngineCore.outputText("\nYour warriors rage has ended.\n");
@@ -20365,6 +20404,7 @@ public function asuraformCost():Number {
 public function assumeAsuraForm():void {
     clearOutput();
     player.wrath -= asuraformCost();
+	if (player.checkVitalStrike()) pc.HPChange(asuraformCost() * 4, false, false);
     outputText("As you start to unleash your inner wrath, two additional faces emerge from you "+(player.faceType == Face.CERBERUS?"s":"")+" and " + (player.hasFourArms() ? "":"two ") + "additional pair" + (player.hasFourArms() ? "":"s") + " of arms grows under your " + (player.hasFourArms() ? "second":"first") + " pair" + (player.hasFourArms() ? "s":"") + " of arms. ");
     if (player.hasPerk(PerkLib.AsuraStrength)) {
         outputText("Additionally, from your back emerge ");
@@ -20446,6 +20486,7 @@ public function asurasHowl():void {
     var heal:Number = 0;
     heal += scalingBonusIntelligence() * 2;
     if (player.hasPerk(PerkLib.WisenedHealer)) heal += scalingBonusWisdom() * 2;
+	if (player.checkVitalStrike()) heal += 400;
     heal *= healMod() * 2;
     if (player.armorName == "skimpy nurse's outfit") heal *= 1.4;
     if (player.weaponName == "unicorn staff") heal *= 2;
@@ -20499,6 +20540,7 @@ public function asurasXFingersOfDestruction(fingercount:String):void {
     if (player.hasPerk(PerkLib.PrestigeJobBerserker)) FoDMulti *= 2;
     if (player.hasPerk(PerkLib.VexedNocking)) FoDMulti *= 2;
     player.wrath -= Math.round(player.maxWrath() * 0.5);
+	if (player.checkVitalStrike()) pc.HPChange(player.maxWrath() * 2, false, false);
     var damage:Number = 0;
     damage += meleeUnarmedDamageNoLagSingle();
     damage += ghostStrength();
@@ -20746,6 +20788,31 @@ public function skeletonSmash():void {
     else enemyAIImpl();
 }
 
+public function activateVitakinesis():void {
+	menu();
+	if (player.hasPerk(PerkLib.PsionicMending)) {
+		if (player.hasPerk(PerkLib.PsionicRegeneration)) {
+			if (player.hasPerk(PerkLib.Vitakinesis)) {
+				addButtonIfTrue(1, "Vitakinesis (1)", curry(activatePsionicCuring, 0.05, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.05)), "5% Fatigue > 15% HP");
+				addButtonIfTrue(2, "Vitakinesis (2)", curry(activatePsionicCuring, 0.1, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.1)), "10% Fatigue > 30% HP");
+				addButtonIfTrue(3, "Vitakinesis (3)", curry(activatePsionicCuring, 0.15, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.15)), "15% Fatigue > 45% HP");
+				addButtonIfTrue(6, "Vitakinesis (4)", curry(activatePsionicCuring, 0.2, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.2)), "20% Fatigue > 60% HP");
+				addButtonIfTrue(7, "Vitakinesis (5)", curry(activatePsionicCuring, 0.25, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.25)), "25% Fatigue > 75% HP");
+				addButtonIfTrue(8, "Vitakinesis (6)", curry(activatePsionicCuring, 0.3, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.3)), "30% Fatigue > 90% HP");
+			}
+			else {
+				addButtonIfTrue(1, "Psi Regeneration (1)", curry(activatePsionicCuring, 0.1, 2), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.1)), "10% Fatigue > 20% HP");
+				addButtonIfTrue(2, "Psi Regeneration (2)", curry(activatePsionicCuring, 0.2, 2), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.2)), "20% Fatigue > 40% HP");
+				addButtonIfTrue(3, "Psi Regeneration (3)", curry(activatePsionicCuring, 0.3, 2), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.3)), "30% Fatigue > 60% HP");
+			}
+		}
+		else {
+			addButtonIfTrue(1, "Psi Mending (1)", curry(activatePsionicCuring, 0.2, 1), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.2)), "20% Fatigue > 20% HP");
+			addButtonIfTrue(3, "Psi Mending (2)", curry(activatePsionicCuring, 0.4, 1), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.4)), "40% Fatigue > 40% HP");
+		}
+	}
+	addButton(14, "Back", combatMenu, false);
+}
 public function activatePsionicCuring(multi1:Number, multi2:Number):void {
 	clearOutput();
 	fatigue(Math.round(player.maxFatigue() * multi1), USEFATG_MAGIC_NOBM);

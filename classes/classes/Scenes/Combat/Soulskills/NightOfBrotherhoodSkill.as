@@ -148,6 +148,7 @@ public class NightOfBrotherhoodSkill extends AbstractSoulSkill implements Saveab
 			if (monster.armorMDef - bbc > 0) monster.armorMDef -= bbc;
 			else monster.armorMDef = 0;
 		}
+		if (player.checkVitalStrike()) pc.HPChange(wrathRestore * 4, false, false);
 		levelUpCheck(true, display);
     }
 

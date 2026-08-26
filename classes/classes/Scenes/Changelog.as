@@ -333,13 +333,13 @@ public class Changelog extends BaseContent
 			outputText("-Sixth Sense perk req. sens was increased from 25+ to 40+.\n");
 			outputText("-New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.\n");
 			outputText("-New tier 2 sensitivity lvl-up perk: Dense Protagonist. Req. Sixth Sense, Desensitization perks and 65+ sensitivity. Effect: The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)\n");
-			//outputText("-New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.\n");
-			//outputText("-New tier 3 sensitivity lvl-up perk: Psionic Mending. Req. Psionic Curing perk and 90+ sensitivity. Effect: You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)\n");
+			outputText("-New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.\n");
+			outputText("-New tier 3 sensitivity lvl-up perk: Psionic Mending. Req. Psionic Curing perk and 90+ sensitivity. Effect: You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.
-			outputText("-\n");
+			outputText("-\n");//New tier 5 sensitivity lvl-up perk: Psionic . Req. Psionic Mending perk and 140+ sensitivity. Effect: You can use your mental power to cure your body. (10%/20%/30% fatigue > 20%/40%/60% hp)
 			outputText("-\n");//New tier 14 strength lvl-up perk: Tempest Trance. Req. Yatagan Vortex perk. Effect: Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.
 			outputText("-\n");
 			outputText("-\n");

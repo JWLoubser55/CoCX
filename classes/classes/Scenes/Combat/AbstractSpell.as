@@ -62,6 +62,7 @@ public class AbstractSpell extends CombatAbility {
 		}
 		combat.darkRitualCheckDamage();
 		player.wrath -= realWrathCost;
+		if (player.checkVitalStrike()) pc.HPChange(realWrathCost * 4, false, false);
 		
 		flags[kFLAGS.SPELLS_CAST]++;
 		if (!player.hasStatusEffect(StatusEffects.CastedSpell)) player.createStatusEffect(StatusEffects.CastedSpell, 0, 0, 0, 0);

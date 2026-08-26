@@ -1096,6 +1096,12 @@ public class PerkLib
 		public static const PsionicMending:PerkType = mk("Psionic Mending", "Psionic Mending",
 				"You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)",
 				"You've chosen the 'Psionic Mending' perk. You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)");
+		public static const PsionicRegeneration:PerkType = mk("Psionic Regeneration", "Psionic Regeneration",
+				"You can use your mental power to cure your body. (10%/20%/30% fatigue > 20%/40%/60% hp)",
+				"You've chosen the 'Psionic Regeneration' perk. You can use your mental power to cure your body. (10%/20%/30% fatigue > 20%/40%/60% hp)");
+		public static const Vitakinesis:PerkType = mk("Vitakinesis", "Vitakinesis",
+				"You can use vitakinesis to cure your body. ()",
+				"You've chosen the 'Vitakinesis' perk. You can use vitakinesis to cure your body. ()");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1113,12 +1119,24 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const PsionicRegeneration:PerkType = mk("Psionic Regeneration", "Psionic Regeneration",
+		public static const :PerkType = mk("", "",
 				".",
-				"You've chosen the 'Psionic Regeneration' perk. .");
-		public static const Vitakinesis:PerkType = mk("Vitakinesis", "Vitakinesis",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
 				".",
-				"You've chosen the 'Vitakinesis' perk. .");
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6226,8 +6244,8 @@ public class PerkLib
             //Tier 12 Strength Perks
             Anger.requirePerk(Rage)
                     .requireLevel(72);
-        //    VitalStrike.requirePerk(BehemothBlade)
-        //            .requireLevel(72);
+            VitalStrike.requirePerk(BehemothBlade)
+                    .requireLevel(72);
             VampiricBlade.requirePerk(WarCaster)
                     .requireLevel(72);
             EpicTranquilness.requireStr(390)
@@ -8263,9 +8281,9 @@ public class PerkLib
             PsychicBolt.requireSen(75)
                     .requirePerk(PsychicBarrier)
                     .requireLevel(18);
-        //    PsionicMending.requireSen(90)
-        //            .requirePerk(PsionicCuring)
-        //            .requireLevel(18);
+            PsionicMending.requireSen(90)
+                    .requirePerk(PsionicCuring)
+                    .requireLevel(18);
             Cryokinesis.requireSen(85)
                     .requirePerk(JobPsychic)
                     .requireLevel(18);

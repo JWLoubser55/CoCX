@@ -1586,6 +1586,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.wrath > Math.round(player.maxWrath() * Percent1)) PAC += Math.round(player.maxWrath() * Percent1);
 		else PAC += player.wrath;
 		pc.WrathChange(-PAC);
+		if (player.checkVitalStrike()) pc.HPChange(PAC * 4, false, false);
 		combat.heroBaneProc(damage);
 		combat.EruptingRiposte();
 		enemyAI();
@@ -1672,6 +1673,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 		if (player.wrath > Math.round(player.maxWrath() * Percent2)) PSC += Math.round(player.maxWrath() * Percent2);
 		else PSC += player.wrath;
 		pc.WrathChange(-PSC);
+		if (player.checkVitalStrike()) pc.HPChange(PSC * 4, false, false);
 		combat.heroBaneProc(damage);
 		flags[kFLAGS.ARROWS_SHOT]++;
 		bowPerkUnlock();
@@ -5347,6 +5349,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 				else PAC = Math.round(PAC * 0.75);
 			}
 			pc.WrathChange(-PAC);
+			if (player.checkVitalStrike()) pc.HPChange(PAC * 4, false, false);
 			combat.heroBaneProc(damage);
 			combat.EruptingRiposte();
 			enemyAI();
@@ -7561,7 +7564,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 
 	public function shieldBash():void {
 		clearOutput();
-		if (!player.hasStatusEffect(StatusEffects.CounterAction)) pc.WrathChange(-shieldbashcostly());
+		if (!player.hasStatusEffect(StatusEffects.CounterAction)) {
+			pc.WrathChange(-shieldbashcostly());
+			if (player.checkVitalStrike()) pc.HPChange(shieldbashcostly() * 4, false, false);
+		}
 		outputText("You ready your [shield] and prepare to slam it towards [themonster].  ");
 		if ((player.playerIsBlinded() && rand(2) == 0) || (monster.getEvasionRoll(false, player.spe))) {
 			if (monster.spe - player.spe >= 20) outputText("[Themonster] deftly avoids your slow attack.");
