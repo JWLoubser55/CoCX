@@ -1093,6 +1093,9 @@ public class PerkLib
 		public static const DenseProtagonist:PerkType = mk("Dense Protagonist", "Dense Protagonist",
 				"The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)",
 				"You've chosen the 'Dense Protagonist' perk. The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)");
+		public static const PsionicMending:PerkType = mk("Psionic Mending", "Psionic Mending",
+				"You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)",
+				"You've chosen the 'Psionic Mending' perk. You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1110,6 +1113,18 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
+		public static const PsionicRegeneration:PerkType = mk("Psionic Regeneration", "Psionic Regeneration",
+				".",
+				"You've chosen the 'Psionic Regeneration' perk. .");
+		public static const Vitakinesis:PerkType = mk("Vitakinesis", "Vitakinesis",
+				".",
+				"You've chosen the 'Vitakinesis' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6211,6 +6226,8 @@ public class PerkLib
             //Tier 12 Strength Perks
             Anger.requirePerk(Rage)
                     .requireLevel(72);
+        //    VitalStrike.requirePerk(BehemothBlade)
+        //            .requireLevel(72);
             VampiricBlade.requirePerk(WarCaster)
                     .requireLevel(72);
             EpicTranquilness.requireStr(390)
@@ -8226,8 +8243,8 @@ public class PerkLib
             PsychicBarrier.requireSen(50)
                     .requirePerk(PsionicCuring)
                     .requireLevel(12);
-            DenseProtagonist.requireSen(90)
-                    .requirePerks(PsionicCuring, Desensitization)
+            DenseProtagonist.requireSen(65)
+                    .requirePerks(SixthSense, Desensitization)
                     .requireLevel(12);
             JobPsychic.requireSen(50)
                     .requireAdvancedJobSlot()
@@ -8246,6 +8263,9 @@ public class PerkLib
             PsychicBolt.requireSen(75)
                     .requirePerk(PsychicBarrier)
                     .requireLevel(18);
+        //    PsionicMending.requireSen(90)
+        //            .requirePerk(PsionicCuring)
+        //            .requireLevel(18);
             Cryokinesis.requireSen(85)
                     .requirePerk(JobPsychic)
                     .requireLevel(18);

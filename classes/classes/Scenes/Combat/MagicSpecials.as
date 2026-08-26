@@ -193,7 +193,7 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		//Esper cool beans (start)
 		if (player.hasPerk(PerkLib.PsionicCuring)) {
-			bd = buttons.add("Psionic Curing", combat.activatePsionicCuring, "Use Vitakinesis to heal your wounds.\n");
+			bd = buttons.add("Psionic Curing", curry(combat.activatePsionicCuring, 6, 0.5), "Use Psionic Curing to heal your wounds.\n");//Vitakinesis
 			bd.requireFatigue(Math.round(player.maxFatigue() * 0.6));
 			favbd(bd, "Psionic Curing");
 		}

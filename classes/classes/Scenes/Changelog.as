@@ -332,11 +332,11 @@ public class Changelog extends BaseContent
 			outputText("-New tier 10 strength lvl-up perk: Yatagan Slash. Req. Prestige Job: Dreadnought perk. Effect: From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.\n");
 			outputText("-Sixth Sense perk req. sens was increased from 25+ to 40+.\n");
 			outputText("-New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.\n");
-			outputText("-New tier 2 sensitivity lvl-up perk: Dense Protagonist. Req. Psionic Curing, Desensitization perks and 90+ sensitivity. Effect: The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Dense Protagonist. Req. Sixth Sense, Desensitization perks and 65+ sensitivity. Effect: The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)\n");
+			//outputText("-New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.\n");
+			//outputText("-New tier 3 sensitivity lvl-up perk: Psionic Mending. Req. Psionic Curing perk and 90+ sensitivity. Effect: You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.
 			outputText("-\n");
 			outputText("-\n");//New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.
 			outputText("-\n");
@@ -1543,7 +1543,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 1 misc lvl-up perk: Sudden Run. Req. Job: Feral Champion perk and 25+ tou/spe. Effect: You may start combat galloping.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Beast 02. Req. Job: Tamer perk and 50+ wisdom. Effect: You can have 2 tamed monsters.\n");
 			outputText("-New tier 1 wisdom lvl-up perk: Working Together. Req. Beast 02 perk and 55+ wisdom. Effect: Cooperating between all your tamed monsters would empower the one attacking. (+1x to dmg multi of attacking monster per tamed monster after 1st)\n");
-			outputText("-New tier 1 sensitivity lvl-up perk: Sixth Sense. Req. Job: Esper perk and 25+ sensitivity. Effect: You are not affected by blind and other confusing effects. Increase melee/range accuracy by 10%.\n");
+			outputText("-New tier 1 sensitivity lvl-up perk: Sixth Sense. Req. Job: Esper perk and 40+ sensitivity. Effect: You are not affected by blind and other confusing effects. Increase melee/range accuracy by 10%.\n");
 			outputText("-New tier 1 strength lvl-up perk: Challenging shout (Ex). Req. Challenging shout perk and 50+ str. Effect: Allow to automatically use weakened Warrior Shout special at the combat round end if wrath is below 500.\n");
 			outputText("-New tier 1 misc lvl-up perk: Master Gadgeteer. Req. Stored Momentum perk, 30+ wisdom and 30+ intelligence. Effect: Gadgets now gain an added intelligence scaling.\n");
 			outputText("-New tier 1 misc lvl-up perk: Greased lightning. Req. Job: Tinker perk, 30+ wisdom and 30+ intelligence. Effect: After activating a gadget or mechanical ability overcharge yourself with electric current. The next set of attacks deals extra electricity damage equal to the damage dealt, expending the charge. Multiple charges can be stacked which increase the damage multiplier.\n");

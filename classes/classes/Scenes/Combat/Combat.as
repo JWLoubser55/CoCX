@@ -20746,11 +20746,11 @@ public function skeletonSmash():void {
     else enemyAIImpl();
 }
 
-public function activatePsionicCuring():void {
+public function activatePsionicCuring(multi1:Number, multi2:Number):void {
 	clearOutput();
-	fatigue(Math.round(player.maxFatigue() * 0.6), USEFATG_MAGIC_NOBM);
+	fatigue(Math.round(player.maxFatigue() * multi1), USEFATG_MAGIC_NOBM);
 	var heal:Number = 0;
-	heal += player.maxHP() * 0.3;
+	heal += player.maxHP() * multi1 * multi2;
 	/*if (player.armorName == "skimpy nurse's outfit") heal *= 1.4;
 	if (player.weaponName == "unicorn staff") heal *= 2;
 	if (player.hasPerk(PerkLib.CloseToDeath) && player.HP < (player.maxHP() * 0.25)) {
