@@ -1076,20 +1076,23 @@ public class PerkLib
 				"From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.",
 				"You've chosen the 'Yatagan Slash' perk. From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.");
 		public static const BehemothBlade:PerkType = mk("Behemoth blade", "Behemoth blade",
-				".",
-				"You've chosen the 'Behemoth blade' perk. .");
+				"Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.",
+				"You've chosen the 'Behemoth blade' perk. Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.");
 		public static const VitalStrike:PerkType = mk("Vital Strike", "Vital Strike",
-				".",
-				"You've chosen the 'Vital Strike' perk. .");
+				"Heals you for four times the amount of wrath consumed when using wrath ability.",
+				"You've chosen the 'Vital Strike' perk. Heals you for four times the amount of wrath consumed when using wrath ability.");
 		public static const YataganVortex:PerkType = mk("Yatagan Vortex", "Yatagan Vortex",
-				".",
-				"You've chosen the 'Yatagan Vortex' perk. .");
+				"Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.",
+				"You've chosen the 'Yatagan Vortex' perk. Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.");
 		public static const TempestTrance:PerkType = mk("Tempest Trance", "Tempest Trance",
-				".",
-				"You've chosen the 'Tempest Trance' perk. .");
+				"Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.",
+				"You've chosen the 'Tempest Trance' perk. Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.");
 		public static const PsionicCuring:PerkType = mk("Psionic Curing", "Psionic Curing",
 				"You can use your mental power to cure your body. (60% fatigue > 30% hp)",
 				"You've chosen the 'Psionic Curing' perk. You can use your mental power to cure your body. (60% fatigue > 30% hp)");
+		public static const DenseProtagonist:PerkType = mk("Dense Protagonist", "Dense Protagonist",
+				"The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)",
+				"You've chosen the 'Dense Protagonist' perk. The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1107,6 +1110,12 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6182,6 +6191,8 @@ public class PerkLib
             //Tier 11 Strength Perks
             Rage.requirePerk(FuelForTheFire)
                     .requireLevel(66);
+            BehemothBlade.requirePerk(YataganSlash)
+                    .requireLevel(66);
             KingOfTheJungle.requirePerks(ToxineMaster, Medicine)
                     .requireLevel(66);
             WarCaster.requirePerk(SwiftCasting)
@@ -8215,8 +8226,8 @@ public class PerkLib
             PsychicBarrier.requireSen(50)
                     .requirePerk(PsionicCuring)
                     .requireLevel(12);
-            EyesOfTheHunterExpert.requireSen(75)
-                    .requirePerk(EyesOfTheHunterAdept)
+            DenseProtagonist.requireSen(90)
+                    .requirePerks(PsionicCuring, Desensitization)
                     .requireLevel(12);
             JobPsychic.requireSen(50)
                     .requireAdvancedJobSlot()
@@ -8227,6 +8238,9 @@ public class PerkLib
                     .requireLevel(12);
             Hydrokinesis.requireSen(60)
                     .requirePerk(JobPsychic)
+                    .requireLevel(12);
+            EyesOfTheHunterExpert.requireSen(75)
+                    .requirePerk(EyesOfTheHunterAdept)
                     .requireLevel(12);
             //Tier 3 Sensitivity Perks
             PsychicBolt.requireSen(75)

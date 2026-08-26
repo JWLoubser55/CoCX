@@ -331,11 +331,11 @@ public class Changelog extends BaseContent
 			outputText("-New tier 1 sensitivity lvl-up perk: Psionic Curing. Req. Job: Esper perk and 40+ sensitivity. Effect: You can use your mental power to cure your body. (60% fatigue > 30% hp)\n");
 			outputText("-New tier 10 strength lvl-up perk: Yatagan Slash. Req. Prestige Job: Dreadnought perk. Effect: From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.\n");
 			outputText("-Sixth Sense perk req. sens was increased from 25+ to 40+.\n");
+			outputText("-New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Dense Protagonist. Req. Psionic Curing, Desensitization perks and 90+ sensitivity. Effect: The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.
 			outputText("-\n");//New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.
 			outputText("-\n");
 			outputText("-\n");//New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.

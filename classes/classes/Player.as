@@ -1457,7 +1457,7 @@ use namespace CoC;
 		}
 		public function gaindHoldWithAllHandBonus():Boolean
 		{
-			return hasPerk(PerkLib.FocusingGrip) && !isFistOrFistWeapon() && isNotHavingShieldCuzPerksNotWorkingOtherwise() && (((weapon.isSingleLarge() || weapon.isSingleMassive()) && weaponOff.isNothing) || ((weaponOff.isSingleLarge() || weaponOff.isSingleMassive()) && weapon.isNothing));
+			return hasPerk(PerkLib.FocusingGrip) && !isFistOrFistWeapon() && isNotHavingShieldCuzPerksNotWorkingOtherwise() && (((weapon.isSingleMedium() || weapon.isSingleLarge() || weapon.isSingleMassive()) && weaponOff.isNothing) || ((weaponOff.isSingleMedium() || weaponOff.isSingleLarge() || weaponOff.isSingleMassive()) && weapon.isNothing));
 		}
 		//Natural Jouster perks req check
 		public function isMeetingNaturalJousterReq():Boolean
@@ -3541,7 +3541,7 @@ use namespace CoC;
 							// damage *= armorMod / 4 * 3
 							for(i =0; i < remainingHit.length; i++){
 								remainingHit[i] *= armorMod;
-								remainingHit[i] = reduceAcidDamage(remainingHit[i]);
+								remainingHit[i] = reducePsychicDamage(remainingHit[i]);
 								damage += remainingHit[i];
 								if(display){
 									SceneLib.combat.CommasForDigits(remainingHit[i]);
@@ -3554,7 +3554,7 @@ use namespace CoC;
 							if (hasPerk(PerkLib.Ethereal) && armor == game.armors.FUNERSH && hp100 < 10) takeLustDamage(10 + effectiveSensitivity() / 10, true);
 							for(i =0; i < remainingHit.length; i++){
 								remainingHit[i] *= armorMod;
-								remainingHit[i] = reduceAcidDamage(remainingHit[i]);
+								remainingHit[i] = reduceTrueDamage(remainingHit[i]);
 								damage += remainingHit[i];
 								if(display){
 									SceneLib.combat.CommasForDigits(remainingHit[i]);
@@ -4788,6 +4788,13 @@ use namespace CoC;
 			}
 			if (hasPerk(PerkLib.HeartforceHETyrantStage)) {
 				if (hasPerk(PerkLib.SoulAncestor)) mult -= 25;
+			}
+			if (hasPerk(PerkLib.DenseProtagonist)) {
+				mult -= 5;
+				if (hasPerk(PerkLib.GreaterDesensitization)) mult -= 10;
+				if (hasPerk(PerkLib.EpicDesensitization)) mult -= 15;
+				if (hasPerk(PerkLib.LegendaryDesensitization)) mult -= 20;
+				if (hasPerk(PerkLib.MythicalDesensitization)) mult -= 25;
 			}
 			//mult -= resEarthStat.value;
 			//Caps damage reduction at 100%

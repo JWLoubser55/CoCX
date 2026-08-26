@@ -1513,6 +1513,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			damage *= 2;
 		}
 		if (player.hasPerk(PerkLib.ZenjisInfluence3)) damage *= 1.5;
+		if (player.hasPerk(PerkLib.BehemothBlade) && (monster.hasPerk(PerkLib.EnemyGigantType) || monster.hasPerk(PerkLib.EnemyColossalType))) damage *= 5;
 		if (yataganSlash && monster.plural) {
 			if (player.hasPerk(PerkLib.Whirlwind)) damage *= 1.2;
 			if (player.hasPerk(PerkLib.PowerSweep) && player.isWeaponForWhirlwind()) damage *= 1.25;
@@ -2314,6 +2315,7 @@ public class PhysicalSpecials extends BaseCombatContent {
 			else damage *= 1.25;
 		}
 		if (player.hasPerk(PerkLib.GiantsReach) && (player.weapon.isLarge() || (player.hasPerk(PerkLib.GigantGripEx) && (player.weapon.isSingleMassive() || player.weaponOff.isSingleMassive())) || (player.hasPerk(PerkLib.GigantGripSu) && player.weapon.isSingleMassive() && player.weaponOff.isSingleMassive()))) damage *= 1.25;
+		if (player.hasPerk(PerkLib.BehemothBlade) && (monster.hasPerk(PerkLib.EnemyGigantType) || monster.hasPerk(PerkLib.EnemyColossalType))) damage *= 5;
 		damage = combat.gallopDamageBoost(damage);
 		damage = combat.physicalAbilityDamageAmplification(damage);
 		//crit
