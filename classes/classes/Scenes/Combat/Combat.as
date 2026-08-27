@@ -12838,6 +12838,10 @@ public class Combat extends BaseContent {
                 outputText("<b>Your barrier disappears.</b>\n\n");
             }
         }
+        if (player.hasStatusEffect(StatusEffects.YataganVortex)) {
+            player.addStatusValue(StatusEffects.YataganVortex, 1, -1);
+            if (player.statusEffectv1(StatusEffects.YataganVortex) <= 0) player.removeStatusEffect(StatusEffects.YataganVortex);
+        }
         if (player.hasStatusEffect(StatusEffects.Disarmed)) {
             player.addStatusValue(StatusEffects.Disarmed, 1, -1);
             if (player.statusEffectv1(StatusEffects.Disarmed) <= 0) {

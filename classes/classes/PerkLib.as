@@ -1073,8 +1073,8 @@ public class PerkLib
 				"When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.",
 				"You've chosen the 'Focusing Grip' perk. When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.");
 		public static const YataganSlash:PerkType = mk("Yatagan Slash", "Yatagan Slash",
-				"From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.",
-				"You've chosen the 'Yatagan Slash' perk. From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affect whirlwind attacks.");
+				"From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affects whirlwind attacks.",
+				"You've chosen the 'Yatagan Slash' perk. From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affects whirlwind attacks.");
 		public static const BehemothBlade:PerkType = mk("Behemoth blade", "Behemoth blade",
 				"Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.",
 				"You've chosen the 'Behemoth blade' perk. Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.");
@@ -1082,8 +1082,8 @@ public class PerkLib
 				"Heals you for four times the amount of wrath consumed when using wrath ability.",
 				"You've chosen the 'Vital Strike' perk. Heals you for four times the amount of wrath consumed when using wrath ability.");
 		public static const YataganVortex:PerkType = mk("Yatagan Vortex", "Yatagan Vortex",
-				"Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.",
-				"You've chosen the 'Yatagan Vortex' perk. Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit gains a doubled damage on the next strike this bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.");
+				"Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit from Yatagan Vortex you gain doubled damage on the next Yatagan Vortex strike. This bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.",
+				"You've chosen the 'Yatagan Vortex' perk. Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit from Yatagan Vortex you gain doubled damage on the next Yatagan Vortex strike. This bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.");
 		public static const TempestTrance:PerkType = mk("Tempest Trance", "Tempest Trance",
 				"Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.",
 				"You've chosen the 'Tempest Trance' perk. Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.");
@@ -6259,6 +6259,8 @@ public class PerkLib
             //Tier 13 Strength Perks
             TooAngryToDie.requirePerk(Anger)
                     .requireLevel(78);
+            YataganVortex.requirePerk(VitalStrike)
+                    .requireLevel(78);
             HalfStepToLegendaryTranquilness.requireStr(420)
                     .requireTou(140)
                     .requireSpe(140)
@@ -8313,6 +8315,9 @@ public class PerkLib
                     .requirePerk(EyesOfTheHunterMaster)
                     .requireLevel(24);
             //Tier 5 Sensitivity Perks
+            PsionicRegeneration.requireSen(140)
+                    .requirePerk(PsionicMending)
+                    .requireLevel(30);
             Umbrakinesis.requireSen(135)
                     .requirePerk(JobPsychic)
                     .requireLevel(30);

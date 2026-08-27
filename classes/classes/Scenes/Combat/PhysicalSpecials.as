@@ -47,7 +47,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if ((player.isFlying() == monster.isFlying()) || (player.hasPerk(PerkLib.Icerunner) && monster.isFlying())) {
 				if (player.hasPerk(PerkLib.PowerAttack)) {
 					if (player.hasPerk(PerkLib.YataganSlash) && player.gaindHoldWithAllHandBonus()) {
-						bd = buttons.add("YataganSlash", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						if (player.hasPerk(PerkLib.YataganVortex)) bd = buttons.add("Yatagan Vortex", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						else bd = buttons.add("Yatagan Slash", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
 						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
 						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 						favbd(bd, "Yatagan Slash");
@@ -1098,7 +1099,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.AerialCombat)) {
 				if (player.hasPerk(PerkLib.PowerAttack)) {
 					if (player.hasPerk(PerkLib.YataganSlash) && player.gaindHoldWithAllHandBonus()) {
-						bd = buttons.add("YataganSlash", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						if (player.hasPerk(PerkLib.YataganVortex)) bd = buttons.add("Yatagan Vortex", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
+						else bd = buttons.add("Yatagan Slash", curry(powerAttack, true)).hint("Do a single way more powerful wrath-enhanced melee strike.");
 						if (player.wrath100 < 1) bd.disable("You're too low on wrath to use Power Attack (below 1%)");
 						else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
 					}
@@ -1489,6 +1491,10 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText(" a few meter back and make a U-Turn for a powerful charge, utilizing the full strength and momentum provided by your [race] body. ");
 		}
 		else outputText("You lift your [weapon] with all of your strength and smash it on your foe head. ");
+		if (player.hasPerk(PerkLib.YataganVortex) && yataganSlash) {
+			if (player.hasStatusEffect(StatusEffects.YataganVortex)) player.changeStatusValue(StatusEffects.YataganVortex, 1, 3);
+			else player.createStatusEffect(StatusEffects.YataganVortex, 3, 1, 0, 0);
+		}
 		var damage:Number = 0;
 		var PAMulti:Number = 1;
 		PAMulti += combat.PASPAS(1);
@@ -1530,6 +1536,29 @@ public class PhysicalSpecials extends BaseCombatContent {
 		damage = combat.gallopDamageBoost(damage);
 		damage = combat.physicalAbilityDamageAmplification(damage);
 		damage *= PAMulti;
+		powerAttackRe(damage, yataganSlash);
+		if (player.hasPerk(PerkLib.PrestigeJobDreadnought)) powerAttackRe(damage, yataganSlash);
+		if (player.hasPerk(PerkLib.YataganVortex) && yataganSlash) {
+			powerAttackRe(damage, yataganSlash);
+			powerAttackRe(damage, yataganSlash);
+		}
+		if (player.hasPerk(PerkLib.TwinThunder) && player.weapon.isDualWielded()) {
+			combat.checkForElementalEnchantmentAndDoDamageOff(damage);
+			if (player.hasPerk(PerkLib.PrestigeJobDreadnought)) combat.checkForElementalEnchantmentAndDoDamageOff(damage);
+		}
+		outputText("\n\n");
+		var PAC:Number = 0;
+		var Percent1:Number = 1;
+		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent1 -= 0.5;
+		if (player.wrath > Math.round(player.maxWrath() * Percent1)) PAC += Math.round(player.maxWrath() * Percent1);
+		else PAC += player.wrath;
+		pc.WrathChange(-PAC);
+		if (player.checkVitalStrike()) pc.HPChange(PAC * 4, false, false);
+		combat.heroBaneProc(damage);
+		combat.EruptingRiposte();
+		enemyAI();
+	}
+	private function powerAttackRe(damage:Number, yataganSlash:Boolean = false):void {
 		var crit:Boolean = false;
 		var critChance:int = 5;
 		critChance += combat.combatPhysicalCritical();
@@ -1564,32 +1593,23 @@ public class PhysicalSpecials extends BaseCombatContent {
 			if (player.hasPerk(PerkLib.Impale) && player.spe >= 100 && player.haveWeaponForJouster()) damage *= ((1.75 + buffMultiplier) * combat.impaleMultiplier());
 			else damage *= 1.75 + buffMultiplier;
 		}
+		if (player.hasStatusEffect(StatusEffects.YataganVortex) && player.statusEffectv2(StatusEffects.YataganVortex) > 1) damage *= player.statusEffectv2(StatusEffects.YataganVortex);
 		combat.checkForElementalEnchantmentAndDoDamageMain(damage);
-		if (player.hasPerk(PerkLib.PrestigeJobDreadnought)) combat.checkForElementalEnchantmentAndDoDamageMain(damage);
-		if (player.hasPerk(PerkLib.TwinThunder) && player.weapon.isDualWielded()) {
-			combat.checkForElementalEnchantmentAndDoDamageOff(damage);
-			if (player.hasPerk(PerkLib.PrestigeJobDreadnought)) combat.checkForElementalEnchantmentAndDoDamageOff(damage);
-		}
-		outputText(" damage. ");
 		if (crit) {
 			outputText("<b>Critical! </b>");
 			if (player.hasStatusEffect(StatusEffects.Rage)) player.removeStatusEffect(StatusEffects.Rage);
+			if (player.hasPerk(PerkLib.YataganVortex) && yataganSlash) {
+				var calc:Number = player.statusEffectv2(StatusEffects.YataganVortex);
+				calc *= 2;
+				calc -= player.statusEffectv2(StatusEffects.YataganVortex);
+				player.addStatusValue(StatusEffects.YataganVortex, 2, calc);
+			}
 		}
 		if (!crit && player.hasPerk(PerkLib.Rage) && (player.hasStatusEffect(StatusEffects.Berzerking) || player.hasStatusEffect(StatusEffects.Lustzerking))) {
 			if (player.hasStatusEffect(StatusEffects.Rage) && player.statusEffectv1(StatusEffects.Rage) > 5 && player.statusEffectv1(StatusEffects.Rage) < 70) player.addStatusValue(StatusEffects.Rage, 1, 10);
 			else player.createStatusEffect(StatusEffects.Rage, 10, 0, 0, 0);
 		}
-		outputText("\n\n");
-		var PAC:Number = 0;
-		var Percent1:Number = 1;
-		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent1 -= 0.5;
-		if (player.wrath > Math.round(player.maxWrath() * Percent1)) PAC += Math.round(player.maxWrath() * Percent1);
-		else PAC += player.wrath;
-		pc.WrathChange(-PAC);
-		if (player.checkVitalStrike()) pc.HPChange(PAC * 4, false, false);
-		combat.heroBaneProc(damage);
-		combat.EruptingRiposte();
-		enemyAI();
+		
 	}
 
 	public function powerShoot():void {
