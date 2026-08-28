@@ -337,11 +337,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 sensitivity lvl-up perk: Psionic Mending. Req. Psionic Curing perk and 90+ sensitivity. Effect: You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)\n");
 			outputText("-New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit from Yatagan Vortex you gain doubled damage on the next Yatagan Vortex strike. This bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.\n");
 			outputText("-New tier 5 sensitivity lvl-up perk: Psionic Regeneration. Req. Psionic Mending perk and 140+ sensitivity. Effect: You can use your mental power to cure your body. (10%/20%/30% fatigue > 20%/40%/60% hp)\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 14 strength lvl-up perk: Tempest Trance. Req. Yatagan Vortex perk. Effect: Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.
-			outputText("-\n");
+			outputText("-New tier 14 strength lvl-up perk: Tempest Trance. Req. Yatagan Vortex perk. Effect: Power attack now only spends half the amount of wrath despite dealing damage as if all wrath was spent. Using power attack stops all ongoing cost of wrath other than Yatagan Vortex for the during of Yatagan vortex ongoing buff.\n");
+			outputText("-New tier 7 sensitivity lvl-up perk: Vitakinesis. Req. Psionic Regeneration perk and 190+ sensitivity. Effect: You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -350,6 +347,9 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");//New tier 9 sensitivity lvl-up perk: Vitakinesis (Ex). Req. Vitakinesis perk and 240+ sensitivity. Effect: 
+			outputText("-\n");//New tier 18 sensitivity lvl-up perk: . Req. Vitakinesis (Ex) perk and 465+ sensitivity. Effect: 
 			outputText("-\n");
 			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
 			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
@@ -452,8 +452,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -487,6 +493,9 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
+			outputText("\n");
+			outputText("\n");
+			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");

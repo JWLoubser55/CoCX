@@ -56,8 +56,10 @@ public class AbstractGeneral extends CombatAbility {
         }
 
         if (finalWrathCost > 0) {
-            player.wrath -= finalWrathCost;
-			if (player.checkVitalStrike()) pc.HPChange(finalWrathCost * 4, false, false);
+            if (!player.checkTempestTrance()) {
+				player.wrath -= finalWrathCost;
+				if (player.checkVitalStrike()) pc.HPChange(finalWrathCost * 4, false, false);
+			}
         }   
     }
 

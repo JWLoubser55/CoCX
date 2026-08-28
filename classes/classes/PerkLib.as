@@ -1100,8 +1100,11 @@ public class PerkLib
 				"You can use your mental power to cure your body. (10%/20%/30% fatigue > 20%/40%/60% hp)",
 				"You've chosen the 'Psionic Regeneration' perk. You can use your mental power to cure your body. (10%/20%/30% fatigue > 20%/40%/60% hp)");
 		public static const Vitakinesis:PerkType = mk("Vitakinesis", "Vitakinesis",
-				"You can use vitakinesis to cure your body. ()",
-				"You've chosen the 'Vitakinesis' perk. You can use vitakinesis to cure your body. ()");
+				"You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)",
+				"You've chosen the 'Vitakinesis' perk. You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)");
+		public static const VitakinesisEx:PerkType = mk("Vitakinesis (Ex)", "Vitakinesis (Ex)",
+				".",
+				"You've chosen the 'Vitakinesis (Ex)' perk. .");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1119,9 +1122,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6269,6 +6269,8 @@ public class PerkLib
             //Tier 14 Strength Perks
             EndlessRage.requirePerk(TooAngryToDie)
                     .requireLevel(84);
+            TempestTrance.requirePerk(YataganVortex)
+                    .requireLevel(84);
             LegendaryTranquilness.requireStr(450)
                     .requireTou(150)
                     .requireSpe(150)
@@ -8334,7 +8336,10 @@ public class PerkLib
                     .requirePerk(Desensitization)
                     .requireLevel(30);
             //Tier 6 Sensitivity Perks
-            Ionikinesis.requireSen(160)
+            //esper perk
+			//
+			//
+			Ionikinesis.requireSen(160)
                     .requirePerks(Pyrokinesis, Electrokinesis)
                     .requireLevel(36);
             Cocytokinesis.requireSen(160)
@@ -8346,8 +8351,8 @@ public class PerkLib
 			EpicSensitivity.requireSen(10)
                     .requireLevel(36);
             //Tier 7 Sensitivity Perks
-            EyesOfTheHunterSu.requireSen(25)
-                    .requirePerk(EyesOfTheHunterEx)
+            Vitakinesis.requireSen(190)
+                    .requirePerk(PsionicRegeneration)
                     .requireLevel(42);
             SpiritualAlignment.requireSen(175)
                     .requirePerk(AdvancedKineses)
@@ -8355,8 +8360,14 @@ public class PerkLib
             MentalAttunement.requireSen(175)
                     .requirePerk(AdvancedKineses)
                     .requireLevel(42);
+            EyesOfTheHunterSu.requireSen(25)
+                    .requirePerk(EyesOfTheHunterEx)
+                    .requireLevel(42);
             //Tier 8 Sensitivity Perks
             //Tier 9 Sensitivity Perks
+            //.requireSen(240)
+            //        .requirePerk(Vitakinesis)
+            //        .requireLevel(54);
             //Tier 10 Sensitivity Perks
             EpicDesensitization.requireSen(50)
                     .requirePerk(GreaterDesensitization)
@@ -8378,6 +8389,9 @@ public class PerkLib
                     .requireLevel(96);
             //Tier 17 Sensitivity Perks
             //Tier 18 Sensitivity Perks
+            //.requireSen(465)
+            //        .requirePerk(VitakinesisEx)
+            //        .requireLevel(108);
             //Tier 19 Sensitivity Perks
             //Tier 20 Sensitivity Perks
             MythicalDesensitization.requireSen(200)

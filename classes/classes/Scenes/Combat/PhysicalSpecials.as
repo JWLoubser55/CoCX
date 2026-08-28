@@ -1549,7 +1549,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		outputText("\n\n");
 		var PAC:Number = 0;
 		var Percent1:Number = 1;
-		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent1 -= 0.5;
+		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent1 *= 0.5;
+		if (player.hasPerk(PerkLib.TempestTrance)) Percent1 *= 0.5;
 		if (player.wrath > Math.round(player.maxWrath() * Percent1)) PAC += Math.round(player.maxWrath() * Percent1);
 		else PAC += player.wrath;
 		pc.WrathChange(-PAC);
@@ -1689,7 +1690,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 		}
 		var PSC:Number = 0;
 		var Percent2:Number = 1;
-		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent2 -= 0.5;
+		if (player.hasPerk(PerkLib.PowerAttackSu)) Percent2 *= 0.5;
+		if (player.hasPerk(PerkLib.TempestTrance)) Percent2 *= 0.5;
 		if (player.wrath > Math.round(player.maxWrath() * Percent2)) PSC += Math.round(player.maxWrath() * Percent2);
 		else PSC += player.wrath;
 		pc.WrathChange(-PSC);
@@ -5361,7 +5363,8 @@ public class PhysicalSpecials extends BaseCombatContent {
 			outputText("\n\n");
 			var PAC:Number = 0;
 			var Percent3:Number = 1;
-			if (player.hasPerk(PerkLib.PowerAttackSu)) Percent3 -= 0.5;
+			if (player.hasPerk(PerkLib.PowerAttackSu)) Percent3 *= 0.5;
+			if (player.hasPerk(PerkLib.TempestTrance)) Percent3 *= 0.5;
 			if (player.wrath > Math.round(player.maxWrath() * Percent3)) PAC += Math.round(player.maxWrath() * Percent3);
 			else PAC += player.wrath;
 			if (player.perkv1(IMutationsLib.FrogJumpingLegsIM) >= 3) {

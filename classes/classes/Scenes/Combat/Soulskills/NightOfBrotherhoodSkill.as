@@ -134,7 +134,10 @@ public class NightOfBrotherhoodSkill extends AbstractSoulSkill implements Saveab
 
     override public function doEffect(display:Boolean = true):void {
 		var wrathRestore:Number = calcWrathRestore();
-		player.wrath -= wrathRestore;
+		if (!player.checkTempestTrance()) {
+			player.wrath -= wrathRestore;
+			if (player.checkVitalStrike()) pc.HPChange(wrathRestore * 4, false, false);
+		}
 		var damage:Number = calcDamage(monster, wrathRestore);
 		if (display) {
 			outputText("You start concentrate on the wrath flowing in your body, your veins while imaging a joy of sharing storm of sisterhood with enemy. Shortly after that wrath starts to gather around your hands till it envelop your hands in ligthing.\n\n");
@@ -148,7 +151,6 @@ public class NightOfBrotherhoodSkill extends AbstractSoulSkill implements Saveab
 			if (monster.armorMDef - bbc > 0) monster.armorMDef -= bbc;
 			else monster.armorMDef = 0;
 		}
-		if (player.checkVitalStrike()) pc.HPChange(wrathRestore * 4, false, false);
 		levelUpCheck(true, display);
     }
 

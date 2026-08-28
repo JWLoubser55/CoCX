@@ -1463,6 +1463,10 @@ use namespace CoC;
 		{
 			return hasPerk(PerkLib.VitalStrike) && gaindHoldWithAllHandBonus();
 		}
+		public function checkTempestTrance():Boolean
+		{
+			return hasPerk(PerkLib.TempestTrance) && hasStatusEffect(StatusEffects.YataganVortex);
+		}
 		//Natural Jouster perks req check
 		public function isMeetingNaturalJousterReq():Boolean
 		{
