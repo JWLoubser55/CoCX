@@ -1103,8 +1103,14 @@ public class PerkLib
 				"You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)",
 				"You've chosen the 'Vitakinesis' perk. You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)");
 		public static const VitakinesisEx:PerkType = mk("Vitakinesis (Ex)", "Vitakinesis (Ex)",
+				"Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.",
+				"You've chosen the 'Vitakinesis (Ex)' perk. Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.");
+		public static const PsionicResurrection:PerkType = mk("Psionic Resurrection", "Psionic Resurrection",
 				".",
-				"You've chosen the 'Vitakinesis (Ex)' perk. .");
+				"You've chosen the 'Psionic Resurrection' perk. .");
+		public static const ArrowOfDeath:PerkType = mk("Arrow of death", "Arrow of death",
+				"Each arrow deals 1% of the enemy total health per shot as additional damage.",
+				"You've chosen the 'Arrow of death' perk. Each arrow deals 1% of the enemy total health per shot as additional damage.");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1122,6 +1128,21 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
+		public static const :PerkType = mk("", "",
+				".",
+				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -6889,6 +6910,8 @@ public class PerkLib
             PhantomArrow.requireLevel(78)
                     .requirePerk(ArrowStorm);
 			//Tier 14 Speed Perks
+            ArrowOfDeath.requireLevel(84)
+                    .requirePerk(PhantomArrow);
 			//Tier 15 Speed Perks
             UnlockEndurance4thStage.requirePerk(UnlockEndurance3rdStage)
                     .requireSpe(335)
@@ -8365,9 +8388,9 @@ public class PerkLib
                     .requireLevel(42);
             //Tier 8 Sensitivity Perks
             //Tier 9 Sensitivity Perks
-            //.requireSen(240)
-            //        .requirePerk(Vitakinesis)
-            //        .requireLevel(54);
+            VitakinesisEx.requireSen(240)
+                    .requirePerk(Vitakinesis)
+                    .requireLevel(54);
             //Tier 10 Sensitivity Perks
             EpicDesensitization.requireSen(50)
                     .requirePerk(GreaterDesensitization)

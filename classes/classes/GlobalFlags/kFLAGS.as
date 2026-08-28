@@ -2757,7 +2757,7 @@ public static const UNKNOWN_FLAG_NUMBER_02747:int                               
 public static const UNKNOWN_FLAG_NUMBER_02748:int                                   = 2748;
 public static const UNKNOWN_FLAG_NUMBER_02749:int                                   = 2749;
 public static const UNKNOWN_FLAG_NUMBER_02750:int                                   = 2750;
-public static const UNKNOWN_FLAG_NUMBER_02751:int                                   = 2751;
+public static const IN_COMBAT_VITAKINESIS_USED:int                                  = 2751;
 public static const TYRANT_STATE_COMBAT_MODE:int                                    = 2752;
 public static const ASURA_FORM_COMBAT_MODE:int                                   	= 2753;
 public static const CRINOS_SHAPE_COMBAT_MODE:int                                   	= 2754;

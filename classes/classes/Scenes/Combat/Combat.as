@@ -883,6 +883,7 @@ public class Combat extends BaseContent {
 			if (player.hasPerk(PerkLib.MyBloodForBloodPuppies)) flags[kFLAGS.IN_COMBAT_PLAYER_BLOOD_PUPPIES_ATTACKED] = 0;
 			if (player.perkv1(IMutationsLib.SharkOlfactorySystemIM) >= 4) flags[kFLAGS.IN_COMBAT_PLAYER_USED_SHARK_BITE] = 0;
 			if (player.hasPerk(PerkLib.ImprovedGrapple)) flags[kFLAGS.IN_COMBAT_BETTER_GRAPPLE] = 0;
+			if (player.hasPerk(PerkLib.VitakinesisEx)) flags[kFLAGS.IN_COMBAT_VITAKINESIS_USED] = 0;
 			martialTrain = 0;
 			mTSpinningKick = false;
 			mTWayOfTheSilentStorm = false;
@@ -4567,6 +4568,9 @@ public class Combat extends BaseContent {
 		}
         if (player.hasStatusEffect(StatusEffects.ChargeRWeapon)) {
 			doPlayerMagDamage(Math.round(damage * 0.2), true, true, ignoreDR);
+		}
+		if (player.hasPerk(PerkLib.ArrowOfDeath)) {
+			doPlayerTrueDamage(Math.round(monster.maxHP() * 0.01), true, true);
 		}
     }
 
@@ -20858,25 +20862,31 @@ public function activatePsionicCuring(multi1:Number, multi2:Number):void {
 	fatigue(Math.round(player.maxFatigue() * multi1), USEFATG_MAGIC_NOBM);
 	var heal:Number = 0;
 	heal += player.maxHP() * multi1 * multi2;
-	/*if (player.armorName == "skimpy nurse's outfit") heal *= 1.4;
-	if (player.weaponName == "unicorn staff") heal *= 2;
-	if (player.hasPerk(PerkLib.CloseToDeath) && player.HP < (player.maxHP() * 0.25)) {
-		if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) heal *= 4;
-		else heal *= 2;
+	if (player.hasPerk(PerkLib.VitakinesisEx)) {
+		if (player.armorName == "skimpy nurse's outfit") heal *= 1.4;
+		if (player.weaponName == "unicorn staff") heal *= 2;
+		if (player.hasPerk(PerkLib.CloseToDeath) && player.HP < (player.maxHP() * 0.25)) {
+			if (player.hasPerk(PerkLib.CheatDeath) && player.HP < (player.maxHP() * 0.1)) heal *= 4;
+			else heal *= 2;
+		}
+		//Determine if critical heal!
+		var crit:Boolean = false;
+		var critHeal:int = 5;
+		critHeal *= combatMagicalCritical();
+		if (rand(100) < critHeal) {
+			crit = true;
+			heal *= 2.5;
+		}
+		heal = Math.round(heal);
 	}
-	//Determine if critical heal!
-	var crit:Boolean = false;
-	var critHeal:int = 5;
-	critHeal *= combatMagicalCritical();
-	if (rand(100) < critHeal) {
-		crit = true;
-		heal *= 2.5;
-	}Gathering all you wrath you unleash howl while your wounds healing a bit.
-	heal = Math.round(heal);*/
 	outputText("You concentrate on the memory of your body, rewiring reality toward the state of being you had a few minutes ago. Your injuries begin to unwounds as reality rewind upon itself your body recovering toward its prime. ");
 	pc.HPChange(heal,true,false);
-	//if (crit) outputText(" <b>*Critical Heal!*</b>");
-	enemyAIImpl();
+	if (crit) outputText(" <b>*Critical Heal!*</b>");
+	if (player.hasPerk(PerkLib.VitakinesisEx) && flags[kFLAGS.IN_COMBAT_VITAKINESIS_USED] == 0) {
+		flags[kFLAGS.IN_COMBAT_VITAKINESIS_USED] = 1;
+		doNext(combatMenu, false);
+	}
+	else enemyAIImpl();
 }
 
 public function noLimiterState():void {
