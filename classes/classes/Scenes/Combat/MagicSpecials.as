@@ -214,18 +214,18 @@ public class MagicSpecials extends BaseCombatContent {
 				favbd(bd, "Psycho Barrier");
 			} else {
 				bd = buttons.add("Psycho-Barrier/On", combat.activatePsychoBarrier, "Cover yourself with Psycho-Barrier. (It would drain fatigue until dispersed)\n");
-				bd.requireFatigue(20);
+				bd.requireFatigue(combat.costOfPsychoBarrier());
 				favbd(bd, "Psycho Barrier");
 			}
 		}
 		if (player.hasPerk(PerkLib.PsychicBolt)) {
 			bd = buttons.add("Psychic Bolt", combat.castPsychicBolt, "Attempt to attack the enemy with psychic bolt.  Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(10);
+			bd.requireFatigue(combat.psionicAttacksCostChange(10));
 			favbd(bd, "Psychic Bolt");
 		}
 		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
 			bd = buttons.add("Telekinetic Grab", TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 8 rounds");
-			bd.requireFatigue(100);
+			bd.requireFatigue(combat.psionicAttacksCostChange(100));
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -233,52 +233,52 @@ public class MagicSpecials extends BaseCombatContent {
 		}
 		if (player.hasPerk(PerkLib.Pyrokinesis)) {
 			bd = buttons.add("Pyrokinesis", combat.usePyrokinesis, "Attempt to attack the enemy with fire ball. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Pyrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Hydrokinesis)) {
 			bd = buttons.add("Hydrokinesis", combat.useHydrokinesis, "Attempt to attack the enemy with water sphere. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Hydrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Cryokinesis)) {
 			bd = buttons.add("Cryokinesis", combat.useCryokinesis, "Attempt to attack the enemy with icicle. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Cryokinesis");
 		}
 		if (player.hasPerk(PerkLib.Geokinesis)) {
 			bd = buttons.add("Geokinesis", combat.useGeokinesis, "Attempt to attack the enemy with rock. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Geokinesis");
 		}
 		if (player.hasPerk(PerkLib.Electrokinesis)) {
 			bd = buttons.add("Electrokinesis", combat.useElectrokinesis, "Attempt to attack the enemy with bolt of lightning. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Electrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Aerokinesis)) {
 			bd = buttons.add("Aerokinesis", combat.useAerokinesis, "Attempt to attack the enemy with wind sphere. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Aerokinesis");
 		}
 		if (player.hasPerk(PerkLib.Umbrakinesis)) {
 			bd = buttons.add("Umbrakinesis", combat.useUmbrakinesis, "Attempt to attack the enemy with darkness sphere. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Umbrakinesis");
 		}
 		if (player.hasPerk(PerkLib.Acidokinesis)) {
 			bd = buttons.add("Acidokinesis", combat.useAcidokinesis, "Attempt to attack the enemy with acid ball. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Acidokinesis");
 		}
 		if (player.hasPerk(PerkLib.Ionikinesis)) {
 			bd = buttons.add("Ionikinesis", combat.useIonikinesis, "Attempt to attack the enemy with plasma ball. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Ionikinesis");
 		}
 		if (player.hasPerk(PerkLib.Cocytokinesis)) {
 			bd = buttons.add("Cocytokinesis", combat.useCocytokinesis, "Attempt to attack the enemy with black icicle. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(combat.psionicAttacksCostChange(20));
 			favbd(bd, "Cocytokinesis");
 		}
 		//Esper cool beans (end)
@@ -1348,23 +1348,17 @@ public class MagicSpecials extends BaseCombatContent {
 			favbd(bd, "Slime Bolt");
 		}
 		if (Mindbreaker.MindBreakerQuest == Mindbreaker.QUEST_STAGE_ISMB){
-			bd = buttons.add("Mind Thrust", mindThrust).hint("Use your psychic powers to strike at the opponent’s mind dealing severe physical damage.\n\nMana Cost: " + spellCostWhite(100) + "");
-			if (player.mana < spellCost(100)) {
-				bd.disable("Your mana is too low to use mind thrust.");
-			}
+			bd = buttons.add("Mind Thrust", mindThrust).hint("Use your psychic powers to strike at the opponent’s mind dealing severe physical damage.\n\nFatigue Cost: " + combat.psionicAttacksCostChange(100) + "");
+			bd.requireFatigue(combat.psionicAttacksCostChange(100));
 			favbd(bd, "Mind Thrust");
-			bd = buttons.add("Mind Blast", mindBlast).hint("Overload an opponent’s mind with lewd information, stunning it.\n\nMana Cost: " + spellCostWhite(100) + "");
-			if (player.mana < spellCost(50)) {
-				bd.disable("Your mana is too low to use mind blast.");
-			}
+			bd = buttons.add("Mind Blast", mindBlast).hint("Overload an opponent’s mind with lewd information, stunning it.\n\nFatigue Cost: " + combat.psionicAttacksCostChange(100) + "");
+			bd.requireFatigue(combat.psionicAttacksCostChange(100));
 			if (player.hasStatusEffect(StatusEffects.CooldownSpellMindBlast)) {
 				bd.disable("You need more time before you can use mind blast again.\n\n");
 			}
 			favbd(bd, "Mind Blast");
-			bd = buttons.add("Mirror Image", mirrorImage).hint("Create multiple clone of yourself to distract your opponent.\n\nMana Cost: " + spellCostWhite(100) + "");
-			if (player.mana < spellCost(100)) {
-				bd.disable("Your mana is too low to use mirror image.");
-			}
+			bd = buttons.add("Mirror Image", mirrorImage).hint("Create multiple clone of yourself to distract your opponent.\n\nFatigue Cost: " + combat.psionicAttacksCostChange(100) + "");
+			bd.requireFatigue(combat.psionicAttacksCostChange(100));
 			favbd(bd, "Mirror Image");
 		}
 		//Sing & Perform
@@ -5892,7 +5886,7 @@ public class MagicSpecials extends BaseCombatContent {
 			addButton(0, "Next", combatMenu, false);
 			return;
 		}
-		if (player.hasPerk(PerkLib.TelekineticGrapple)) fatigue(100, USEFATG_MAGIC_NOBM);
+		if (player.hasPerk(PerkLib.TelekineticGrapple)) fatigue(combat.psionicAttacksCostChange(100), USEFATG_MAGIC_NOBM);
 		else fatigue(200, USEFATG_MAGIC_NOBM);
 		outputText("You weave your hand causing [themonster] body to levitate and fly to you as you use telekinesis to hold your opponent.\n\n");
 		monster.createStatusEffect(StatusEffects.TelekineticGrab, 4 + rand(2), 0, 0, 0);
@@ -6452,7 +6446,7 @@ public class MagicSpecials extends BaseCombatContent {
 	public function mindThrust():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 		clearOutput();
-		useMana(100, USEFATG_MAGIC_NOBM);
+		useMana(combat.psionicAttacksCostChange(100), USEFATG_MAGIC_NOBM);
 		combat.darkRitualCheckDamage();
 		var damage:Number = (scalingBonusIntelligence() * spellMod());
 		//Determine if critical hit!
@@ -6480,7 +6474,7 @@ public class MagicSpecials extends BaseCombatContent {
 	public function mindBlast():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 		clearOutput();
-		useMana(100, USEFATG_MAGIC_NOBM);
+		useMana(combat.psionicAttacksCostChange(100), USEFATG_MAGIC_NOBM);
 		//cooldown 8 round
 		var duration:int = 2;
 		var PsionicEmpowermentBonus:int = 0;
@@ -6506,7 +6500,7 @@ public class MagicSpecials extends BaseCombatContent {
 	public function mirrorImage():void {
 		flags[kFLAGS.LAST_ATTACK_TYPE] = 3;
 		clearOutput();
-		useMana(100, USEFATG_MAGIC_NOBM);
+		useMana(combat.psionicAttacksCostChange(100), USEFATG_MAGIC_NOBM);
 		var numberOfImage:int = 2+Math.round(player.inte/100);
 		var PsionicEmpowermentBonus:int = 0;
 		if (player.hasPerk(PerkLib.MindbreakerBrain1toX)) PsionicEmpowermentBonus = (1+player.perkv1(PerkLib.MindbreakerBrain1toX))/2;

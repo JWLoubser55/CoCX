@@ -1175,18 +1175,18 @@ public class Combat extends BaseContent {
 				favbd(bd, "Psycho Barrier");
 			} else {
 				bd = buttons.add("Psycho-Barrier/On", activatePsychoBarrier, "Cover yourself with Psycho-Barrier. (It would drain fatigue until dispersed)\n");
-				bd.requireFatigue(20);
+				bd.requireFatigue(costOfPsychoBarrier());
 				favbd(bd, "Psycho Barrier");
 			}
 		}
 		if (player.hasPerk(PerkLib.PsychicBolt)) {
 			bd = buttons.add("Psychic Bolt", castPsychicBolt, "Attempt to attack the enemy with psychic bolt.  Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(10);
+			bd.requireFatigue(psionicAttacksCostChange(10));
 			favbd(bd, "Psychic Bolt");
 		}
 		if (player.hasPerk(PerkLib.TelekineticGrapple) && !monster.hasStatusEffect(StatusEffects.TelekineticGrab)) {
 			bd = buttons.add("Telekinetic Grab", mspecials.TelekineticGrab, "Use telekinesis to hold your opponent. \n\nWould go into cooldown after use for: 6 rounds");
-			bd.requireMana(spellCost(50));
+			bd.requireMana(spellCost(psionicAttacksCostChange(100)));
 			if (player.hasStatusEffect(StatusEffects.CooldownTelekineticGrab)) {
 				bd.disable("You need more time before you can use Telekinetic Grab again.\n\n");
 			} else if (isEnemyInvisible) bd.disable("You cannot use offensive skills against an opponent you cannot see or target.");
@@ -1194,52 +1194,52 @@ public class Combat extends BaseContent {
 		}
 		if (player.hasPerk(PerkLib.Pyrokinesis)) {
 			bd = buttons.add("Pyrokinesis", usePyrokinesis, "Attempt to attack the enemy with fire ball. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd, "Pyrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Hydrokinesis)) {
 			bd = buttons.add("Hydrokinesis", useHydrokinesis, "Attempt to attack the enemy with water sphere. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd, "Hydrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Cryokinesis)) {
 			bd = buttons.add("Cryokinesis", useCryokinesis, "Attempt to attack the enemy with icicle. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd, "Cryokinesis");
 		}
 		if (player.hasPerk(PerkLib.Geokinesis)) {
 			bd = buttons.add("Geokinesis", useGeokinesis, "Attempt to attack the enemy with rock. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd, "Geokinesis");
 		}
 		if (player.hasPerk(PerkLib.Electrokinesis)) {
 			bd = buttons.add("Electrokinesis", useElectrokinesis, "Attempt to attack the enemy with bolt of lightning. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd, "Electrokinesis");
 		}
 		if (player.hasPerk(PerkLib.Aerokinesis)) {
 			bd = buttons.add("Aerokinesis", useAerokinesis, "Attempt to attack the enemy with wind sphere. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd,"Aerokinesis");
 		}
 		if (player.hasPerk(PerkLib.Umbrakinesis)) {
 			bd = buttons.add("Umbrakinesis", useUmbrakinesis, "Attempt to attack the enemy with darkness sphere. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd,"Umbrakinesis");
 		}
 		if (player.hasPerk(PerkLib.Acidokinesis)) {
 			bd = buttons.add("Acidokinesis", useAcidokinesis, "Attempt to attack the enemy with acid ball. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd,"Acidokinesis");
 		}
 		if (player.hasPerk(PerkLib.Ionikinesis)) {
 			bd = buttons.add("Ionikinesis", useIonikinesis, "Attempt to attack the enemy with plasma ball. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd,"Ionikinesis");
 		}
 		if (player.hasPerk(PerkLib.Cocytokinesis)) {
 			bd = buttons.add("Cocytokinesis", useCocytokinesis, "Attempt to attack the enemy with black icicle. Damage done is determined by your sensitivity.\n");
-			bd.requireFatigue(20);
+			bd.requireFatigue(psionicAttacksCostChange(20));
 			favbd(bd,"Cocytokinesis");
 		}
 		//Esper cool beans (end)
@@ -11135,6 +11135,7 @@ public class Combat extends BaseContent {
 			else damage *= (1 + Math.round(camp.codex.checkUnlocked() / 100));
 		}
 		if (player.hasPerk(PerkLib.Icestorm) && monster.monsterIsStunned()) damage *= 1.3;
+		if (player.hasPerk(PerkLib.PowerOverwhelming) && player.sens >= 200) damage *= (1 + (1 * Math.round(player.sens - 100)));
 		if (player.headJewelry === headjewelries.DRABLOH && monster.hasPerk(PerkLib.EnemyDragonType)) damage *= 1.2;
 		if (monster.hasPerk(PerkLib.HiveMind)) damage *= (1 - monster.perkv1(PerkLib.HiveMind));
 		damage *= EyesOfTheHunterDamageBonus();
@@ -12432,6 +12433,7 @@ public class Combat extends BaseContent {
 			player.soulforce -= soulforcecost2;
 			fatigue(physicalCost(10));
 		}
+		if (player.statStore.hasBuff("PsychoBarrier")) fatigue(physicalCost(costOfPsychoBarrier()));
 		if (player.hasStatusEffect(StatusEffects.SoulFist)) pc.SoulforceChange(-Math.round(Math.sqrt(player.maxSoulforce() * 0.01)));
         combatRoundOver();
     }
@@ -14236,7 +14238,7 @@ public class Combat extends BaseContent {
         }
         //Psycho-Barrier
         if (player.statStore.hasBuff("PsychoBarrier")) {
-            if (player.fatigue + physicalCost(20) > player.maxOverFatigue()) {
+            if (player.fatigue + physicalCost(costOfPsychoBarrier()) > player.maxOverFatigue()) {
                 player.statStore.removeBuffs("PsychoBarrier");
                 outputText("<b>You can't no longer sustain psycho-barrier, which disperse fully.</b>\n\n");
             }
@@ -15669,11 +15671,12 @@ public class Combat extends BaseContent {
 			if (player.perkv1(IMutationsLib.HumanSecondaryHeartIM) >= 1 && player.racialScore(Races.HUMAN) > 17) hshim3 += 4;
 			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.01 * hshim3);
 		}
-		if (player.hasPerk(PerkLib.OperraticOperator)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.025);
 		if (player.hasStatusEffect(StatusEffects.Photosynthesis) && isOutsideDuringDaytime()) {
 			fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.02);
 			if (player.perkv1(IMutationsLib.PlantChlorophyllIM) >= 3) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.005 * (player.perkv1(IMutationsLib.PlantChlorophyllIM) - 2));
 		}
+		if (player.hasPerk(PerkLib.OperraticOperator)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.025);
+		if (player.hasPerk(PerkLib.UnlimitedPower)) fatiguecombatrecovery += Math.round(player.maxFatigue() * 0.05);
         if (player.hasPerk(PerkLib.HydraRegeneration) && !player.hasStatusEffect(StatusEffects.HydraRegenerationDisabled)) fatiguecombatrecovery += 1 * player.statusEffectv1(StatusEffects.HydraTailsPlayer);
 		if (player.hasPerk(PerkLib.TrollRegeneration) && !player.hasStatusEffect(StatusEffects.TrollRegenerationDisabled)) fatiguecombatrecovery += 6;
         if (player.hasPerk(PerkLib.JobGunslinger)) fatiguecombatrecovery += 1;
@@ -19414,7 +19417,7 @@ public function deactivateSwordIntentAura():void {
 public function activatePsychoBarrier():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_PHYSICAL);
+	fatigue(costOfPsychoBarrier(), USEFATG_PHYSICAL);
 	outputText("You utter the words of power, summoning an invisible barrier around your body.  The psychic energies would protect you from even the fiercest blows.\n\n");
 	var temp1:Number = 0;
 	var temp2:Number = 0.01;
@@ -19435,10 +19438,26 @@ public function deactivatePsychoBarrier():void {
 	player.buff("PsychoBarrier").remove();
 	enemyAI();
 }
+public function costOfPsychoBarrier():Number {
+	var PBCost:Number = 20;
+	PBCost *= psionicAttacksCostDecrease();
+	return PBCost;
+}
+public function psionicAttacksCostDecrease():Number {
+	var PACostDec:Number = 1;
+	if (player.hasPerk(PerkLib.UnlimitedPower)) PACostDec -= 0.5;
+	return PACostDec;
+}
+public function psionicAttacksCostChange(base:Number):Number {
+	var PACostInc:Number = 1;
+	PACostInc *= psionicAttacksCostDecrease();
+	base = Math.round(base * PACostInc);
+	return PACostInc;
+}
 public function castPsychicBolt():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(10, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(10), USEFATG_NORMAL);
 	outputText("You narrow your eyes, focusing your mind.  You point your hand toward [themonster] and shoot a psychic bolt!\n\n");
 	var damage:Number = scalingBonusSensitivity() * 3;
 	if (player.hasPerk(PerkLib.MindFungus)) {
@@ -19496,7 +19515,7 @@ public function castPsychicBolt():void {
 public function usePyrokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small ball of fire. You motion, sending the ball flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19512,7 +19531,7 @@ public function usePyrokinesis():void {
 public function useHydrokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small sphere of water. You motion, sending the sphere flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19528,7 +19547,7 @@ public function useHydrokinesis():void {
 public function useCryokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small icicle. You motion, sending the icicle flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19544,7 +19563,7 @@ public function useCryokinesis():void {
 public function useGeokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small rock. You motion, sending the rock flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19560,7 +19579,7 @@ public function useGeokinesis():void {
 public function useElectrokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small bolt of lightning. You motion, sending the bolt flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19576,7 +19595,7 @@ public function useElectrokinesis():void {
 public function useAerokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small sphere of wind. You motion, sending the sphere flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19592,7 +19611,7 @@ public function useAerokinesis():void {
 public function useUmbrakinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small sphere made of darkness. You motion, sending the sphere flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19608,7 +19627,7 @@ public function useUmbrakinesis():void {
 public function useAcidokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small ball of acid. You motion, sending the ball flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19624,7 +19643,7 @@ public function useAcidokinesis():void {
 public function useIonikinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small ball of plasma. You motion, sending the ball flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -19639,7 +19658,7 @@ public function useIonikinesis():void {
 public function useCocytokinesis():void {
 	flags[kFLAGS.LAST_ATTACK_TYPE] = 2;
 	clearOutput();
-	fatigue(20, USEFATG_NORMAL);
+	fatigue(psionicAttacksCostChange(20), USEFATG_NORMAL);
 	outputText("You concentrate, focusing on the power of your mind. A moment later, energy forming into a small black icicle. You motion, sending the icicle flying toward [themonster]. The tossed projectile hits [themonster], dealing ");
 	var damage:Number = 0;
 	var crit:Boolean = false;
@@ -20837,12 +20856,12 @@ public function activateVitakinesis():void {
 	if (player.hasPerk(PerkLib.PsionicMending)) {
 		if (player.hasPerk(PerkLib.PsionicRegeneration)) {
 			if (player.hasPerk(PerkLib.Vitakinesis)) {
-				addButtonIfTrue(1, "Vitakinesis (1)", curry(activatePsionicCuring, 0.05, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.05)), "5% Fatigue > 15% HP");
-				addButtonIfTrue(2, "Vitakinesis (2)", curry(activatePsionicCuring, 0.1, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.1)), "10% Fatigue > 30% HP");
-				addButtonIfTrue(3, "Vitakinesis (3)", curry(activatePsionicCuring, 0.15, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.15)), "15% Fatigue > 45% HP");
-				addButtonIfTrue(6, "Vitakinesis (4)", curry(activatePsionicCuring, 0.2, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.2)), "20% Fatigue > 60% HP");
-				addButtonIfTrue(7, "Vitakinesis (5)", curry(activatePsionicCuring, 0.25, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.25)), "25% Fatigue > 75% HP");
-				addButtonIfTrue(8, "Vitakinesis (6)", curry(activatePsionicCuring, 0.3, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.3)), "30% Fatigue > 90% HP");
+				addButtonIfTrue(1, "Vitakinesis (1)", curry(activatePsionicCuring, 0.05, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.05 * psionicAttacksCostDecrease())), "5% Fatigue > 15% HP (Additional perks may increase healing effect or lower fatigue cost)");
+				addButtonIfTrue(2, "Vitakinesis (2)", curry(activatePsionicCuring, 0.1, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.1 * psionicAttacksCostDecrease())), "10% Fatigue > 30% HP (Additional perks may increase healing effect or lower fatigue cost)");
+				addButtonIfTrue(3, "Vitakinesis (3)", curry(activatePsionicCuring, 0.15, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.15 * psionicAttacksCostDecrease())), "15% Fatigue > 45% HP (Additional perks may increase healing effect or lower fatigue cost)");
+				addButtonIfTrue(6, "Vitakinesis (4)", curry(activatePsionicCuring, 0.2, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.2 * psionicAttacksCostDecrease())), "20% Fatigue > 60% HP (Additional perks may increase healing effect or lower fatigue cost)");
+				addButtonIfTrue(7, "Vitakinesis (5)", curry(activatePsionicCuring, 0.25, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.25 * psionicAttacksCostDecrease())), "25% Fatigue > 75% HP (Additional perks may increase healing effect or lower fatigue cost)");
+				addButtonIfTrue(8, "Vitakinesis (6)", curry(activatePsionicCuring, 0.3, 3), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.3 * psionicAttacksCostDecrease())), "30% Fatigue > 90% HP (Additional perks may increase healing effect or lower fatigue cost)");
 			}
 			else {
 				addButtonIfTrue(1, "Psi Regeneration (1)", curry(activatePsionicCuring, 0.1, 2), "Your mental energy levels are too low.", (player.fatigue <= player.maxOverFatigue() - Math.round(player.maxFatigue() * 0.1)), "10% Fatigue > 20% HP");
@@ -20859,7 +20878,7 @@ public function activateVitakinesis():void {
 }
 public function activatePsionicCuring(multi1:Number, multi2:Number):void {
 	clearOutput();
-	fatigue(Math.round(player.maxFatigue() * multi1), USEFATG_MAGIC_NOBM);
+	fatigue(Math.round(player.maxFatigue() * multi1 * psionicAttacksCostDecrease()), USEFATG_MAGIC_NOBM);
 	var heal:Number = 0;
 	heal += player.maxHP() * multi1 * multi2;
 	if (player.hasPerk(PerkLib.VitakinesisEx)) {

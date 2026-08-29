@@ -1112,8 +1112,9 @@ public class PerkLib
 				"Each arrow deals 1% of the enemy total health per shot as additional damage.",
 				"You've chosen the 'Arrow of death' perk. Each arrow deals 1% of the enemy total health per shot as additional damage.");
 		public static const HypersensitivityI:PerkType = mk("Hypersensitivity I", "Hypersensitivity I",
-				".",
-				"You've chosen the 'Hypersensitivity I' perk.").withBuffs({'sens':100});
+				".",//+1 extra fatigue per point of sensitivity
+				"You've chosen the 'Hypersensitivity I' perky.")//, granting +1 extra maximum fatigue for each point of sensitivit
+				.withBuffs({'sens':100});//.withBuffs({'maxfatigue_perspe':+1.5})
 		public static const HypersensitivityII:PerkType = mk("Hypersensitivity II", "Hypersensitivity II",
 				".",
 				"You've chosen the 'Hypersensitivity II' perk.").withBuffs({'sens':100});
@@ -1132,6 +1133,12 @@ public class PerkLib
 		public static const SensoryOverloadAdaptation:PerkType = mk("Sensory overload adaptation", "Sensory overload adaptation",
 				"Your senses adapted to overload caused by your mental power awakening. (decreasing negative effects of sensitivity by 10%)",
 				"You've chosen the 'Sensory overload adaptation' perk. Your senses adapted to overload caused by your mental power awakening. (decreasing negative effects of sensitivity by 10%)").withBuffs({'sens':200});
+		public static const PowerOverwhelming:PerkType = mk("Power Overwhelming", "Power Overwhelming",
+				".",
+				"You've chosen the 'Power Overwhelming' perk. .").withBuffs({'sens':2000});
+		public static const UnlimitedPower:PerkType = mk("Unlimited Power!", "Unlimited Power!",
+				"An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)",
+				"You've chosen the 'Unlimited Power!' perk. An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)").withBuffs({'sens':1000});
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1149,12 +1156,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -5815,6 +5816,7 @@ public class PerkLib
 			[GoliathI, GoliathII, GoliathIII, GoliathIV, GoliathV, GoliathVI], // systems functional
 			[GrabbingStyle, GrabbingMaster, GrabbingGrandmaster],
 			[GreyMageApprentice, GreyMage, GreyArchmage, GrandGreyArchmage, GrandGreyArchmage2ndCircle],
+			[HypersensitivityI, HypersensitivityII, HypersensitivityIII, HypersensitivityIV, HypersensitivityV, HypersensitivityVI],
 			[HistoryBuff, GuerrillaTactics, StrengthInNumbers, General, SmallArmy, Fellowship],
 			[HumanSupremacyInitial, HumanSupremacyBasic, HumanSupremacyImproved, HumanSupremacyAdvanced, HumanSupremacySuperior, HumanSupremacyPeerless],
 			[IDontHaveMinionsIGotFamily, IDontHave2FastMinionsIGot2FuriousFamily, IDontHaveMinionsIGotFamilyMarethDrift],
@@ -8317,9 +8319,9 @@ public class PerkLib
             Hydrokinesis.requireSen(60)
                     .requirePerk(JobPsychic)
                     .requireLevel(12);
-            //HypersensitivityI.requireSen(60)
-            //        .requirePerk(JobPsychic)
-            //        .requireLevel(12);
+            HypersensitivityI.requireSen(60)
+                    .requirePerk(JobPsychic)
+                    .requireLevel(12);
             //HypersensitivityII.requireSen(80)
             //        .requirePerk(HypersensitivityI)
             //        .requireLevel(14)
@@ -8420,10 +8422,19 @@ public class PerkLib
                     .requirePerk(EyesOfTheHunterEx)
                     .requireLevel(42);
             //Tier 8 Sensitivity Perks
+			//.requireSen(200)		psionic perk - progress from ???
+			//		.requirePerk()
+			//		.requireLevel(48);
+			//PowerOverwhelming.requireSen(200)
+			//		.requireAnyPerk(SpiritualAlignment, MentalAttunement)
+			//		.requireLevel(48);
             //Tier 9 Sensitivity Perks
             VitakinesisEx.requireSen(240)
                     .requirePerk(Vitakinesis)
                     .requireLevel(54);
+			//.requireSen(150)		psionic perk - progress from ???
+			//		.requirePerk()
+			//		.requireLevel(54);
             //Tier 10 Sensitivity Perks
             EpicDesensitization.requireSen(50)
                     .requirePerk(GreaterDesensitization)
@@ -8433,6 +8444,9 @@ public class PerkLib
                     .requirePerk(EpicSensitivity)
                     .requireLevel(66);
             //Tier 12 Sensitivity Perks
+			UnlimitedPower.requireSen(300)
+					.requirePerk(TelekineticGrapple)
+					.requireLevel(72);
             //Tier 13 Sensitivity Perks
             //Tier 14 Sensitivity Perks
             //Tier 15 Sensitivity Perks

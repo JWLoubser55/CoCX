@@ -346,19 +346,19 @@ public class Changelog extends BaseContent
 			outputText("-Small additions to Luna (and dominated werewolfs). PC can now visit Luna pups and/or dominated werewolfs.\n");///their pups. At night could even have bit of fun with whole werewolf pack
 			outputText("-New tier 1 sensitivity lvl-up perk: Sensory overload adaptation. Req. Job: Psychic perk and 40+ sens. Effect: Your senses adapted to overload caused by your mental power awakening. (+200 sens)(decreasing negative effects of sensitivity by 10%)\n");
 			outputText("-Desensitization line perks now have additional effect of adding 50/100/150/200/250 sens. Epic/Legendary/Mythical Sensitivity now grants more sens: 300/600/900.\n");
+			outputText("-New tier 12 sensitivity lvl-up perk: Unlimited Power! Req. Telekinetic Grapple perk and 300+ sens. Effect: An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)(+1000 sens)\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity I. Req. Job: Psychic perk and 60+ sens. Effect: Increase sens by 100.\n");//, +1 extra fatigue per point of sensitivity
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity I. Req. Job: Psychic perk and 60+ sens. Effect: Increase sens by 100.
+			outputText("-\n");//New tier 8 sensitivity lvl-up perk: Power Overwhelming. Req. Spiritual Alignment or Mental Attunement perk and 200+ sens. Effect: .each 200 sens giving +1x psychic attacks dmg multi (+2000 sens)
 			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity II. Req. Hypersensitivity I perk, NG1+ and 80+ sens. Effect: Increase sens by 100.
 			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, NG2+ and 100+ sens. Effect: Increase sens by 100.
-			outputText("-\n");//New tier  sensitivity lvl-up perk: Power Overwhelming. Req. . Effect: .each 100 sens giving +1x psychic attacks dmg multi (+1000 sens)
-			outputText("-\n");//New tier  sensitivity lvl-up perk: . Req. . Effect: .
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");
@@ -854,7 +854,7 @@ public class Changelog extends BaseContent
 			outputText("-Mimic enemies got bit of more HP given with slight armor increases and their special Bite attack hurt more. Their loot table was tossed out replaced with bit more usefull loot and they even could drop (?) items too. All Slime / Goo / Ooze enemies got their armor and mres switched.\n");
 			outputText("-Some of the stat checks for enemies changed from checking total stat values to core stat values: Frost Gigant str check, kitsune enemies Seal/Illusion special int checks\n");
 			outputText("-Yamata combat desc would desc how much PC is close to become her masochostic pet (not large change of text but carefull observer would notice smlight changes in her last part of descrtiption that was sitting hidden in code before). Still no news on more stuff for her or getting her weapon...yet.\n");
-			outputText("-Mindbreaker races got +100% more to libido multi and +100 to sensitivity. Their special - Mind Trust - deal now psionic dmg not true damage.\n");
+			outputText("-Mindbreaker races got +100% more to libido multi and +100 to sensitivity. Their special - Mind Trust - deal now psionic dmg not true damage. Resource they use is now Fatigue instead of Mana.\n");
 			outputText("-For Wolf/Winter Wolf Animal Tooth would still give +1 to score but Wolf face variant would give +2, since it's req. to keep access to ice breath special.\n");
 			outputText("-Thief enemy in Ignam was renamed (totaly not degraded) into Thief Associate. Also he no longer play with dagger and just use knife as it was intended. Exploration in Ignam if not founded any enemy would only take 5 min instead of 15. ");
 			outputText("And chance to find enemy would change from default 25% to instead increase with PC level from 50% below lvl 3 to 100% at lvl 9+ (been famous and strong would easier attract all the shady people).\n");
