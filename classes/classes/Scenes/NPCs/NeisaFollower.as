@@ -53,57 +53,62 @@ public function neisaMorningPaycheckCall1():void {
 	outputText("\n");
 	neisaMorningPaycheckCall();
 }
+private function neisaMPA():Number {
+	var nMPA:Number = 7;
+	if (flags[kFLAGS.NEISA_AFFECTION] >= 25) nMPA -= Math.round((flags[kFLAGS.NEISA_AFFECTION] - 12) / 25);
+	return nMPA;
+}
 public function neisaMorningPaycheckCall():void {
 	//spriteSelect(SpriteDb.s_isabella);
 	if (flags[kFLAGS.NEISA_FOLLOWER] == 17) {
-		if (flags[kFLAGS.SPIRIT_STONES] > 9) {
+		if (flags[kFLAGS.SPIRIT_STONES] > (neisaMPA() + 2)) {
 			outputText("You pay the spirit stone you owe Neisa as she comes over to collect.\n\n");
 			outputText("\"<i>Better later than never. Please try and be on point for the next pay I shouldn't have to remind you three times in a row.</i>\"\n\n");
-			flags[kFLAGS.SPIRIT_STONES] -= 10;
+			flags[kFLAGS.SPIRIT_STONES] -= (neisaMPA() + 3);
 			flags[kFLAGS.NEISA_FOLLOWER] = 7;
 		}
 		else {
-			outputText("Neisa sighs in disappointment when she realises you are short "+(10 - flags[kFLAGS.SPIRIT_STONES])+" spirit stones.\n\n");
+			outputText("Neisa sighs in disappointment when she realises you are short "+((neisaMPA() + 3) - flags[kFLAGS.SPIRIT_STONES])+" spirit stones.\n\n");
 			outputText("\"<i>Why now, you forgot to go change gems for spirit stones? That's fine but until you pay the debt you owe me I'm staying back at the inn.</i>\"\n\n");
 			setNeisaDismissed();
 		}
 	}
 	else if (flags[kFLAGS.NEISA_FOLLOWER] == 16) {
-		if (flags[kFLAGS.SPIRIT_STONES] > 8) {
+		if (flags[kFLAGS.SPIRIT_STONES] > (neisaMPA() + 1)) {
 			outputText("You pay the spirit stone you owe Neisa as she comes over to collect.\n\n");
 			outputText("\"<i>Better late than never. Please try and be on point for the next pay I shouldn't have to remind you two times in a row.</i>\"\n\n");
-			flags[kFLAGS.SPIRIT_STONES] -= 9;
-			flags[kFLAGS.NEISA_FOLLOWER] = 7;
-			neisaAffection(0.5);
-		}
-		else {
-			outputText("Neisa comes over for her payment but you realise you are "+(9 - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == 8 ? "":"s")+" short\n\n");
-			outputText("\"<i>Look [name] at this point I'm done trying to find excuses for you. If you can't pay me by tomorrow I'm leaving.</i>\"\n\n");
-		}
-	}
-	else if (flags[kFLAGS.NEISA_FOLLOWER] == 15) {
-		if (flags[kFLAGS.SPIRIT_STONES] > 7) {
-			outputText("You pay the spirit stone you owe Neisa as she comes over to collect.\n\n");
-			outputText("\"<i>Looks like everything is accounted for just try to have it ready faster next time.</i>\"\n\n");
-			flags[kFLAGS.SPIRIT_STONES] -= 8;
+			flags[kFLAGS.SPIRIT_STONES] -= (neisaMPA() + 2);
 			flags[kFLAGS.NEISA_FOLLOWER] = 7;
 			neisaAffection(1);
 		}
 		else {
-			outputText("Neisa comes over for her payment but you realise you are "+(8 - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == 7 ? "":"s")+" short.\n\n");
+			outputText("Neisa comes over for her payment but you realise you are "+((neisaMPA() + 2) - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == (neisaMPA() + 1) ? "":"s")+" short\n\n");
+			outputText("\"<i>Look [name] at this point I'm done trying to find excuses for you. If you can't pay me by tomorrow I'm leaving.</i>\"\n\n");
+		}
+	}
+	else if (flags[kFLAGS.NEISA_FOLLOWER] == 15) {
+		if (flags[kFLAGS.SPIRIT_STONES] > neisaMPA()) {
+			outputText("You pay the spirit stone you owe Neisa as she comes over to collect.\n\n");
+			outputText("\"<i>Looks like everything is accounted for just try to have it ready faster next time.</i>\"\n\n");
+			flags[kFLAGS.SPIRIT_STONES] -= (neisaMPA() + 1);
+			flags[kFLAGS.NEISA_FOLLOWER] = 7;
+			neisaAffection(2);
+		}
+		else {
+			outputText("Neisa comes over for her payment but you realise you are "+((neisaMPA() + 1) - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == neisaMPA() ? "":"s")+" short.\n\n");
 			outputText("\"<i>Forgetful memory? You still are "+(8 - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == 7 ? "":"s")+" short pcname. Make sure you got them tomorrow.</i>\"\n\n");
 		}
 	}
 	else {
-		if (flags[kFLAGS.SPIRIT_STONES] > 6) {
+		if (flags[kFLAGS.SPIRIT_STONES] > (neisaMPA() - 1)) {
 			outputText("You pay the spirit stone you owe Neisa as she comes over to collect.\n\n");
 			outputText("\"<i>Ever happy doing business with you [name].</i>\"\n\n");
-			flags[kFLAGS.SPIRIT_STONES] -= 7;
+			flags[kFLAGS.SPIRIT_STONES] -= neisaMPA();
 			flags[kFLAGS.NEISA_FOLLOWER] = 7;
-			neisaAffection(1.5);
+			neisaAffection(3);
 		}
 		else {
-			outputText("Neisa comes over for her payment but you realise you are "+(7 - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == 6 ? "":"s")+" short.\n\n");
+			outputText("Neisa comes over for her payment but you realise you are "+(neisaMPA() - flags[kFLAGS.SPIRIT_STONES])+" spirit stone"+(flags[kFLAGS.SPIRIT_STONES] == (neisaMPA() - 1) ? "":"s")+" short.\n\n");
 			outputText("\"<i>Heh, I don't mind if you are paying late, mistakes happen. Just make sure you got my pay for tomorrow as well as the missing spirit stones of today.</i>\"\n\n");
 		}
 	}

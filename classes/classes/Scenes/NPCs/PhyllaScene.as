@@ -27,7 +27,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && rand(5) == 0 && flags[kFLAGS.ANT_KIDS] < (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))) flags[kFLAGS.ANT_KIDS]++;//5000
+			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && rand(4) == 0 && flags[kFLAGS.ANT_KIDS] < (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))) flags[kFLAGS.ANT_KIDS] += (1 + rand(2));//5000
 			if (model.time.hours > 23) {
 				//The pregnancyStore doesn't handle Phylla's ant eggs because they are continuous. The regular egg production is all handled here.
 				if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0) flags[kFLAGS.DAYS_PHYLLA_HAS_SPENT_BIRTHING]++;
@@ -105,17 +105,18 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			//►[Follower > Phylla Intro (Repeat)]
 			else {
 				outputText("Making your way down the familiar path away from your camp it's not long until you reach the growing anthill that is Phylla's campsite-adjacent colony.  You climb to the crest of the ever-increasing anthill, and enter down the passage to the caves below.  Once you get to Phylla's room, you see she's working on carving something on the wall.  Half of it looks like a copy of the art you did and the other half looks like a map of her colony with all the networked caves.");
-
 				//If <10 days in camp:
 				if (flags[kFLAGS.DAYS_PHYLLA_IN_CAMP] < 10) outputText("\n\nSo far the map of the caves doesn't look very impressive.");
 				//If <30 days in camp:
 				else if (flags[kFLAGS.DAYS_PHYLLA_IN_CAMP] < 30) outputText("\n\nThe map of the cave network is starting to look pretty impressive. You could get lost for quite a while if you didn't know where you were going.");
 				//If <100 days in camp:
 				else outputText("\n\nJust looking at the carving makes your head spin.  It's almost certain that if you didn't know where you were going, you could easily get lost forever.");
-
 				outputText("\n\nThe second your eyes lock onto her back, you feel something in your mind twitch.  You see the same thing happen to her as her whole body twitches.  She quickly turns around and runs over to you.");
 				outputText("\n\n\"<i>You came back! I mean... I hope you like it. I mean welcome... What do you want to talk about?</i>\"");
 			}
+			outputText("\n\n<b>Colony population:</b>\n<i>Queen: 1</i>");
+			if (flags[kFLAGS.ANT_KIDS] > 0) outputText("\n<i>Ant Children: " + flags[kFLAGS.ANT_KIDS] + " (Current) / " + (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION])) + " (Sustain limit)</i>");
+			if (flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] > 0) outputText("\n<i>Drider Children: " + flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] + " (Current) / " + (50 * (1 + flags[kFLAGS.ANTHILL_EXPANSION])) + " (Sustain limit)</i>"); 
 			//[Talk] [Sex] [Lay Eggs / Don't Lay Eggs] [Children] [Appearance] [Gems] [Stones]
 			menu();
 			addButton(0, "Talk", phyllaTalkChoices);
@@ -147,7 +148,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			addButton(3, "Orgy(Male)", orgyWithDatColonyCorruptDudes)
 				.disableIf(flags[kFLAGS.ANT_KIDS] < 10, "You need more children for this.")
 				.disableIf(!player.hasCock(), "Req. a cock!")
-				.disableIf(player.cor < 75 - player.corruptionTolerance, "You're not corrupted enough!", "???");
+				.disableIf(player.cor < 50 - player.corruptionTolerance, "You're not corrupted enough!", "???");
 			//Pussy
 			addButton(6, "Lesbi", lesbianFisting)
 				.disableIf(egg, "Phylla should not be laying eggs at the moment.")
@@ -158,10 +159,11 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			addButton(8, "Orgy(Female)", antColonyOrgy4Ladies)
 				.disableIf(flags[kFLAGS.ANT_KIDS] < 10, "You need more children for this.")
 				.disableIf(!player.hasVagina(), "Req. a vagina!")
-				.disableIf(player.cor < 75 - player.corruptionTolerance, "You're not corrupted enough!", "???");
+				.disableIf(player.cor < 50 - player.corruptionTolerance, "You're not corrupted enough!", "???");
 			//Driderimpregnation scene for Phylla
 			addButton(10, "Oviposit", eggDatBitch)
-				.disableIf(!player.canOvipositSpider(), "Req. a spider ovipositor!");
+				.disableIf(!player.canOvipositSpider(), "Req. a spider ovipositor!")
+				.disableIf((flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] > (50 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))), ""+(silly()?"You must contruct additional pylons.":"You must expand your colony more.")+"");
 			addButton(14, "Back", introductionToPhyllaFollower);
 		}
 
@@ -280,7 +282,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			menu();
 			addButton(0, "Kiss", kiss);
 			addButton(1, "Embarrass", embarrass)
-				.disableIf(player.cor < 33 - player.corruptionTolerance, "Not corrupted enough.");
+				.disableIf(player.cor < -33 - player.corruptionTolerance, "Not corrupted enough.");
 			//(Leads to - Corruption Checks)
 			//If corruption less than 40:
 			function kiss():void {
@@ -314,7 +316,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				outputText("\n\nYou make a quip about how you'll keep that in mind the next time you two have sex. She quickly covers her chest with her hands, retracting inward.  \"<i>I don't want to... I mean... I do, but... I'm embarrassed... P-please...</i>\"");
 				menu();
 				addButton(0, "Push It!", pushIt)
-					.disableIf(player.cor < 66 - player.corruptionTolerance, "Not corrupted enough.");
+					.disableIf(player.cor < 33 - player.corruptionTolerance, "Not corrupted enough.");
 				addButton(1, "Stop", stopPushing);
 
 				function pushIt():void {
@@ -403,7 +405,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 					outputText("\n\nClearly the stress has driven her mind meld to kick in.  She aggressively probes your mind looking for thoughts or memories of Izma.  It's not at all a pleasant feeling; it's as if your mind is being carved up and sorted, piece by piece.  Finally images flash of you first meeting Izma and how she showed you her collection of books.  The next thing you see is you and Izma sitting on a beach reading books together and chit-chatting about how Izma has withstood the corruption by reading.  That image suddenly fades as you see yourself in a fist fight with Izma vying for dominance in your estranged relationship. Eventually you see yourself dominating Izma to the point where she asks you if she's allowed to come back to camp with you.");
 					menu();
 					addButton(0, "HowDareShe?!", howDareShe)
-						.disableIf(player.cor < 50 - player.corruptionTolerance, "Not corrupted enough.");
+						.disableIf(player.cor < 0 - player.corruptionTolerance, "Not corrupted enough.");
 					addButton(1, "ProbeHer", probeHer);
 
 					//If Corruption more than 80: (Continued From: You're determined to not let this go without protest.)
@@ -559,7 +561,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				menu();
 				addButton(0, "CalmHer", purePhyllaBJOver);
 				addButton(1, "ForceHer", corruptPhyllaEndings)
-					.disableIf(player.cor < 66 - player.corruptionTolerance, "Not corrupted enough!");
+					.disableIf(player.cor < 33 - player.corruptionTolerance, "Not corrupted enough!");
 			}
 		}
 
@@ -984,7 +986,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			menu();
 			addButton(0, "Persuade", birthDickSex2);
 			addButton(1, "DontCare", birthDickSex2, true)
-				.disableIf(player.cor < 66 - player.corruptionTolerance, "You're not an asshole.. are you?");
+				.disableIf(player.cor < 33 - player.corruptionTolerance, "You're not an asshole.. are you?");
 		}
 		private function birthDickSex2(corrupt:Boolean = false):void {
 			//If Corruption is less than 50:
@@ -1084,7 +1086,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			menu();
 			addButton(0, "Calm Her", birthVagSex2);
 			addButton(1, "Use Her", birthVagSex2, true)
-				.disableIf(player.cor < 66 - player.corruptionTolerance, "You're not corrupted enough to use a pregnant ant-girl.");
+				.disableIf(player.cor < 33 - player.corruptionTolerance, "You're not corrupted enough to use a pregnant ant-girl.");
 		}
 
 		private function birthVagSex2(corrupt:Boolean = false):void {
@@ -1598,9 +1600,9 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 			menu();
 			addButton(0, "Help", helpHer);
 			addButton(1, "Watch", watch)
-				.disableIf(player.cor < 60 - player.corruptionTolerance, "You're not THAT corrupted.");
+				.disableIf(player.cor < 20 - player.corruptionTolerance, "You're not THAT corrupted.");
 
-			//PC has less than 75 corruption:
+			//PC has less than 20 corruption:
 			function helpHer():void {
 				outputText("\n\nQuickly kneeling at her bedside, taking one of her larger her hands in yours, you inform her that your children are ready to enter this world. They need their mother to concentrate and push.");
 				//If Phylla is Laying (her) Eggs while Drider eggs hatch:
@@ -1622,7 +1624,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				outputText("\n\nYour intimate moment with her is interrupted by the crackling and hatching of eggshells as your brood clamors for freedom.  Sighting their mother, they scurry up the bedspread and set up a pecking order for who will get the first go at Phylla's milk filled breasts.  The birthing complete, you kiss Phylla on the lips and thank her for hosting your young.  \"<i>Thank you for helping me achieve my purpose in life.  I know you have other things to do, but just know that... I love you.</i>\" She weakly replies.  You wink at her and nod before heading back up to the surface.");
 				doNext(camp.returnToCampUseOneHour);
 			}
-			//PC has more than 75 corruption:
+			//PC has more than 20 corruption:
 			function watch():void {
 				outputText("\n\nGood, you get to watch while your corrupted young are birthed out of this creature naive enough to submit to your desires.  Phylla's painful screams quickly turn into blissful moans as her instincts for sexual pleasure dull the irritating agony and take over her mind.  You barely register any of it as your thoughts turn to future instances of pinning Phylla down to her bedding - how her ass will wave enticingly in the air just before you penetrate her and plant as many eggs as you can muster inside of her, how she'll beg to be stuffed with your brood and howl like a depraved whore as your cargo fills her with your corrupted brood.");
 				outputText("\n\nThe first egg works its way out of Phylla's pussy as she hums in obvious sexual delight.  You lick your lips at the sight; you can barely contain the urge to mount her right now and impregnate her with more of your future children, imagining the look of content violation on her face as you do so.  But you manage to restrain yourself, opting instead to watch the show as egg after egg worms its way out.");
@@ -1649,7 +1651,8 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				}
 			}
 			flags[kFLAGS.PHYLLA_TIMES_DRIDER_EGG_LAYED]++;
-			flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] += 5 + rand(4);
+			flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] += 4 + rand(3);
+			if (flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] > (50 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))) flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] = (50 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]));
 		}
 
 //Mount Phylla:

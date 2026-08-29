@@ -67,7 +67,7 @@ public class Changelog extends BaseContent
 			outputText("-New Place: Demon Lair - Xuviel home where true succubus PC can visit. There are few possible interactions there: Talk, Sex, Font of corruption. Last option have two uses: either drink directly to get week long buff or use it to turn items into corrupted legendary items (all other req. like radiant shards or cost still apply (no discounts even for Xuviel 9th wife ;))).\n");
 			outputText("-Areas and Places with enemies to fight have their general levels and stats increased. Areas/Places adjusted (new lvl range of enemies): Lake (3-10), Boat (15-29), Forest (O)(8-16), Forest (I)(19-27), Deepwoods (32-52), Desert (O)(13-20), Desert (I)(25-39), Battlefield (B)(18-41), Battlefield (O)(36-65), Hills (23-30), Low Mountains (35-49), Mountains (54-74), High Mountains (79-104), ");
 			outputText("Plains (28-37), Swamp (33-43), Bog (48-64), Blight Ridge (38-56), Defiled Ravine (61-81), Beach (43-61), Ocean (O) (66-87), Caves (48-66), Tundra (53-73), Ashlands (58-78), Glacial Rift (78-106), Vulcanic Crag (83-111), HXD Soul Arena (15-69), Owca (34-38), Baazar (30)\n");
-			outputText("-15 new achievments. (13 shadow ones)\n");
+			outputText("-16 new achievments. (13 shadow ones)\n");
 			outputText("-Minerva and Izumi base level was increased and accordly their max lvl they can gain by leveling increased too to each reaching within 120-130 lvl range. Kitsune sisters can level up more until reaching lvl 67. Angry Dragon-Boi got his stat adjusted with no lvl changes.\n");
 			outputText("-Dungeon enemies have their general levels and stats adjusted/increased. Dungeons adjusted (new lvl range of enemies): River Dungeon (floor 1-4) (only stats adjustments), Desert Cave (14-24), Den of Desire (48-52), Phoenix Tower (80-89), Hidden Cave (only stats adjustments)\n");
 			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it; when going over lvl 200 they would gain champion enemy tag): Isabella (lvl 32-140), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change), Zenji ");
@@ -341,6 +341,8 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 sensitivity lvl-up perk: Vitakinesis. Req. Psionic Regeneration perk and 190+ sensitivity. Effect: You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)\n");
 			outputText("-New tier 14 speed lvl-up perk: Arrow of death. Req. Phantom Arrow perk. Effect: Each arrow deals 1% of the enemy total health per shot as additional damage.\n");
 			outputText("-New tier 9 sensitivity lvl-up perk: Vitakinesis (Ex). Req. Vitakinesis perk and 240+ sensitivity. Effect: Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.\n");
+			outputText("-Neisa affection now have some effect (finaly?) that makes her weekly payment lower by 1 spirit stone per 30% affection (up to 6 SS less at max affection). Also her loyalty/affection would be gained 2x faster then before.\n");
+			outputText("-Ant colony would be growing slight faster. Also how many ant/drider children colony queen Phylla can have is limited now by development stage of colony. At first it's limit of 250/50 children and each upgrade can increase it by anohter 250/50 up to 10k/2k. Added at Phylla main menu colony population stats.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -349,15 +351,13 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");//New tier 18 sensitivity lvl-up perk: . Req. Vitakinesis (Ex) perk and 465+ sensitivity. Effect: 
 			outputText("-\n");
-			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
-			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");
-			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
-			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
 			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
@@ -369,14 +369,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-\n");
+			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
+			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");
+			outputText("-\n");//New tier   lvl-up perk: . Req. . Effect: .
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier 18 sensitivity lvl-up perk: . Req. Vitakinesis (Ex) perk and 465+ sensitivity. Effect: 
+			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
+			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");

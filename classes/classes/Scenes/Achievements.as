@@ -101,7 +101,7 @@ public class Achievements extends BaseContent
 			addAchievement("Lesser God(ess)", kACHIEVEMENTS.LEVEL_MID_TIER_GOD_ESS_2, "Get to level 180.", "Get to level 180. (Private-tier god(ess)... wait what?)", true);
 			//lvl 210// (Your powers would have surpassed Marae's by now.)
 
-			titleAchievementSection("Population"); //21 achievements
+			titleAchievementSection("Population"); //22 achievements
 			addAchievement("My First Companion", kACHIEVEMENTS.POPULATION_FIRST, "Have a camp population of 2.");
 			addAchievement("Hamlet", kACHIEVEMENTS.POPULATION_HAMLET, "Have a camp population of 5.");
 			addAchievement("Village", kACHIEVEMENTS.POPULATION_VILLAGE, "Have a camp population of 10.");
@@ -123,6 +123,7 @@ public class Achievements extends BaseContent
 			addAchievement("Underground Large Megalopolis", kACHIEVEMENTS.UNDERGROUND_POPULATION_LARGE_MEGALOPOLIS, "Have an underground camp population of 2,500.", "", true);
 			addAchievement("Underground City-State", kACHIEVEMENTS.UNDERGROUND_POPULATION_CITY_STATE, "Have an underground camp population of 5,000.", "", true);
 			addAchievement("Underground Kingdom", kACHIEVEMENTS.UNDERGROUND_POPULATION_KINGDOM, "Have an underground camp population of 10,000.", "", true);
+			addAchievement("Holy Trinity", kACHIEVEMENTS.POPULATION_HOLY_TRINITY, "Have Celess, Impregnate Tyrantia and Nadia.");
 
 			titleAchievementSection("Time"); //9 achievements
 			addAchievement("It's been a month", kACHIEVEMENTS.TIME_MONTH, "Get to day 30.");

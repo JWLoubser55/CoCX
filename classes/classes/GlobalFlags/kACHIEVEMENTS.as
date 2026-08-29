@@ -484,7 +484,7 @@ package classes.GlobalFlags
 		public static const EPIC_BURIED_BENEATH_THE_SAND:int			= 440;
 		public static const EPIC_VECNA_WOULD_BE_PROUD:int				= 441;
 		public static const EPIC_GOBLIN_DEGRADUATION:int				= 442;
-		public static const UNKNOWN_ACHIEVEMENT_443:int					= 443;
+		public static const POPULATION_HOLY_TRINITY:int					= 443;
 		public static const UNKNOWN_ACHIEVEMENT_444:int					= 444;
 		public static const UNKNOWN_ACHIEVEMENT_445:int					= 445;
 		public static const UNKNOWN_ACHIEVEMENT_446:int					= 446;

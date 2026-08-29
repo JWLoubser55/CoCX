@@ -199,6 +199,7 @@ public class SaveUpdater extends NPCAwareContent {
 			["Underground Large Megalopolis", kACHIEVEMENTS.UNDERGROUND_POPULATION_LARGE_MEGALOPOLIS, camp.getCampUndergroundPopulation() >= 2500],
 			["Underground City-State", kACHIEVEMENTS.UNDERGROUND_POPULATION_CITY_STATE, camp.getCampUndergroundPopulation() >= 5000],
 			["Underground Kingdom", kACHIEVEMENTS.UNDERGROUND_POPULATION_KINGDOM, camp.getCampUndergroundPopulation() >= 10000],
+			["Holy Trinity", kACHIEVEMENTS.POPULATION_HOLY_TRINITY, (CelessScene.instance.isCompanion() && NadiaFollower.NadiaTotalKidsNum > 0 && (DriderTown.TyrantiaKidsEggs > 0 || DriderTown.TyrantiaKidsEggs1 > 0 || DriderTown.TyrantiaKidsEggs2 > 0))],
 			//Time
 			["It's been a month", kACHIEVEMENTS.TIME_MONTH, model.time.days >= 30],
 			["Quarter", kACHIEVEMENTS.TIME_QUARTER, model.time.days >= 90],
