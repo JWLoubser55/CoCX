@@ -101,7 +101,7 @@ public class Achievements extends BaseContent
 			addAchievement("Lesser God(ess)", kACHIEVEMENTS.LEVEL_MID_TIER_GOD_ESS_2, "Get to level 180.", "Get to level 180. (Private-tier god(ess)... wait what?)", true);
 			//lvl 210// (Your powers would have surpassed Marae's by now.)
 
-			titleAchievementSection("Population"); //22 achievements
+			titleAchievementSection("Population"); //25 achievements
 			addAchievement("My First Companion", kACHIEVEMENTS.POPULATION_FIRST, "Have a camp population of 2.");
 			addAchievement("Hamlet", kACHIEVEMENTS.POPULATION_HAMLET, "Have a camp population of 5.");
 			addAchievement("Village", kACHIEVEMENTS.POPULATION_VILLAGE, "Have a camp population of 10.");
@@ -124,6 +124,10 @@ public class Achievements extends BaseContent
 			addAchievement("Underground City-State", kACHIEVEMENTS.UNDERGROUND_POPULATION_CITY_STATE, "Have an underground camp population of 5,000.", "", true);
 			addAchievement("Underground Kingdom", kACHIEVEMENTS.UNDERGROUND_POPULATION_KINGDOM, "Have an underground camp population of 10,000.", "", true);
 			addAchievement("Holy Trinity", kACHIEVEMENTS.POPULATION_HOLY_TRINITY, "Have Celess, Impregnate Tyrantia and Nadia.");
+			//addAchievement("Mare's Holy Trinity", kACHIEVEMENTS.POPULATION_MARES_HOLY_TRINITY, "Impregnate Nadia, Diana and ???.");
+			addAchievement("Holy Mare", kACHIEVEMENTS.POPULATION_HOLY_MARE, "Have 3 foals with Nadia.");
+			addAchievement("Luna, Yipyipyip!", kACHIEVEMENTS.POPULATION_LUNA_YIPYIPYIP, "Have 3 pups with Luna.");
+			addAchievement("Bitches in line", kACHIEVEMENTS.POPULATION_BITCHES_IN_LINE, "Have a large wolf pack, with Luna.");
 
 			titleAchievementSection("Time"); //9 achievements
 			addAchievement("It's been a month", kACHIEVEMENTS.TIME_MONTH, "Get to day 30.");

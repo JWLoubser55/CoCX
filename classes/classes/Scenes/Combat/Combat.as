@@ -19440,7 +19440,7 @@ public function castPsychicBolt():void {
 	clearOutput();
 	fatigue(10, USEFATG_NORMAL);
 	outputText("You narrow your eyes, focusing your mind.  You point your hand toward [themonster] and shoot a psychic bolt!\n\n");
-	var damage:Number = scalingBonusSensitivity();// * spellMod() * 1.2
+	var damage:Number = scalingBonusSensitivity() * 3;
 	if (player.hasPerk(PerkLib.MindFungus)) {
 		damage += player.inte * 0.5;
 		damage += scalingBonusIntelligence() * 0.5;

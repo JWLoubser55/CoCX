@@ -485,13 +485,18 @@ package classes.GlobalFlags
 		public static const EPIC_VECNA_WOULD_BE_PROUD:int				= 441;
 		public static const EPIC_GOBLIN_DEGRADUATION:int				= 442;
 		public static const POPULATION_HOLY_TRINITY:int					= 443;
-		public static const UNKNOWN_ACHIEVEMENT_444:int					= 444;
-		public static const UNKNOWN_ACHIEVEMENT_445:int					= 445;
-		public static const UNKNOWN_ACHIEVEMENT_446:int					= 446;
-		public static const UNKNOWN_ACHIEVEMENT_447:int					= 447;
+		public static const POPULATION_MARES_HOLY_TRINITY:int			= 444;
+		public static const POPULATION_HOLY_MARE:int					= 445;
+		public static const POPULATION_LUNA_YIPYIPYIP:int				= 446;
+		public static const POPULATION_BITCHES_IN_LINE:int				= 447;
 		public static const UNKNOWN_ACHIEVEMENT_448:int					= 448;
 		public static const UNKNOWN_ACHIEVEMENT_449:int					= 449;
 		public static const UNKNOWN_ACHIEVEMENT_450:int					= 450;
+		public static const UNKNOWN_ACHIEVEMENT_451:int					= 451;
+		public static const UNKNOWN_ACHIEVEMENT_452:int					= 452;
+		public static const UNKNOWN_ACHIEVEMENT_453:int					= 453;
+		public static const UNKNOWN_ACHIEVEMENT_454:int					= 454;
+		public static const UNKNOWN_ACHIEVEMENT_455:int					= 455;
 		
 	}
 }

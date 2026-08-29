@@ -200,6 +200,11 @@ public class SaveUpdater extends NPCAwareContent {
 			["Underground City-State", kACHIEVEMENTS.UNDERGROUND_POPULATION_CITY_STATE, camp.getCampUndergroundPopulation() >= 5000],
 			["Underground Kingdom", kACHIEVEMENTS.UNDERGROUND_POPULATION_KINGDOM, camp.getCampUndergroundPopulation() >= 10000],
 			["Holy Trinity", kACHIEVEMENTS.POPULATION_HOLY_TRINITY, (CelessScene.instance.isCompanion() && NadiaFollower.NadiaTotalKidsNum > 0 && (DriderTown.TyrantiaKidsEggs > 0 || DriderTown.TyrantiaKidsEggs1 > 0 || DriderTown.TyrantiaKidsEggs2 > 0))],
+		//	["Mare's Holy Trinity", kACHIEVEMENTS.POPULATION_MARES_HOLY_TRINITY, (NadiaFollower.NadiaTotalKidsNum > 0 && Diana kids 1+, 3rd sister kids 1+)],
+			["Holy Mare", kACHIEVEMENTS.POPULATION_HOLY_MARE, NadiaFollower.NadiaTotalKidsNum > 2],
+			["Luna, Yipyipyip!", kACHIEVEMENTS.POPULATION_LUNA_YIPYIPYIP, LunaFollower.LunaTotalKidsNum > 2],
+			["Bitches in line", kACHIEVEMENTS.POPULATION_BITCHES_IN_LINE, (LunaFollower.WerewolfPackMember > 4 && flags[kFLAGS.LUNA_FOLLOWER] >= 4)],
+		//	["Village", kACHIEVEMENTS.POPULATION_VILLAGE, camp.getCampPopulation() >= 10],
 			//Time
 			["It's been a month", kACHIEVEMENTS.TIME_MONTH, model.time.days >= 30],
 			["Quarter", kACHIEVEMENTS.TIME_QUARTER, model.time.days >= 90],

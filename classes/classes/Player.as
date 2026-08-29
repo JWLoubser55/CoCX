@@ -3051,6 +3051,7 @@ use namespace CoC;
 			if (hasPerk(PerkLib.EpicDesensitization)) finalSens -= 0.15;
 			if (hasPerk(PerkLib.LegendaryDesensitization)) finalSens -= 0.2;
 			if (hasPerk(PerkLib.MythicalDesensitization)) finalSens -= 0.25;
+			if (hasPerk(PerkLib.SensoryOverloadAdaptation)) finalSens -= 0.1;
 			if (finalSens < 0.05) finalSens = 0.05;
 			baseSens = Math.round(baseSens * finalSens);
 			if (baseSens < mins.sens) baseSens = mins.sens;

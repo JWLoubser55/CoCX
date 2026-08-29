@@ -67,7 +67,7 @@ public class Changelog extends BaseContent
 			outputText("-New Place: Demon Lair - Xuviel home where true succubus PC can visit. There are few possible interactions there: Talk, Sex, Font of corruption. Last option have two uses: either drink directly to get week long buff or use it to turn items into corrupted legendary items (all other req. like radiant shards or cost still apply (no discounts even for Xuviel 9th wife ;))).\n");
 			outputText("-Areas and Places with enemies to fight have their general levels and stats increased. Areas/Places adjusted (new lvl range of enemies): Lake (3-10), Boat (15-29), Forest (O)(8-16), Forest (I)(19-27), Deepwoods (32-52), Desert (O)(13-20), Desert (I)(25-39), Battlefield (B)(18-41), Battlefield (O)(36-65), Hills (23-30), Low Mountains (35-49), Mountains (54-74), High Mountains (79-104), ");
 			outputText("Plains (28-37), Swamp (33-43), Bog (48-64), Blight Ridge (38-56), Defiled Ravine (61-81), Beach (43-61), Ocean (O) (66-87), Caves (48-66), Tundra (53-73), Ashlands (58-78), Glacial Rift (78-106), Vulcanic Crag (83-111), HXD Soul Arena (15-69), Owca (34-38), Baazar (30)\n");
-			outputText("-16 new achievments. (13 shadow ones)\n");
+			outputText("-19 new achievments. (13 shadow ones)\n");
 			outputText("-Minerva and Izumi base level was increased and accordly their max lvl they can gain by leveling increased too to each reaching within 120-130 lvl range. Kitsune sisters can level up more until reaching lvl 67. Angry Dragon-Boi got his stat adjusted with no lvl changes.\n");
 			outputText("-Dungeon enemies have their general levels and stats adjusted/increased. Dungeons adjusted (new lvl range of enemies): River Dungeon (floor 1-4) (only stats adjustments), Desert Cave (14-24), Den of Desire (48-52), Phoenix Tower (80-89), Hidden Cave (only stats adjustments)\n");
 			outputText("-Due to new general levels and stats for enemies sparrable npc's in camp can reach new height of power (also any npc that go over lvl 100 will gain elite enemy tag, some that had before boss tag would loose it; when going over lvl 200 they would gain champion enemy tag): Isabella (lvl 32-140), Helia (adjusted to lvl 36), Helspawn (just stat adjusting with no lvl change), Zenji ");
@@ -330,9 +330,9 @@ public class Changelog extends BaseContent
 			outputText("-New tier 9 strength lvl-up perk: Focusing Grip. Req. Prestige Job: Dreadnought and Hold With Both Hands perks. Effect: When holding your weapon with all of your hands power attack base critical chance is increased by 10% and generated wrath is doubled.\n");
 			outputText("-New tier 1 sensitivity lvl-up perk: Psionic Curing. Req. Job: Esper perk and 40+ sensitivity. Effect: You can use your mental power to cure your body. (60% fatigue > 30% hp)\n");
 			outputText("-New tier 10 strength lvl-up perk: Yatagan Slash. Req. Prestige Job: Dreadnought perk. Effect: From now on when using Power attack while holding your weapon with all of your hands the resulting strike also counts as whirlwind attacks dealing heavy damage to grouped opponents and benefiting from every upgrade that affects whirlwind attacks.\n");
-			outputText("-Sixth Sense perk req. sens was increased from 25+ to 40+.\n");
+			outputText("-Sixth Sense perk req. sens was lowered from 25+ to 20+ and moved to lower tier (1 > 0).\n");
 			outputText("-New tier 11 strength lvl-up perk: Behemoth blade. Req. Yatagan Slash perk. Effect: Power attack and whirlwind attack now also deals increased damage to larger targets such as creatures with the giant type.\n");
-			outputText("-New tier 2 sensitivity lvl-up perk: Dense Protagonist. Req. Sixth Sense, Desensitization perks and 65+ sensitivity. Effect: The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Dense Protagonist. Req. Sensory overload adaptation, Desensitization perks and 65+ sensitivity. Effect: The more dense you're the higher psychic resistance you have. (100% - Effective Sensitivity is added to psionic resistance)\n");
 			outputText("-New tier 12 strength lvl-up perk: Vital Strike. Req. Behemoth blade perk. Effect: Heals you for four times the amount of wrath consumed when using wrath ability.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Psionic Mending. Req. Psionic Curing perk and 90+ sensitivity. Effect: You can use your mental power to cure your body. (20%/40% fatigue > 20%/40% hp)\n");
 			outputText("-New tier 13 strength lvl-up perk: Yatagan Vortex. Req. Vital Strike perk. Effect: Yatagan slash becomes Yatagan Vortex allowing you to now strike four times. For each successful critical hit from Yatagan Vortex you gain doubled damage on the next Yatagan Vortex strike. This bonus stacks upon itself lasting for up to two rounds if not refreshed by itself.\n");
@@ -341,8 +341,11 @@ public class Changelog extends BaseContent
 			outputText("-New tier 7 sensitivity lvl-up perk: Vitakinesis. Req. Psionic Regeneration perk and 190+ sensitivity. Effect: You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)\n");
 			outputText("-New tier 14 speed lvl-up perk: Arrow of death. Req. Phantom Arrow perk. Effect: Each arrow deals 1% of the enemy total health per shot as additional damage.\n");
 			outputText("-New tier 9 sensitivity lvl-up perk: Vitakinesis (Ex). Req. Vitakinesis perk and 240+ sensitivity. Effect: Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.\n");
-			outputText("-Neisa affection now have some effect (finaly?) that makes her weekly payment lower by 1 spirit stone per 30% affection (up to 6 SS less at max affection). Also her loyalty/affection would be gained 2x faster then before.\n");
+			outputText("-Neisa affection now have some effect (finaly?) that makes her weekly payment lower by 1 spirit stone per 25% affection (up to 6 SS less at max affection). Also her loyalty/affection would be gained 2x faster then before.\n");
 			outputText("-Ant colony would be growing slight faster. Also how many ant/drider children colony queen Phylla can have is limited now by development stage of colony. At first it's limit of 250/50 children and each upgrade can increase it by anohter 250/50 up to 10k/2k. Added at Phylla main menu colony population stats.\n");
+			outputText("-Small additions to Luna (and dominated werewolfs). PC can now visit Luna pups and/or dominated werewolfs.\n");///their pups. At night could even have bit of fun with whole werewolf pack
+			outputText("-New tier 1 sensitivity lvl-up perk: Sensory overload adaptation. Req. Job: Psychic perk and 40+ sens. Effect: Your senses adapted to overload caused by your mental power awakening. (+200 sens)(decreasing negative effects of sensitivity by 10%)\n");
+			outputText("-Desensitization line perks now have additional effect of adding 50/100/150/200/250 sens. Epic/Legendary/Mythical Sensitivity now grants more sens: 300/600/900.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
@@ -351,23 +354,20 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity I. Req. Job: Psychic perk and 60+ sens. Effect: Increase sens by 100.
+			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity II. Req. Hypersensitivity I perk, NG1+ and 80+ sens. Effect: Increase sens by 100.
+			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, NG2+ and 100+ sens. Effect: Increase sens by 100.
+			outputText("-\n");//New tier  sensitivity lvl-up perk: Power Overwhelming. Req. . Effect: .each 100 sens giving +1x psychic attacks dmg multi (+1000 sens)
+			outputText("-\n");//New tier  sensitivity lvl-up perk: . Req. . Effect: .
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
-			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
-			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
-			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
-			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell)
-			outputText("-\n");// (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (DallagenXYZ) (klorpa) (Akaku-Keninari)
 			outputText("-\n");
-			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
-			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
 			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
@@ -378,14 +378,14 @@ public class Changelog extends BaseContent
 			outputText("-\n");//New tier ? wisdom lvl-up perk: ???. Req. ??? perk and ???+ wisdom. Effect: 
 			outputText("-\n");//New tier ? sensitivity lvl-up perk: Domain Kineses. Req. ?Quasi Domain Kineses? perk and ???+ sensitivity. Effect: ??? aura effects like psychic aura dealing specific elemetal damage ^^ ???
 			outputText("-\n");
+			outputText("-\n");//Motivation (Su) now req. additionally Advanced Leadership perk
+			outputText("-\n");//New range weapon (by Liadri):  - buyable at Tripxi shop in Tel'Adre after PC find and bring back it parts from  area. Cost xx0 gems. Base atk is xx and ammo clip size x.
+			outputText("-\n");// (Liadri) (aimozg) (Canadian Snas) (Jtecx) (Lord Shadeogorath) (Furrin Gok) (khovel) (Chibizs) (DigitalKitsune) (Svalkash) (Agentfunfun)
+			outputText("-\n");// (NUZ/Shirane) (Stadler) (jfmherokiller) (EragonX) (Xetaxheb) (Demojay) (GatoGrande) (Edward Darksong) (Imperfect Spell)
+			outputText("-\n");// (PhillipDaisySeventh) (Cangsz) (MaRG)(formely know as Mister GRaM) (DallagenXYZ) (klorpa) (Akaku-Keninari)
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
+			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
+			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");

@@ -1111,6 +1111,27 @@ public class PerkLib
 		public static const ArrowOfDeath:PerkType = mk("Arrow of death", "Arrow of death",
 				"Each arrow deals 1% of the enemy total health per shot as additional damage.",
 				"You've chosen the 'Arrow of death' perk. Each arrow deals 1% of the enemy total health per shot as additional damage.");
+		public static const HypersensitivityI:PerkType = mk("Hypersensitivity I", "Hypersensitivity I",
+				".",
+				"You've chosen the 'Hypersensitivity I' perk.").withBuffs({'sens':100});
+		public static const HypersensitivityII:PerkType = mk("Hypersensitivity II", "Hypersensitivity II",
+				".",
+				"You've chosen the 'Hypersensitivity II' perk.").withBuffs({'sens':100});
+		public static const HypersensitivityIII:PerkType = mk("Hypersensitivity III", "Hypersensitivity III",
+				".",
+				"You've chosen the 'Hypersensitivity III' perk.").withBuffs({'sens':100});
+		public static const HypersensitivityIV:PerkType = mk("Hypersensitivity IV", "Hypersensitivity IV",
+				".",
+				"You've chosen the 'Hypersensitivity IV' perk.").withBuffs({'sens':100});
+		public static const HypersensitivityV:PerkType = mk("Hypersensitivity VI", "Hypersensitivity VI",
+				".",
+				"You've chosen the 'Hypersensitivity V' perk.").withBuffs({'sens':100});
+		public static const HypersensitivityVI:PerkType = mk("Hypersensitivity VI", "Hypersensitivity VI",
+				".",
+				"You've chosen the 'Hypersensitivity VI' perk.").withBuffs({'sens':100});
+		public static const SensoryOverloadAdaptation:PerkType = mk("Sensory overload adaptation", "Sensory overload adaptation",
+				"Your senses adapted to overload caused by your mental power awakening. (decreasing negative effects of sensitivity by 10%)",
+				"You've chosen the 'Sensory overload adaptation' perk. Your senses adapted to overload caused by your mental power awakening. (decreasing negative effects of sensitivity by 10%)").withBuffs({'sens':200});
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1128,12 +1149,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -1771,7 +1786,7 @@ public class PerkLib
 				.withBuffs({'maxlust_mult':+0.05});
 		public static const Desensitization:PerkType = mk("Desensitization", "Desensitization",
 				"Negative effects of sensitivity are reduced by 5%.",
-				"You've chosen the 'Desensitization' perk, decreasing negative effects of sensitivity by 5%.");
+				"You've chosen the 'Desensitization' perk, decreasing negative effects of sensitivity by 5%.").withBuffs({'sens':50});
 		public static const DevastatingCharge:PerkType = mk("Devastating charge", "Devastating charge",
 				"When using the charge action you have a 20% chance to stun the opponent for a round. Charge is 50% more powerful.",
 				"You've chosen the 'Devastating charge' perk. When using the charge action, you have a 20% chance to stun the opponent for a round. Charge is 50% more powerful.");
@@ -1939,7 +1954,7 @@ public class PerkLib
 				"You've chosen the 'Epic Brute' perk, improving your striking strength to epic level. (+80% of max core Str as phantom Str, +20% melee physical attacks multiplier)");
 		public static const EpicDesensitization:PerkType = mk("Epic Desensitization", "Epic Desensitization",
 				"Negative effects of sensitivity are reduced by 15%.",
-				"You've chosen the 'Epic Desensitization' perk, decreasing negative effects of sensitivity by 15%.");
+				"You've chosen the 'Epic Desensitization' perk, decreasing negative effects of sensitivity by 15%.").withBuffs({'sens':150});
 		public static const EpicDiehard:PerkType = mk("Epic Diehard", "Epic Diehard",
 				"You can't lose by HP until your health drops into the negatives any more than 8% of max HP + 2400(scalable). HP limit cumulative with other Diehard perks and when below 0 HP will not longer loose 1% of max HP per turn.",
 				"You've chosen the 'Epic Diehard' perk, getting third upgrade of Diehard effect.");
@@ -1971,7 +1986,7 @@ public class PerkLib
 				.withBuffs({'maxlust_base':+6750});
 		public static const EpicSensitivity:PerkType = mk("Epic Sensitivity", "Epic Sensitivity",
 				"",
-				"You've chosen the 'Epic Sensitivity' perk.").withBuffs({'sens':140});
+				"You've chosen the 'Epic Sensitivity' perk.").withBuffs({'sens':300});
 		public static const EpicSpeed:PerkType = mk("Epic Speed", "Epic Speed",
 				"",
 				"You've chosen the 'Epic Speed' perk.").withBuffs({'spe.mult':0.35});
@@ -2277,7 +2292,7 @@ public class PerkLib
 				"You've chosen the 'Cursed Tag' perk. You benefit from all undead powers at all times.");
 		public static const GreaterDesensitization:PerkType = mk("Greater Desensitization", "Greater Desensitization",
 				"Negative effects of sensitivity are reduced by 10%.",
-				"You've chosen the 'Greater Desensitization' perk, decreasing negative effects of sensitivity by 10%.");
+				"You've chosen the 'Greater Desensitization' perk, decreasing negative effects of sensitivity by 10%.").withBuffs({'sens':100});
 		public static const GreaterDiehard:PerkType = mk("Greater Diehard", "Greater Diehard",
 				"You can't lose by HP until your health drops into the negatives any more than 6% of max HP + 1800(scalable). HP limit cumulative with other Diehard perks.",
 				"You've chosen the 'Greater Diehard' perk, getting second increase to limit of maintaining Diehard effects.");
@@ -2730,7 +2745,7 @@ public class PerkLib
 				"You've chosen the 'Legendary Brute' perk, improving your striking strength to epic level. (+100% of max core Str as phantom Str, +25% melee physical attacks multiplier)");
 		public static const LegendaryDesensitization:PerkType = mk("Legendary Desensitization", "Legendary Desensitization",
 				"Negative effects of sensitivity are reduced by 20%.",
-				"You've chosen the 'Legendary Desensitization' perk, decreasing negative effects of sensitivity by 20%.");
+				"You've chosen the 'Legendary Desensitization' perk, decreasing negative effects of sensitivity by 20%.").withBuffs({'sens':200});
 		public static const LegendaryEndurance:PerkType = mk("Legendary Endurance", "Legendary Endurance",
 				"Increases maximum fatigue by 10000.",
 				"You've chosen the 'Legendary Endurance' perk. Thanks to your legendary physical conditioning, your maximum fatigue has been increased by 10000!")
@@ -2765,7 +2780,7 @@ public class PerkLib
 				.withBuffs({'maxlust_base':+15000});
 		public static const LegendarySensitivity:PerkType = mk("Legendary Sensitivity", "Legendary Sensitivity",
 				"",
-				"You've chosen the 'Legendary Sensitivity' perk.").withBuffs({'sens':200});
+				"You've chosen the 'Legendary Sensitivity' perk.").withBuffs({'sens':600});
 		public static const LegendarySpeed:PerkType = mk("Legendary Speed", "Legendary Speed",
 				"",
 				"You've chosen the 'Legendary Speed' perk.").withBuffs({'spe.mult':0.50});
@@ -3052,7 +3067,7 @@ public class PerkLib
 				"You've chosen the 'Mythical Brute' perk, improving your striking strength to epic level. (+120% of max core Str as phantom Str, +30% melee physical attacks multiplier)");
 		public static const MythicalDesensitization:PerkType = mk("Mythical Desensitization", "Mythical Desensitization",
 				"Negative effects of sensitivity are reduced by 25%.",
-				"You've chosen the 'Mythical Desensitization' perk, decreasing negative effects of sensitivity by 25%.");
+				"You've chosen the 'Mythical Desensitization' perk, decreasing negative effects of sensitivity by 25%.").withBuffs({'sens':250});
 		public static const MythicalEndurance:PerkType = mk("Mythical Endurance", "Mythical Endurance",
 				"Increases maximum fatigue by 20000.",
 				"You've chosen the 'Mythical Endurance' perk. Thanks to your mythical physical conditioning, your maximum fatigue has been increased by 20000!")
@@ -3069,7 +3084,7 @@ public class PerkLib
 				.withBuffs({'maxlust_base':+30000});
 		public static const MythicalSensitivity:PerkType = mk("Mythical Sensitivity", "Mythical Sensitivity",
 				"",
-				"You've chosen the 'Mythical Sensitivity' perk.").withBuffs({'sens':260});
+				"You've chosen the 'Mythical Sensitivity' perk.").withBuffs({'sens':900});
 		public static const MythicalSpeed:PerkType = mk("Mythical Speed", "Mythical Speed",
 				"",
 				"You've chosen the 'Mythical Speed' perk.").withBuffs({'spe.mult':0.65});
@@ -8272,13 +8287,14 @@ public class PerkLib
             //Slot 6 - Tier 0
             EyesOfTheHunterNovice.requireSen(25);
             Desensitization.requireSen(10);
-			//.requireMinSens(25);
             JobEsper.requireSen(10);
+            SixthSense.requireSen(20)
+                    .requirePerk(JobEsper);
             //Tier 1 Sensitivity Perks
             PsionicCuring.requireSen(25)
                     .requirePerk(JobEsper)
                     .requireLevel(6);
-            SixthSense.requireSen(40)
+			SensoryOverloadAdaptation.requireSen(40)
                     .requirePerk(JobEsper)
                     .requireLevel(6);
             EyesOfTheHunterAdept.requireSen(50)
@@ -8289,7 +8305,7 @@ public class PerkLib
                     .requirePerk(PsionicCuring)
                     .requireLevel(12);
             DenseProtagonist.requireSen(65)
-                    .requirePerks(SixthSense, Desensitization)
+                    .requirePerks(SensoryOverloadAdaptation, Desensitization)
                     .requireLevel(12);
             JobPsychic.requireSen(50)
                     .requireAdvancedJobSlot()
@@ -8301,6 +8317,17 @@ public class PerkLib
             Hydrokinesis.requireSen(60)
                     .requirePerk(JobPsychic)
                     .requireLevel(12);
+            //HypersensitivityI.requireSen(60)
+            //        .requirePerk(JobPsychic)
+            //        .requireLevel(12);
+            //HypersensitivityII.requireSen(80)
+            //        .requirePerk(HypersensitivityI)
+            //        .requireLevel(14)
+            //        .requireNGPlus(1);
+            //HypersensitivityIII.requireSen(100)
+            //        .requirePerk(HypersensitivityII)
+            //        .requireLevel(16)
+            //        .requireNGPlus(2);
             EyesOfTheHunterExpert.requireSen(75)
                     .requirePerk(EyesOfTheHunterAdept)
                     .requireLevel(12);
@@ -8327,6 +8354,9 @@ public class PerkLib
             TelekineticGrapple.requireSen(100)
                     .requirePerk(PsychicBolt)
                     .requireLevel(24);
+			//.requireSen(1??)
+			//		.requirePerk()
+			//		.requireLevel(24);
             Electrokinesis.requireSen(110)
                     .requirePerk(JobPsychic)
                     .requireLevel(24);
@@ -8340,6 +8370,9 @@ public class PerkLib
                     .requirePerk(EyesOfTheHunterMaster)
                     .requireLevel(24);
             //Tier 5 Sensitivity Perks
+			//.requireSen(125)
+			//		.requirePerk(TelekineticGrapple)
+			//		.requireLevel(30);
             PsionicRegeneration.requireSen(140)
                     .requirePerk(PsionicMending)
                     .requireLevel(30);
@@ -8359,9 +8392,9 @@ public class PerkLib
                     .requirePerk(Desensitization)
                     .requireLevel(30);
             //Tier 6 Sensitivity Perks
-            //esper perk
-			//
-			//
+            //.requireSen(150)		esper perk - progress from Psychic Barrier
+			//		.requirePerk()
+			//		.requireLevel(36);
 			Ionikinesis.requireSen(160)
                     .requirePerks(Pyrokinesis, Electrokinesis)
                     .requireLevel(36);
