@@ -19440,6 +19440,7 @@ public function deactivatePsychoBarrier():void {
 }
 public function costOfPsychoBarrier():Number {
 	var PBCost:Number = 20;
+	if (player.hasPerk(PerkLib.PsychicShield)) PBCost += 40;
 	PBCost *= psionicAttacksCostDecrease();
 	return PBCost;
 }

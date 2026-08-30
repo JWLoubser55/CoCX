@@ -179,7 +179,7 @@ private function talkToEtnaDaughter():void {
 
 		function keepFishy():void {
 			outputText("Sure but she has to take care of it so it does not starve or leave smelly stuff around the camp.[pg]");
-			outputText("“Don’t worry "+championRef()+", I can handle it!”\n");
+			outputText("“<i>Don’t worry "+championRef()+", I can handle it!</i>”\n");
 			doNext(camp.returnToCampUseOneHour);
 		}
 		function freeFishy():void {

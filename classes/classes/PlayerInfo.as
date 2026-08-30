@@ -2701,13 +2701,13 @@ public class PlayerInfo extends BaseContent {
 		}
 		else {
 			if (player.hasPerk(PerkLib.SPSurvivalTrainingX)) addButtonDisabled(0, "SP:ST(R1)", "You already have this perk.");
-			else addButtonDisabled(0, "SP:ST(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(0, "SP:ST(R1)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPSurvivalTrainingX) && player.perkv1(PerkLib.SPSurvivalTrainingX) >= 2) addButtonDisabled(1, "SP:ST(R2)", "You already have this perk.");
-			else addButtonDisabled(1, "SP:ST(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(1, "SP:ST(R2)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPSurvivalTrainingX) && player.perkv1(PerkLib.SPSurvivalTrainingX) >= 3) addButtonDisabled(2, "SP:ST(R3)", "You already have this perk.");
-			else addButtonDisabled(2, "SP:ST(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(2, "SP:ST(R3)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPSurvivalTrainingX) && player.perkv1(PerkLib.SPSurvivalTrainingX) >= 4) addButtonDisabled(3, "SP:ST(R4)", "You already have this perk.");
-			else addButtonDisabled(3, "SP:ST(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(3, "SP:ST(R4)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPSurvivalTrainingX) && player.perkv1(PerkLib.SPSurvivalTrainingX) >= 5) addButtonDisabled(4, "SP:ST(R5)", "You already have this perk.");
 			else addButtonDisabled(4, "SP:ST(R5)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPSurvivalTrainingX) && player.perkv1(PerkLib.SPSurvivalTrainingX) >= 6) addButtonDisabled(5, "SP:ST(R6)", "You already have this perk.");
@@ -2773,13 +2773,13 @@ public class PlayerInfo extends BaseContent {
 		}
 		else {
 			if (player.hasPerk(PerkLib.SPMysticalTrainingX)) addButtonDisabled(0, "SP:MyT(R1)", "You already have this perk.");
-			else addButtonDisabled(0, "SP:MyT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(0, "SP:MyT(R1)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 2) addButtonDisabled(1, "SP:MyT(R2)", "You already have this perk.");
-			else addButtonDisabled(1, "SP:MyT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(1, "SP:MyT(R2)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 3) addButtonDisabled(2, "SP:MyT(R3)", "You already have this perk.");
-			else addButtonDisabled(2, "SP:MyT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(2, "SP:MyT(R3)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 4) addButtonDisabled(3, "SP:MyT(R4)", "You already have this perk.");
-			else addButtonDisabled(3, "SP:MyT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(3, "SP:MyT(R4)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 5) addButtonDisabled(4, "SP:MyT(R5)", "You already have this perk.");
 			else addButtonDisabled(4, "SP:MyT(R5)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMysticalTrainingX) && player.perkv1(PerkLib.SPMysticalTrainingX) >= 6) addButtonDisabled(5, "SP:MyT(R6)", "You already have this perk.");
@@ -2845,13 +2845,13 @@ public class PlayerInfo extends BaseContent {
 		}
 		else {
 			if (player.hasPerk(PerkLib.SPMagicalTrainingX)) addButtonDisabled(0, "SP:MaT(R1)", "You already have this perk.");
-			else addButtonDisabled(0, "SP:MaT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(0, "SP:MaT(R1)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 2) addButtonDisabled(1, "SP:MaT(R2)", "You already have this perk.");
-			else addButtonDisabled(1, "SP:MaT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(1, "SP:MaT(R2)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 3) addButtonDisabled(2, "SP:MaT(R3)", "You already have this perk.");
-			else addButtonDisabled(2, "SP:MaT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(2, "SP:MaT(R3)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 4) addButtonDisabled(3, "SP:MaT(R4)", "You already have this perk.");
-			else addButtonDisabled(3, "SP:MaT(R5)", "You do not have enough super perk points to obtain this perk.");
+			else addButtonDisabled(3, "SP:MaT(R4)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 5) addButtonDisabled(4, "SP:MaT(R5)", "You already have this perk.");
 			else addButtonDisabled(4, "SP:MaT(R5)", "You do not have enough super perk points to obtain this perk.");
 			if (player.hasPerk(PerkLib.SPMagicalTrainingX) && player.perkv1(PerkLib.SPMagicalTrainingX) >= 6) addButtonDisabled(5, "SP:MaT(R6)", "You already have this perk.");

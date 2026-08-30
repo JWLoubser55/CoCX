@@ -846,7 +846,9 @@ use namespace CoC;
 			}
 			if (buff("SoftIronIgnotPhysicalDefenseBuff").isPresent()) armorDef *= 1.15;
 			if (buff("EbonbloomAlloyIngotPhysicalAndMagicDefenseBuff").isPresent()) armorDef *= 1.25;
-			if (buff("PsychoBarrier").isPresent()) armorDef *= 1.1;
+			if (buff("PsychoBarrier").isPresent()) {
+				armorDef *= 1.1;
+			}
 			armorDef = Math.round(armorDef);
 			//Berzerking removes armor
 			if (hasStatusEffect(StatusEffects.Berzerking) && !hasPerk(PerkLib.ColdFury)) armorDef = 0;
@@ -1102,7 +1104,9 @@ use namespace CoC;
 			}
 			if (buff("LightBronzeBarMagicDefenseAndPoisonResistanceBuff").isPresent()) armorMDef *= 1.15;
 			if (buff("EbonbloomAlloyIngotPhysicalAndMagicDefenseBuff").isPresent()) armorMDef *= 1.25;
-			if (buff("PsychoBarrier").isPresent()) armorMDef *= 1.1;
+			if (buff("PsychoBarrier").isPresent()) {
+				armorMDef *= 1.1;
+			}
 			armorMDef = Math.round(armorMDef);
 			if (hasPerk(PerkLib.MiracleMetal)) armorMDef += Math.round((armorDef - armor.def - upperGarment.armorDef - lowerGarment.armorDef) * 0.35);
 			//Berzerking/Lustzerking removes magic resistance
@@ -4805,6 +4809,7 @@ use namespace CoC;
 				if (hasPerk(PerkLib.LegendaryDesensitization)) mult -= 20;
 				if (hasPerk(PerkLib.MythicalDesensitization)) mult -= 25;
 			}
+			if (hasPerk(PerkLib.PsychicShield) && buff("PsychoBarrier").isPresent()) mult -= 40;
 			//mult -= resEarthStat.value;
 			//Caps damage reduction at 100%
 			if (mult < 0) {
@@ -9385,4 +9390,4 @@ use namespace CoC;
 		}
 		
 	}
-}
+}

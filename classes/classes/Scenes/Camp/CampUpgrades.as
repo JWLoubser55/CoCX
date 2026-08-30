@@ -115,7 +115,9 @@ public class CampUpgrades extends BaseContent {
     CAMP_CABIN_CONCRETE_RESOURCES
     */
     public function buildmisc1Menu():void {
-        menu();
+        clearOutput();
+		outputText("What you want to construct today?");
+		menu();
         if (flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] == 1 || flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] == 2) addButton(0, "Wood Storage", materialgatheringstorageupgrade).hint("Build storage to gather more wood at the camp. (Req. "+usedFatigue(150, true)+" fatigue)");
         if (flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] == 3) addButton(0, "Stone Storage", materialgatheringstorageupgrade).hint("Build storage to gather more stones at the camp. (Req. "+usedFatigue(150, true)+" fatigue)");
         if (flags[kFLAGS.MATERIALS_STORAGE_UPGRADES] == 4) addButton(0, "Nails Storage", materialgatheringstorageupgrade).hint("Build storage to gather more nails at the camp. (Req. "+usedFatigue(150, true)+" fatigue)");
@@ -286,7 +288,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doWoodStorageWork, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -308,7 +310,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doStoneStorageWork, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -332,7 +334,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doNailsStorageWork, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -372,7 +374,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doWarehouse1Work, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -401,7 +403,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doWarehouse2Work, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
     
@@ -429,7 +431,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doGranary1Work, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -450,7 +452,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doGranary2Work, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -473,7 +475,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doWarehouse1Work, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -502,7 +504,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildStructure, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -524,7 +526,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildAltar, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -564,7 +566,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doDigAPoolWork, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -586,7 +588,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doAddAWoodenWallsWork, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -619,7 +621,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildSmallRing, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -640,7 +642,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildLargeRing, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -661,7 +663,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildMassiveRing, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -682,7 +684,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildRingWoodFloor, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -703,7 +705,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(doBuildRingStoneFloor, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -727,7 +729,7 @@ public class CampUpgrades extends BaseContent {
                 buildArcaneCircle(flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE] + 1);
             else {
                 outputText("You lack the proper knowledge and skill to work on the new ritual circle!");
-                doNext(playerMenu);
+                doNext(buildmisc1Menu);
             }
         } else {
             outputText("You are too exhausted to work on the new ritual circle!");
@@ -745,7 +747,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(curry(doBuildArcaneCircle, newTier), noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -777,11 +779,11 @@ public class CampUpgrades extends BaseContent {
                     && player.statusEffectv3(StatusEffects.ElementalEnergyConduits) % 2 > 0;
                 if (currentTier + 1 > flags[kFLAGS.CAMP_UPGRADES_ARCANE_CIRCLE]) {
                     outputText("You lack the " + NUMBER_WORDS_POSITIONAL[currentTier + 1] + " ritual circle!");
-                    doNext(playerMenu);
+                    doNext(buildmisc1Menu);
                 } else buildOrUpgradeElementalEnergyConduit(currentTier, upgrade);
             } else {
                 outputText("You can't add a new elemental energy conduit! (This is because all arcane circles already have them, or you have reached the maximum number of conduits.)");
-                doNext(playerMenu);
+                doNext(buildmisc1Menu);
             }
         } else {
             outputText("You are too exhausted to work on the ritual circle elemental energy conduits!");
@@ -798,7 +800,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(curry(upgrade ? doUpgradeElementalEnergyConduit : doBuildElementalEnergyConduit, currentTier), noThanks);
         else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -860,7 +862,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(setUpMagicWard2, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -901,7 +903,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(buildUpMinorWoodDam2, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -924,7 +926,7 @@ public class CampUpgrades extends BaseContent {
         else
         {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 	
@@ -947,7 +949,7 @@ public class CampUpgrades extends BaseContent {
         else
         {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
     private function buildUpMajorWoodDam2():void {
@@ -971,7 +973,7 @@ public class CampUpgrades extends BaseContent {
                 if (flags[kFLAGS.CAMP_UPGRADES_DAM] >= 2) buildUpFishery2();
                 else {
                     outputText("You need to expand your dam more before you can expand your fishery!");
-                    doNext(playerMenu);
+                    doNext(buildmisc1Menu);
                 }
             }
             //3 stopień rozbudowy na 5 stopniu tamy (2 st. kamiennej tamy) a 4 stopień na 7 stopniu tamy (4 st. kamiennej)
@@ -988,7 +990,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(buildUpFishery1Yes, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 
@@ -1009,7 +1011,7 @@ public class CampUpgrades extends BaseContent {
             doYesNo(buildUpFishery2Yes, noThanks);
         } else {
             errorNotEnough();
-            doNext(playerMenu);
+            doNext(buildmisc1Menu);
         }
     }
 

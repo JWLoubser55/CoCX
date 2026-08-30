@@ -401,6 +401,7 @@ public class Creature extends Utils
 		public var maxFatigueBaseStat: BuffableStat;
 		public var maxFatiguePerLevelStat: BuffableStat;
 		public var maxFatiguePerSpeStat: BuffableStat;
+		public var maxFatiguePerSenStat: BuffableStat;
 		public var maxFatigueMultStat: BuffableStat;
 		public var maxManaBaseStat: BuffableStat;
 		public var maxManaPerLevelStat: BuffableStat;
@@ -1673,6 +1674,7 @@ public class Creature extends Utils
 			maxFatigueBaseStat = new BuffableStat(this, 'maxfatigue_base', {base:150});
 			maxFatiguePerLevelStat = new BuffableStat(this, 'maxfatigue_perlevel', {base:5});
 			maxFatiguePerSpeStat = new BuffableStat(this, 'maxfatigue_perspe', {base:0});
+			maxFatiguePerSenStat = new BuffableStat(this, 'maxfatigue_persen', {base:0});
 			maxFatigueMultStat = new BuffableStat(this, 'maxfatigue_mult', {base:1});
 			maxManaBaseStat = new BuffableStat(this, 'maxmana_base', {base:300});
 			maxManaPerLevelStat = new BuffableStat(this, 'maxmana_perlevel', {base:10});
@@ -1737,6 +1739,7 @@ public class Creature extends Utils
 				maxFatigueBaseStat,
 				maxFatiguePerLevelStat,
 				maxFatiguePerSpeStat,
+				maxFatiguePerSenStat,
 				maxFatigueMultStat,
 				maxManaBaseStat,
 				maxManaPerLevelStat,

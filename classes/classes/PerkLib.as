@@ -702,8 +702,8 @@ public class PerkLib
 				"Enable the use of Psychic Bolt. (scales off Sensitivity)",
 				"You've chosen the 'Psychic Bolt' perk. Enable the use of Psychic Bolt. (scales off Sensitivity)");
 		public static const TelekineticGrapple:PerkType = mk("Telekinetic Grapple", "Telekinetic Grapple",
-				"Enable the use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).",
-				"You've chosen the 'Telekinetic Grapple' perk. Enable the use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).");
+				"Enable use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).",
+				"You've chosen the 'Telekinetic Grapple' perk. Enable use of Telekinetic Grab (with 2 turns shorter than normal cooldown and 50% less fatigue needed).");
 		public static const Pyrokinesis:PerkType = mk("Pyrokinesis", "Pyrokinesis",
 				"As psychic you have gained ability to manipulate or control fire.",
 				"You've chosen the 'Pyrokinesis' perk. As psychic you have gained ability to manipulate or control fire.");
@@ -1103,8 +1103,8 @@ public class PerkLib
 				"You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)",
 				"You've chosen the 'Vitakinesis' perk. You can use vitakinesis to cure your body. (5%/10%/15%/20%/25%/30% > 15%/30%/45%/60%/75%/90%)");
 		public static const VitakinesisEx:PerkType = mk("Vitakinesis (Ex)", "Vitakinesis (Ex)",
-				"Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.",
-				"You've chosen the 'Vitakinesis (Ex)' perk. Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.");
+				"Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipment that affect other healing effects.",
+				"You've chosen the 'Vitakinesis (Ex)' perk. Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipment that affect other healing effects.");
 		public static const PsionicResurrection:PerkType = mk("Psionic Resurrection", "Psionic Resurrection",
 				".",
 				"You've chosen the 'Psionic Resurrection' perk. .");
@@ -1112,24 +1112,29 @@ public class PerkLib
 				"Each arrow deals 1% of the enemy total health per shot as additional damage.",
 				"You've chosen the 'Arrow of death' perk. Each arrow deals 1% of the enemy total health per shot as additional damage.");
 		public static const HypersensitivityI:PerkType = mk("Hypersensitivity I", "Hypersensitivity I",
-				".",//+1 extra fatigue per point of sensitivity
-				"You've chosen the 'Hypersensitivity I' perky.")//, granting +1 extra maximum fatigue for each point of sensitivit
-				.withBuffs({'sens':100});//.withBuffs({'maxfatigue_perspe':+1.5})
+				"+1 extra fatigue per point of sensitivity.",
+				"You've chosen the 'Hypersensitivity I' perky, granting +1 extra maximum fatigue for each point of sensitivity.")
+				.withBuffs({'maxfatigue_persen':+1,'sens':100});
 		public static const HypersensitivityII:PerkType = mk("Hypersensitivity II", "Hypersensitivity II",
-				".",
-				"You've chosen the 'Hypersensitivity II' perk.").withBuffs({'sens':100});
+				"+1 extra fatigue per point of sensitivity.",
+				"You've chosen the 'Hypersensitivity II' perk, granting +1 extra maximum fatigue for each point of sensitivity.")
+				.withBuffs({'maxfatigue_persen':+1,'sens':100});
 		public static const HypersensitivityIII:PerkType = mk("Hypersensitivity III", "Hypersensitivity III",
-				".",
-				"You've chosen the 'Hypersensitivity III' perk.").withBuffs({'sens':100});
+				"+1 extra fatigue per point of sensitivity.",
+				"You've chosen the 'Hypersensitivity III' perk, granting +1 extra maximum fatigue for each point of sensitivity.")
+				.withBuffs({'maxfatigue_persen':+1,'sens':100});
 		public static const HypersensitivityIV:PerkType = mk("Hypersensitivity IV", "Hypersensitivity IV",
-				".",
-				"You've chosen the 'Hypersensitivity IV' perk.").withBuffs({'sens':100});
+				"+1 extra fatigue per point of sensitivity.",
+				"You've chosen the 'Hypersensitivity IV' perk, granting +1 extra maximum fatigue for each point of sensitivity.")
+				.withBuffs({'maxfatigue_persen':+1,'sens':100});
 		public static const HypersensitivityV:PerkType = mk("Hypersensitivity VI", "Hypersensitivity VI",
-				".",
-				"You've chosen the 'Hypersensitivity V' perk.").withBuffs({'sens':100});
+				"+1 extra fatigue per point of sensitivity.",
+				"You've chosen the 'Hypersensitivity V' perk, granting +1 extra maximum fatigue for each point of sensitivity.")
+				.withBuffs({'maxfatigue_persen':+1,'sens':100});
 		public static const HypersensitivityVI:PerkType = mk("Hypersensitivity VI", "Hypersensitivity VI",
-				".",
-				"You've chosen the 'Hypersensitivity VI' perk.").withBuffs({'sens':100});
+				"+1 extra fatigue per point of sensitivity.",
+				"You've chosen the 'Hypersensitivity VI' perk, granting +1 extra maximum fatigue for each point of sensitivity.")
+				.withBuffs({'maxfatigue_persen':+1,'sens':100});
 		public static const SensoryOverloadAdaptation:PerkType = mk("Sensory overload adaptation", "Sensory overload adaptation",
 				"Your senses adapted to overload caused by your mental power awakening. (decreasing negative effects of sensitivity by 10%)",
 				"You've chosen the 'Sensory overload adaptation' perk. Your senses adapted to overload caused by your mental power awakening. (decreasing negative effects of sensitivity by 10%)").withBuffs({'sens':200});
@@ -1139,6 +1144,12 @@ public class PerkLib
 		public static const UnlimitedPower:PerkType = mk("Unlimited Power!", "Unlimited Power!",
 				"An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)",
 				"You've chosen the 'Unlimited Power!' perk. An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)").withBuffs({'sens':1000});
+		public static const StopHittingYourself:PerkType = mk("Stop hitting yourself", "Stop hitting yourself",
+				"Take control of an enemy's limb with your mental powers. (Deal damage to the foe based on their level, STR and SPD)",
+				"You've chosen the 'Stop hitting yourself' perk. Take control of an enemy's limb with your mental powers. (Deal damage to the foe based on their level, STR and SPD)");
+		public static const PsychicShield:PerkType = mk("Psychic Shield", "Psychic Shield",
+				"When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)",
+				"You've chosen the 'Psychic Shield' perk. When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)");
 		
 		public static const ElementsOfMarethBasic1:PerkType = mk("Elements of Mareth: ", "Elements of Mareth: ",
 				"You can now summon and command ice, lightning and darkness elementals. Also increase elementals command limit by 1.",
@@ -1156,12 +1167,6 @@ public class PerkLib
 		public static const DeadlyFluids:PerkType = mk("Deadly fluids", "Deadly fluids",
 				".",
 				"You've chosen the 'Deadly fluids' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
-		public static const :PerkType = mk("", "",
-				".",
-				"You've chosen the '' perk. .");
 		public static const :PerkType = mk("", "",
 				".",
 				"You've chosen the '' perk. .");
@@ -8031,7 +8036,7 @@ public class PerkLib
 			BroadSelection.requirePerk(JobSeducer)
                     .requireCustomFunction(function (player:Player):Boolean {
 						return player.differentTypesOfCocks() > 1;
-					}, "At least two different types of penises.");
+					}, "At least two different types of penises");
             //Slot 5 - minimum libido
             ColdBlooded.requireMinLust(20);
             HotBlooded.requireLib(50);
@@ -8322,14 +8327,14 @@ public class PerkLib
             HypersensitivityI.requireSen(60)
                     .requirePerk(JobPsychic)
                     .requireLevel(12);
-            //HypersensitivityII.requireSen(80)
-            //        .requirePerk(HypersensitivityI)
-            //        .requireLevel(14)
-            //        .requireNGPlus(1);
-            //HypersensitivityIII.requireSen(100)
-            //        .requirePerk(HypersensitivityII)
-            //        .requireLevel(16)
-            //        .requireNGPlus(2);
+            HypersensitivityII.requireSen(80)
+                    .requirePerk(HypersensitivityI)
+                    .requireLevel(14)
+                    .requireNGPlus(1);
+            HypersensitivityIII.requireSen(100)
+                    .requirePerk(HypersensitivityII)
+                    .requireLevel(16)
+                    .requireNGPlus(2);
             EyesOfTheHunterExpert.requireSen(75)
                     .requirePerk(EyesOfTheHunterAdept)
                     .requireLevel(12);
@@ -8356,9 +8361,9 @@ public class PerkLib
             TelekineticGrapple.requireSen(100)
                     .requirePerk(PsychicBolt)
                     .requireLevel(24);
-			//.requireSen(1??)
-			//		.requirePerk()
-			//		.requireLevel(24);
+			PsychicShield.requireSen(115)
+					.requirePerk(PsychicBarrier)
+					.requireLevel(24);
             Electrokinesis.requireSen(110)
                     .requirePerk(JobPsychic)
                     .requireLevel(24);
@@ -8372,7 +8377,7 @@ public class PerkLib
                     .requirePerk(EyesOfTheHunterMaster)
                     .requireLevel(24);
             //Tier 5 Sensitivity Perks
-			//.requireSen(125)
+			//StopHittingYourself.requireSen(125)
 			//		.requirePerk(TelekineticGrapple)
 			//		.requireLevel(30);
             PsionicRegeneration.requireSen(140)
@@ -8445,7 +8450,7 @@ public class PerkLib
                     .requireLevel(66);
             //Tier 12 Sensitivity Perks
 			UnlimitedPower.requireSen(300)
-					.requirePerk(TelekineticGrapple)
+					.requirePerk(StopHittingYourself)
 					.requireLevel(72);
             //Tier 13 Sensitivity Perks
             //Tier 14 Sensitivity Perks

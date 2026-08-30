@@ -224,6 +224,7 @@ public class StatUtils {
 		
 		['maxlust_perlib', "Max Lust per libido"],
 		['maxfatigue_perspe', "Max Fatigue per speed"],
+		['maxfatigue_persen', "Max Fatigue per sensitivity"],
 		['maxmana_perint', "Max Mana per intelligence"],
 		['maxmana_perwis', "Max Mana per wisdom"],
 		['maxsf_perwis', "Max Soulforce per wisdom"],

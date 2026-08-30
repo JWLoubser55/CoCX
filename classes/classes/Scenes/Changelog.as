@@ -346,19 +346,19 @@ public class Changelog extends BaseContent
 			outputText("-Small additions to Luna (and dominated werewolfs). PC can now visit Luna pups and/or dominated werewolfs.\n");///their pups. At night could even have bit of fun with whole werewolf pack
 			outputText("-New tier 1 sensitivity lvl-up perk: Sensory overload adaptation. Req. Job: Psychic perk and 40+ sens. Effect: Your senses adapted to overload caused by your mental power awakening. (+200 sens)(decreasing negative effects of sensitivity by 10%)\n");
 			outputText("-Desensitization line perks now have additional effect of adding 50/100/150/200/250 sens. Epic/Legendary/Mythical Sensitivity now grants more sens: 300/600/900.\n");
-			outputText("-New tier 12 sensitivity lvl-up perk: Unlimited Power! Req. Telekinetic Grapple perk and 300+ sens. Effect: An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)(+1000 sens)\n");
-			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity I. Req. Job: Psychic perk and 60+ sens. Effect: Increase sens by 100.\n");//, +1 extra fatigue per point of sensitivity
+			outputText("-New tier 12 sensitivity lvl-up perk: Unlimited Power! Req. Stop hitting yourself perk and 300+ sens. Effect: An unlimited mental power at your fingertips. (Recover 5%/round or 10%/hr max stamina; lower mental energy using actions cost by 50%)(+1000 sens)\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity I. Req. Job: Psychic perk and 60+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity II. Req. Hypersensitivity I perk, lvl 14+, NG1+ and 80+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
+			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, lvl 16+, NG2+ and 100+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
+			outputText("-New tier 4 sensitivty lvl-up perk: Psychic Shield. Req. Psychic Barrier perk and 115+ sens. Effect: When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)\n");
+			outputText("-When PC lack materials to do some of the camp upgrades game would stop sending back to main camp menu. It would be so kind to only return to one menu earlier so PC can check another option faster with less clicks.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier 8 sensitivity lvl-up perk: Power Overwhelming. Req. Spiritual Alignment or Mental Attunement perk and 200+ sens. Effect: .each 200 sens giving +1x psychic attacks dmg multi (+2000 sens)
-			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity II. Req. Hypersensitivity I perk, NG1+ and 80+ sens. Effect: Increase sens by 100.
-			outputText("-\n");//New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, NG2+ and 100+ sens. Effect: Increase sens by 100.
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
 			outputText("-\n");
 			outputText("-\n");
