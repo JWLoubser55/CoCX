@@ -8354,6 +8354,10 @@ public class PerkLib
             ImprovedKineses.requireSen(75)
                     .requireAnyPerk(Pyrokinesis, Hydrokinesis, Cryokinesis, Geokinesis, Electrokinesis, Aerokinesis, Umbrakinesis, Acidokinesis, Ionikinesis, Cocytokinesis)
                     .requireLevel(18);
+            HypersensitivityIV.requireSen(120)
+                    .requirePerk(HypersensitivityIII)
+                    .requireLevel(18)
+                    .requireNGPlus(3);
             EyesOfTheHunterMaster.requireSen(100)
                     .requirePerk(EyesOfTheHunterExpert)
                     .requireLevel(18);

@@ -350,7 +350,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity I. Req. Job: Psychic perk and 60+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity II. Req. Hypersensitivity I perk, lvl 14+, NG1+ and 80+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, lvl 16+, NG2+ and 100+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
-			outputText("-\n");
+			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity IV. Req. Hypersensitivity III perk, NG3+ and 120+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-New tier 4 sensitivty lvl-up perk: Psychic Shield. Req. Psychic Barrier perk and 115+ sens. Effect: When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)\n");
