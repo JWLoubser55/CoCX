@@ -96,9 +96,9 @@ public class WerewolfFemaleScene extends BaseContent
 				if (rand(100)>=80 || flags[kFLAGS.WEREWOLF_PACK_PITY_SYSTEM] > 3) {
 					outputText("The exhausted werewolf, now a broken mess, is merely able to pitifully wag [monster his] tail." +
 						" Knowing theres still space for loyal bitches in your pack you order [monster him] to stand up and follow you back to your camp." +
-						" Unable to refuse the compulsion of their new alpha, your newest pack member complies with the order, joining your team permanently." +
-						" Luna will also takes care to establish a proper hierarchy so that the pup stays beneath her in rank." +
-						" How she does this is up to her but you know your toy is going to be used for a little longer.\n\n");
+						" Unable to refuse the compulsion of their new alpha, your newest pack member complies with the order, joining your team permanently.");
+					if (flags[kFLAGS.LUNA_FOLLOWER] > 6 && LunaFollower.mooning) outputText(" Luna will also takes care to establish a proper hierarchy so that the pup stays beneath her in rank.");
+					outputText(" How she does this is up to her but you know your toy is going to be used for a little longer.\n\n");
 					if (flags[kFLAGS.WEREWOLF_PACK_PITY_SYSTEM] > 3) flags[kFLAGS.WEREWOLF_PACK_PITY_SYSTEM] = 0;
 					LunaFollower.WerewolfPackMember += 1;
 				}

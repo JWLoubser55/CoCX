@@ -230,6 +230,7 @@ public class RuinedTownRebuilt extends BaseContent implements SaveableState, Tim
 	
 	public function MouseTownUpdate():void {
 		var divide:Number = 10;
+		prosperityvar = 1;
 		if (JojoyLitters > 0) divide -= 2;
 		GrowthRate = MousetownPopulation / divide;
 		MousetownPopulation = (MousetownPopulation + GrowthRate);
@@ -380,8 +381,7 @@ public function ScoutsVisitInit(): void {
 	outputText("<i>“And how do we know you’re not demons yourselves?</i>” A single guard replies, bow drawn taut.\n\n");
 	outputText("At both sides’ mounting frustration, you step into view. The mice begin to make happy noises, but you give them a level stare. They keep their weapons out, but lower them.\n\n<i>“Who are you?</i>” One of the wolves ask. ");
 	if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] <= -1) outputText("<i>“"+player.mf("H","Sh")+"e’s the one we ran into chasing Raphael.</i>” The other grunts.\n\n");
-	else outputText("<i>“We’ve seen this one around Tel’adre.</i>”");
-	outputText(""+((SceneLib.urta.urtaLove() && flags[kFLAGS.URTA_QUEST_STATUS] >= 0) ? " <i>“Urta’s mate.</i>”":"")+" You explain to the wolf brothers that these are your kids, and you won’t have anyone, demon or otherwise, harming them.\n\n");
+	else outputText("<i>“We’ve seen this one around Tel’adre."+((SceneLib.urta.urtaLove() && flags[kFLAGS.URTA_QUEST_STATUS] >= 0) ? " Urta’s mate.":"")+"</i>” You explain to the wolf brothers that these are your kids, and you won’t have anyone, demon or otherwise, harming them.\n\n");
 	outputText("<i>“All of them are your kids?</i>” They don’t seem to believe you, but as Amily walks out, she sees you talking to the wolf brothers. She wraps an arm around you.\n\n");
 	outputText("<i>“Yes. These are our children.</i>” The Wolf brothers blink rapidly, but as Amily explains how she did it, they nod.\n\n");
 	outputText("<i>“A noble goal, bringing a race back to life in these times</i>”. The taller one gives you a more respectful nod. <i>“I’m Skoll, and this is my brother, Hati. We scout the areas deemed too dangerous for most town guardsmen.</i>”\n\n");
@@ -519,8 +519,6 @@ public function enterVillage():void {
 				outputText("Shouldra's house has floating torches outside it, and she's clearly had some fun decorating the place, shadow-puppets and cheesy fake spiderwebs hanging from lines outside. You notice some of your children inside, sitting around a small firepit in the middle of the house. Shouldra, from within the flames, makes shapes, clearly telling some sort of story. ")
 		}
 	}
-	outputText("\n\n<i>Prosperity: " + prosperityvar + "</i>");
-	outputText("\n<i>Population: " + MousetownPopulation + "</i>");
 	menu();
 	if (YourHouse) addButton(0, "TowerHouse", YourAmilyHome);
 	else addButtonDisabled(0, "???", "The Town isn't prosperous enough for this, yet.");

@@ -9,6 +9,7 @@ import classes.Scenes.Combat.AbstractSpell;
 import classes.Scenes.Combat.AbstractSoulSkill;
 import classes.Scenes.Combat.AbstractSpecial;
 import classes.Scenes.Crafting;
+import classes.Scenes.NPCs.ArianScene;
 import classes.Scenes.NPCs.BelisaFollower;
 import classes.Scenes.NPCs.CharybdisFollower;
 import classes.Scenes.NPCs.DriderTown;
@@ -22,6 +23,7 @@ import classes.Scenes.NPCs.NadiaFollower;
 import classes.Scenes.NPCs.TyrantiaFollower;
 import classes.Scenes.NPCs.ZenjiScenes;
 import classes.Scenes.Places.HeXinDao.JourneyToTheEast;
+import classes.Scenes.Places.RuinedTownRebuilt;
 import classes.Scenes.Places.Mindbreaker;
 import classes.Scenes.SceneLib;
 import classes.Stats.PrimaryStat;
@@ -220,6 +222,11 @@ public class PlayerInfo extends BaseContent {
 		if (flags[kFLAGS.CAMP_UPGRADES_FISHERY] >= 1) {
 			miscStats += "<b>Fishery daily production:</b> " + camp.FisheryDailyProduction() + "\n";
 			miscStats += "<b>Fishery workers (current/max):</b> " + camp.FisheryWorkersCount() + "/" + camp.FisheryMaxWorkersCount() + "\n";
+		}
+
+		if (RuinedTownRebuilt.RebuildState == 3) {
+			miscStats += "<b>Mousetown Population:</b> " + RuinedTownRebuilt.MousetownPopulation + " (" + RuinedTownRebuilt.MouseTownPopCap + ")\n";
+			miscStats += "<b>Mousetown Prosperity:</b> " + RuinedTownRebuilt.prosperityvar + "\n";
 		}
 
 		miscStats += "<b>Nails:</b> " + CampStatsAndResources.NailsResc + "/" + SceneLib.campUpgrades.checkMaterialsCapNails() + "\n";
@@ -1153,12 +1160,10 @@ public class PlayerInfo extends BaseContent {
 		if (SceneLib.arianScene.arianFollower() && flags[kFLAGS.ARIAN_EGG_COUNTER] < 24 && flags[kFLAGS.ARIAN_VAGINA] > 0)
 			pregnancies += "<b>Arian days to lay eggs: </b>" + (24-flags[kFLAGS.ARIAN_EGG_COUNTER]) + "\n";
 
-
 		if (DriderTown.BelisaPregnancy > 0)
 			pregnancies += "<b>Belisa</b>\n";
 		if (DriderTown.BelisaKidsEggs > 0 || DriderTown.BelisaKidsEggs1 > 0 || DriderTown.BelisaKidsEggs2 > 0)
 			pregnancies += "<b>Belisa eggs: </b>" +(DriderTown.BelisaKidsEggs +DriderTown.BelisaKidsEggs1 +DriderTown.BelisaKidsEggs2) + "\n";
-
 
 		//if (SceneLib.ceaniScene.pregnancy.isPregnant)	//TODO Ceani preggers
 		//	pregnancies += "<b>Ceani</b> \n";
@@ -1289,6 +1294,13 @@ public class PlayerInfo extends BaseContent {
 
 		if (flags[kFLAGS.AMILY_MET] > 0)
 			childStats += "<b>Litters With Amily:</b> " + (flags[kFLAGS.AMILY_BIRTH_TOTAL] + flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS]) + "\n";
+
+		if (ArianScene.ArianSonsNum > 0)
+			childStats += "<b>Children With Arian (Males):</b> " + ArianScene.ArianSonsNum + "\n";
+		if (ArianScene.ArianDaughtersNum > 0)
+			childStats += "<b>Children With Arian (Females):</b> " + ArianScene.ArianDaughtersNum + "\n";
+		if (ArianScene.ArianTotalKidsNum > 0)
+			childStats += "<b>Total Children With Arian:</b> " + ArianScene.ArianTotalKidsNum + "\n";
 
 		if (flags[kFLAGS.AYANE_CHILDREN_MALES] > 0)
 			childStats += "<b>Ayane Offspring (Males):</b> " + flags[kFLAGS.AYANE_CHILDREN_MALES] + "\n";

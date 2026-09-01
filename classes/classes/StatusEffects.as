@@ -266,6 +266,7 @@ import classes.StatusEffects.VampireThirstEffect;
 		public static const AlvinaTraining:StatusEffectType                 = mk("Alvina Training");
 		public static const AlvinaTraining2:StatusEffectType                = mk("Alvina Training 2");
 		public static const AndysSmoke:StatusEffectType                     = mk("Andy's Smoke"); //v1: Hours; v2: Speed; v3: Intelligence
+		public static const ArianEggTimer:StatusEffectType                  = mk("ArianEggTimer");
 		public static const AteEgg:StatusEffectType                         = mk("ateEgg");
 		public static const AnemoneArousal:StatusEffectType                 = mk("Anemone Arousal");
 		public static const ArcaneCircle:StatusEffectType               	= mk("Arcane Circle");
