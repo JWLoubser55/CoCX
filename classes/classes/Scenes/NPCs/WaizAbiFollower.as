@@ -100,11 +100,8 @@ import classes.internals.SaveableState;
 			return false;
 		}
 	
-		public function timeChangeLarge():Boolean {
-			if (WaizAbiState == 2 && model.time.hours == 2 && !flags[kFLAGS.IN_INGNAM]) {
-				WaizAbiAndKoshyaArriveAtTheCamp();
-				return true;
-			}
+		public function timeChangeLarge():Boolean
+		{
 			return false;
 		}
 		//End of Interface Implementation
@@ -187,7 +184,7 @@ import classes.internals.SaveableState;
 		public function WaizAbiAndKoshyaArriveAtTheCamp():void {
 			clearOutput();
 			outputText("You wake up in the middle of the night, feeling that something or maybe someone is calling to you. Looking around, you don’t find anyone, but the feeling tugs you toward the camp perimeter.\n\n");
-			outputText(((!player.isNaked2() && player.weapon != WeaponLib.FISTS)?"Reflexively, you don [armor] and arm yourself with your [weapon]. ":"")+"You slowly move toward the direction you feel that eerie calling. The camp is silent, and the only sounds that interrupt the stillness are your own footsteps. Eventually, you reach the Edge and stop as the feeling starts to weaken until it completely vanishes.\n\n");
+			outputText(((!player.isNaked2() && player.weapon != WeaponLib.FISTS)?"Reflexively, you don [armor] and arm yourself with your [weapon]. ":"")+"You slowly move toward the direction you feel that eerie calling. The camp is silent, and the only sounds that interrupt the stillness are your own footsteps. Eventually, you reach the edge and stop as the feeling starts to weaken until it completely vanishes.\n\n");
 			outputText("\"<i>I told you that I would find you later on.</i>\" From the darkness outside the [camp], you hear a familiar voice as a pair of robbed figures approach you, stopping just shy of crossing the settlement border.\n\n");
 			outputText("You brace yourself for a fight, thinking about calling other camp members to help you.\n\n");
 			outputText("\"<i>A fight? Me? Well, if it was something else, like you spiking milady’s drink, I would. But...</i>\" she pauses. \"<i>It helped her think more clearly. No longer letting that womb of her guide her intuition.</i>\"\n\n");

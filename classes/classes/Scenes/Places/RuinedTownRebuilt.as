@@ -662,14 +662,14 @@ public function AmilyTownie():void {
 		if (ShopBuilt >= 4) {
 			outputText("Several of your children sit in some chairs around a simple stand, ran by a single, lithe mouselet. He pours drinks, talking quickly and warmly. He sees you, giving you a roguish smile.\n\n");
 		}
-		if ((SmithBuilt = true) && (ShopBuilt >= 5)) {
+		if (SmithBuilt && ShopBuilt >= 5) {
 			outputText("Outside the smithery is a single,  snow-white, mouse-girl sitting at a stand. Daggers and various small weapons sit on the stand, and she smiles brightly at anyone who approaches.\n\n");
 			if (prosperityvar >= 14) outputText("To the left of the stand is a weapon rack with a variety of spears on it.\n\n");
 			if (prosperityvar >= 18) outputText("To the right of the stand, several axes and swords hang from a framed rack.\n\n");
 			if (prosperityvar >= 20) outputText("\n\n");
 			if (prosperityvar >= 30 && ShouldraSeenTown == 4 && !ReapercheepBought) outputText("The stand seems to be glowing, and the girl behind the stand grins wickedly. In front of the stand sits several rapiers. In the middle, nestled in black velvet, sits the source of the glow, an intricately engraved rapier. The blade ripples, folded metal reflecting its own light. The handguard is large, carved steel brushed with gold, and as you turn it over, you realise that its guard is shaped like Amily\'s head, with Sapphires for eyes. As you look at it, the girl nods solemnly. <i> \"That is my Daddy\'s finest work yet.</i> She\'s uncharacteristically somber. <i> \"ReaperCheep: Forged from starmetal, slathered in the sap of Marae, enchanted by our Guardian Spirit Shouldra, embued with SoulForce from the Race-Mother, Amily, and quenched in the donated blood of our people. This sword speaks to our will...And is only to be wielded by those who\'s blood pumps within our hearts. </i>\" She looks up at you, eyes shining. <i> \"It would be fitting, then, for you. </i>\n\n");
 		}
-		if ((SmithBuilt = true) && (ShopBuilt >= 6)) {
+		if (SmithBuilt && ShopBuilt >= 6) {
 			outputText("Outside the smithery is a single mouse-boy with coal-black fur. Steel glimmers in his eyes and on his stand, shields leaning against the wooden stand.\n\n");
 			if 	(prosperityvar >= 14) outputText("Hanging from racks are a variety of different pieces of armor, made from simple materials.\n\n");
 			if (prosperityvar >= 18) outputText("Behind the stall are several rows of heavier armors, more intricately built than before.\n\n");
@@ -677,50 +677,22 @@ public function AmilyTownie():void {
 			if (prosperityvar >=30) outputText(" A single set of mail, thin yet strikingly strong-looking, hangs from the front of the stall. As you look, the silvery metal darkens, casting the stall around it in shadow for a single moment. The shoulders are inlaid with copper and gold, thin \'whiskers\' of metal poking out to the sides. <i>\"Ah, of course you\'d notice my mother\'s magnum opus.</i>\" The boy says proudly. <i>\"Lighter than a feather, yet stronger than plate. Each ring is a mixture of Starmetal and Silversteel, ground down with stones taken from the ancient wizard\'s tower then forged in Foxfire, tempered in paper-talisman-fuelled WhiteFire and quenched in Purity Philter, enchanted by our Guardian Spirit Shouldra, this is the Sentinel mail, ShǔRato. It\'s one of a kind armor, magically bound to our town and its people.\"\n\n");
 		}
 		menu();
-		if (ShopBuilt >= 1) {
-			addButton(1, "Bakery", MouseTownBakery);
-		}
-		else if (ShopBuilt < 1) {
-			addButtonDisabled(1, "???", "Haven\'t Built Enough Stores")
-		}
-		if (ShopBuilt >= 2) {
-			addButton(2, "Rare Goods", MouseTownRareGoods);
-		}
-		else if (ShopBuilt < 2) {
-			addButtonDisabled(2, "???", "Haven\'t Built Enough Stores")
-		}
-		if (ShopBuilt >= 3) {
-			addButton(3, "Gatherer", MouseTownMining);
-		}
-		else if (ShopBuilt < 3) {
-			addButtonDisabled(3, "???", "Haven\'t Built Enough Stores")
-		}
-		if (ShopBuilt >= 4) {
-			addButton(4, "Bar", MouseTownBar);
-		}
-else if (ShopBuilt < 4) {
-    addButtonDisabled(4, "???", "Haven\'t Built Enough Stores")
-}
-if ((SmithBuilt = true) && (ShopBuilt >= 5)) {
-    addButton(5, "Weaponshop", MouseTownWeaponry);
-}
-else if (SmithBuilt && ShopBuilt < 5) {
-    addButtonDisabled(5, "???", "Haven\'t Built Enough Stores")
-}
-else if (!SmithBuilt) {
-    addButtonDisabled(5, "???", "This shop needs a Smithery")
-}
-if (SmithBuilt && (ShopBuilt >= 6)) {
-    addButton(6, "Armor Shop", MouseTownArmor);
-}
-else if (ShopBuilt < 6) {
-    addButtonDisabled(6, "???", "Haven\'t Built Enough Stores")
-}
-else if (!SmithBuilt) {
-    addButtonDisabled(6, "???", "This shop needs a Smithery")
-}
-addButton(14, "Back", enterVillage);
-}
+		if (ShopBuilt >= 1) addButton(1, "Bakery", MouseTownBakery);
+		else addButtonDisabled(1, "???", "Haven't Built Enough (1) Stores.");
+		if (ShopBuilt >= 2) addButton(2, "Rare Goods", MouseTownRareGoods);
+		else addButtonDisabled(2, "???", "Haven't Built Enough (2) Stores.");
+		if (ShopBuilt >= 3) addButton(3, "Gatherer", MouseTownMining);
+		else addButtonDisabled(3, "???", "Haven't Built Enough (3) Stores.");
+		if (ShopBuilt >= 4) addButton(4, "Bar", MouseTownBar);
+		else addButtonDisabled(4, "???", "Haven't Built Enough (4) Stores.");
+		if (SmithBuilt && ShopBuilt >= 5) addButton(5, "Weaponshop", MouseTownWeaponry);
+		else if (SmithBuilt && ShopBuilt < 5) addButtonDisabled(5, "???", "Haven't Built Enough (5) Stores.");
+		else if (!SmithBuilt) addButtonDisabled(5, "???", "This shop needs a Smithery.");
+		if (SmithBuilt && ShopBuilt >= 6) addButton(6, "Armor Shop", MouseTownArmor);
+		else if (ShopBuilt < 6) addButtonDisabled(6, "???", "Haven't Built Enough (6) Stores.");
+		else if (!SmithBuilt) addButtonDisabled(6, "???", "This shop needs a Smithery.");
+		addButton(14, "Back", enterVillage);
+	}
 
 public function MouseTownBakery():void {
 clearOutput();
@@ -1253,7 +1225,8 @@ public function MouseTownBuild():void {
 	menu();
 	addButton(0, "House", BuildHouse);
 	addButton(1, "Wall", BuildWall);
-	//if (ShopBuilt < 7) addButton(2, "Shop", BuildShop);
+	//if (ShopBuilt < 7) 
+	//if (ShopBuilt < 1) addButton(2, "Shop", BuildShop);
 	//if (!TrainingGroundsBuilt) addButton(3, "TrainGrounds", BuildTrainGrounds);
 	//if (!SmithBuilt) addButton(4, "Smith", BuildSmith);
 	if (!logbuilt) addButton(5, "Logging", BuildLogging);
@@ -1343,12 +1316,7 @@ public function BuildShop():void {
 	outputText("Do you start work on building new shop? (Cost: 70 nails and 150 wood)\n");
 	SceneLib.campUpgrades.checkMaterials();
 	if (CampStatsAndResources.WoodResc >= 150 && CampStatsAndResources.NailsResc >= 70) {
-		CampStatsAndResources.WoodResc -= 150;
-		CampStatsAndResources.NailsResc -= 70;
-		outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
-		ShopBuilt += 1;
-		Intown = false;
-		doNext(camp.returnToCampUseTwoHours);
+		doYesNo(BuildShopYes, MouseTownBuild);
 	}
 	if (CampStatsAndResources.WoodResc < 150 || CampStatsAndResources.NailsResc < 70) {
 		errorNotEnough();
@@ -1356,23 +1324,22 @@ public function BuildShop():void {
 	}
 }
 public function BuildShopYes():void {
-	
+	CampStatsAndResources.WoodResc -= 150;
+	CampStatsAndResources.NailsResc -= 70;
+	outputText("You point at a patch of land, telling your kids that you’re using it for a new store, and your kids nod. You help them till the ground, cut notches into the wood, and raise the central pillar. As you work, nearly a dozen are already working on the walls, pounding stakes into the ground to act as grounding points for the house and cutting lumber into precise pieces for the walls.\n\n");
+	outputText("To your surprise, more of your kids come in, toting buckets of water and clay. Between each piece of lumber, they slather the top with the clay, sealing the holes between the wood.\n\n");
+	outputText("The roof comes next, and a half-dozen mice clamber onto the supporting beams while another climbs up the central pillar with a saw. You help your kids feed pieces of wood to lay across, making support beams for the roof. They fill in the roof with shocking speed, and within an hour, the structure of the house is done. The floor inside is still dirt, but your children show no signs of stopping.\n\n");
+	outputText("You begin working on a stand outside, and your children begin building a roof for it. A simple stool is built, and placed beside the stall. You wonder what your children will start to sell.\n\n");
+	ShopBuilt += 1;
+	Intown = false;
+	doNext(camp.returnToCampUseTwoHours);
 }
 public function BuildTrainGrounds():void {
 	clearOutput();
 	outputText("Do you start work on building the training grounds? (Cost: 50 nails, 150 wood and 10 stones)\n");
 	SceneLib.campUpgrades.checkMaterials();
 	if (CampStatsAndResources.StonesResc >= 10 && CampStatsAndResources.WoodResc >= 150 && CampStatsAndResources.NailsResc >= 50) {
-		CampStatsAndResources.StonesResc -= 10;
-		CampStatsAndResources.WoodResc -= 150;
-		CampStatsAndResources.NailsResc -= 50;
-		outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
-		outputText("Your children get to work, pulling weeds, grass and rocks alike from the ground you’ve marked out. You begin working on a few simple wooden frames to hold targets, and within an hour, you’ve constructed some simple target frames, and built up some wooden barricades to block stray shots. You look up from your work to see that stakes have been pounded every few meters, and the area’s being flattened out.\n\n");
-		outputText("Three of your children in particular, a stocky, black-furred male, a slender, elegant woman with white fur, and an androgynous seeming mouselet with beige fur, seem to be throwing their all into the training grounds, taking clear leadership over certain parts of the new facility.\n\n");
-		outputText("You note that construction is pretty much done, and you see some of your children constructing a few straw dummies. One even appears to be whittling some crude demonic horns. You excuse yourself, heading back to camp.\n\n");
-		TrainingGroundsBuilt = true;
-		Intown = false;
-		doNext(camp.returnToCampUseOneHour);
+		doYesNo(BuildTrainGroundsYes, MouseTownBuild);
 	}
 	if (CampStatsAndResources.StonesResc < 10 || CampStatsAndResources.WoodResc < 150 || CampStatsAndResources.NailsResc < 50) {
 		errorNotEnough();
@@ -1380,26 +1347,23 @@ public function BuildTrainGrounds():void {
 	}
 }
 public function BuildTrainGroundsYes():void {
-	
+	CampStatsAndResources.StonesResc -= 10;
+	CampStatsAndResources.WoodResc -= 150;
+	CampStatsAndResources.NailsResc -= 50;
+	outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
+	outputText("Your children get to work, pulling weeds, grass and rocks alike from the ground you’ve marked out. You begin working on a few simple wooden frames to hold targets, and within an hour, you’ve constructed some simple target frames, and built up some wooden barricades to block stray shots. You look up from your work to see that stakes have been pounded every few meters, and the area’s being flattened out.\n\n");
+	outputText("Three of your children in particular, a stocky, black-furred male, a slender, elegant woman with white fur, and an androgynous seeming mouselet with beige fur, seem to be throwing their all into the training grounds, taking clear leadership over certain parts of the new facility.\n\n");
+	outputText("You note that construction is pretty much done, and you see some of your children constructing a few straw dummies. One even appears to be whittling some crude demonic horns. You excuse yourself, heading back to camp.\n\n");
+	TrainingGroundsBuilt = true;
+	Intown = false;
+	doNext(camp.returnToCampUseOneHour);
 }
 public function BuildSmith():void {
     clearOutput();
 	outputText("Do you start work on building the smithery? (Cost: 200 nails, 400 wood and 200 stones)\n");
 	SceneLib.campUpgrades.checkMaterials();
     if (CampStatsAndResources.StonesResc >= 200 && CampStatsAndResources.WoodResc >= 400 && CampStatsAndResources.NailsResc >= 200) {
-        CampStatsAndResources.StonesResc -= 200;
-        CampStatsAndResources.WoodResc -= 400;
-        CampStatsAndResources.NailsResc -= 200;
-        outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
-        outputText("You point at a patch of land, telling your kids that you’re using it for a new store, and your kids nod. You help them till the ground, cut notches into the wood, and raise the central pillar. As you work, nearly a dozen are already working on the walls, pounding stakes into the ground to act as grounding points for the house and cutting lumber into precise pieces for the walls.\n\n");
-        outputText("To your surprise, more of your kids come in, toting buckets of water and clay. Between each piece of lumber, they slather the top with the clay, sealing the holes between the wood.\n\n");
-        outputText("The roof comes next, and a half-dozen mice clamber onto the supporting beams while another climbs up the central pillar with a saw. You help your kids feed pieces of wood to lay across, making support beams for the roof. They fill in the roof with shocking speed, and within an hour, the structure of the house is done. The floor inside is still dirt, but your children show no signs of stopping.\n\n");
-        outputText("You rest for a moment, as Amily brings you and some of your kids water. You get back into the build, laying stones for a smeltery, at the instruction of one of your oldest mice-children. An old, beaten iron anvil is brought in, and vents cut into the building.\n\n");
-        outputText("\n\n");
-        outputText("\n\n");
-        SmithBuilt = true;
-        Intown = false;
-        doNext(camp.returnToCampUseOneHour);
+        doYesNo(BuildSmithYes, MouseTownBuild);
     }
     if ((CampStatsAndResources.StonesResc < 200 || CampStatsAndResources.WoodResc < 400 || CampStatsAndResources.NailsResc < 200)) {
         errorNotEnough();
@@ -1407,7 +1371,19 @@ public function BuildSmith():void {
     }
 }
 public function BuildSmithYes():void {
-	
+	CampStatsAndResources.StonesResc -= 200;
+	CampStatsAndResources.WoodResc -= 400;
+	CampStatsAndResources.NailsResc -= 200;
+	outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
+	outputText("You point at a patch of land, telling your kids that you’re using it for a new store, and your kids nod. You help them till the ground, cut notches into the wood, and raise the central pillar. As you work, nearly a dozen are already working on the walls, pounding stakes into the ground to act as grounding points for the house and cutting lumber into precise pieces for the walls.\n\n");
+	outputText("To your surprise, more of your kids come in, toting buckets of water and clay. Between each piece of lumber, they slather the top with the clay, sealing the holes between the wood.\n\n");
+	outputText("The roof comes next, and a half-dozen mice clamber onto the supporting beams while another climbs up the central pillar with a saw. You help your kids feed pieces of wood to lay across, making support beams for the roof. They fill in the roof with shocking speed, and within an hour, the structure of the house is done. The floor inside is still dirt, but your children show no signs of stopping.\n\n");
+	outputText("You rest for a moment, as Amily brings you and some of your kids water. You get back into the build, laying stones for a smeltery, at the instruction of one of your oldest mice-children. An old, beaten iron anvil is brought in, and vents cut into the building.\n\n");
+	//outputText("\n\n");
+	//outputText("\n\n");
+	SmithBuilt = true;
+	Intown = false;
+	doNext(camp.returnToCampUseOneHour);
 }
 public function BuildLogging():void {
     clearOutput();

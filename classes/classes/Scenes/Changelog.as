@@ -342,7 +342,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 14 speed lvl-up perk: Arrow of death. Req. Phantom Arrow perk. Effect: Each arrow deals 1% of the enemy total health per shot as additional damage.\n");
 			outputText("-New tier 9 sensitivity lvl-up perk: Vitakinesis (Ex). Req. Vitakinesis perk and 240+ sensitivity. Effect: Using Vitakinesis won't take whole turn and healing effect could be increased by factors like perks or equipemnt that affect other healing effects.\n");
 			outputText("-Neisa affection now have some effect (finaly?) that makes her weekly payment lower by 1 spirit stone per 25% affection (up to 6 SS less at max affection). Also her loyalty/affection would be gained 2x faster then before.\n");
-			outputText("-Ant colony would be growing slight faster. Also how many ant/drider children colony queen Phylla can have is limited now by development stage of colony. At first it's limit of 250/50 children and each upgrade can increase it by anohter 250/50 up to 10k/2k. Added at Phylla main menu colony population stats.\n");
+			outputText("-Ant colony would be growing faster with new egg hatching each hour (or two if rng is kind). Also how many ant/drider children colony queen Phylla can have is limited now by development stage of colony. At first it's limit of 250/50 children and each upgrade can increase it by anohter 250/50 up to 10k/2k. Added ant colony population stats to stats page.\n");
 			outputText("-Small additions to Luna (and dominated werewolfs). PC can now visit Luna pups and/or dominated werewolfs.\n");///their pups. At night could even have bit of fun with whole werewolf pack
 			outputText("-New tier 1 sensitivity lvl-up perk: Sensory overload adaptation. Req. Job: Psychic perk and 40+ sens. Effect: Your senses adapted to overload caused by your mental power awakening. (+200 sens)(decreasing negative effects of sensitivity by 10%)\n");
 			outputText("-Desensitization line perks now have additional effect of adding 50/100/150/200/250 sens. Epic/Legendary/Mythical Sensitivity now grants more sens: 300/600/900.\n");
@@ -351,7 +351,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity II. Req. Hypersensitivity I perk, lvl 14+, NG1+ and 80+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, lvl 16+, NG2+ and 100+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity IV. Req. Hypersensitivity III perk, NG3+ and 120+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
-			outputText("-\n");
+			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity V. Req. Hypersensitivity IV perk, lvl 20+, NG4+ and 140+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-\n");
 			outputText("-New tier 4 sensitivty lvl-up perk: Psychic Shield. Req. Psychic Barrier perk and 115+ sens. Effect: When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)\n");
 			outputText("-When PC lack materials to do some of the camp upgrades game would stop sending back to main camp menu. It would be so kind to only return to one menu earlier so PC can check another option faster with less clicks.\n");
@@ -359,16 +359,16 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier 8 sensitivity lvl-up perk: Power Overwhelming. Req. Spiritual Alignment or Mental Attunement perk and 200+ sens. Effect: .each 200 sens giving +1x psychic attacks dmg multi (+2000 sens)
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-\n");//merging Apes Together Strong to Apes Together Strongest perks -> Apes Strong Together (Ave) - max 9 tamed monsters in group and 600% and max 6 groups
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-\n");//-New event perk: . Gained by having Exanimation IV and Acid Affinity perks. Effects: 
 			outputText("-\n");//?Wild Drake (Ex) / Wild Dragon? - event perk req. any dragon race rank 2+ possesed - lower by 1 increment cd on pc dragon breath specials
 			outputText("-\n");

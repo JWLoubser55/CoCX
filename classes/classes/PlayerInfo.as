@@ -177,69 +177,76 @@ public class PlayerInfo extends BaseContent {
 			outputText("\n<b><u>Body Stats</u></b>\n" + bodyStats);
 		// End Body Stats
 
+		// Begin Population Stats
+		var campStats:String = "";
+		
+		if (camp.getCampPopulation() > 0) {
+			campStats += "<b>Camp Population:</b> " + camp.getCampPopulation() + "\n";
+			campStats += "<i>Camp Aboveground Population:</i> " + (camp.getCampPopulation() - camp.getCampUndergroundPopulation()) + "\n";
+			campStats += "<i>Camp Underground Population:</i> " + camp.getCampUndergroundPopulation() + "\n";
+			if (flags[kFLAGS.ANT_WAIFU] > 0) {
+				campStats += "<b>Ant Colony population:</b> "+(1 + flags[kFLAGS.ANT_KIDS] + flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT])+"\n";
+				campStats += "<i>Queen: 1</i>\n";
+				if (flags[kFLAGS.ANT_KIDS] > 0) campStats += "<i>Ant Children: " + flags[kFLAGS.ANT_KIDS] + " (Current) / " + (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION])) + " (Sustain limit)</i>\n";
+				if (flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] > 0) campStats += "<i>Drider Children: " + flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] + " (Current) / " + (50 * (1 + flags[kFLAGS.ANTHILL_EXPANSION])) + " (Sustain limit)</i>\n";
+			}
+			campStats += "<b>Minions Count:</b> " + player.playerMinionsCount() + "\n";
+			if (player.hasStatusEffect(StatusEffects.SummonedElementals)) {
+				if (player.statusEffectv1(StatusEffects.SummonedElementals) > 0) campStats += "<i>Normal Elementals:</i> " + player.statusEffectv1(StatusEffects.SummonedElementals) + "\n";
+				if (player.statusEffectv2(StatusEffects.SummonedElementals) > 0) campStats += "<i>Epic Elementals:</i> " + player.statusEffectv2(StatusEffects.SummonedElementals) + "\n";
+				if (player.statusEffectv3(StatusEffects.SummonedElementals) > 0) campStats += "<i>Unique Elementals:</i> " + player.statusEffectv3(StatusEffects.SummonedElementals) + "\n";
+			}
+			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) campStats += "<i>Pernament Stone Golems:</i> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + "\n";
+			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) campStats += "<i>Improved Pernament Stone Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + "\n";
+			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) campStats += "<i>Pernament Steel Golems:</i> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + "\n";
+			if (player.hasPerk(PerkLib.JobHaruspex)) {
+				if (player.perkv2(PerkLib.JobHaruspex) > 0) campStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.JobHaruspex) + "\n";
+				if (player.perkv1(PerkLib.BoneyBow) > 0) campStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.BoneyBow) + "\n";
+				if (player.perkv1(PerkLib.BoneyWand) > 0) campStats += "<i>Skeletal mages:</i> " + player.perkv1(PerkLib.BoneyWand) + "\n";
+				if (player.perkv1(PerkLib.BoneGiants) > 0) campStats += "<i>Skeletal giants:</i> " + player.perkv1(PerkLib.BoneGiants) + "\n";
+				if (player.perkv1(PerkLib.BoneBallistaSkelies) > 0) campStats += "<i>Bone Ballista Skeletons:</i> " + player.perkv1(PerkLib.BoneBallistaSkelies) + "\n";
+				if (player.perkv1(PerkLib.GigachadSkeletalMages) > 0) campStats += "<i>Skeletal gigachad mages:</i> " + player.perkv1(PerkLib.GigachadSkeletalMages) + "\n";
+			}
+			if (player.hasPerk(PerkLib.MummyLord)) campStats += "<b>Mummies:</b> " + player.perkv1(PerkLib.MummyLord) + " / " + player.mummyControlLimit() + "\n";
+			if (player.hasPerk(PerkLib.UndeadLord)) campStats += "<b>Zombies:</b> " + player.perkv1(PerkLib.UndeadLord) + " / " + player.zombieControlLimit() + "\n";
+			if (player.hasPerk(PerkLib.FungalNobility)) campStats += "<b>Matango:</b> " + player.perkv1(PerkLib.FungalNobility) + " / " + player.matangoControlLimit() + "\n";
+			if (player.hasPerk(PerkLib.JobTamer) && SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() > 0) campStats += "<i>Tamed monsters:</i> " + SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() + "\n";// || have ring of taming
+			if (player.isRace(Races.FMINDBREAKER) || player.isRace(Races.MMINDBREAKER)) {
+				campStats += "<b>Mindbroken Minions:</b> " + Mindbreaker.MindBreakerConvert + "\n";
+				campStats += "<b>Mindbreaker Goal:</b> " + Mindbreaker.MindBreakerConvertGoal + "\n";
+			}
+			if (player.isAnyRaceCached(Races.WEREWOLF, Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM)) campStats += "<b>Female Werewolfs:</b> " + LunaFollower.WerewolfPackMember + "\n";
+			if (player.isRaceCached(Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM) && player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) campStats += "<b>Hellhounds:</b> " + LunaFollower.HellhoundPackMember + "\n";
+		}
+		if (flags[kFLAGS.CAMP_UPGRADES_FISHERY] >= 1) {
+			campStats += "<b>Fishery daily production:</b> " + camp.FisheryDailyProduction() + "\n";
+			campStats += "<b>Fishery workers (current/max):</b> " + camp.FisheryWorkersCount() + "/" + camp.FisheryMaxWorkersCount() + "\n";
+		}
+		if (RuinedTownRebuilt.RebuildState == 3) {
+			campStats += "<b>Mousetown Population:</b> " + RuinedTownRebuilt.MousetownPopulation + " (" + RuinedTownRebuilt.MouseTownPopCap + ")\n";
+			campStats += "<b>Mousetown Prosperity:</b> " + RuinedTownRebuilt.prosperityvar + "\n";
+		}
+		campStats += "<b>Nails:</b> " + CampStatsAndResources.NailsResc + "/" + SceneLib.campUpgrades.checkMaterialsCapNails() + "\n";
+		campStats += "<b>Wood:</b> " + CampStatsAndResources.WoodResc + "/" + SceneLib.campUpgrades.checkMaterialsCapWood() + "\n";
+		campStats += "<b>Stone:</b> " + CampStatsAndResources.StonesResc + "/" + SceneLib.campUpgrades.checkMaterialsCapStones() + "\n";
+		campStats += "<b>Metal Pieces:</b> " + CampStatsAndResources.MetalPieces + "/200" + "\n";
+		campStats += "<b>Mechanisms:</b> " + CampStatsAndResources.MechanismResc + "/200" + "\n";
+		campStats += "<b>Energy Cores:</b> " + CampStatsAndResources.EnergyCoreResc + "/200" + "\n";
+		campStats += "<b>Granite:</b> " + Forgefather.granite + "/" + Forgefather.matCap + "\n";
+		campStats += "<b>Ebony:</b> " + Forgefather.ebony + "/" + Forgefather.matCap + "\n";
+		campStats += "<b>Alabaster:</b> " + Forgefather.alabaster + "/" + Forgefather.matCap + "\n";
+		campStats += "<b>Marble:</b> " + Forgefather.marble + "/" + Forgefather.matCap + "\n";
+		campStats += "<b>Sandstone:</b> " + Forgefather.sandstone + "/" + Forgefather.matCap + "\n";
+
+		if (campStats != "")
+			outputText("\n<b><u>Camp Stats</u></b>\n" + campStats);
+		// End Population Stats
+
 		// Begin Misc Stats
 		var miscStats:String = "";
 
-		if (camp.getCampPopulation() > 0) {
-			miscStats += "<b>Camp Population:</b> " + camp.getCampPopulation() + "\n";
-			miscStats += "<i>Camp Aboveground Population:</i> " + (camp.getCampPopulation() - camp.getCampUndergroundPopulation()) + "\n";
-			miscStats += "<i>Camp Underground Population:</i> " + camp.getCampUndergroundPopulation() + "\n";
-			miscStats += "<b>Minions Count:</b> " + player.playerMinionsCount() + "\n";
-			if (player.hasStatusEffect(StatusEffects.SummonedElementals)) {
-				if (player.statusEffectv1(StatusEffects.SummonedElementals) > 0) miscStats += "<i>Normal Elementals:</i> " + player.statusEffectv1(StatusEffects.SummonedElementals) + "\n";
-				if (player.statusEffectv2(StatusEffects.SummonedElementals) > 0) miscStats += "<i>Epic Elementals:</i> " + player.statusEffectv2(StatusEffects.SummonedElementals) + "\n";
-				if (player.statusEffectv3(StatusEffects.SummonedElementals) > 0) miscStats += "<i>Unique Elementals:</i> " + player.statusEffectv3(StatusEffects.SummonedElementals) + "\n";
-			}
-			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) miscStats += "<i>Pernament Stone Golems:</i> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + "\n";
-			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) miscStats += "<i>Improved Pernament Stone Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + "\n";
-			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) miscStats += "<i>Pernament Steel Golems:</i> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + "\n";
-			if (player.hasPerk(PerkLib.JobHaruspex)) {
-				if (player.perkv2(PerkLib.JobHaruspex) > 0) miscStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.JobHaruspex) + "\n";
-				if (player.perkv1(PerkLib.BoneyBow) > 0) miscStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.BoneyBow) + "\n";
-				if (player.perkv1(PerkLib.BoneyWand) > 0) miscStats += "<i>Skeletal mages:</i> " + player.perkv1(PerkLib.BoneyWand) + "\n";
-				if (player.perkv1(PerkLib.BoneGiants) > 0) miscStats += "<i>Skeletal giants:</i> " + player.perkv1(PerkLib.BoneGiants) + "\n";
-				if (player.perkv1(PerkLib.BoneBallistaSkelies) > 0) miscStats += "<i>Bone Ballista Skeletons:</i> " + player.perkv1(PerkLib.BoneBallistaSkelies) + "\n";
-				if (player.perkv1(PerkLib.GigachadSkeletalMages) > 0) miscStats += "<i>Skeletal gigachad mages:</i> " + player.perkv1(PerkLib.GigachadSkeletalMages) + "\n";
-			}
-			if (player.hasPerk(PerkLib.MummyLord) && player.perkv1(PerkLib.MummyLord) > 0) miscStats += "<i>Mummies:</i> " + player.perkv1(PerkLib.MummyLord) + "\n";
-			if (player.hasPerk(PerkLib.UndeadLord) && player.perkv1(PerkLib.UndeadLord) > 0) miscStats += "<i>Zombies:</i> " + player.perkv1(PerkLib.UndeadLord) + "\n";
-			if (player.hasPerk(PerkLib.FungalNobility) && player.perkv1(PerkLib.FungalNobility) > 0) miscStats += "<i>Matango:</i> " + player.perkv1(PerkLib.FungalNobility) + "\n";
-			if (player.hasPerk(PerkLib.JobTamer) && SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() > 0) miscStats += "<i>Tamed monsters:</i> " + SceneLib.campMakeWinions.currentTamedMonstersIncludingGroupsCount() + "\n";// || have ring of taming
-			if (player.isRace(Races.FMINDBREAKER) || player.isRace(Races.MMINDBREAKER)) {
-				miscStats += "<b>Mindbroken Minions:</b> " + Mindbreaker.MindBreakerConvert + "\n";
-				miscStats += "<b>Mindbreaker Goal:</b> " + Mindbreaker.MindBreakerConvertGoal + "\n";
-			}
-			if (player.isAnyRaceCached(Races.WEREWOLF, Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM)) miscStats += "<b>Female Werewolfs:</b> " + LunaFollower.WerewolfPackMember + "\n";
-			if (player.isRaceCached(Races.CERBERUS) && player.hasMutation(IMutationsLib.AlphaHowlIM) && player.hasMutation(IMutationsLib.HellhoundFireBallsIM) && player.perkv1(IMutationsLib.HellhoundFireBallsIM) >= 2) miscStats += "<b>Hellhounds:</b> " + LunaFollower.HellhoundPackMember + "\n";
-			if (player.hasPerk(PerkLib.MummyLord)) miscStats += "<b>Mummies:</b> " + player.perkv1(PerkLib.MummyLord) + " / " + player.mummyControlLimit() + "\n";
-			if (player.hasPerk(PerkLib.UndeadLord)) miscStats += "<b>Zombies:</b> " + player.perkv1(PerkLib.UndeadLord) + " / " + player.zombieControlLimit() + "\n";
-			if (player.hasPerk(PerkLib.FungalNobility)) miscStats += "<b>Matango:</b> " + player.perkv1(PerkLib.FungalNobility) + " / " + player.matangoControlLimit() + "\n";
-		}
-
 		if (player.hasKeyItem("Radiant shard") >= 0) miscStats += "<b>Radiant Shards:</b> " + player.keyItemvX("Radiant shard", 1) + "\n";
 		if (player.hasStatusEffect(StatusEffects.BlessedItemAtTheLake)) miscStats += "<b>Collected Beautiful Items:</b> " + player.statusEffectv1(StatusEffects.BlessedItemAtTheLake) + "\n";
-
-		if (flags[kFLAGS.CAMP_UPGRADES_FISHERY] >= 1) {
-			miscStats += "<b>Fishery daily production:</b> " + camp.FisheryDailyProduction() + "\n";
-			miscStats += "<b>Fishery workers (current/max):</b> " + camp.FisheryWorkersCount() + "/" + camp.FisheryMaxWorkersCount() + "\n";
-		}
-
-		if (RuinedTownRebuilt.RebuildState == 3) {
-			miscStats += "<b>Mousetown Population:</b> " + RuinedTownRebuilt.MousetownPopulation + " (" + RuinedTownRebuilt.MouseTownPopCap + ")\n";
-			miscStats += "<b>Mousetown Prosperity:</b> " + RuinedTownRebuilt.prosperityvar + "\n";
-		}
-
-		miscStats += "<b>Nails:</b> " + CampStatsAndResources.NailsResc + "/" + SceneLib.campUpgrades.checkMaterialsCapNails() + "\n";
-		miscStats += "<b>Wood:</b> " + CampStatsAndResources.WoodResc + "/" + SceneLib.campUpgrades.checkMaterialsCapWood() + "\n";
-		miscStats += "<b>Stone:</b> " + CampStatsAndResources.StonesResc + "/" + SceneLib.campUpgrades.checkMaterialsCapStones() + "\n";
-		miscStats += "<b>Metal Pieces:</b> " + CampStatsAndResources.MetalPieces + "/200" + "\n";
-		miscStats += "<b>Mechanisms:</b> " + CampStatsAndResources.MechanismResc + "/200" + "\n";
-		miscStats += "<b>Energy Cores:</b> " + CampStatsAndResources.EnergyCoreResc + "/200" + "\n";
-		miscStats += "<b>Granite:</b> " + Forgefather.granite + "/" + Forgefather.matCap + "\n";
-		miscStats += "<b>Ebony:</b> " + Forgefather.ebony + "/" + Forgefather.matCap + "\n";
-		miscStats += "<b>Alabaster:</b> " + Forgefather.alabaster + "/" + Forgefather.matCap + "\n";
-		miscStats += "<b>Marble:</b> " + Forgefather.marble + "/" + Forgefather.matCap + "\n";
-		miscStats += "<b>Sandstone:</b> " + Forgefather.sandstone + "/" + Forgefather.matCap + "\n";
 
 		miscStats += "<b>Basic Jobs:</b> " + player.currentBasicJobs() + " / 13 (11 Jobs + All-Rounder Job and Soul Cultivator)\n";
 		miscStats += "<b>Advanced Jobs:</b> " + player.currentAdvancedJobs() + " / " + player.maxAdvancedJobs() + "\n";

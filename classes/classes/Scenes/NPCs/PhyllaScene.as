@@ -27,7 +27,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 		public function timeChange():Boolean
 		{
 			pregnancy.pregnancyAdvance();
-			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && rand(4) == 0 && flags[kFLAGS.ANT_KIDS] < (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))) flags[kFLAGS.ANT_KIDS] += (1 + rand(2));//5000
+			if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0 && flags[kFLAGS.ANT_KIDS] < (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION]))) flags[kFLAGS.ANT_KIDS] += (1 + rand(2));//5000
 			if (model.time.hours > 23) {
 				//The pregnancyStore doesn't handle Phylla's ant eggs because they are continuous. The regular egg production is all handled here.
 				if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0) flags[kFLAGS.DAYS_PHYLLA_HAS_SPENT_BIRTHING]++;
@@ -113,10 +113,7 @@ public class PhyllaScene extends BaseContent implements TimeAwareInterface
 				else outputText("\n\nJust looking at the carving makes your head spin.  It's almost certain that if you didn't know where you were going, you could easily get lost forever.");
 				outputText("\n\nThe second your eyes lock onto her back, you feel something in your mind twitch.  You see the same thing happen to her as her whole body twitches.  She quickly turns around and runs over to you.");
 				outputText("\n\n\"<i>You came back! I mean... I hope you like it. I mean welcome... What do you want to talk about?</i>\"");
-			}
-			outputText("\n\n<b>Colony population:</b>\n<i>Queen: 1</i>");
-			if (flags[kFLAGS.ANT_KIDS] > 0) outputText("\n<i>Ant Children: " + flags[kFLAGS.ANT_KIDS] + " (Current) / " + (250 * (1 + flags[kFLAGS.ANTHILL_EXPANSION])) + " (Sustain limit)</i>");
-			if (flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] > 0) outputText("\n<i>Drider Children: " + flags[kFLAGS.PHYLLA_DRIDER_BABIES_COUNT] + " (Current) / " + (50 * (1 + flags[kFLAGS.ANTHILL_EXPANSION])) + " (Sustain limit)</i>"); 
+			} 
 			//[Talk] [Sex] [Lay Eggs / Don't Lay Eggs] [Children] [Appearance] [Gems] [Stones]
 			menu();
 			addButton(0, "Talk", phyllaTalkChoices);

@@ -4657,6 +4657,12 @@ public class Camp extends NPCAwareContent{
 				sleepRecovery(false);
 				return;
 			}
+			//Monke special recruit chance
+			if (WaizAbiFollower.WaizAbiState == 2 && !flags[kFLAGS.IN_INGNAM]) {
+				SceneLib.waizabi.WaizAbiAndKoshyaArriveAtTheCamp();
+				sleepRecovery(false);
+				return;
+			}
 			/******************************************************************/
 			/*       SLEEP WITH SYSTEM GOOOO                                  */
 			/******************************************************************/
