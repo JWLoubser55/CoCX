@@ -151,6 +151,7 @@ public class CampUpgrades extends BaseContent {
         outputText("Nails: " + CampStatsAndResources.NailsResc + "/" + checkMaterialsCapNails() + "\n");
         outputText("Wood: " + CampStatsAndResources.WoodResc + "/" + checkMaterialsCapWood() + "\n");
         outputText("Stone: " + CampStatsAndResources.StonesResc + "/" + checkMaterialsCapStones() + "\n");
+        outputText("Metal Plates: " + CampStatsAndResources.MetalPieces + "/200\n");//" + checkMaterialsCapStones() + "
     }
 	
 	public function checkMaterialsCapNails():Number {
@@ -1025,7 +1026,8 @@ public class CampUpgrades extends BaseContent {
     }
 
     public function errorNotEnough():void {
-        outputText("\n\n<b>You do not have sufficient resources. You may buy more nails, wood, and stones from the carpentry shop in Tel'Adre or find other sources for these materials. It's also possible that you lack some more exotic items.</b>")
+        outputText("\n\n<b>You do not have sufficient resources. You may buy more wood, nails and stones from the carpentry shop in Tel'Adre. Wood can be additionaly gathered from either the Forest, the Deepwoods or woodcutting location. Nails can be gained form pack of nails dropped by goblins sometimes. ");
+		outputText("Stones can be obtain from the Mountains, Quarry, or find someone to help you dig some from underground. It's also possible that you lack some more exotic items.</b>")
     }
 
     public function noThanks():void {

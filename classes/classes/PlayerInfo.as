@@ -196,16 +196,17 @@ public class PlayerInfo extends BaseContent {
 				if (player.statusEffectv2(StatusEffects.SummonedElementals) > 0) campStats += "<i>Epic Elementals:</i> " + player.statusEffectv2(StatusEffects.SummonedElementals) + "\n";
 				if (player.statusEffectv3(StatusEffects.SummonedElementals) > 0) campStats += "<i>Unique Elementals:</i> " + player.statusEffectv3(StatusEffects.SummonedElementals) + "\n";
 			}
-			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) campStats += "<i>Pernament Stone Golems:</i> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + "\n";
-			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) campStats += "<i>Improved Pernament Stone Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + "\n";
-			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) campStats += "<i>Pernament Steel Golems:</i> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + "\n";
+			if (flags[kFLAGS.PERMANENT_GOLEMS_BAG] > 0) campStats += "<i>Pernament Stone Golems:</i> " + flags[kFLAGS.PERMANENT_GOLEMS_BAG] + " / " + SceneLib.campMakeWinions.maxPermanentStoneGolemsBagSize() + "\n";
+			if (flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] > 0) campStats += "<i>Improved Pernament Stone Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_GOLEMS_BAG] + " / " + SceneLib.campMakeWinions.maxPermanentImprovedStoneGolemsBagSize() + "\n";
+			if (flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] > 0) campStats += "<i>Pernament Steel Golems:</i> " + flags[kFLAGS.PERMANENT_STEEL_GOLEMS_BAG] + " / " + SceneLib.campMakeWinions.maxPermanentSteelGolemsBagSize() + "\n";
+			if (flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] > 0) campStats += "<i>Improved Pernament Steel Golems:</i> " + flags[kFLAGS.IMPROVED_PERMANENT_STEEL_GOLEMS_BAG] + " / " + SceneLib.campMakeWinions.maxPermanentImprovedSteelGolemsBagSize() + "\n";
 			if (player.hasPerk(PerkLib.JobHaruspex)) {
-				if (player.perkv2(PerkLib.JobHaruspex) > 0) campStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.JobHaruspex) + "\n";
-				if (player.perkv1(PerkLib.BoneyBow) > 0) campStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.BoneyBow) + "\n";
-				if (player.perkv1(PerkLib.BoneyWand) > 0) campStats += "<i>Skeletal mages:</i> " + player.perkv1(PerkLib.BoneyWand) + "\n";
-				if (player.perkv1(PerkLib.BoneGiants) > 0) campStats += "<i>Skeletal giants:</i> " + player.perkv1(PerkLib.BoneGiants) + "\n";
-				if (player.perkv1(PerkLib.BoneBallistaSkelies) > 0) campStats += "<i>Bone Ballista Skeletons:</i> " + player.perkv1(PerkLib.BoneBallistaSkelies) + "\n";
-				if (player.perkv1(PerkLib.GigachadSkeletalMages) > 0) campStats += "<i>Skeletal gigachad mages:</i> " + player.perkv1(PerkLib.GigachadSkeletalMages) + "\n";
+				if (player.perkv2(PerkLib.JobHaruspex) > 0) campStats += "<i>Skeletal warriors:</i> " + player.perkv2(PerkLib.JobHaruspex) + " / " + SceneLib.campMakeWinions.maxSkeletonWarriors() + "\n";
+				if (player.perkv1(PerkLib.BoneyBow) > 0) campStats += "<i>Skeletal archers:</i> " + player.perkv1(PerkLib.BoneyBow) + " / " + SceneLib.campMakeWinions.maxSkeletonArchers() + "\n";
+				if (player.perkv1(PerkLib.BoneyWand) > 0) campStats += "<i>Skeletal mages:</i> " + player.perkv1(PerkLib.BoneyWand) + " / " + SceneLib.campMakeWinions.maxSkeletonMages() + "\n";
+				if (player.perkv1(PerkLib.BoneGiants) > 0) campStats += "<i>Skeletal giants:</i> " + player.perkv1(PerkLib.BoneGiants) + " / " + SceneLib.campMakeWinions.maxSkeletonGiants() + "\n";
+				if (player.perkv1(PerkLib.BoneBallistaSkelies) > 0) campStats += "<i>Bone Ballista Skeletons:</i> " + player.perkv1(PerkLib.BoneBallistaSkelies) + " / " + SceneLib.campMakeWinions.maxBoneBallistaSkeletons() + "\n";
+				if (player.perkv1(PerkLib.GigachadSkeletalMages) > 0) campStats += "<i>Skeletal gigachad mages:</i> " + player.perkv1(PerkLib.GigachadSkeletalMages) + " / " + SceneLib.campMakeWinions.maxSkeletonGigachadMages() + "\n";
 			}
 			if (player.hasPerk(PerkLib.MummyLord)) campStats += "<b>Mummies:</b> " + player.perkv1(PerkLib.MummyLord) + " / " + player.mummyControlLimit() + "\n";
 			if (player.hasPerk(PerkLib.UndeadLord)) campStats += "<b>Zombies:</b> " + player.perkv1(PerkLib.UndeadLord) + " / " + player.zombieControlLimit() + "\n";

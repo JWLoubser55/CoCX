@@ -352,7 +352,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 2 sensitivity lvl-up perk: Hypersensitivity III. Req. Hypersensitivity II perk, lvl 16+, NG2+ and 100+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity IV. Req. Hypersensitivity III perk, NG3+ and 120+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity V. Req. Hypersensitivity IV perk, lvl 20+, NG4+ and 140+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
-			outputText("-\n");
+			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity VI. Req. Hypersensitivity V perk, lvl 22+, NG5+ and 160+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 4 sensitivty lvl-up perk: Psychic Shield. Req. Psychic Barrier perk and 115+ sens. Effect: When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)\n");
 			outputText("-When PC lack materials to do some of the camp upgrades game would stop sending back to main camp menu. It would be so kind to only return to one menu earlier so PC can check another option faster with less clicks.\n");
 			outputText("-\n");

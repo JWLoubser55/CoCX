@@ -8361,7 +8361,11 @@ public class PerkLib
             HypersensitivityV.requireSen(140)
                     .requirePerk(HypersensitivityIV)
                     .requireLevel(20)
-                    .requireNGPlus(3);
+                    .requireNGPlus(4);
+            HypersensitivityVI.requireSen(160)
+                    .requirePerk(HypersensitivityV)
+                    .requireLevel(22)
+                    .requireNGPlus(5);
             EyesOfTheHunterMaster.requireSen(100)
                     .requirePerk(EyesOfTheHunterExpert)
                     .requireLevel(18);

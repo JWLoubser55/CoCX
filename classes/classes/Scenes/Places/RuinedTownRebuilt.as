@@ -239,7 +239,7 @@ public class RuinedTownRebuilt extends BaseContent implements SaveableState, Tim
 		if (WellBuilt) prosperityvar += 1;
 		if (logbuilt) prosperityvar += 1;
 		if (HouseNumber < ((WallNumber * 2) + 5)) prosperityvar += 1;
-		if (ShopBuilt > 0) (prosperityvar += 0.5 * ShopBuilt);
+		if (ShopBuilt > 0) prosperityvar += (0.5 * ShopBuilt);
 		if (TelAdreScouts == 1) prosperityvar += 1;
 		if (JojoyLitters) prosperityvar += 2;
 		if (FarmSeen) prosperityvar += 1;
@@ -457,25 +457,15 @@ public function enterVillage():void {
 	else if (HouseNumber>19) {
 		outputText("The town has entirely taken over the ruins. There are a few older buildings here and there, but even those seem to be in use. You're filled with pride, knowing you and Amily revived this once-barren place.\n\n");
 	}
-	if (YourHouse) {
-		outputText("The tower-house your mouselets built for you stands in the middle of town, offering a solid vantage point for the town’s guards.\n\n");
-	}
-	if (WellBuilt) {
-		outputText("A solidly built well sits near the middle of town. It evidently sees a lot of traffic, judging by the line-up around it.\n\n");
-	}
-	if (ShopBuilt>0) {
-		outputText(" "+ShopBuilt+" Shops line the main road of the town, with a loud mouse morph hawking their wares in each.\n\n");
-	}
-	if (SmithBuilt) {
-		outputText("The loud ringing of iron fills the air, and two mouselets operate stalls nearby the smithery. They’re hawking their wares to anyone around to hear, weapons and armor made by your children. You wonder how their gear compares to that of Tel’adre.\n\n");
-	}
+	if (YourHouse) outputText("The tower-house your mouselets built for you stands in the middle of town, offering a solid vantage point for the town’s guards.\n\n");
+	if (WellBuilt) outputText("A solidly built well sits near the middle of town. It evidently sees a lot of traffic, judging by the line-up around it.\n\n");
+	if (ShopBuilt > 0) outputText(" "+ShopBuilt+" Shops line the main road of the town, with a loud mouse morph hawking their wares in each.\n\n");
+	if (SmithBuilt) outputText("The loud ringing of iron fills the air, and two mouselets operate stalls nearby the smithery. They’re hawking their wares to anyone around to hear, weapons and armor made by your children. You wonder how their gear compares to that of Tel’adre.\n\n");
 	if (TrainingGroundsBuilt) {
 		outputText("The sounds of combat rise up periodically from the west side of town. Your mouse children have started their own...guard? Army? You’re not sure which. There seem to be a number of mouselings drilling with simple spears. Some appear to have gotten pieces of gel armor, and others wear shields of simple wood on their left arms.\n\n");
 		outputText("Still more have somehow obtained their own ranged weapons.")
 	}
-	if (TelAdreScouts == 2) {
-		outputText("A single wolfman, out of place among the mice, sits on a makeshift chair outside the wall. He nods once at you, but makes no motion to leave his chair. Your kids on watch seem to be used to him, but they still watch him out of the corners of their eyes.\n\n");
-	}
+	if (TelAdreScouts == 2) outputText("A single wolfman, out of place among the mice, sits on a makeshift chair outside the wall. He nods once at you, but makes no motion to leave his chair. Your kids on watch seem to be used to him, but they still watch him out of the corners of their eyes.\n\n");
 	outputText("Your oldest mouse-children seem to be everywhere. Some stand guard, and as you walk by, a few break from their watch. Some are content to nod respectfully at you, while a few others seem to take more after their mother, bounding up to you and wrapping their arms around you. Shooing the more affectionate of your children away, you enter the village, a small smile on your face.\n\n");
 	if (player.hasStatusEffect(StatusEffects.PureCampJojo) && flags[kFLAGS.JOJO_BIMBO_STATE] !=3 && flags[kFLAGS.JOJO_BIMBO_STATE] !=5 ) {
 		outputText("On the outskirts of the training grounds, you see a familiar mousey monk leading a small group of your children in meditation.\n\n");
@@ -523,17 +513,17 @@ public function enterVillage():void {
 	if (YourHouse) addButton(0, "TowerHouse", YourAmilyHome);
 	else addButtonDisabled(0, "???", "The Town isn't prosperous enough for this, yet.");
 	addButton(1, "Visit", MouseTownVisit);
-	if (TrainingGroundsBuilt) addButton(2, "Train", MouseTrainField);
-	else addButtonDisabled(2, "N/A", "You Must build the training grounds first");
-	if (ShopBuilt > 0) addButton(3, "Shop", MouseShopArea);
-	else addButtonDisabled(3, "N/A", "You must build a shop first.");
+	/*if (TrainingGroundsBuilt) addButton(2, "Train", MouseTrainField);
+	else */addButtonDisabled(2, "N/A", "You Must build the training grounds first");
+	/*if (ShopBuilt > 0) addButton(3, "Shop", MouseShopArea);
+	else */addButtonDisabled(3, "N/A", "You must build a shop first.");
 	if (WellBuilt) addButton(4, "Well", MouseWell);
 	else addButtonDisabled(4, "N/A", "You must rebuild the well first.");
 	if (model.time.hours >= 20) addButton(5, "Dinner", EveningMeal);
 	else addButtonDisabled(5, "Dinner", "Only in the evening.");
 	addButton(6, "Build", MouseTownBuild);
-	if (prosperityvar > 20 && !YourHouse) addButton(13, "Suprise", MiceBuiltHouse4U);
-	addButton(14, "Leave", function():void {  MouseTownReturnToCamp(); });
+	//if (prosperityvar > 20 && !YourHouse) addButton(13, "Suprise", MiceBuiltHouse4U);
+	addButton(14, "Leave", MouseTownReturnToCamp);
 }
 public function YourAmilyHome():void {
 	outputText("You decide to enter the home your mouse children built for you. As you walk towards it, you notice a few of your mouselets on the floors above, watching the horizon intently. One sees you approach, and waves cheerfully down at you. You nod in acknowledgement, heading in.");
@@ -1225,48 +1215,26 @@ public function MouseTownBuild():void {
 	menu();
 	addButton(0, "House", BuildHouse);
 	addButton(1, "Wall", BuildWall);
-	//if (ShopBuilt < 7) 
-	//if (ShopBuilt < 1) addButton(2, "Shop", BuildShop);
-	//if (!TrainingGroundsBuilt) addButton(3, "TrainGrounds", BuildTrainGrounds);
-	//if (!SmithBuilt) addButton(4, "Smith", BuildSmith);
+	if (ShopBuilt < 7) addButton(2, "Shop", BuildShop);
+	if (!TrainingGroundsBuilt && SmithBuilt) addButton(3, "TrainGrounds", BuildTrainGrounds);
+	if (!SmithBuilt) addButton(4, "Smith", BuildSmith);
 	if (!logbuilt) addButton(5, "Logging", BuildLogging);
 	if (!WellBuilt) addButton(6, "Well", BuildWell);
 	addButton(14, "Back", enterVillage);
 }
-public function BuildWell():void {
-	clearOutput();
-	outputText("Do you start work on building the well? (Cost: 20 nails, 50 wood and 200 stones)\n");
-	SceneLib.campUpgrades.checkMaterials();
-	if (CampStatsAndResources.StonesResc >= 200 && CampStatsAndResources.WoodResc >= 50 && CampStatsAndResources.NailsResc >= 20) {
-		doYesNo(BuildWellYes, MouseTownBuild);
-	}
-	if (CampStatsAndResources.StonesResc < 200 || CampStatsAndResources.WoodResc < 50 || CampStatsAndResources.NailsResc < 20) {
-		errorNotEnough();
-		doNext(MouseTownBuild);
-	}
-}
-public function BuildWellYes():void {
-	CampStatsAndResources.StonesResc -= 200;
-	CampStatsAndResources.WoodResc -= 50;
-	CampStatsAndResources.NailsResc -= 20;
-	outputText("You ask your kids if the old town’s well is still functional. Amily gives you a pained look, and she shakes her head. <i>“The old well partly collapsed, but the hole’s still there.”</i> She blinks. <i>“It shouldn’t take too much to fix, considering how many of us there are.”</i>\n\n");
-	outputText("You nod, and Amily leads you to the old well, and you clear the rubble from around the old structure. Upon inspection, there are a few places where the well’s stones have come loose lower down, and two of your children dive down to patch them up. Meanwhile, you start laying the groundwork for rebuilding the aboveground portion of the well, including a rope-pull and wooden cover for the well.\n\n");
-	outputText("The construction takes a mere hour, and when it’s finished, Amily pulls the first bucket of water up from the well. She gives it a serious look, and your children look on, the mood darkening. <i>“[Name], come here.</i>” You stride towards your lover, worried…Amily swings the bucket, sending the entire bucket of water into your face. Now dripping wet, you splutter as Amily howls with laughter, letting the bucket fall back down into the well. Some of your children giggle at the sight, and as Amily straightens back up, she wipes a tear out of her eyes.\n\n");
-	outputText("<i>“I’m sorry, [Name], I couldn’t resist.</i>” She doesn’t look that sorry, but you know the best way to get her back. You open your [arms], telling Amily that it’s quite alright. She realizes, too late, what you’re up to as you wrap her in a bear hug. You rub your soaking wet front into her, and Amily gives you a giggle, pushing you off. Now both soaking wet, your kids laugh at their parents.\n\n");
-	outputText("You leave, heading back to the portal. While water from the well still clings to your [clothing], you don’t mind too much. A small price to pay for a job…well done.\n\n");
-	Intown = false;
-	WellBuilt = true;
-	doNext(camp.returnToCampUseOneHour);
-}
 public function BuildHouse():void {
 	clearOutput();
-	outputText("Do you start work on building the house? (Cost: 20 nails, 50 wood and 200 stones)\n");
+	outputText("Do you start work on building the house? (Cost: 200 wood, 50 nails and 30 stones)\n");
 	SceneLib.campUpgrades.checkMaterials();
-	if (CampStatsAndResources.StonesResc >= 100 && CampStatsAndResources.WoodResc >= 200 && CampStatsAndResources.NailsResc >= 100) {
+	if (HouseNumber >= 20) {
+		outputText("WiP text for reaching max house count without additional walls built.");
+		doNext(MouseTownBuild);
+	}
+	if (CampStatsAndResources.WoodResc >= 200 && CampStatsAndResources.NailsResc >= 50 && CampStatsAndResources.StonesResc >= 30) {
 		doYesNo(BuildHouseYes, MouseTownBuild);
 	}
-	if (CampStatsAndResources.StonesResc < 100 || CampStatsAndResources.WoodResc < 200 || CampStatsAndResources.NailsResc < 100) {
-		errorNotEnough();
+	if (CampStatsAndResources.WoodResc < 200 || CampStatsAndResources.NailsResc < 50 || CampStatsAndResources.StonesResc < 30) {
+		SceneLib.campUpgrades.errorNotEnough();
 		doNext(MouseTownBuild);
 	}
 }
@@ -1276,9 +1244,9 @@ public function BuildHouseYes():void {
 	outputText("To your surprise, more of your kids come in, toting buckets of water and clay. Between each piece of lumber, they slather the top with the clay, sealing the holes between the wood.\n\n");
 	outputText("The roof comes next, and a half-dozen mice clamber onto the supporting beams while another climbs up the central pillar with a saw. You help your kids feed pieces of wood to lay across, making support beams for the roof. They fill in the roof with shocking speed, and within an hour, the structure of the house is done. The floor inside is still dirt, but your children show no signs of stopping. She waves you off.\n\n");
 	outputText("<i>“We’ll handle the rest of this,”</i> she says cheerfully, handing you a glass of water. You down it, and Amily gives you a hug. <i>“For real, the heavy lifting is done. Thank you.</i>” You give her back the glass, excusing yourself. You relax for a moment, before getting to your feet.\n\n");
-	CampStatsAndResources.StonesResc -= 100;
 	CampStatsAndResources.WoodResc -= 200;
-	CampStatsAndResources.NailsResc -= 100;
+	CampStatsAndResources.NailsResc -= 50;
+	CampStatsAndResources.StonesResc -= 30;
 	HouseNumber += 1;
 	MouseTownPopCap += 15;
 	Intown = false;
@@ -1287,19 +1255,18 @@ public function BuildHouseYes():void {
 }
 public function BuildWall():void {
 	clearOutput();
-	outputText("Do you start work on building the wall? (Cost: 50 nails and 100 wood)\n");
+	outputText("Do you start work on building the wall? (Cost: 80 wood and 50 nails)\n");
 	SceneLib.campUpgrades.checkMaterials();
-	if (CampStatsAndResources.WoodResc >= 100 && CampStatsAndResources.NailsResc >= 50) {
+	if (CampStatsAndResources.WoodResc >= 80 && CampStatsAndResources.NailsResc >= 50) {
 		doYesNo(BuildWallYes, MouseTownBuild);
 	}
-	if (CampStatsAndResources.WoodResc < 100 || CampStatsAndResources.NailsResc < 50) {
-		errorNotEnough();
+	if (CampStatsAndResources.WoodResc < 80 || CampStatsAndResources.NailsResc < 50) {
+		SceneLib.campUpgrades.errorNotEnough();
 		doNext(MouseTownBuild);
 	}
 }
 public function BuildWallYes():void {
-	CampStatsAndResources.StonesResc -= 10;
-	CampStatsAndResources.WoodResc -= 150;
+	CampStatsAndResources.WoodResc -= 80;
 	CampStatsAndResources.NailsResc -= 50;
 	outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
 	outputText("Your children nod, and start hauling lumber over towards the boundaries of town. You mark off the wall’s location, and your children get to work, pounding logs into the ground every four feet or so, laying a strong foundation.\n\n");
@@ -1307,25 +1274,30 @@ public function BuildWallYes():void {
 	outputText("<i>“Rammed Earth Walls,”</i> Amily explains. <i>“A lot easier than carting stone for miles, stronger than a purely wooden wall, and lets us make a trench at the same time.”</i>\n\n");
 	outputText("The process repeats, and within a few hours, a segment of wall has been put in place. It’ll need time to dry, but you know that once it does, this part of the wall will be extremely hard to damage. You're sweating hard, the sun beating down on your [skin]. Amily approaches, patting you on the back.\n\n");
 	outputText("<i>“We’ll handle the rest of this”,</i> she says cheerfully, handing you a glass of water. You down it, and Amily gives you a hug. <i>“For real, the heavy lifting is done. Thank you.”</i> You give her back the glass, excusing yourself. You head back to camp, slightly winded from your work.\n\n");
-	WallNumber +=1;
+	WallNumber += 1;
 	Intown = false;
 	doNext(camp.returnToCampUseOneHour);
 }
 public function BuildShop():void {
 	clearOutput();
-	outputText("Do you start work on building new shop? (Cost: 70 nails and 150 wood)\n");
+	outputText("Do you start work on building new shop? (Cost: 100 wood, 100 nails and 50 stones)\n");
 	SceneLib.campUpgrades.checkMaterials();
-	if (CampStatsAndResources.WoodResc >= 150 && CampStatsAndResources.NailsResc >= 70) {
+	if (ShopBuilt >= 4 && !SmithBuilt) {
+		outputText("WiP text for needing smith build before two last shops can be built.");
+		doNext(MouseTownBuild);
+	}
+	if (CampStatsAndResources.WoodResc >= 100 && CampStatsAndResources.NailsResc >= 100 && CampStatsAndResources.StonesResc >= 50) {
 		doYesNo(BuildShopYes, MouseTownBuild);
 	}
-	if (CampStatsAndResources.WoodResc < 150 || CampStatsAndResources.NailsResc < 70) {
-		errorNotEnough();
+	if (CampStatsAndResources.WoodResc < 100 || CampStatsAndResources.NailsResc < 100 || CampStatsAndResources.StonesResc < 50) {
+		SceneLib.campUpgrades.errorNotEnough();
 		doNext(MouseTownBuild);
 	}
 }
 public function BuildShopYes():void {
-	CampStatsAndResources.WoodResc -= 150;
-	CampStatsAndResources.NailsResc -= 70;
+	CampStatsAndResources.WoodResc -= 100;
+	CampStatsAndResources.NailsResc -= 100;
+	CampStatsAndResources.StonesResc -= 50;
 	outputText("You point at a patch of land, telling your kids that you’re using it for a new store, and your kids nod. You help them till the ground, cut notches into the wood, and raise the central pillar. As you work, nearly a dozen are already working on the walls, pounding stakes into the ground to act as grounding points for the house and cutting lumber into precise pieces for the walls.\n\n");
 	outputText("To your surprise, more of your kids come in, toting buckets of water and clay. Between each piece of lumber, they slather the top with the clay, sealing the holes between the wood.\n\n");
 	outputText("The roof comes next, and a half-dozen mice clamber onto the supporting beams while another climbs up the central pillar with a saw. You help your kids feed pieces of wood to lay across, making support beams for the roof. They fill in the roof with shocking speed, and within an hour, the structure of the house is done. The floor inside is still dirt, but your children show no signs of stopping.\n\n");
@@ -1336,20 +1308,20 @@ public function BuildShopYes():void {
 }
 public function BuildTrainGrounds():void {
 	clearOutput();
-	outputText("Do you start work on building the training grounds? (Cost: 50 nails, 150 wood and 10 stones)\n");
+	outputText("Do you start work on building the training grounds? (Cost: 200 wood, 150 nails and 50 stones)\n");
 	SceneLib.campUpgrades.checkMaterials();
-	if (CampStatsAndResources.StonesResc >= 10 && CampStatsAndResources.WoodResc >= 150 && CampStatsAndResources.NailsResc >= 50) {
+	if (CampStatsAndResources.WoodResc >= 200 && CampStatsAndResources.NailsResc >= 150 && CampStatsAndResources.StonesResc >= 50) {
 		doYesNo(BuildTrainGroundsYes, MouseTownBuild);
 	}
-	if (CampStatsAndResources.StonesResc < 10 || CampStatsAndResources.WoodResc < 150 || CampStatsAndResources.NailsResc < 50) {
-		errorNotEnough();
+	if (CampStatsAndResources.WoodResc < 150 || CampStatsAndResources.NailsResc < 150 || CampStatsAndResources.StonesResc < 50) {
+		SceneLib.campUpgrades.errorNotEnough();
 		doNext(MouseTownBuild);
 	}
 }
 public function BuildTrainGroundsYes():void {
-	CampStatsAndResources.StonesResc -= 10;
-	CampStatsAndResources.WoodResc -= 150;
-	CampStatsAndResources.NailsResc -= 50;
+	CampStatsAndResources.WoodResc -= 200;
+	CampStatsAndResources.NailsResc -= 150;
+	CampStatsAndResources.StonesResc -= 50;
 	outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
 	outputText("Your children get to work, pulling weeds, grass and rocks alike from the ground you’ve marked out. You begin working on a few simple wooden frames to hold targets, and within an hour, you’ve constructed some simple target frames, and built up some wooden barricades to block stray shots. You look up from your work to see that stakes have been pounded every few meters, and the area’s being flattened out.\n\n");
 	outputText("Three of your children in particular, a stocky, black-furred male, a slender, elegant woman with white fur, and an androgynous seeming mouselet with beige fur, seem to be throwing their all into the training grounds, taking clear leadership over certain parts of the new facility.\n\n");
@@ -1360,20 +1332,21 @@ public function BuildTrainGroundsYes():void {
 }
 public function BuildSmith():void {
     clearOutput();
-	outputText("Do you start work on building the smithery? (Cost: 200 nails, 400 wood and 200 stones)\n");
+	outputText("Do you start work on building the smithery? (Cost: 100 wood, 200 nails, 300 stones and 5 metal plates)\n");
 	SceneLib.campUpgrades.checkMaterials();
-    if (CampStatsAndResources.StonesResc >= 200 && CampStatsAndResources.WoodResc >= 400 && CampStatsAndResources.NailsResc >= 200) {
+    if (CampStatsAndResources.WoodResc >= 100 && CampStatsAndResources.NailsResc >= 200 && CampStatsAndResources.StonesResc >= 300 && CampStatsAndResources.MetalPieces >= 5) {
         doYesNo(BuildSmithYes, MouseTownBuild);
     }
-    if ((CampStatsAndResources.StonesResc < 200 || CampStatsAndResources.WoodResc < 400 || CampStatsAndResources.NailsResc < 200)) {
-        errorNotEnough();
+    if (CampStatsAndResources.WoodResc < 100 || CampStatsAndResources.NailsResc < 200 || CampStatsAndResources.StonesResc < 300 || CampStatsAndResources.MetalPieces < 5) {
+        SceneLib.campUpgrades.errorNotEnough();
         doNext(MouseTownBuild);
     }
 }
 public function BuildSmithYes():void {
-	CampStatsAndResources.StonesResc -= 200;
-	CampStatsAndResources.WoodResc -= 400;
+	CampStatsAndResources.WoodResc -= 100;
 	CampStatsAndResources.NailsResc -= 200;
+	CampStatsAndResources.StonesResc -= 300;
+	CampStatsAndResources.MetalPieces -= 5;
 	outputText("You call out, and Amily echoes you, calling your children to gather round. As a dozen or so join you, you explain to them the job at hand.\n\n");
 	outputText("You point at a patch of land, telling your kids that you’re using it for a new store, and your kids nod. You help them till the ground, cut notches into the wood, and raise the central pillar. As you work, nearly a dozen are already working on the walls, pounding stakes into the ground to act as grounding points for the house and cutting lumber into precise pieces for the walls.\n\n");
 	outputText("To your surprise, more of your kids come in, toting buckets of water and clay. Between each piece of lumber, they slather the top with the clay, sealing the holes between the wood.\n\n");
@@ -1387,20 +1360,21 @@ public function BuildSmithYes():void {
 }
 public function BuildLogging():void {
     clearOutput();
-	outputText("Do you start work on building the timber mill? (Cost: 150 nails, 200 wood and 200 stones)\n");
+	outputText("Do you start work on building the timber mill? (Cost: 250 wood, 200 nails, 100 stones and 5 metal plates)\n");
 	SceneLib.campUpgrades.checkMaterials();
-    if (CampStatsAndResources.StonesResc >= 100 && CampStatsAndResources.WoodResc >= 200 && CampStatsAndResources.NailsResc >= 150) {
+    if (CampStatsAndResources.WoodResc >= 250 && CampStatsAndResources.NailsResc >= 200 && CampStatsAndResources.StonesResc >= 100 && CampStatsAndResources.MetalPieces >= 5) {
 		doYesNo(BuildLoggingYes, MouseTownBuild);
     }
-	if ((CampStatsAndResources.StonesResc < 200 || CampStatsAndResources.WoodResc < 400 || CampStatsAndResources.NailsResc < 200)) {
-        errorNotEnough();
+	if (CampStatsAndResources.WoodResc < 250 || CampStatsAndResources.NailsResc < 200 || CampStatsAndResources.StonesResc < 100 || CampStatsAndResources.MetalPieces < 5) {
+        SceneLib.campUpgrades.errorNotEnough();
         doNext(MouseTownBuild);
     }
 }
 public function BuildLoggingYes():void {
+	CampStatsAndResources.WoodResc -= 250;
+	CampStatsAndResources.NailsResc -= 200;
 	CampStatsAndResources.StonesResc -= 100;
-	CampStatsAndResources.WoodResc -= 200;
-	CampStatsAndResources.NailsResc -= 150;
+	CampStatsAndResources.MetalPieces -= 5;
 	outputText("You tell your kids that you feel the time has come to build a more effective way of cutting timber. A mill that would allow your kids to cut larger pieces of wood, quicker. You get some nods of approval, and with that, you begin marking off an area of land, just inside the boundaries of the town. You decide to make it near one of the town entrances, for easy access.\n\n");
 	outputText("First comes the foundation: You and your mouselets till the earth, readying it for the wooden stakes you intend to drive into it. Next, you bring in timber, and your mouselets begin to raise the timbers, framing a windmill, not unlike the ones you saw in Ignam. They quickly begin to climb the frames once they’re stable, laying down ladders and securing the beams.\n\n");
 	outputText("As you finish tilling the adjacent area, Your children are already working on the saw, and as you sit down, you can see them laying beams to drive into the ground, framing a lumber mill. After a few minutes, you get back up, helping your kids bring over the stones, laying a stable floor for the sawmill.\n\n");
@@ -1409,8 +1383,30 @@ public function BuildLoggingYes():void {
 	Intown = false;
 	doNext(camp.returnToCampUseFourHours);
 }
-public function errorNotEnough():void {
-	outputText("\n\n<b>You do not have sufficient resources. You may buy more nails from the carpentry shop in Tel'Adre, gather more wood from either the Forest or the Deepwoods, and obtain more stones from the Mountains, or find someone to help you dig some from underground.</b>")
+public function BuildWell():void {
+	clearOutput();
+	outputText("Do you start work on building the well? (Cost: 20 wood, 20 nails and 100 stones)\n");
+	SceneLib.campUpgrades.checkMaterials();
+	if (CampStatsAndResources.StonesResc >= 100 && CampStatsAndResources.WoodResc >= 20 && CampStatsAndResources.NailsResc >= 20) {
+		doYesNo(BuildWellYes, MouseTownBuild);
+	}
+	if (CampStatsAndResources.StonesResc < 100 || CampStatsAndResources.WoodResc < 20 || CampStatsAndResources.NailsResc < 20) {
+		SceneLib.campUpgrades.errorNotEnough();
+		doNext(MouseTownBuild);
+	}
+}
+public function BuildWellYes():void {
+	CampStatsAndResources.WoodResc -= 20;
+	CampStatsAndResources.NailsResc -= 20;
+	CampStatsAndResources.StonesResc -= 100;
+	outputText("You ask your kids if the old town’s well is still functional. Amily gives you a pained look, and she shakes her head. <i>“The old well partly collapsed, but the hole’s still there.”</i> She blinks. <i>“It shouldn’t take too much to fix, considering how many of us there are.”</i>\n\n");
+	outputText("You nod, and Amily leads you to the old well, and you clear the rubble from around the old structure. Upon inspection, there are a few places where the well’s stones have come loose lower down, and two of your children dive down to patch them up. Meanwhile, you start laying the groundwork for rebuilding the aboveground portion of the well, including a rope-pull and wooden cover for the well.\n\n");
+	outputText("The construction takes a mere hour, and when it’s finished, Amily pulls the first bucket of water up from the well. She gives it a serious look, and your children look on, the mood darkening. <i>“[Name], come here.</i>” You stride towards your lover, worried…Amily swings the bucket, sending the entire bucket of water into your face. Now dripping wet, you splutter as Amily howls with laughter, letting the bucket fall back down into the well. Some of your children giggle at the sight, and as Amily straightens back up, she wipes a tear out of her eyes.\n\n");
+	outputText("<i>“I’m sorry, [Name], I couldn’t resist.</i>” She doesn’t look that sorry, but you know the best way to get her back. You open your [arms], telling Amily that it’s quite alright. She realizes, too late, what you’re up to as you wrap her in a bear hug. You rub your soaking wet front into her, and Amily gives you a giggle, pushing you off. Now both soaking wet, your kids laugh at their parents.\n\n");
+	outputText("You leave, heading back to the portal. While water from the well still clings to your [clothing], you don’t mind too much. A small price to pay for a job…well done.\n\n");
+	Intown = false;
+	WellBuilt = true;
+	doNext(camp.returnToCampUseOneHour);
 }
 
 //------------Town Side Character Functions (Shouldra, Jojo/Joy, ChiChi etc)----------------------
@@ -1599,4 +1595,4 @@ public function AmilyAfterSex():void {
 	doNext(camp.returnToCampUseFourHours);
 }
 }
-}
+}
