@@ -1490,16 +1490,18 @@ public class TestMenu extends BaseContent
 		menu();
 		addButton(0, "Add 1 PerkP", perkPointsCheat, 1).hint("Add 1 perk point.");
 		addButton(1, "Add 5 PerkP", perkPointsCheat, 5).hint("Add 5 perk points.");
-		addButton(2, "Sub 10 PerkP", perkPointsCheat, -10).hint("Substract 10 perk points.");
+		addButton(2, "Add 10 PerkP", perkPointsCheat, 10).hint("Add 10 perk points.");
+		addButton(3, "Sub 10 PerkP", perkPointsCheat, -10).hint("Substract 10 perk points.");
+		if (player.hasPerk(PerkLib.SoulAncestor)) addButton(4, "10-12 St.", Stage10to12SoulPerks).hint("Remove all soul cultivator related perks for stages 10-12 of cultivation to keep save compatibility with public build saves.");
 		addButton(5, "Add Gems 1", addGemsXP, "Gems", 100).hint("Add 100 gems.");
 		addButton(6, "Add Gems 2", addGemsXP, "Gems", 1000).hint("Add 1,000 gems.");
 		addButton(7, "Add Gems 3", addGemsXP, "Gems", 10000).hint("Add 10,000 gems.");
+		addButton(8, "Sub Gems 1", addGemsXP, "Gems", -10000).hint("Substract 10,000 gems.");
+		if (!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) addButton(9, "Trib Perk", TribulationPerks).hint("Add E class Tribulation survivor perk.");
 		addButton(10, "Add EXP 1", addGemsXP, "XP", 100).hint("Add 100 EXP.");
 		addButton(11, "Add EXP 2", addGemsXP, "XP", 1000).hint("Add 1,000 EXP.");
 		addButton(12, "Add EXP 3", addGemsXP, "XP", 10000).hint("Add 10,000 EXP.");
 		addButton(13, "Add EXP 4", addGemsXP, "XP", 100000).hint("Add 100,000 EXP.");
-		if (player.hasPerk(PerkLib.SoulAncestor)) addButton(3, "10-12 St.", Stage10to12SoulPerks).hint("Remove all soul cultivator related perks for stages 10-12 of cultivation to keep save compatibility with public build saves.");
-		if (!player.hasPerk(PerkLib.HclassHeavenTribulationSurvivor)) addButton(8, "Trib Perk", TribulationPerks).hint("Add E class Tribulation survivor perk.");
 		addButton(14, "Back", SoulforceCheats);
 	}
 	public function LevelDeLevel():void {

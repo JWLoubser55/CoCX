@@ -1982,21 +1982,6 @@ public class Camp extends NPCAwareContent{
 				outputText("Next to his bedroll lay various weights and other heavy objects he regularly uses to work out. Occasionally, he also spars with other camp members or even just a dummy. Not the sharpest knife in the drawer but at least he's much stronger than the typical salamander.\n\n");
 				buttons.add("Sythril", SceneLib.sythScene.SythrilMainMenu).hint("Visit Sythril.").disableIf(player.statusEffectv1(StatusEffects.CampSparingNpcsTimers6) > 0, "Training.");
 			}
-			//Elise Slave
-			if (flags[kFLAGS.ELISE_FOLLOWER] >= 1) {
-				if (!isNightTime)
-				{
-					outputText("Elise wanders around the [camp], occasionally spooking or interrupting daily activities of other [camp] members.");
-				}
-				else if (isNightTime && flags[kFLAGS.LUNA_MOON_CYCLE] == 8) {
-					outputText("Elise is sitting on a nearby rock, watching the full moon.");
-				}
-				else {
-					outputText("Elise is sitting on a nearby rock, watching the moon.");
-				}
-				outputText("\n\n");
-				buttons.add("Elise", SceneLib.eliseScene.EliseMainMenu).hint("Visit Elise.");//.disableIf(player.statusEffectv4(StatusEffects.CampSparingNpcsTimers6) > 0, "Training.")
-			}
 			//Excellia Slave
 			if (flags[kFLAGS.EXCELLIA_RECRUITED] == 2) {
 				outputText("Excellia sits near your " + (flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0 ? "cabin" : "tent") + ". " + (SceneLib.excelliaFollower.totalExcelliaChildren() > 1 ? "Her children clamor around, groping, suckling, and licking at her supple flesh. She moos loudly as they have their way with her. When she finally notices you, she beckons for you to join too." : "She moos faintly as she idly caresses her own full breasts and wet snatch. When she notices you, she spreads her legs a bit and her tail eagerly swishes back and forth, hoping you'll come over.") + "\n\n");
@@ -2024,11 +2009,26 @@ public class Camp extends NPCAwareContent{
 				sophieBimbo.sophieCampLines();
 				buttons.add("Sophie", sophieBimbo.approachBimboSophieInCamp);
 			}
-			//Ghoulish Vampire servant
-			if (player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv3(StatusEffects.Familiar) > 0 && player.statusEffectv3(StatusEffects.Familiar) < 4 && player.hasPerk(PerkLib.Familiar)) {
-				//outputText(".\n\n");
-				buttons.add(""+flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+"", SceneLib.ghoulishVampireServant.ghoulishVampireServantMain).hint("Visit your ghoulish vampire servant.");
+		}
+		//Ghoulish Vampire servant
+		if (player.hasStatusEffect(StatusEffects.Familiar) && player.statusEffectv3(StatusEffects.Familiar) > 0 && player.statusEffectv3(StatusEffects.Familiar) < 4 && player.hasPerk(PerkLib.Familiar)) {
+			//outputText(".\n\n");
+			buttons.add(""+flags[kFLAGS.GHOULISH_VAMPIRE_SERVANT_NAME]+"", SceneLib.ghoulishVampireServant.ghoulishVampireServantMain).hint("Visit your ghoulish vampire servant.");
+		}
+		//Elise Slave
+		if (flags[kFLAGS.ELISE_FOLLOWER] >= 1) {
+			if (!isNightTime)
+			{
+				outputText("Elise wanders around the [camp], occasionally spooking or interrupting daily activities of other [camp] members.");
 			}
+			else if (isNightTime && flags[kFLAGS.LUNA_MOON_CYCLE] == 8) {
+				outputText("Elise is sitting on a nearby rock, watching the full moon.");
+			}
+			else {
+				outputText("Elise is sitting on a nearby rock, watching the moon.");
+			}
+			outputText("\n\n");
+			buttons.add("Elise", SceneLib.eliseScene.EliseMainMenu).hint("Visit Elise.");//.disableIf(player.statusEffectv4(StatusEffects.CampSparingNpcsTimers6) > 0, "Training.")
 		}
 		for each(var npc:XXCNPC in _campFollowers) {
 			npc.campDescription(buttons, XXCNPC.SLAVE);
@@ -2383,7 +2383,7 @@ public class Camp extends NPCAwareContent{
 		//addButtonDisabled(6, "Garden", "Local Committee of Alraunes took over this place for re-nationalization.");
 		if (SceneLib.garden.canAccessGarden()) addButton(6, "Garden", SceneLib.garden.accessGarden).hint("Manage your garden of medicinal plants.");
 		else addButtonDisabled(6, "Garden", "You need an herb bag before you can start gardening. For some reason, the traveling merchant Giacomo comes to mind...");
-		addButton(7, "Herbalism", SceneLib.garden.herbalismMenu).hint("Use ingredients to craft poultice and battle medicines.").disableIf((isNightTime && !player.isNightCreature() && !player.hasDarkVision()),"It's too dark to do any gardening!").disableIf(!player.hasStatusEffect(StatusEffects.CampRathazul),"You’ll need an alchemist in your camp to help with this. Perhaps Rathazul could teach you the basics of herbalism?");
+		addButton(7, "Herbalism", SceneLib.garden.herbalismMenu).hint("Use ingredients to craft poultice and battle medicines.").disableIf((isNightTime && !player.isNightCreature() && !player.hasDarkVision()),"It's too dark to do any poultice and battle medicines crafting!").disableIf(!player.hasStatusEffect(StatusEffects.CampRathazul),"You’ll need an alchemist in your camp to help with this. Perhaps Rathazul could teach you the basics of herbalism?");
 		if (!inDungeon && !inRoomedDungeon && !flags[kFLAGS.IN_INGNAM]) addButton(8, "Inv Misc", campInventoryActions).hint("Action that could been used from Inventory menu if it not been already full of options.");
 		addButton(9, "Quest Loot", SceneLib.adventureGuild.questItemsBag).hint("Manage your bag with quest items.").disableIf(!AdventurerGuild.playerInGuild, "Join the Adventure Guild for a quest bag!");
 		addButton(10, "Questlog", questlog.accessQuestlogMainMenu).hint("Check your questlog.");
@@ -6060,4 +6060,4 @@ public function rebirthFromBadEnd():void {
 	}
 
 }
-}
+}

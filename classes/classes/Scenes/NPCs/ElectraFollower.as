@@ -441,9 +441,7 @@ public function ElectraSeXYesM():void {
 	outputText("\"<i>Good morning, I was wondering when you would wake up. Thank you so much for helping me get rid of that energy...It's hard to deal with sometimes.</i>\"");
 	outputText(" She slowly slides off your cock with a satisfied smile. ");
 	player.sexReward("vaginalFluids","Dick");
-	if ((flags[kFLAGS.ELECTRA_AFFECTION] >= 100) && (flags[kFLAGS.ELECTRA_FOLLOWER] == 2)) {
-	ElectraPregChance();
-	}
+	if ((flags[kFLAGS.ELECTRA_AFFECTION] >= 100) && (flags[kFLAGS.ELECTRA_FOLLOWER] == 2)) ElectraPregChance();
 	afterYes();
 }
 public function ElectraSeXYesF():void {

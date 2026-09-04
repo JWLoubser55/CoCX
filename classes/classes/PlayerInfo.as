@@ -313,6 +313,11 @@ public class PlayerInfo extends BaseContent {
 			else miscStats += "<b>Day of the Moon Cycle:</b> " + flags[kFLAGS.LUNA_MOON_CYCLE] + " (Half Moon)";
 			miscStats += "\n";
 		}
+		
+		if (flags[kFLAGS.ARIAN_EGG_EVENT] > 0) {
+			if (flags[kFLAGS.ARIAN_EGG_EVENT] == 30) miscStats += "[font-red]<b>Arian Egg Event cycle:</b> " + flags[kFLAGS.ARIAN_EGG_EVENT] + " (choose egg type before the window of decision will be gone for another 30 days)[/font]\n";
+			else miscStats += "<b>Arian Egg Event cycle:</b> " + flags[kFLAGS.ARIAN_EGG_EVENT] + "\n";
+		}
 		miscStats += "<b>Ebon Labyrinth:</b> Explored up to " + flags[kFLAGS.EBON_LABYRINTH_RECORD] + " room\n";
 		miscStats += "<b>Exp needed to lvl up:</b> ";
 		if (player.level < CoC.instance.levelCap || player.negativeLevel > 0) miscStats += "" + player.requiredXP() + "\n";
@@ -1165,6 +1170,11 @@ public class PlayerInfo extends BaseContent {
 		if (SceneLib.ayaneFollower.pregnancy.isPregnant)
 			pregnancies += "<b>Ayane</b>\n";
 
+		if (SceneLib.arianScene.arianFollower()) {
+			if (SceneLib.arianScene.pregnancy.isPregnant) pregnancies += "<b>Arian</b>\n";
+			if (player.hasStatusEffect(StatusEffects.ArianEggTimer)) pregnancies += "<b>Arian (Eggs)</b>\n";
+		}	
+	
 		if (SceneLib.arianScene.arianFollower() && flags[kFLAGS.ARIAN_EGG_COUNTER] < 24 && flags[kFLAGS.ARIAN_VAGINA] > 0)
 			pregnancies += "<b>Arian days to lay eggs: </b>" + (24-flags[kFLAGS.ARIAN_EGG_COUNTER]) + "\n";
 

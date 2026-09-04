@@ -2858,6 +2858,69 @@ public class SaveUpdater extends NPCAwareContent {
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.596) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.596;
 				if (flags[kFLAGS.NADIA_FOLLOWER] == 6) NadiaFollower.NadiaCupSize = 28;
+			}
+			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.597) {
+				flags[kFLAGS.MOD_SAVE_VERSION] = 36.597;
+				if (Garden.IngrediantBagSlot01Cap == 5 && player.hasKeyItem("Herbs Bag (Lowest grade)") >= 0) {
+					Garden.IngrediantBagSlot01Cap = 25;
+					Garden.IngrediantBagSlot02Cap = 25;
+					Garden.IngrediantBagSlot03Cap = 25;
+					Garden.IngrediantBagSlot04Cap = 25;
+					Garden.IngrediantBagSlot05Cap = 25;
+					Garden.IngrediantBagSlot06Cap = 25;
+				}
+				if (Garden.IngrediantBagSlot07Cap == 10 && player.hasKeyItem("Herbs Bag (Low grade)") >= 0) {
+					Garden.IngrediantBagSlot01Cap = 50;
+					Garden.IngrediantBagSlot02Cap = 50;
+					Garden.IngrediantBagSlot03Cap = 50;
+					Garden.IngrediantBagSlot04Cap = 50;
+					Garden.IngrediantBagSlot05Cap = 50;
+					Garden.IngrediantBagSlot06Cap = 50;
+					Garden.IngrediantBagSlot07Cap = 50;
+					Garden.IngrediantBagSlot08Cap = 50;
+				}
+				if (Garden.IngrediantBagSlot09Cap == 20 && player.hasKeyItem("Herbs Bag (Mid grade)") >= 0) {
+					Garden.IngrediantBagSlot01Cap = 100;
+					Garden.IngrediantBagSlot02Cap = 100;
+					Garden.IngrediantBagSlot03Cap = 100;
+					Garden.IngrediantBagSlot04Cap = 100;
+					Garden.IngrediantBagSlot05Cap = 100;
+					Garden.IngrediantBagSlot06Cap = 100;
+					Garden.IngrediantBagSlot07Cap = 100;
+					Garden.IngrediantBagSlot08Cap = 100;
+					Garden.IngrediantBagSlot09Cap = 100;
+					Garden.IngrediantBagSlot10Cap = 100;
+				}
+				if (Garden.PotionsBagSlot01Cap == 10 && player.hasKeyItem("Potion Bag (Lowest grade)") >= 0) {
+					Garden.PotionsBagSlot01Cap = 20;
+					Garden.PotionsBagSlot02Cap = 20;
+					Garden.PotionsBagSlot03Cap = 20;
+					Garden.PotionsBagSlot04Cap = 20;
+					Garden.PotionsBagSlot05Cap = 20;
+					Garden.PotionsBagSlot06Cap = 20;
+				}
+				if (Garden.PotionsBagSlot07Cap == 20 && player.hasKeyItem("Potion Bag (Low grade)") >= 0) {
+					Garden.PotionsBagSlot01Cap = 40;
+					Garden.PotionsBagSlot02Cap = 40;
+					Garden.PotionsBagSlot03Cap = 40;
+					Garden.PotionsBagSlot04Cap = 40;
+					Garden.PotionsBagSlot05Cap = 40;
+					Garden.PotionsBagSlot06Cap = 40;
+					Garden.PotionsBagSlot07Cap = 40;
+					Garden.PotionsBagSlot08Cap = 40;
+				}
+				if (Garden.PotionsBagSlot09Cap == 40 && player.hasKeyItem("Potion Bag (Mid grade)") >= 0) {
+					Garden.PotionsBagSlot01Cap = 80;
+					Garden.PotionsBagSlot02Cap = 80;
+					Garden.PotionsBagSlot03Cap = 80;
+					Garden.PotionsBagSlot04Cap = 80;
+					Garden.PotionsBagSlot05Cap = 80;
+					Garden.PotionsBagSlot06Cap = 80;
+					Garden.PotionsBagSlot07Cap = 80;
+					Garden.PotionsBagSlot08Cap = 80;
+					Garden.PotionsBagSlot09Cap = 80;
+					Garden.PotionsBagSlot10Cap = 80;
+				}
 			}/*
 			if (flags[kFLAGS.MOD_SAVE_VERSION] < 36.60) {
 				flags[kFLAGS.MOD_SAVE_VERSION] = 36.60;

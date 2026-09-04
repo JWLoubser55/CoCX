@@ -10,6 +10,7 @@ import classes.GlobalFlags.kFLAGS;
 import classes.IMutations.IMutationsLib;
 import classes.Scenes.Areas.Forest.CorruptedGlade;
 import classes.Scenes.Camp.CampStatsAndResources;
+import classes.Scenes.Places.RuinedTownRebuilt;
 import classes.Scenes.SceneLib;
 import classes.display.SpriteDb;
 import classes.lists.BreastCup;
@@ -5574,6 +5575,10 @@ public class AmilyScene extends NPCAwareContent implements TimeAwareInterface
 				dynStats("cor", 3);
 			}
 			pregnancy.knockUpForce(); //Clear Pregnancy
+			if (RuinedTownRebuilt.RebuildState == 3) {
+				RuinedTownRebuilt.MousetownPopulation += 5;
+				if (RuinedTownRebuilt.MousetownPopulation > RuinedTownRebuilt.MouseTownPopCap) RuinedTownRebuilt.MousetownPopulation = RuinedTownRebuilt.MouseTownPopCap;
+			}
 			doNext(playerMenu);
 		}
 

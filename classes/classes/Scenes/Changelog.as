@@ -225,8 +225,8 @@ public class Changelog extends BaseContent
 			outputText("-New P. Special: Leap (Escape) - usable by having frog legs. Allow to run away from fight.\n");
 			outputText("-New event perk: Song of the swamps. Gained by becoming Frog/Mobogo. Effects: Giving access to Sing m. special and all related subspecials.\n");
 			outputText("-New P. Special: Leap - usable by having frog legs and frog race score 15+. Power stun enemy for the current turn and deliver a doubled damage power attack on the next one. Only work outdoors.\n");
-			outputText("-Potions (Lowest grade) Bag cost increased (300 > 600) times but so do slot capacity (5 > 10) ^^\n");
-			outputText("-Added to Giacomo offer: Potions (Low/Mid grade) Bag and Herbs (Mid grade) Bag. Cost 1,000 / 2,000 / 1,000 gems and have 8 / 10 / 10 slots for items (potions or herbs) with stack size of 20 / 40 / 20.\n");
+			outputText("-Potions (Lowest grade) Bag slot capacity increased (5 > 20) ^^\n");
+			outputText("-Added to Giacomo offer: Potions (Low/Mid grade) Bag and Herbs (Mid grade) Bag. Cost 800 / 2,000 / 1,000 gems and have 8 / 10 / 10 slots for items (potions or herbs) with stack size of 40 / 80 / 100.\n");
 			outputText("-New TF item (by Ormael): Steak grilled by rhino. Sold by Rocksteady. Using this item will turn PC into stone rhino if rhino score reached tier 1 of race bonuses. Stone Rhino / Petrokheros racial bonuses (14+/20+): +135/180% to str/tou multi, -30/40% to int multi, -50/60 to sens, +400/600 to max hp, +20/30 to armor, +8/12 to m.res.\n");
 			outputText("-Upheaval p.special when used with stone horn(s) would deal additional earth damage instance.\n");
 			outputText("-Having Thick Skin perk and Stone/Steel skin would increase bonus from perk by 5x. Also base bonus from perk to m.res is increased to match bonus to armor.\n");
@@ -355,7 +355,7 @@ public class Changelog extends BaseContent
 			outputText("-New tier 3 sensitivity lvl-up perk: Hypersensitivity VI. Req. Hypersensitivity V perk, lvl 22+, NG5+ and 160+ sens. Effect: Increase sens by 100, +1 extra fatigue per point of sensitivity.\n");
 			outputText("-New tier 4 sensitivty lvl-up perk: Psychic Shield. Req. Psychic Barrier perk and 115+ sens. Effect: When using Psychic Barrier resistance to psychic attacks is increased. (+40% to psychic resistance and cost of activation/sustain is increased by 200% of base cost)\n");
 			outputText("-When PC lack materials to do some of the camp upgrades game would stop sending back to main camp menu. It would be so kind to only return to one menu earlier so PC can check another option faster with less clicks.\n");
-			outputText("-\n");
+			outputText("-Herbs Bag (Lowest/Low Grade) have their capacity slight changed: 5 > 25 / 10 > 50. Herbs Bag (Low Grade) have it cost slight changed: 500 > 800. Potions Bag (Lowest Grade) have it capacity slight changed: 10 > 20.\n");
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");//New tier 8 sensitivity lvl-up perk: Power Overwhelming. Req. Spiritual Alignment or Mental Attunement perk and 200+ sens. Effect: .each 200 sens giving +1x psychic attacks dmg multi (+2000 sens)
@@ -386,6 +386,15 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");//Player gained damage reduction based on sum of toughness core and trained stat values. Each point increase it by +1 starting from 1/2 when sum of core and trained values is above 1.
 			outputText("-\n");//Gained by cultivating 'Hall of the Mirrors' cultivation manual
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
+			outputText("-\n");
 			outputText("-Fixed bugs: Dracula/lina PC unable to find get ghoul if they not learned this as normal Vampire, unable to buy manual for 1st atk: f. swords, Arigean Princess PC not been fully immune to TF-ing like other perm races, Weresharks not having their stats changing according to moon phase or boosted during use of Crinos Shape, Phoenix TF adding mutagen penatly instead of stat curse, ");
 			outputText("Endless Rage draining 10x too much wrath per turn, Berzerker/Lustzerker still req. to be activated after they been activated as part of Asura Form activation, dormant state of wereraces 'blessings' increasing race score and not lowering it, Hinezumi Buring Blood IM accessible by Bunny race, returning from teleportation circle at 4th floor of river dungeon sending PC to 3rd floor ");
 			outputText("teleportation circle room, perk allowing to always run away from enemy/ies been ignored in dungeons, unarmed/feral giving mastery gains for small weapons, 2 of 4 SF to Elemental Energy conversion options having wrong check for usable SF, using Fiery Band for calling Kiha to help fight... Kiha, Ceraph after update still not able to win using her super cool lust beam attack, ");
@@ -464,14 +473,8 @@ public class Changelog extends BaseContent
 			outputText("-\n");
 			outputText("-\n");
 			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
-			outputText("-\n");
 			outputText("-Added in current version race effects to Metamorph perk: \n");Goo, Siren, Avian-morph, Bear/(Red?) Panda, Fire Snail, Melkie, Centipede(what about Centaur race? need rework still or nah? or just adding to Metamorph menu but how i mean with what bodyparts?)
 			outputText("-New tier 7 speed lvl-up perk: Prestige Job: Soul Archer Req. Soul Overlord, Job: Hunter perks and 200+ spe Effect: +40 to max spe and wis (scalable with NG tiers), +150 to max Fatigue, +1000 to max Soulforce\n");
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -499,9 +502,6 @@ public class Changelog extends BaseContent
 			outputText("\n");cel na 0.8(/9): może jakas lokacja w places umieszczona takie mini miasto zanim sie odkryje wlasciwa lokacje lub miasto ale dostepne tylko czesciowo zanim sie nie znajdzie wlasciwej lokacji i z niej eksploracji odkryje miasta we właściwy sposob ^^
 			outputText("\n");cel na 0.8(/9): pododawać 1-3 grey spells
 			outputText("\n");cel na 0.8(/9): dodać Grey spells: ?were-beast spell?
-			outputText("\n");
-			outputText("\n");
-			outputText("\n");
 			outputText("\n");
 			outputText("\n");
 			outputText("\n");
@@ -2262,7 +2262,7 @@ public class Changelog extends BaseContent
 			outputText("-New usable item: Red Gel. Costing 100 gems and it's obtainable from Red Ooze or Red Mist Ooze enemies. Can be used to craft various items.\n");
 			outputText("-New usable item: bandages. Costing 25 gems and it's obtainable from Anubis enemies or bought at Tailor shop in Tel'Adre.\n");
 			outputText("-New key Item (by Aimozg): Tel'Adre Magazine Issue 2 - Increase 2x Alchemy EXP gains. Costs 100 gems and buyable at Giacomo Books tab.\n");
-			outputText("-New key item: Herbs Bag (Low grade). Buyable at Giacomo when pc have lvl 5+ in farming skill. Costs 500 gems and would increase slots cap to 10 and open 2 additional slots for 2 new herb types.\n");
+			outputText("-New key item: Herbs Bag (Low grade). Buyable at Giacomo when pc have lvl 5+ in farming skill. Costs 500 gems and would increase slots cap to 40 and open 2 additional slots for 2 new herb types.\n");
 			outputText("-New magic soulskill: Soul drain. Accessable by having 20+ in anubis racial score. Effects: Damage victim’s soul force directly, inflicting suffering both physical and spiritual. Ineffective on foes who lack a soul. Gain Healing as a percentage of the soul force stolen. (True Damage)\n");
 			outputText("-New magic soulskill: Finger of death. Accessable by having 20+ in anubis racial score. Effects: Once per 6 rounds inflict massive damage. Also damage the opponent's toughness and strength by 10. Ineffective on foes who lack a soul.\n");
 			outputText("-New magical soulskill: Create Element (Basic). Req. buying manual from golem merchant for 20 spirit stones. Create ball of fire / water / air / earth and throw it at enemy. Base cost: 60 soulforce.\n");

@@ -170,23 +170,23 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
 			menu();
-			if (Garden.IngrediantBagSlot01Cap == 0) addButton(4, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
+			if (Garden.IngrediantBagSlot01Cap == 0) addButton(0, "Herb Bag (LLowG)", pitchLLHerbsBag).hint("Herbs Bag (Lowest Grade)");
 			if (Garden.IngrediantBagSlot07Cap == 0) {
-				if (player.farmingLevel >= 5) addButton(5, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
-				else addButtonDisabled(5, "Herb Bag (LowG)", "Herbs Bag (Low Grade) Req. lvl 5 in Farming.");
+				if (player.farmingLevel >= 5) addButton(1, "Herb Bag (LowG)", pitchLHerbsBag).hint("Herbs Bag (Low Grade)");
+				else addButtonDisabled(1, "Herb Bag (LowG)", "Herbs Bag (Low Grade) Req. lvl 5 in Farming.");
 			}
 			if (Garden.IngrediantBagSlot09Cap == 0) {
-				if (player.farmingLevel >= 10) addButton(6, "Herb Bag (MidG)", pitchMHerbsBag).hint("Herbs Bag (Mid Grade)");
-				else addButtonDisabled(6, "Herb Bag (MidG)", "Herbs Bag (Mid Grade) Req. lvl 10 in Farming.");
+				if (player.farmingLevel >= 10) addButton(2, "Herb Bag (MidG)", pitchMHerbsBag).hint("Herbs Bag (Mid Grade)");
+				else addButtonDisabled(2, "Herb Bag (MidG)", "Herbs Bag (Mid Grade) Req. lvl 10 in Farming.");
 			}
-			if (Garden.PotionsBagSlot01Cap == 0) addButton(7, "Pot Bag (LLowG)", pitchLLPotionsBag).hint("Potion Bag (Lowest Grade)");
+			if (Garden.PotionsBagSlot01Cap == 0) addButton(5, "Pot Bag (LLowG)", pitchLLPotionsBag).hint("Potion Bag (Lowest Grade)");
 			if (Garden.PotionsBagSlot07Cap == 0) {
-				if (player.herbalismLevel >= 5) addButton(8, "Pot Bag (LowG)", pitchLPotionsBag).hint("Potion Bag (Low Grade)");
-				else addButtonDisabled(8, "Pot Bag (LowG)", "Potion Bag (Low Grade) Req. lvl 5 in Herbalism.");
+				if (player.herbalismLevel >= 5) addButton(6, "Pot Bag (LowG)", pitchLPotionsBag).hint("Potion Bag (Low Grade)");
+				else addButtonDisabled(6, "Pot Bag (LowG)", "Potion Bag (Low Grade) Req. lvl 5 in Herbalism.");
 			}
 			if (Garden.PotionsBagSlot09Cap == 0) {
-				if (player.herbalismLevel >= 10) addButton(9, "Pot Bag (MidG)", pitchMPotionsBag).hint("Potion Bag (Mid Grade)");
-				else addButtonDisabled(9, "Pot Bag (MidG)", "Potion Bag (Mid Grade) Req. lvl 10 in Herbalism.");
+				if (player.herbalismLevel >= 10) addButton(7, "Pot Bag (MidG)", pitchMPotionsBag).hint("Potion Bag (Mid Grade)");
+				else addButtonDisabled(7, "Pot Bag (MidG)", "Potion Bag (Mid Grade) Req. lvl 10 in Herbalism.");
 			}
 			addButton(14, "Back", giacomoEncounter);
 			statScreenRefresh();
@@ -455,12 +455,12 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				outputText("\n\nYou decided to buy the bag. <b>You acquired Herbs Bag (Lowest grade).</b>");
 				player.gems -= 300;
 				player.createKeyItem("Herbs Bag (Lowest grade)", 0, 0, 0, 0);
-				Garden.IngrediantBagSlot01Cap = 5;
-				Garden.IngrediantBagSlot02Cap = 5;
-				Garden.IngrediantBagSlot03Cap = 5;
-				Garden.IngrediantBagSlot04Cap = 5;
-				Garden.IngrediantBagSlot05Cap = 5;
-				Garden.IngrediantBagSlot06Cap = 5;
+				Garden.IngrediantBagSlot01Cap = 25;
+				Garden.IngrediantBagSlot02Cap = 25;
+				Garden.IngrediantBagSlot03Cap = 25;
+				Garden.IngrediantBagSlot04Cap = 25;
+				Garden.IngrediantBagSlot05Cap = 25;
+				Garden.IngrediantBagSlot06Cap = 25;
 				doNext(miscMenu);
 			}
 		}
@@ -474,23 +474,23 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 		private function buyLHerbsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			if (player.gems < 500) {
-				outputText("\n\nGiacomo sighs, indicating you need 500 gems to purchase this item.");
+			if (player.gems < 800) {
+				outputText("\n\nGiacomo sighs, indicating you need 800 gems to purchase this item.");
 				doNext(miscMenu);
 			}
 			else {
 				outputText("\n\nYou decided to buy the bag. <b>You acquired Herbs Bag (Low grade).</b>");
-				player.gems -= 500;
+				player.gems -= 800;
 				player.removeKeyItem("Herbs Bag (Lowest grade)");
 				player.createKeyItem("Herbs Bag (Low grade)", 0, 0, 0, 0);
-				Garden.IngrediantBagSlot01Cap = 10;
-				Garden.IngrediantBagSlot02Cap = 10;
-				Garden.IngrediantBagSlot03Cap = 10;
-				Garden.IngrediantBagSlot04Cap = 10;
-				Garden.IngrediantBagSlot05Cap = 10;
-				Garden.IngrediantBagSlot06Cap = 10;
-				Garden.IngrediantBagSlot07Cap = 10;
-				Garden.IngrediantBagSlot08Cap = 10;
+				Garden.IngrediantBagSlot01Cap = 50;
+				Garden.IngrediantBagSlot02Cap = 50;
+				Garden.IngrediantBagSlot03Cap = 50;
+				Garden.IngrediantBagSlot04Cap = 50;
+				Garden.IngrediantBagSlot05Cap = 50;
+				Garden.IngrediantBagSlot06Cap = 50;
+				Garden.IngrediantBagSlot07Cap = 50;
+				Garden.IngrediantBagSlot08Cap = 50;
 				doNext(miscMenu);
 			}
 		}
@@ -504,25 +504,25 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 		private function buyMHerbsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			if (player.gems < 1000) {
-				outputText("\n\nGiacomo sighs, indicating you need 1,000 gems to purchase this item.");
+			if (player.gems < 2000) {
+				outputText("\n\nGiacomo sighs, indicating you need 2,000 gems to purchase this item.");
 				doNext(miscMenu);
 			}
 			else {
 				outputText("\n\nYou decided to buy the bag. <b>You acquired Herbs Bag (Low grade).</b>");
-				player.gems -= 1000;
+				player.gems -= 2000;
 				player.removeKeyItem("Herbs Bag (Low grade)");
 				player.createKeyItem("Herbs Bag (Mid grade)", 0, 0, 0, 0);
-				Garden.IngrediantBagSlot01Cap = 20;
-				Garden.IngrediantBagSlot02Cap = 20;
-				Garden.IngrediantBagSlot03Cap = 20;
-				Garden.IngrediantBagSlot04Cap = 20;
-				Garden.IngrediantBagSlot05Cap = 20;
-				Garden.IngrediantBagSlot06Cap = 20;
-				Garden.IngrediantBagSlot07Cap = 20;
-				Garden.IngrediantBagSlot08Cap = 20;
-				Garden.IngrediantBagSlot09Cap = 20;
-				Garden.IngrediantBagSlot10Cap = 20;
+				Garden.IngrediantBagSlot01Cap = 100;
+				Garden.IngrediantBagSlot02Cap = 100;
+				Garden.IngrediantBagSlot03Cap = 100;
+				Garden.IngrediantBagSlot04Cap = 100;
+				Garden.IngrediantBagSlot05Cap = 100;
+				Garden.IngrediantBagSlot06Cap = 100;
+				Garden.IngrediantBagSlot07Cap = 100;
+				Garden.IngrediantBagSlot08Cap = 100;
+				Garden.IngrediantBagSlot09Cap = 100;
+				Garden.IngrediantBagSlot10Cap = 100;
 				doNext(miscMenu);
 			}
 		}
@@ -536,20 +536,20 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 		private function buyLLPotionsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			if (player.gems < 600) {
-				outputText("\n\nGiacomo sighs, indicating you need 600 gems to purchase this item.");
+			if (player.gems < 300) {
+				outputText("\n\nGiacomo sighs, indicating you need 300 gems to purchase this item.");
 				doNext(miscMenu);
 			}
 			else {
 				outputText("\n\nYou decided to buy the bag. <b>You acquired Potion Bag (Lowest grade).</b>");
-				player.gems -= 600;
+				player.gems -= 300;
 				player.createKeyItem("Potion Bag (Lowest grade)", 0, 0, 0, 0);
-				Garden.PotionsBagSlot01Cap = 10;
-				Garden.PotionsBagSlot02Cap = 10;
-				Garden.PotionsBagSlot03Cap = 10;
-				Garden.PotionsBagSlot04Cap = 10;
-				Garden.PotionsBagSlot05Cap = 10;
-				Garden.PotionsBagSlot06Cap = 10;
+				Garden.PotionsBagSlot01Cap = 20;
+				Garden.PotionsBagSlot02Cap = 20;
+				Garden.PotionsBagSlot03Cap = 20;
+				Garden.PotionsBagSlot04Cap = 20;
+				Garden.PotionsBagSlot05Cap = 20;
+				Garden.PotionsBagSlot06Cap = 20;
 				doNext(miscMenu);
 			}
 		}
@@ -563,23 +563,23 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 		private function buyLPotionsBag():void {
 			spriteSelect(SpriteDb.s_giacomo);
 			clearOutput();
-			if (player.gems < 1000) {
-				outputText("\n\nGiacomo sighs, indicating you need 1,000 gems to purchase this item.");
+			if (player.gems < 800) {
+				outputText("\n\nGiacomo sighs, indicating you need 800 gems to purchase this item.");
 				doNext(miscMenu);
 			}
 			else {
 				outputText("\n\nYou decided to buy the bag. <b>You acquired Potion Bag (Lowest grade).</b>");
-				player.gems -= 1000;
+				player.gems -= 800;
 				player.removeKeyItem("Potion Bag (Lowest grade)");
 				player.createKeyItem("Potion Bag (Low grade)", 0, 0, 0, 0);
-				Garden.PotionsBagSlot01Cap = 20;
-				Garden.PotionsBagSlot02Cap = 20;
-				Garden.PotionsBagSlot03Cap = 20;
-				Garden.PotionsBagSlot04Cap = 20;
-				Garden.PotionsBagSlot05Cap = 20;
-				Garden.PotionsBagSlot06Cap = 20;
-				Garden.PotionsBagSlot07Cap = 20;
-				Garden.PotionsBagSlot08Cap = 20;
+				Garden.PotionsBagSlot01Cap = 40;
+				Garden.PotionsBagSlot02Cap = 40;
+				Garden.PotionsBagSlot03Cap = 40;
+				Garden.PotionsBagSlot04Cap = 40;
+				Garden.PotionsBagSlot05Cap = 40;
+				Garden.PotionsBagSlot06Cap = 40;
+				Garden.PotionsBagSlot07Cap = 40;
+				Garden.PotionsBagSlot08Cap = 40;
 				doNext(miscMenu);
 			}
 		}
@@ -602,16 +602,16 @@ public class Giacomo extends BaseContent implements TimeAwareInterface {
 				player.gems -= 2000;
 				player.removeKeyItem("Potion Bag (Low grade)");
 				player.createKeyItem("Potion Bag (Mid grade)", 0, 0, 0, 0);
-				Garden.PotionsBagSlot01Cap = 40;
-				Garden.PotionsBagSlot02Cap = 40;
-				Garden.PotionsBagSlot03Cap = 40;
-				Garden.PotionsBagSlot04Cap = 40;
-				Garden.PotionsBagSlot05Cap = 40;
-				Garden.PotionsBagSlot06Cap = 40;
-				Garden.PotionsBagSlot07Cap = 40;
-				Garden.PotionsBagSlot08Cap = 40;
-				Garden.PotionsBagSlot09Cap = 40;
-				Garden.PotionsBagSlot10Cap = 40;
+				Garden.PotionsBagSlot01Cap = 80;
+				Garden.PotionsBagSlot02Cap = 80;
+				Garden.PotionsBagSlot03Cap = 80;
+				Garden.PotionsBagSlot04Cap = 80;
+				Garden.PotionsBagSlot05Cap = 80;
+				Garden.PotionsBagSlot06Cap = 80;
+				Garden.PotionsBagSlot07Cap = 80;
+				Garden.PotionsBagSlot08Cap = 80;
+				Garden.PotionsBagSlot09Cap = 80;
+				Garden.PotionsBagSlot10Cap = 80;
 				doNext(miscMenu);
 			}
 		}
